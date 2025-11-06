@@ -1,0 +1,121 @@
+/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+.dark-mode code[class*="language-"],
+.dark-mode pre[class*="language-"] {
+    color: #f8f8f2;
+    background: none;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 1em;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+/* Code blocks */
+.dark-mode pre[class*="language-"] {
+    overflow: auto;
+    border-radius: 0.3em;
+}
+
+.dark-mode :not(pre) > code[class*="language-"],
+.dark-mode pre[class*="language-"] {
+    background-color: rgb(31 41 55);
+}
+
+/* Inline code */
+.dark-mode :not(pre) > code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal;
+}
+
+.dark-mode .token.comment,
+.dark-mode .token.prolog,
+.dark-mode .token.doctype,
+.dark-mode .token.cdata {
+    color: #8292a2;
+}
+
+.dark-mode .token.punctuation {
+    color: #f8f8f2;
+}
+
+.dark-mode .token.namespace {
+    opacity: .7;
+}
+
+.dark-mode .token.property,
+.dark-mode .token.tag,
+.dark-mode .token.constant,
+.dark-mode .token.symbol,
+.dark-mode .token.deleted {
+    color: #f92672;
+}
+
+.dark-mode .token.boolean,
+.dark-mode .token.number {
+    color: #ae81ff;
+}
+
+.dark-mode .token.selector,
+.dark-mode .token.attr-name,
+.dark-mode .token.string,
+.dark-mode .token.char,
+.dark-mode .token.builtin,
+.dark-mode .token.inserted {
+    color: #a6e22e;
+}
+
+.dark-mode .token.operator,
+.dark-mode .token.entity,
+.dark-mode .token.url,
+.dark-mode .language-css .token.string,
+.dark-mode .style .token.string,
+.dark-mode .token.variable {
+    color: #f8f8f2;
+}
+
+.dark-mode .token.atrule,
+.dark-mode .token.attr-value,
+.dark-mode .token.function,
+.dark-mode .token.class-name {
+    color: #e6db74;
+}
+
+.dark-mode .token.keyword {
+    color: #66d9ef;
+}
+
+.dark-mode .token.regex,
+.dark-mode .token.important {
+    color: #fd971f;
+}
+
+.dark-mode .token.important,
+.dark-mode .token.bold {
+    font-weight: bold;
+}
+.dark-mode .token.italic {
+    font-style: italic;
+}
+
+.dark-mode .token.entity {
+    cursor: help;
+}

@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+@import 'tailwindcss-primeui';
+@import './variables.css';
+@import './app.css';
+
+@import '@vue-flow/core/dist/style.css';
+@import '@vue-flow/core/dist/theme-default.css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+    html {
+        font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+        font-size: var(--font-size-base) !important;
+    }
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: #454545;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
