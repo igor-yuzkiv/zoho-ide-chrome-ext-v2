@@ -21,13 +21,13 @@ const navItems = computed(() => {
 </script>
 
 <template>
-    <div class="relative flex w-full shrink-0 justify-between overflow-hidden">
+    <div class="relative flex w-full shrink-0 justify-between overflow-hidden pt-1 px-1">
         <div class="flex items-center gap-x-2 shrink-0">
             <router-link
                 v-for="item in navItems"
                 :key="item.title"
                 :to="item.route"
-                class="hover:underline hover:bg-primary px-2"
+                class="hover:underline hover:bg-primary px-3 rounded-lg"
             >
                 {{ item.title }}
             </router-link>

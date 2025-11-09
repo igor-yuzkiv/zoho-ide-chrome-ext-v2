@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { Button } from 'primevue'
 import { Icon } from '@iconify/vue'
 import { useGlobalSearchSettings } from '@/shared/libs/global-search/lib/composables/useGlobalSearchSettings.ts'
 import type { GlobalSearchDocument } from '@/shared/libs/global-search/lib/global-search.types.ts'
@@ -45,12 +46,13 @@ const itemsForDisplay = computed(() => {
             </div>
 
             <div class="flex items-center gap-x-2">
-                <div
-                    class="text-sm text-primary hover:underline opacity-0 group-hover:opacity-100 cursor-pointer"
+                <Button
+                    text
+                    class="text-sm opacity-0 group-hover:opacity-100 py-1 px-2"
                     @click.stop="$emit('item:view', result)"
                 >
                     View
-                </div>
+                </Button>
                 <div class="text-sm text-gray-500" :class="result.selected ? 'text-white' : ''">
                     {{ result.module }}
                 </div>
