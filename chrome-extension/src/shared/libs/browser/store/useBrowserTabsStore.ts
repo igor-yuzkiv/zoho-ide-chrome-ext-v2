@@ -47,7 +47,7 @@ export const useBrowserTabsStore = defineStore('browser.tabs', () => {
 
     const onRemoved = (tabId: number) => remove(tabId)
 
-    async function init() {
+    async function bootstrap() {
         await refetch()
 
         if (!isMock() && typeof chrome !== 'undefined' && chrome?.tabs) {
@@ -58,7 +58,7 @@ export const useBrowserTabsStore = defineStore('browser.tabs', () => {
 
     return {
         items,
-        init,
+        bootstrap,
         refetch,
     }
 })

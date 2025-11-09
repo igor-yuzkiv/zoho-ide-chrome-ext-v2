@@ -23,7 +23,11 @@ export const useProvidersStore = defineStore('providers', () => {
     const providersMap = ref<Map<string, ServiceProvider>>(new Map())
     const providersList = computed(() => Array.from(providersMap.value.values()))
 
-    async function bootstrap(tabs: Map<number, BrowserTab>) {
+    function bootstrap() {
+
+    }
+
+    async function initializeProviders(tabs: Map<number, BrowserTab>) {
         const prev = providersMap.value
         const next = resolveProvidersFromChromeTabs(Array.from(tabs.values()), prev)
 
@@ -43,6 +47,7 @@ export const useProvidersStore = defineStore('providers', () => {
     return {
         providersMap,
         providersList,
+        initializeProviders,
         bootstrap,
         findById,
     }

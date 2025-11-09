@@ -16,13 +16,14 @@ const providersStore = useProvidersStore()
 const router = useRouter()
 const isInitialized = ref(false)
 
-watch(() => tabs.items, providersStore.bootstrap)
+watch(() => tabs.items, providersStore.initializeProviders)
 
 onMounted(async () => {
     try {
         appState.showLoadingOverlay()
-        appTheme.init()
-        await tabs.init()
+        providersStore.bootstrap();
+        appTheme.bootstrap()
+        await tabs.bootstrap()
     } catch (e) {
         console.error(e)
         router.push({ name: AppRouteName.error }).catch(console.error)

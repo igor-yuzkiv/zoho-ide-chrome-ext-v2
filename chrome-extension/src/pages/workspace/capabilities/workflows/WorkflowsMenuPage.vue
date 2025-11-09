@@ -2,12 +2,11 @@
 import { CapabilityType } from '@/config/capabilities.config.ts'
 import { useRouteParams } from '@vueuse/router'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import { useCapabilityRecordsQuery } from '@/entities/capability/composables/useCapabilityRecordsQuery.ts'
 import type { IWorkflowEntity } from '@/capabilities/workflow/workflow.types.ts'
-import { CapabilityEntitiesMenu, CapabilityEntityListItem } from '@/features/capability/capability-entities-list'
+import { useCapabilityRecordsList, CapabilityEntitiesMenu, CapabilityEntityListItem } from '@/features/capability/capability-records-list'
 
 const providerId = useRouteParams<string>('providerId')
-const workflows = useCapabilityRecordsQuery<IWorkflowEntity>(CapabilityType.WORKFLOWS, providerId)
+const workflows = useCapabilityRecordsList<IWorkflowEntity>(CapabilityType.WORKFLOWS, providerId)
 </script>
 
 <template>

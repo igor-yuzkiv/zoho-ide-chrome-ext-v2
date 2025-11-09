@@ -17,7 +17,7 @@ export const useAppThemeStore = defineStore('app.theme', () => {
         toggleClass(isDark.value)
     }
 
-    function init() {
+    function bootstrap() {
         let theme = localStorageValue.value
         if (!theme) {
             theme = isDarkPreferred.value ? 'dark' : 'light'
@@ -29,5 +29,5 @@ export const useAppThemeStore = defineStore('app.theme', () => {
 
     watch(isDark, (newVal) => (localStorageValue.value = newVal ? 'dark' : 'light'))
 
-    return { isDark, toggle, init }
+    return { isDark, toggle, bootstrap }
 })

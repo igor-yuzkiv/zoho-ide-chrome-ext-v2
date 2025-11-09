@@ -10,7 +10,7 @@ import type {
     IModuleFieldMetadataEntity,
     IModuleMetadataEntity,
 } from '@/capabilities/metadata/metadata.types.ts'
-import { selectProviderRecordsQuery } from '@/shared/cache'
+import { selectProviderRecordsQuery } from '@/entities/capability/cache'
 import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
 
 async function fetchModuleFields(

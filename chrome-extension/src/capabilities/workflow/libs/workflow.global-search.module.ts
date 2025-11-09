@@ -1,5 +1,5 @@
 import { CapabilityType } from '@/config/capabilities.config.ts'
-import { selectProviderRecordsQuery } from '@/shared/cache'
+import { selectProviderRecordsQuery } from '@/entities/capability/cache'
 import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
 import type { GlobalSearchDocument, GlobalSearchModule } from '@/shared/libs/global-search/lib/global-search.types.ts'
 import { AppRouteName } from '@/app/router/app-routes.ts'

@@ -2,7 +2,7 @@
 import { computed, ref } from 'vue'
 import InputText from 'primevue/inputtext'
 import type { ICapabilityEntity } from '@/entities/capability/capability.types.ts'
-import { CapabilityEntitiesList, CapabilityEntityListItem } from '@/features/capability/capability-entities-list'
+import { CapabilityEntitiesList, CapabilityEntityListItem } from '@/features/capability/capability-records-list'
 
 const props = withDefaults(
     defineProps<{

@@ -3,7 +3,7 @@ import { keepPreviousData, useQuery } from '@tanstack/vue-query'
 import { computed, type MaybeRef, toValue } from 'vue'
 import type { IEntity } from '@/shared/types/entitiy.types.ts'
 import type { IModuleFieldMetadataEntity } from '@/capabilities/metadata/metadata.types.ts'
-import { selectProviderRecordsQuery } from '@/shared/cache'
+import { selectProviderRecordsQuery } from '@/entities/capability/cache'
 
 export function useModuleFields<TOrigin extends IEntity = IEntity>(
     providerId: MaybeRef<string>,

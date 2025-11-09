@@ -3,7 +3,7 @@ import { keepPreviousData, useQuery } from '@tanstack/vue-query'
 import { type MaybeRef, ref, toValue, watch } from 'vue'
 import type { IEntity } from '@/shared/types/entitiy.types.ts'
 import type { IFunctionEntity } from '@/capabilities/function/function.types.ts'
-import { findCapabilityRecordQuery } from '@/shared/cache'
+import { findCapabilityRecordQuery } from '@/entities/capability/cache'
 
 export function useFunctionDetails<TOrigin extends IEntity = IEntity>(
     providerId: MaybeRef<string>,

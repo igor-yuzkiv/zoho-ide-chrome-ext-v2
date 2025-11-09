@@ -2,7 +2,7 @@
 import { useRouteParams } from '@vueuse/router'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { FunctionsListItem, useFunctionsList } from '@/capabilities/function'
-import { CapabilityEntitiesMenu } from '@/features/capability/capability-entities-list'
+import { CapabilityEntitiesMenu } from '@/features/capability/capability-records-list'
 
 const providerId = useRouteParams<string>('providerId')
 const functions = useFunctionsList(providerId)

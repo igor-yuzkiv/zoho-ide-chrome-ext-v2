@@ -1,9 +1,9 @@
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
 import { type MaybeRef, toValue } from 'vue'
 import type { ICapabilityEntity } from '@/entities/capability/capability.types.ts'
-import { selectProviderRecordsQuery } from '@/shared/cache'
+import { selectProviderRecordsQuery } from '@/entities/capability/cache'
 
-export function useCapabilityRecordsQuery<T extends ICapabilityEntity>(
+export function useCapabilityRecordsList<T extends ICapabilityEntity>(
     capabilityType: MaybeRef<string>,
     providerId: MaybeRef<string>
 ) {

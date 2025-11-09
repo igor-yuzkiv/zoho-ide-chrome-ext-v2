@@ -3,7 +3,7 @@ import type { Maybe } from '@/shared/types/result.types.ts'
 import type { CapabilityPort, ProviderCapability } from '@/entities/capability/capability.types.ts'
 import type { ProviderType, ServiceProvider } from '@/entities/provider/provider.types.ts'
 
-export function useCapabilitiesSettings() {
+export function useCapabilitiesConfig() {
     function byProviderType(providerType: ProviderType): ProviderCapability[] {
         return CapabilitiesRegister[providerType] || []
     }

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useCapabilitiesSettings } from '@/entities/capability/composables/useCapabilitiesSettings.ts'
-import { useProviderCacheManager } from '@/entities/provider/composables/useProviderCacheManager.ts'
+import { useCapabilitiesConfig } from '@/entities/capability/composables/useCapabilitiesConfig.ts'
+import { useCapabilitiesCacheManager } from '@/entities/capability/composables/useCapabilitiesCacheManager.ts'
 import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.ts'
 import { useRouteParams } from '@vueuse/router'
 import { computed, onMounted } from 'vue'
@@ -14,7 +14,7 @@ import { WorkspaceTopMenu } from '@/widgets/workspace-top-menu'
 const router = useRouter()
 const appState = useAppStateStore()
 const providers = useProvidersStore()
-const capabilities = useCapabilitiesSettings()
+const capabilities = useCapabilitiesConfig()
 
 const providerId = useRouteParams<string>('providerId')
 const provider = computed(() => providers.findById(providerId.value))
@@ -22,7 +22,7 @@ const providerCapabilities = computed(() => {
     return provider.value ? capabilities.byProvider(provider.value).filter((c) => !c?.hideInMenu) : []
 })
 
-const { bootstrap: bootstrapProviderCache } = useProviderCacheManager()
+const { bootstrap: bootstrapProviderCache } = useCapabilitiesCacheManager()
 const { bootstrap: bootstrapGlobalSearch } = useGlobalSearch()
 
 onMounted(async () => {
