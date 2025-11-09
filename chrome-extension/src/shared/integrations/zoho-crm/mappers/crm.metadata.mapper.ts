@@ -2,7 +2,7 @@ import type { CrmModuleField, CrmModuleMetadata } from '@/shared/integrations/zo
 import type {
     IModuleFieldMetadataEntity,
     IModuleMetadataEntity,
-} from '@/capabilities/metadata/model/metadata.types.ts'
+} from '@/capabilities/metadata/metadata.types.ts'
 
 export function mapCrmModuleToEntity(module: CrmModuleMetadata): IModuleMetadataEntity<CrmModuleMetadata> {
     return {

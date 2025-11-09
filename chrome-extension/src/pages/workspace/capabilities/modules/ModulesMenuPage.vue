@@ -3,7 +3,7 @@ import { CapabilityType } from '@/config/capabilities.config.ts'
 import { useRouteParams } from '@vueuse/router'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { useCapabilityRecordsQuery } from '@/core/composables/useCapabilityRecordsQuery.ts'
-import type { IModuleMetadataEntity } from '@/capabilities/metadata/model/metadata.types.ts'
+import type { IModuleMetadataEntity } from '@/capabilities/metadata/metadata.types.ts'
 import { CapabilityEntitiesMenu, CapabilityEntityListItem } from '@/widgets/capability/capability-entities-list'
 
 const providerId = useRouteParams<string>('providerId')

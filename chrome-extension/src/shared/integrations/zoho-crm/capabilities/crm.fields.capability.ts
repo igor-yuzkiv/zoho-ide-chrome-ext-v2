@@ -9,7 +9,7 @@ import type { CapabilityPort } from '@/core/types/capability.types.ts'
 import type {
     IModuleFieldMetadataEntity,
     IModuleMetadataEntity,
-} from '@/capabilities/metadata/model/metadata.types.ts'
+} from '@/capabilities/metadata/metadata.types.ts'
 import { selectProviderRecordsQuery } from '@/core/cache'
 import type { ServiceProvider } from '@/core/types/provider.types.ts'
 

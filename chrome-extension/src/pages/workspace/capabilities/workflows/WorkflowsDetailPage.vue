@@ -4,7 +4,7 @@ import { computed, defineAsyncComponent } from 'vue'
 import { NoDataMessage } from '@/shared/components/messages'
 import { PageHeader } from '@/shared/components/page-header'
 import { useProvidersStore } from '@/core/store/useProvidersStore.ts'
-import { useWorkflowDetails } from '@/capabilities/workflow/features/details/lib/useWorkflowDetails.ts'
+import { useWorkflowDetails } from '@/capabilities/workflow/composables/useWorkflowDetails.ts'
 import { useViewMode, ViewModeSelect } from '@/widgets/view-mode'
 
 const providerId = useRouteParams<string>('providerId')
@@ -16,12 +16,12 @@ const viewMode = useViewMode(
         {
             value: 'json',
             icon: 'si:json-duotone',
-            component: defineAsyncComponent(() => import('@/capabilities/workflow/features/details/ui/WorkflowJsonView.vue')),
+            component: defineAsyncComponent(() => import('@/capabilities/workflow/components/detail-view/WorkflowJsonView.vue')),
         },
         {
             value: 'schema',
             icon: 'material-symbols:schema',
-            component: defineAsyncComponent(() => import('@/capabilities/workflow/features/details/ui/WorkflowSchemaView.vue')),
+            component: defineAsyncComponent(() => import('@/capabilities/workflow/components/detail-view/WorkflowSchemaView.vue')),
         },
     ],
     'schema'

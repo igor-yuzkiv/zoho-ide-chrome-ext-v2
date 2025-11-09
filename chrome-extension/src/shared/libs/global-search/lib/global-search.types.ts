@@ -27,8 +27,8 @@ export type GlobalSearchEventTypes = {
 
 export type GlobalSearchModule = {
     name: string
-    provideIndexDocuments: GlobalSearchDocumentsProvider
     icon: string
+    provideIndexDocuments: GlobalSearchDocumentsProvider
     getNavigationRoute?: (document: GlobalSearchDocument) => RouteLocationRaw | undefined
     previewComponent?: string | Component
     //TODO: handle search result clicks, preview component

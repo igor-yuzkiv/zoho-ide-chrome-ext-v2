@@ -3,8 +3,8 @@ import { useRouteParams } from '@vueuse/router'
 import { defineAsyncComponent } from 'vue'
 import { NoDataMessage } from '@/shared/components/messages'
 import { PageHeader } from '@/shared/components/page-header'
-import { useModuleDetails } from '@/capabilities/metadata/features/details'
-import { useModuleFields } from '@/capabilities/metadata/features/details/lib/useModuleFields.ts'
+import { useModuleDetails } from '@/capabilities/metadata'
+import { useModuleFields } from '@/capabilities/metadata/composables/useModuleFields.ts'
 import { useViewMode, ViewModeSelect } from '@/widgets/view-mode'
 
 const providerId = useRouteParams<string>('providerId')
@@ -18,12 +18,12 @@ const viewMode = useViewMode(
         {
             value: 'json',
             icon: 'si:json-duotone',
-            component: defineAsyncComponent(() => import('@/capabilities/metadata/features/details/ui/ModuleJsonView.vue')),
+            component: defineAsyncComponent(() => import('@/capabilities/metadata/components/detail-view/ModuleJsonView.vue')),
         },
         {
             value: 'table',
             icon: 'material-symbols:table-sharp',
-            component: defineAsyncComponent(() => import('@/capabilities/metadata/features/details/ui/ModuleTableView.vue')),
+            component: defineAsyncComponent(() => import('@/capabilities/metadata/components/detail-view/ModuleTableView.vue')),
         },
     ],
     'table'
