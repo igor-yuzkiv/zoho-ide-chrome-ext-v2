@@ -2,7 +2,7 @@
 import { useWorkflowDetails } from '@/capabilities/workflow/composables/useWorkflowDetails.ts'
 import { useRouteParams } from '@vueuse/router'
 import { defineAsyncComponent } from 'vue'
-import { NoDataMessage } from '@/shared/components/messages'
+import { NoDataMessage } from '@/shared/components/typography'
 import { PageHeader } from '@/shared/components/page-header'
 import { useCurrentProvider } from '@/entities/provider/composables/useCurrentProvider.ts'
 import { useViewMode, ViewModeSelect } from '@/widgets/view-mode'

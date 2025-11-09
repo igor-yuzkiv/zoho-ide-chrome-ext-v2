@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import type { RouteLocationRaw } from 'vue-router'
 import { Icon } from '@iconify/vue'
 import { useGlobalSearch } from '@/shared/libs/global-search'
 import { AppRouteName } from '@/app/router/app-routes.ts'
@@ -9,22 +10,27 @@ const globalSearch = useGlobalSearch()
 const { data: currentProvider } = useCurrentProvider()
 
 const navItems = computed(() => {
-    const result = [{ title: 'Home', route: '/' }]
+    const result: Array<{ title: string; route: RouteLocationRaw }> = [
+        { title: 'Home', route: { name: AppRouteName.home } },
+    ]
+
     if (!currentProvider.value) {
         return result
     }
 
-    return [
-        ...result,
+    return result.concat([
         {
             title: 'Dashboard',
             route: { name: AppRouteName.workspaceIndex, params: { providerId: currentProvider.value.id } },
         },
         {
             title: 'Settings',
-            route: { name: AppRouteName.workspaceSettings, params: { providerId: currentProvider.value.id } },
+            route: {
+                name: AppRouteName.workspaceSettings,
+                params: { providerId: currentProvider.value.id },
+            },
         },
-    ]
+    ])
 })
 </script>
 

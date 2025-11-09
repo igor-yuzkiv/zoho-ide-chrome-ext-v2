@@ -9,6 +9,8 @@ import { useAppThemeStore } from '@/app/store/useAppThemeStore.ts'
 import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.ts'
 import { AppFooter } from '@/widgets/app-footer'
 import { AppTopMenu } from '@/widgets/app-top-menu'
+import Toast from 'primevue/toast'
+import ConfirmDialog from 'primevue/confirmdialog'
 
 const appState = useAppStateStore()
 const appTheme = useAppThemeStore()
@@ -47,6 +49,8 @@ onMounted(async () => {
     </div>
 
     <LoadingOverlay v-if="appState.loadingOverlay" />
+    <Toast />
+    <ConfirmDialog />
 </template>
 
 <style scoped></style>

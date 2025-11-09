@@ -17,7 +17,12 @@ const LocalStorageSerializer: Serializer<ServiceProvider[]> = {
         }
     },
     write(value) {
-        return JSON.stringify(value)
+        return JSON.stringify(
+            value.map((sp) => ({
+                ...sp,
+                tabId: undefined,
+            }))
+        )
     },
 }
 
@@ -25,10 +30,13 @@ function resolveProvidersFromChromeTabs(chromeTabs: BrowserTab[], prev = new Map
     return Object.values(ProvidersRegister).reduce<Map<string, ServiceProvider>>((acc, factory) => {
         for (const tab of chromeTabs) {
             const result = factory(tab)
-            if (result.ok) {
-                const instance = result.value
-                acc.set(instance.id, result.value)
+            if (!result.ok) {
+                continue
             }
+            const instance = prev.has(result.value.id) ? prev.get(result.value.id)! : result.value
+
+            instance.tabId = tab.id
+            acc.set(instance.id, instance)
         }
 
         return acc
@@ -60,10 +68,6 @@ export const useProvidersStore = defineStore('providers', () => {
         providersMap.value = normalized
     }
 
-    function findById(providerId: string): ServiceProvider | undefined {
-        return providersMap.value.get(providerId)
-    }
-
     async function handleChangeBrowserTabs(newTabs: Map<number, BrowserTab>) {
         const prev = new Map<string, ServiceProvider>(providersMap.value)
         const next = resolveProvidersFromChromeTabs(Array.from(newTabs.values()), prev)
@@ -78,11 +82,28 @@ export const useProvidersStore = defineStore('providers', () => {
         cachedProviders.value = Array.from(normalized.values())
     }
 
+
+    function findById(providerId: string): ServiceProvider | undefined {
+        return providersMap.value.get(providerId)
+    }
+
+    function updateProvider(providerId: string, updates: Partial<ServiceProvider>) {
+        const provider = providersMap.value.get(providerId)
+        if (!provider) {
+            return
+        }
+
+        const updatedProvider = { ...provider, ...updates }
+        providersMap.value.set(providerId, updatedProvider)
+        cachedProviders.value = Array.from(providersMap.value.values())
+    }
+
     return {
         providersMap,
         providersList,
         bootstrap,
         findById,
         handleChangeBrowserTabs,
+        updateProvider,
     }
 })

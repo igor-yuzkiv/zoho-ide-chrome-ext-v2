@@ -5,7 +5,7 @@ export const AppRouteName = {
     home: 'home',
     workspace: 'workspace',
     workspaceIndex: 'workspace.index',
-    workspaceSettings: 'workspace.settings',
+    workspaceSettings: 'settings',
     workspaceFunctions: 'workspace.functions',
     workspaceWorkflows: 'workspace.workflows',
     workspaceModules: 'workspace.modules',
@@ -29,8 +29,8 @@ export const AppRoutes: RouteRecordRaw[] = [
             },
             {
                 name: AppRouteName.workspaceSettings,
-                path: '',
-                component: () => import('@/pages/workspace/settings/WorkspaceSettingsPage.vue'),
+                path: 'settings',
+                component: () => import('@/pages/workspace/WorkspaceSettingsPage.vue'),
             },
             {
                 name: AppRouteName.workspaceFunctions,

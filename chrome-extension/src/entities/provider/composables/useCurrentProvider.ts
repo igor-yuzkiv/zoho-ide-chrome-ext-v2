@@ -1,22 +1,27 @@
 import { useRouteParams } from '@vueuse/router'
-import { computed, type MaybeRefOrGetter, ref, toValue, watch } from 'vue'
-import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
+import { computed } from 'vue'
 import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.ts'
+import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
 
-export function useCurrentProvider(routeParamKey: MaybeRefOrGetter = 'providerId') {
-    const data = ref<ServiceProvider | undefined>()
+export function useCurrentProvider() {
     const providers = useProvidersStore()
-    const providerId = useRouteParams<string>(toValue(routeParamKey))
-    const title = computed(() => data.value?.title)
+    const providerId = useRouteParams<string>('providerId')
+    const data = computed(() => providers.findById(providerId.value))
 
-    watch(providerId, (newId) => {
-        console.log('watch')
-        data.value = providers.findById(newId)
-    })
+    const isOnline = computed(() => !!data.value?.tabId);
+
+    function update(newData: Partial<ServiceProvider>) {
+        if (!providerId.value) {
+            return
+        }
+
+        providers.updateProvider(providerId.value, newData)
+    }
 
     return {
         id: providerId,
         data,
-        title,
+        update,
+        isOnline,
     }
 }
