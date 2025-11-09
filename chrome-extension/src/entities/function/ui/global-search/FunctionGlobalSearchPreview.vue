@@ -1,24 +1,27 @@
 <script setup lang="ts">
-import type { GlobalSearchDocument } from '@/shared/libs/global-search/lib/global-search.types.ts'
+// @ts-expect-error: no types
 import Prism from 'prismjs'
 import 'prismjs/themes/prism-okaidia.css'
+import { onMounted, useTemplateRef } from 'vue'
+import type { GlobalSearchDocument } from '@/shared/libs/global-search/lib/global-search.types.ts'
 
 defineProps<{
     document: GlobalSearchDocument
     searchOptions?: { query: string; field: string }
 }>()
 
-function onElementMounted(element) {
-    if (element) {
-        Prism.highlightElement(element)
-    }
-}
+const codeRef = useTemplateRef('code-element')
 
+onMounted(() => {
+    if (codeRef.value) {
+        Prism.highlightElement(codeRef.value)
+    }
+})
 </script>
 
 <template>
     <div class="flex w-full h-full">
-        <pre class="w-full"><code :ref="onElementMounted" class="language-js">{{ document.content }}</code></pre>
+        <pre class="w-full"><code ref="code-element" class="language-js">{{ document.content }}</code></pre>
     </div>
 </template>
 
