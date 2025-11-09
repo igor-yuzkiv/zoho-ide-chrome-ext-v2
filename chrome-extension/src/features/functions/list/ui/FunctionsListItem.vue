@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { type Component, useAttrs } from 'vue'
-import type { IFunctionEntity } from '@/entities/function/model/function.types.ts'
-import { FunctionIcon } from '@/entities/function/ui'
+import type { IFunctionEntity } from '@/capabilities/function/model/function.types.ts'
+import { FunctionIcon } from '@/capabilities/function/ui'
 
 defineProps<{
     fx: IFunctionEntity

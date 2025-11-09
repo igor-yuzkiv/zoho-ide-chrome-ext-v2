@@ -4,7 +4,7 @@ import type { ICapabilityEntity } from '@/core/types/capability.types.ts'
 import type { ServiceProvider } from '@/core/types/provider.types.ts'
 import type { GlobalSearchDocument, GlobalSearchModule } from '@/shared/libs/global-search/lib/global-search.types.ts'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import type { IModuleFieldMetadataEntity, IModuleMetadataEntity } from '@/entities/metadata/model/metadata.types.ts'
+import type { IModuleFieldMetadataEntity, IModuleMetadataEntity } from '@/capabilities/metadata/model/metadata.types.ts'
 
 async function provideIndexDocuments<T extends ICapabilityEntity>(
     capabilityType: string,

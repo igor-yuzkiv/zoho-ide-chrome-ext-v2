@@ -1,4 +1,4 @@
-import type { FunctionMetadata, FunctionType } from '@/entities/function/model/function.types.ts'
+import type { FunctionMetadata, FunctionType } from '@/capabilities/function/model/function.types.ts'
 
 export const FunctionTypeMetadataMap: Record<FunctionType, FunctionMetadata> = {
     button: { type: 'button', icon: 'mdi:button-pointer' },

@@ -2,7 +2,7 @@
 import { Handle, Position } from '@vue-flow/core'
 import { startCase } from 'lodash'
 import { Icon } from '@iconify/vue'
-import type { WfWhenStatementNodeData } from '@/entities/workflow/model/workflow-schema.types.ts'
+import type { WfWhenStatementNodeData } from '@/capabilities/workflow/model/workflow-schema.types.ts'
 
 defineProps<{
     id: string

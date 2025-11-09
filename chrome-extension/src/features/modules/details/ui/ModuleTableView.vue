@@ -7,7 +7,7 @@ import { CopyText } from '@/shared/components/copy-text'
 import type {
     IModuleFieldMetadataEntity,
     IModuleMetadataEntity,
-} from '@/entities/metadata/model/metadata.types.ts'
+} from '@/capabilities/metadata/model/metadata.types.ts'
 
 const props = defineProps<{
     module?: IModuleMetadataEntity

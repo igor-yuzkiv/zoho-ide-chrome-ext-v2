@@ -14,8 +14,8 @@ import type {
     WfActionNodeData,
     WfConditionNodeData,
     WfWhenStatementNodeData,
-} from '@/entities/workflow/model/workflow-schema.types.ts'
-import type { IWorkflowEntity } from '@/entities/workflow/model/workflow.types.ts'
+} from '@/capabilities/workflow/model/workflow-schema.types.ts'
+import type { IWorkflowEntity } from '@/capabilities/workflow/model/workflow.types.ts'
 
 export function stringifyWfCriteria(criteria: WfCriteria): string {
     // TODO: handle - ${ANYVALUE}, ${EMPTY}, ${NOTEMPTY}

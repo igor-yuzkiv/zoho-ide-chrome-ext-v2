@@ -2,7 +2,7 @@
 import { FunctionTypeMetadataMap } from '@/config/function.config.ts'
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
-import type { FunctionMetadata, FunctionType } from '@/entities/function/model/function.types.ts'
+import type { FunctionMetadata, FunctionType } from '@/capabilities/function/model/function.types.ts'
 
 const props = defineProps<{ type?: FunctionType }>()
 

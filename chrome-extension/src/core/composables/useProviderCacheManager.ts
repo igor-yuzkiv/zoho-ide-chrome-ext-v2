@@ -6,7 +6,7 @@ import type { ICapabilityEntity } from '@/core/types/capability.types.ts'
 import type { ServiceProvider } from '@/core/types/provider.types.ts'
 import { saveMockData } from '@/shared/api/mock/mock.api.ts'
 import { useLogger } from '@/shared/libs/logger/useLogger.ts'
-import type { IModuleFieldMetadataEntity } from '@/entities/metadata/model/metadata.types.ts'
+import type { IModuleFieldMetadataEntity } from '@/capabilities/metadata/model/metadata.types.ts'
 
 //TODO: remove mock data saving after testing
 

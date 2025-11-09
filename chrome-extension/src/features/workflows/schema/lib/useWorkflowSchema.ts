@@ -3,7 +3,7 @@ import type { Edge, Node } from '@vue-flow/core'
 import { ref } from 'vue'
 import { useLogger } from '@/shared/libs/logger/useLogger.ts'
 import type { Maybe } from '@/shared/types/result.types.ts'
-import type { IWorkflowEntity, WorkflowSchemaBuilder } from '@/entities/workflow/model/workflow.types.ts'
+import type { IWorkflowEntity, WorkflowSchemaBuilder } from '@/capabilities/workflow/model/workflow.types.ts'
 import type { ProviderType } from '@/core/types/provider.types.ts'
 
 export function useWorkflowSchema() {

@@ -2,7 +2,7 @@ import { CapabilityType } from '@/config/capabilities.config.ts'
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
 import { type MaybeRef, toValue } from 'vue'
 import type { IEntity } from '@/shared/types/entitiy.types.ts'
-import type { IWorkflowEntity } from '@/entities/workflow/model/workflow.types.ts'
+import type { IWorkflowEntity } from '@/capabilities/workflow/model/workflow.types.ts'
 import { findCapabilityRecordQuery } from '@/core/cache'
 
 export function useWorkflowDetails<TOrigin extends IEntity = IEntity>(

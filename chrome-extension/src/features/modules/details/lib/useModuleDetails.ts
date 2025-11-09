@@ -2,7 +2,7 @@ import { CapabilityType } from '@/config/capabilities.config.ts'
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
 import { type MaybeRef, toValue } from 'vue'
 import type { IEntity } from '@/shared/types/entitiy.types.ts'
-import type { IModuleMetadataEntity } from '@/entities/metadata/model/metadata.types.ts'
+import type { IModuleMetadataEntity } from '@/capabilities/metadata/model/metadata.types.ts'
 import { findCapabilityRecordQuery } from '@/core/cache'
 
 export function useModuleDetails<TOrigin extends IEntity = IEntity>(

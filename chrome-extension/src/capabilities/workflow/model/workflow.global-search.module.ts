@@ -1,10 +1,9 @@
 import { CapabilityType } from '@/config/capabilities.config.ts'
 import { selectProviderRecordsQuery } from '@/core/cache'
 import type { ServiceProvider } from '@/core/types/provider.types.ts'
-import { defineAsyncComponent } from 'vue'
 import type { GlobalSearchDocument, GlobalSearchModule } from '@/shared/libs/global-search/lib/global-search.types.ts'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import type { IFunctionEntity } from '@/entities/function/model/function.types.ts'
+import type { IWorkflowEntity } from '@/capabilities/workflow/model/workflow.types.ts'
 
 async function provideIndexDocuments(context?: Record<string, unknown>): Promise<GlobalSearchDocument[]> {
     if (!context || !context?.provider) {
@@ -13,28 +12,25 @@ async function provideIndexDocuments(context?: Record<string, unknown>): Promise
 
     const provider = context.provider as ServiceProvider
 
-    const records = await selectProviderRecordsQuery<IFunctionEntity>(provider.id, CapabilityType.FUNCTIONS)
+    const records = await selectProviderRecordsQuery<IWorkflowEntity>(provider.id, CapabilityType.WORKFLOWS)
     if (!records.length) {
         return []
     }
 
     return records.map((i) => ({
         id: i.id,
-        module: CapabilityType.FUNCTIONS,
+        module: CapabilityType.WORKFLOWS,
         title: i.displayName,
-        content: i.script || '',
+        content: i.description || '',
     }))
 }
 
-export const FunctionGlobalSearchModule: GlobalSearchModule = {
-    name: CapabilityType.FUNCTIONS,
+export const WorkflowGlobalSearchModule: GlobalSearchModule = {
+    name: CapabilityType.WORKFLOWS,
     provideIndexDocuments,
-    icon: 'material-symbols:function',
+    icon: 'mdi:workflow',
     getNavigationRoute: (document: GlobalSearchDocument) => ({
-        name: AppRouteName.workspaceFunctions,
-        params: { functionId: document.id },
+        name: AppRouteName.workspaceWorkflows,
+        params: { workflowId: document.id },
     }),
-    previewComponent: defineAsyncComponent(
-        () => import('@/entities/function/ui/global-search/FunctionGlobalSearchPreview.vue')
-    ),
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { CodeEditor } from '@/shared/components/code-editor'
-import type { IWorkflowEntity } from '@/entities/workflow/model/workflow.types.ts'
+import type { IWorkflowEntity } from '@/capabilities/workflow/model/workflow.types.ts'
 import type { ProviderType } from '@/core/types/provider.types.ts'
 
 const props = defineProps<{

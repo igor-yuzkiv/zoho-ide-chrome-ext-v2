@@ -4,7 +4,7 @@ import { CodeEditor } from '@/shared/components/code-editor'
 import type {
     IModuleFieldMetadataEntity,
     IModuleMetadataEntity,
-} from '@/entities/metadata/model/metadata.types.ts'
+} from '@/capabilities/metadata/model/metadata.types.ts'
 
 const props = defineProps<{
     module?: IModuleMetadataEntity

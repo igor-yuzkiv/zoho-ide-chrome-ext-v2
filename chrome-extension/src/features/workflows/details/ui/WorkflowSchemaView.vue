@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { VueFlow } from '@vue-flow/core'
 import { watchEffect } from 'vue'
-import type { IWorkflowEntity } from '@/entities/workflow/model/workflow.types.ts'
+import type { IWorkflowEntity } from '@/capabilities/workflow/model/workflow.types.ts'
 import type { ProviderType } from '@/core/types/provider.types.ts'
 import { WfConditionStatementNode, WfWhenStatementNode } from '@/features/workflows/schema'
 import { useWorkflowSchema } from '@/features/workflows/schema/lib/useWorkflowSchema.ts'
