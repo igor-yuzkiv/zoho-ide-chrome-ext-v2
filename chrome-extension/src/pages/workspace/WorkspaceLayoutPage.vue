@@ -9,7 +9,6 @@ import { GlobalSearchDialog, useGlobalSearch } from '@/shared/libs/global-search
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { useAppStateStore } from '@/app/store/useAppStateStore.ts'
 import { CapabilitiesMenu } from '@/features/capability/capabilities-menu'
-import { WorkspaceTopMenu } from '@/widgets/workspace-top-menu'
 
 const router = useRouter()
 const appState = useAppStateStore()
@@ -47,8 +46,6 @@ onMounted(async () => {
 
 <template>
     <div v-if="provider" class="flex h-full w-full flex-col overflow-hidden">
-        <WorkspaceTopMenu :provider="provider" />
-
         <div class="flex h-full w-full overflow-hidden gap-x-1 p-1">
             <div class="flex h-full overflow-hidden shrink-0">
                 <CapabilitiesMenu :providerId="providerId" :capabilities="providerCapabilities" />

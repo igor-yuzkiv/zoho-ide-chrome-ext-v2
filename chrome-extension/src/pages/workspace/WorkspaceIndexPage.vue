@@ -1,12 +1,8 @@
 <script setup lang="ts">
-import { useRouteParams } from '@vueuse/router'
-import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
-import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.ts'
+import { useCurrentProvider } from '@/entities/provider/composables/useCurrentProvider.ts'
 
-const providers = useProvidersStore()
-const providerId = useRouteParams<string>('providerId')
-const provider = computed(() => providers.findById(providerId.value))
+const { data: provider } = useCurrentProvider()
 </script>
 
 <template>

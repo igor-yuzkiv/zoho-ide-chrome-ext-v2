@@ -1,11 +1,10 @@
+import { ProvidersRegister } from '@/config/providers.config.ts'
 import { type Serializer, useStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import type { BrowserTab } from '@/shared/libs/browser/browser.types.ts'
 import { useBrowserTabsStore } from '@/shared/libs/browser/store/useBrowserTabsStore.ts'
-import type { Maybe } from '@/shared/types/result.types.ts'
 import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
-import { ProvidersRegister } from '@/config/providers.config.ts'
 
 const LocalStorageSerializer: Serializer<ServiceProvider[]> = {
     read(raw) {
@@ -13,10 +12,9 @@ const LocalStorageSerializer: Serializer<ServiceProvider[]> = {
             const parsed = JSON.parse(raw || '[]')
             return Array.isArray(parsed) ? parsed : []
         } catch (error) {
-            console.error('Failed to read cached providers', error)
+            console.error('Failed to parse service providers from localStorage:', error)
+            return []
         }
-
-        return []
     },
     write(value) {
         return JSON.stringify(value)
@@ -62,8 +60,8 @@ export const useProvidersStore = defineStore('providers', () => {
         providersMap.value = normalized
     }
 
-    function findById(providerId: string): Maybe<ServiceProvider> {
-        return providersMap.value.get(providerId) || null
+    function findById(providerId: string): ServiceProvider | undefined {
+        return providersMap.value.get(providerId)
     }
 
     async function handleChangeBrowserTabs(newTabs: Map<number, BrowserTab>) {

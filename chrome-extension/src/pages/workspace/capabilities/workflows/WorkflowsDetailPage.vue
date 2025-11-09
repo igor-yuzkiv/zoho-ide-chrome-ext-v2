@@ -1,14 +1,15 @@
 <script setup lang="ts">
+import { useWorkflowDetails } from '@/capabilities/workflow/composables/useWorkflowDetails.ts'
 import { useRouteParams } from '@vueuse/router'
-import { computed, defineAsyncComponent } from 'vue'
+import { defineAsyncComponent } from 'vue'
 import { NoDataMessage } from '@/shared/components/messages'
 import { PageHeader } from '@/shared/components/page-header'
-import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.ts'
-import { useWorkflowDetails } from '@/capabilities/workflow/composables/useWorkflowDetails.ts'
+import { useCurrentProvider } from '@/entities/provider/composables/useCurrentProvider.ts'
 import { useViewMode, ViewModeSelect } from '@/widgets/view-mode'
 
 const providerId = useRouteParams<string>('providerId')
 const workflowId = useRouteParams<string>('workflowId')
+const { data: currentProvider } = useCurrentProvider()
 const workflow = useWorkflowDetails(providerId, workflowId)
 
 const viewMode = useViewMode(
@@ -16,23 +17,24 @@ const viewMode = useViewMode(
         {
             value: 'json',
             icon: 'si:json-duotone',
-            component: defineAsyncComponent(() => import('@/capabilities/workflow/components/detail-view/WorkflowJsonView.vue')),
+            component: defineAsyncComponent(
+                () => import('@/capabilities/workflow/components/detail-view/WorkflowJsonView.vue')
+            ),
         },
         {
             value: 'schema',
             icon: 'material-symbols:schema',
-            component: defineAsyncComponent(() => import('@/capabilities/workflow/components/detail-view/WorkflowSchemaView.vue')),
+            component: defineAsyncComponent(
+                () => import('@/capabilities/workflow/components/detail-view/WorkflowSchemaView.vue')
+            ),
         },
     ],
     'schema'
 )
-
-const providers = useProvidersStore()
-const providerType = computed(() => providers.findById(providerId.value)?.type)
 </script>
 
 <template>
-    <div v-if="workflow.data.value" class="flex h-full w-full flex-col overflow-hidden gap-1">
+    <div v-if="currentProvider && workflow.data.value" class="flex h-full w-full flex-col overflow-hidden gap-1">
         <PageHeader :title="workflow.data.value.displayName" :description="workflow.data.value.description">
             <template #actions>
                 <ViewModeSelect :options="viewMode.options" v-model="viewMode.current.value" />
@@ -46,7 +48,7 @@ const providerType = computed(() => providers.findById(providerId.value)?.type)
             <component
                 :is="viewMode.currentComponent.value"
                 :workflow="workflow.data.value"
-                :providerType="providerType"
+                :providerType="currentProvider.type"
             />
         </div>
     </div>

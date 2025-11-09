@@ -8,6 +8,7 @@ import { useAppStateStore } from '@/app/store/useAppStateStore.ts'
 import { useAppThemeStore } from '@/app/store/useAppThemeStore.ts'
 import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.ts'
 import { AppFooter } from '@/widgets/app-footer'
+import { AppTopMenu } from '@/widgets/app-top-menu'
 
 const appState = useAppStateStore()
 const appTheme = useAppThemeStore()
@@ -36,6 +37,8 @@ onMounted(async () => {
 
 <template>
     <div class="relative bg-secondary flex h-screen w-full flex-col overflow-hidden">
+        <AppTopMenu />
+
         <main v-if="isInitialized" class="flex h-full w-full flex-col overflow-hidden">
             <router-view />
         </main>
