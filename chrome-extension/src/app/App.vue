@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useProvidersStore } from '@/core/store/useProvidersStore.ts'
 import { onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { LoadingOverlay } from '@/shared/components/loading'
@@ -6,7 +7,7 @@ import { useBrowserTabsStore } from '@/shared/libs/browser/store/useBrowserTabsS
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { useAppStateStore } from '@/app/store/useAppStateStore.ts'
 import { useAppThemeStore } from '@/app/store/useAppThemeStore.ts'
-import { useProvidersStore } from '@/core/store/useProvidersStore.ts'
+import { AppFooter } from '@/widgets/app-footer'
 
 const appState = useAppStateStore()
 const appTheme = useAppThemeStore()
@@ -38,8 +39,10 @@ onMounted(async () => {
             <router-view />
         </main>
 
-        <LoadingOverlay v-if="appState.loadingOverlay" />
+        <AppFooter />
     </div>
+
+    <LoadingOverlay v-if="appState.loadingOverlay" />
 </template>
 
 <style scoped></style>

@@ -9,8 +9,7 @@ import { useCapabilities } from '@/core/composables/useCapabilities.ts'
 import { useProviderCacheManager } from '@/core/composables/useProviderCacheManager.ts'
 import { useProvidersStore } from '@/core/store/useProvidersStore.ts'
 import { CapabilitiesMenu } from '@/widgets/capability/capabilities-menu'
-import { WorkspaceFooter } from '@/widgets/workspace/workspace-footer'
-import { WorkspaceTopMenu } from '@/widgets/workspace/workspace-top-menu'
+import { WorkspaceTopMenu } from '@/widgets/workspace-top-menu'
 import { GlobalSearchDialog, useGlobalSearch } from '@/shared/libs/global-search'
 
 const router = useRouter()
@@ -72,7 +71,6 @@ onMounted(async () => {
                 <div class="flex flex-col w-full h-full overflow-hidden px-2">
                     <router-view />
                 </div>
-                <WorkspaceFooter />
             </div>
         </div>
     </div>
