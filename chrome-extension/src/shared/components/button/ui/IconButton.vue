@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { Button } from 'primevue'
+import type { ButtonProps } from 'primevue/button'
 import { Icon } from '@iconify/vue'
 
-defineProps<{
+interface IconButtonProps extends /* @vue-ignore */ ButtonProps {
     icon: string
-    size?: 'small' | 'large'
-    severity?: 'secondary' | 'success' | 'info' | 'warn' | 'help' | 'danger' | 'contrast'
-    text?: boolean
-}>()
+}
+
+defineProps<IconButtonProps>()
 </script>
 
 <template>
-    <Button :size="size" :text="text" :severity="severity || 'secondary'">
+    <Button v-bind="$attrs">
         <template #icon>
-            <Icon :icon="icon" />
+            <Icon v-if="icon" :icon="icon" />
         </template>
     </Button>
 </template>

@@ -1,26 +1,33 @@
+import { usePreferredDark, useStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 export const useAppThemeStore = defineStore('app.theme', () => {
     const isDark = ref(false)
+    const isDarkPreferred = usePreferredDark()
+    const localStorageValue = useStorage('theme', '')
 
-    function toggle(value: boolean | undefined = undefined) {
-        isDark.value = typeof value === 'boolean' ? value : !isDark.value
+    function toggleClass(value: boolean) {
+        document.documentElement.classList.remove(value ? 'light' : 'dark')
+        document.documentElement.classList.add(value ? 'dark' : 'light')
+    }
 
-        document.documentElement.classList.remove(isDark.value ? 'light' : 'dark')
-        document.documentElement.classList.add(isDark.value ? 'dark' : 'light')
-
-        localStorage.setItem('theme', isDark.value ? 'dark' : 'light')
+    function toggle() {
+        isDark.value = !isDark.value
+        toggleClass(isDark.value)
     }
 
     function init() {
-        let theme = localStorage.getItem('theme')
+        let theme = localStorageValue.value
         if (!theme) {
-            theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+            theme = isDarkPreferred.value ? 'dark' : 'light'
         }
 
-        toggle(theme === 'dark')
+        isDark.value = theme === 'dark'
+        toggleClass(isDark.value)
     }
+
+    watch(isDark, (newVal) => (localStorageValue.value = newVal ? 'dark' : 'light'))
 
     return { isDark, toggle, init }
 })

@@ -40,14 +40,14 @@ const viewMode = useViewMode(
 
         <div
             v-if="viewMode.currentComponent.value"
-            class="flex h-full w-full flex-col overflow-auto bg-background rounded-lg"
+            class="flex h-full w-full flex-col overflow-auto bg-primary rounded-lg"
         >
             <component :is="viewMode.currentComponent.value" :module="module.data.value" :fields="fields.data.value" />
         </div>
     </div>
     <NoDataMessage
         v-else
-        class="w-full h-full bg-background rounded-lg"
+        class="w-full h-full bg-primary rounded-lg"
         title="Module Not Selected"
         message="Please select a module to view its details."
     />

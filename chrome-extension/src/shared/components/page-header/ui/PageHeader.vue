@@ -6,7 +6,7 @@ defineProps<{
 </script>
 
 <template>
-    <div class="flex items-center justify-between bg-background p-1 rounded-lg px-2">
+    <div class="flex items-center justify-between bg-primary p-1 rounded-lg px-2">
         <div class="flex flex-col leading-6">
             <h1 class="font-bold">
                 <slot name="title">{{ title }}</slot>

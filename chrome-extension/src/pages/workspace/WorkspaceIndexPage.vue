@@ -10,7 +10,7 @@ const provider = computed(() => providers.findById(providerId.value))
 </script>
 
 <template>
-    <div class="flex items-center justify-center w-full h-full bg-background rounded-lg">
+    <div class="flex items-center justify-center w-full h-full bg-primary rounded-lg">
         <div v-if="provider" class="flex flex-col p-3">
             <div class="flex flex-col">
                 <h3 class="text-gray-700 dark:text-gray-400">Service Provider</h3>

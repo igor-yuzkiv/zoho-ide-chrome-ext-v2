@@ -92,7 +92,7 @@ pluginService?.onClose(hideDialog)
 <template>
     <div v-if="visible" class="fixed z-[1000] top-0 left-0 h-full w-full">
         <div
-            class="mx-auto mt-20 flex max-h-[70vh] w-4xl flex-col overflow-hidden bg-secondary rounded-lg shadow-lg border border-borderColor"
+            class="mx-auto mt-20 flex max-h-[70vh] w-4xl flex-col overflow-hidden bg-secondary rounded-lg shadow-lg border"
             ref="global-search-dialog-ref"
         >
             <div class="flex items-center gap-x-1 p-1">
@@ -128,7 +128,7 @@ pluginService?.onClose(hideDialog)
 
                 <div
                     v-if="selectedItem && previewComponent"
-                    class="flex flex-col w-full shrink-0 h-[16rem] mt-2 border-t border-t-borderColor px-1 overflow-auto"
+                    class="flex flex-col w-full shrink-0 h-[16rem] mt-2 border-t px-1 overflow-auto"
                 >
                     <component
                         :is="previewComponent"

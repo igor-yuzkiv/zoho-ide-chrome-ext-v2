@@ -41,7 +41,7 @@ const providerType = computed(() => providers.findById(providerId.value)?.type)
 
         <div
             v-if="viewMode.currentComponent.value"
-            class="flex h-full w-full flex-col overflow-auto bg-background rounded-lg"
+            class="flex h-full w-full flex-col overflow-auto bg-primary rounded-lg"
         >
             <component
                 :is="viewMode.currentComponent.value"
@@ -53,7 +53,7 @@ const providerType = computed(() => providers.findById(providerId.value)?.type)
 
     <NoDataMessage
         v-else
-        class="h-full w-full bg-background rounded-lg"
+        class="h-full w-full bg-primary rounded-lg"
         title="Workflow Not Selected"
         message="Select a workflow to view its details"
     />

@@ -1,16 +1,15 @@
 <script setup lang="ts">
-import { useRouteParams } from '@vueuse/router'
-import { computed, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
-import { Icon } from '@iconify/vue'
-import { AppRouteName } from '@/app/router/app-routes.ts'
-import { useAppStateStore } from '@/app/store/useAppStateStore.ts'
 import { useCapabilities } from '@/core/composables/useCapabilities.ts'
 import { useProviderCacheManager } from '@/core/composables/useProviderCacheManager.ts'
 import { useProvidersStore } from '@/core/store/useProvidersStore.ts'
+import { useRouteParams } from '@vueuse/router'
+import { computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { GlobalSearchDialog, useGlobalSearch } from '@/shared/libs/global-search'
+import { AppRouteName } from '@/app/router/app-routes.ts'
+import { useAppStateStore } from '@/app/store/useAppStateStore.ts'
 import { CapabilitiesMenu } from '@/widgets/capability/capabilities-menu'
 import { WorkspaceTopMenu } from '@/widgets/workspace-top-menu'
-import { GlobalSearchDialog, useGlobalSearch } from '@/shared/libs/global-search'
 
 const router = useRouter()
 const appState = useAppStateStore()
@@ -24,7 +23,7 @@ const providerCapabilities = computed(() => {
 })
 
 const { bootstrap: bootstrapProviderCache } = useProviderCacheManager()
-const { bootstrap: bootstrapGlobalSearch } = useGlobalSearch();
+const { bootstrap: bootstrapGlobalSearch } = useGlobalSearch()
 
 onMounted(async () => {
     if (!provider.value) {
@@ -48,29 +47,19 @@ onMounted(async () => {
 
 <template>
     <div v-if="provider" class="flex h-full w-full flex-col overflow-hidden">
-        <div class="flex h-full w-full overflow-hidden">
+        <WorkspaceTopMenu class="px-2 pt-1" :provider="provider" />
+
+        <div class="flex h-full w-full overflow-hidden gap-x-1 p-1">
             <div class="flex h-full overflow-hidden shrink-0">
-                <div class="flex flex-col">
-                    <router-link
-                        :to="{ name: AppRouteName.workspaceIndex, params: { providerId: providerId } }"
-                        class="flex px-2 py-3 items-center justify-center"
-                    >
-                        <Icon class="h-4 w-4" :icon="provider.serviceIcon" />
-                    </router-link>
+                <CapabilitiesMenu :providerId="providerId" :capabilities="providerCapabilities" />
 
-                    <CapabilitiesMenu :providerId="providerId" :capabilities="providerCapabilities" />
-                </div>
-
-                <div class="flex flex-col w-full h-full overflow-hidden bg-background">
+                <div class="flex flex-col w-full h-full overflow-hidden bg-primary rounded-lg">
                     <router-view name="menu" />
                 </div>
             </div>
 
             <div class="flex flex-col w-full h-full overflow-hidden">
-                <WorkspaceTopMenu :provider="provider" />
-                <div class="flex flex-col w-full h-full overflow-hidden px-2">
-                    <router-view />
-                </div>
+                <router-view />
             </div>
         </div>
     </div>

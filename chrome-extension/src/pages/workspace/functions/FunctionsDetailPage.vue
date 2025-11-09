@@ -10,13 +10,13 @@ const functionDetails = useFunctionDetails(providerId, functionId)
 </script>
 
 <template>
-    <div v-if="functionId" class="flex h-full w-full flex-col overflow-hidden bg-background rounded-lg">
+    <div v-if="functionId" class="flex h-full w-full flex-col overflow-hidden bg-primary rounded-lg">
         <CodeEditor v-model="functionDetails.script.value" />
     </div>
 
     <NoDataMessage
         v-else
-        class="h-full w-full bg-background rounded-lg"
+        class="h-full w-full bg-primary rounded-lg"
         title="Function Not Selected"
         message="Please select a function to view its details."
     />
