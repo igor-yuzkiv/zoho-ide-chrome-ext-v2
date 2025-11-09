@@ -28,11 +28,11 @@ const itemsForDisplay = computed(() => {
 
 <template>
     <div class="flex h-full w-[20rem] flex-col overflow-x-hidden overflow-y-auto">
-        <div class="flex p-1">
+        <div class="flex border-b">
             <InputText
                 v-model.lazy="searchTerm"
                 size="small"
-                class="w-full p-1"
+                class="w-full bg-primary rounded-none border-none"
                 placeholder="Start typing to search workflows..."
             />
         </div>
