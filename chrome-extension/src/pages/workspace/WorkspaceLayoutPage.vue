@@ -47,7 +47,7 @@ onMounted(async () => {
 
 <template>
     <div v-if="provider" class="flex h-full w-full flex-col overflow-hidden">
-        <WorkspaceTopMenu class="px-2 pt-1" :provider="provider" />
+        <WorkspaceTopMenu :provider="provider" />
 
         <div class="flex h-full w-full overflow-hidden gap-x-1 p-1">
             <div class="flex h-full overflow-hidden shrink-0">

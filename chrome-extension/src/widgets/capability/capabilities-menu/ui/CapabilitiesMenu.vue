@@ -28,7 +28,7 @@ const itemsForDisplay = computed(() => {
             class="p-2"
         >
             <router-link
-                :to="`/workspace/${providerId}/${capability.type}`"
+                :to="`/workspace/${providerId}/capabilities/${capability.type}`"
                 class="hover:bg-selection flex cursor-pointer items-center justify-center p-2 rounded-lg"
                 :class="{ 'app-list-item-active': capability.isActive }"
             >

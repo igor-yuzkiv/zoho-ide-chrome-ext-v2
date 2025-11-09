@@ -18,12 +18,12 @@ const viewMode = useViewMode(
         {
             value: 'json',
             icon: 'si:json-duotone',
-            component: defineAsyncComponent(() => import('@/features/modules/details/ui/ModuleJsonView.vue')),
+            component: defineAsyncComponent(() => import('../../../../features/modules/details/ui/ModuleJsonView.vue')),
         },
         {
             value: 'table',
             icon: 'material-symbols:table-sharp',
-            component: defineAsyncComponent(() => import('@/features/modules/details/ui/ModuleTableView.vue')),
+            component: defineAsyncComponent(() => import('../../../../features/modules/details/ui/ModuleTableView.vue')),
         },
     ],
     'table'
