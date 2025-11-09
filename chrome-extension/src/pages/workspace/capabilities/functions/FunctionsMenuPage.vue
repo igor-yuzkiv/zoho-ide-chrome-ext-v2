@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import { FunctionsListItem, useFunctionsList } from '@/features/functions/list'
+import { FunctionsListItem, useFunctionsList } from '@/capabilities/function/features/list'
 import { CapabilityEntitiesMenu } from '@/widgets/capability/capability-entities-list'
 
 const providerId = useRouteParams<string>('providerId')

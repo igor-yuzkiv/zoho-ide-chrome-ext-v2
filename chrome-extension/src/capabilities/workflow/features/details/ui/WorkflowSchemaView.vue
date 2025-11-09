@@ -3,9 +3,9 @@ import { VueFlow } from '@vue-flow/core'
 import { watchEffect } from 'vue'
 import type { IWorkflowEntity } from '@/capabilities/workflow/model/workflow.types.ts'
 import type { ProviderType } from '@/core/types/provider.types.ts'
-import { WfConditionStatementNode, WfWhenStatementNode } from '@/features/workflows/schema'
-import { useWorkflowSchema } from '@/features/workflows/schema/lib/useWorkflowSchema.ts'
-import WfActionNode from '@/features/workflows/schema/ui/nodes/WfActionNode.vue'
+import { WfConditionStatementNode, WfWhenStatementNode } from '@/capabilities/workflow/features/schema'
+import { useWorkflowSchema } from '@/capabilities/workflow/features/schema/lib/useWorkflowSchema.ts'
+import WfActionNode from '@/capabilities/workflow/features/schema/ui/nodes/WfActionNode.vue'
 
 const props = defineProps<{
     providerType: ProviderType

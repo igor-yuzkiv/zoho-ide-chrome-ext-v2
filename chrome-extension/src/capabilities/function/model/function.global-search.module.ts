@@ -35,6 +35,6 @@ export const FunctionGlobalSearchModule: GlobalSearchModule = {
         params: { functionId: document.id },
     }),
     previewComponent: defineAsyncComponent(
-        () => import('@/capabilities/function/ui/global-search/FunctionGlobalSearchPreview.vue')
+        () => import('@/capabilities/function/features/global-search/FunctionGlobalSearchPreview.vue')
     ),
 }

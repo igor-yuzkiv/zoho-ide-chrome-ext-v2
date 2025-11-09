@@ -2,7 +2,7 @@
 import { useRouteParams } from '@vueuse/router'
 import { CodeEditor } from '@/shared/components/code-editor'
 import { NoDataMessage } from '@/shared/components/messages'
-import { useFunctionDetails } from '@/features/functions/details'
+import { useFunctionDetails } from '@/capabilities/function/features/details'
 
 const providerId = useRouteParams<string>('providerId')
 const functionId = useRouteParams<string>('functionId')
