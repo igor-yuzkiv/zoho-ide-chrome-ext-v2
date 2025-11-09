@@ -1,11 +1,11 @@
 import { useLogger } from '@/shared/libs/logger/useLogger.ts'
-import { useCapabilities } from '@/core/composables/useCapabilities.ts'
-import type { CapabilityPort, ICapabilityEntity } from '@/core/types/capability.types.ts'
-import type { ServiceProvider } from '@/core/types/provider.types.ts'
+import { useCapabilitiesSettings } from '@/entities/capability/composables/useCapabilitiesSettings.ts'
+import type { CapabilityPort, ICapabilityEntity } from '@/entities/capability/capability.types.ts'
+import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
 
 export function useProviderRecordsFetcher() {
     const logger = useLogger('useProviderDataFetcher')
-    const capabilities = useCapabilities()
+    const capabilities = useCapabilitiesSettings()
 
     async function fetchAllCapabilityRecords(
         port: CapabilityPort,

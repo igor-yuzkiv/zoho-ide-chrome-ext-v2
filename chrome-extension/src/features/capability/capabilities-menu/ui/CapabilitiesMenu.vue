@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { Icon } from '@iconify/vue'
-import type { ProviderCapability } from '@/core/types/capability.types.ts'
+import type { ProviderCapability } from '@/entities/capability/capability.types.ts'
 
 const props = defineProps<{
     providerId: string

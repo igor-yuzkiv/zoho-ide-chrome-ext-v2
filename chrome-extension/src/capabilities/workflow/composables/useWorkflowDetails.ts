@@ -3,7 +3,7 @@ import { keepPreviousData, useQuery } from '@tanstack/vue-query'
 import { type MaybeRef, toValue } from 'vue'
 import type { IEntity } from '@/shared/types/entitiy.types.ts'
 import type { IWorkflowEntity } from '@/capabilities/workflow/workflow.types.ts'
-import { findCapabilityRecordQuery } from '@/core/cache'
+import { findCapabilityRecordQuery } from '@/shared/cache'
 
 export function useWorkflowDetails<TOrigin extends IEntity = IEntity>(
     providerId: MaybeRef<string>,

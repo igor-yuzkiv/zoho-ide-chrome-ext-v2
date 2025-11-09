@@ -4,7 +4,7 @@ import { ref } from 'vue'
 import { useLogger } from '@/shared/libs/logger/useLogger.ts'
 import type { Maybe } from '@/shared/types/result.types.ts'
 import type { IWorkflowEntity, WorkflowSchemaBuilder } from '@/capabilities/workflow/workflow.types.ts'
-import type { ProviderType } from '@/core/types/provider.types.ts'
+import type { ProviderType } from '@/entities/provider/provider.types.ts'
 
 export function useWorkflowSchema() {
     const logger = useLogger('useWorkflowSchema')

@@ -1,7 +1,7 @@
 import type { IEntity } from '@/shared/types/entitiy.types.ts'
 import type { PaginatedResult, PaginationParams } from '@/shared/types/pagination.types.ts'
 import type { Result } from '@/shared/types/result.types.ts'
-import type { ServiceProvider } from '@/core/types/provider.types.ts'
+import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
 
 export type ProviderCapability = {
     type: string

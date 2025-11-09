@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { useCapabilities } from '@/core/composables/useCapabilities.ts'
-import { useProviderCacheManager } from '@/core/composables/useProviderCacheManager.ts'
-import { useProvidersStore } from '@/core/store/useProvidersStore.ts'
+import { useCapabilitiesSettings } from '@/entities/capability/composables/useCapabilitiesSettings.ts'
+import { useProviderCacheManager } from '@/entities/provider/composables/useProviderCacheManager.ts'
+import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.ts'
 import { useRouteParams } from '@vueuse/router'
 import { computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { GlobalSearchDialog, useGlobalSearch } from '@/shared/libs/global-search'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { useAppStateStore } from '@/app/store/useAppStateStore.ts'
-import { CapabilitiesMenu } from '@/widgets/capability/capabilities-menu'
+import { CapabilitiesMenu } from '@/features/capability/capabilities-menu'
 import { WorkspaceTopMenu } from '@/widgets/workspace-top-menu'
 
 const router = useRouter()
 const appState = useAppStateStore()
 const providers = useProvidersStore()
-const capabilities = useCapabilities()
+const capabilities = useCapabilitiesSettings()
 
 const providerId = useRouteParams<string>('providerId')
 const provider = computed(() => providers.findById(providerId.value))

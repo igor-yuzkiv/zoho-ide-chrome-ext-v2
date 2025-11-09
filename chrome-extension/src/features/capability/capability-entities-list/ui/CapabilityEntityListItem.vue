@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends ICapabilityEntity = ICapabilityEntity">
 import { type Component, useAttrs } from 'vue'
-import type { ICapabilityEntity } from '@/core/types/capability.types.ts'
+import type { ICapabilityEntity } from '@/entities/capability/capability.types.ts'
 
 defineProps<{
     item: T

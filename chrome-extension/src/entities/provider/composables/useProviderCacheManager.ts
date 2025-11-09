@@ -1,9 +1,9 @@
-import { providersCacheDb } from '@/core/cache'
-import { generateCacheRecordId } from '@/core/cache/cache-record.service.ts'
-import { useCapabilities } from '@/core/composables/useCapabilities.ts'
-import { useProviderRecordsFetcher } from '@/core/composables/useProviderRecordsFetcher.ts'
-import type { ICapabilityEntity } from '@/core/types/capability.types.ts'
-import type { ServiceProvider } from '@/core/types/provider.types.ts'
+import { providersCacheDb } from '@/shared/cache'
+import { generateCacheRecordId } from '@/shared/cache/cache-record.service.ts'
+import { useCapabilitiesSettings } from '@/entities/capability/composables/useCapabilitiesSettings.ts'
+import { useProviderRecordsFetcher } from '@/entities/provider/composables/useProviderRecordsFetcher.ts'
+import type { ICapabilityEntity } from '@/entities/capability/capability.types.ts'
+import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
 import { saveMockData } from '@/shared/api/mock/mock.api.ts'
 import { useLogger } from '@/shared/libs/logger/useLogger.ts'
 import type { IModuleFieldMetadataEntity } from '@/capabilities/metadata/metadata.types.ts'
@@ -42,7 +42,7 @@ async function saveCapabilityMockData(provider: ServiceProvider, capabilityType:
 }
 
 export function useProviderCacheManager() {
-    const capabilities = useCapabilities()
+    const capabilities = useCapabilitiesSettings()
     const logger = useLogger('useProviderCacheManager')
     const recordsFetcher = useProviderRecordsFetcher()
 

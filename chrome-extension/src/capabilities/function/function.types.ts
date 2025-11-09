@@ -1,5 +1,5 @@
 import type { IEntity } from '@/shared/types/entitiy.types.ts'
-import type { ICapabilityEntity } from '@/core/types/capability.types.ts'
+import type { ICapabilityEntity } from '@/entities/capability/capability.types.ts'
 
 export type FunctionType = 'button' | 'standalone' | 'dynamic' | 'automation' | 'scheduler' | 'unknown'
 

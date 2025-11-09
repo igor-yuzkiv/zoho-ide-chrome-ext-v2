@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="T extends ICapabilityEntity = ICapabilityEntity">
 import { computed, ref } from 'vue'
 import InputText from 'primevue/inputtext'
-import type { ICapabilityEntity } from '@/core/types/capability.types.ts'
-import { CapabilityEntitiesList, CapabilityEntityListItem } from '@/widgets/capability/capability-entities-list'
+import type { ICapabilityEntity } from '@/entities/capability/capability.types.ts'
+import { CapabilityEntitiesList, CapabilityEntityListItem } from '@/features/capability/capability-entities-list'
 
 const props = withDefaults(
     defineProps<{

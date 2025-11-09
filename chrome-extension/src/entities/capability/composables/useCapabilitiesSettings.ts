@@ -1,9 +1,9 @@
 import { CapabilitiesRegister, CAPABILITY_DEFAULT_ICON } from '@/config/capabilities.config.ts'
 import type { Maybe } from '@/shared/types/result.types.ts'
-import type { CapabilityPort, ProviderCapability } from '@/core/types/capability.types.ts'
-import type { ProviderType, ServiceProvider } from '@/core/types/provider.types.ts'
+import type { CapabilityPort, ProviderCapability } from '@/entities/capability/capability.types.ts'
+import type { ProviderType, ServiceProvider } from '@/entities/provider/provider.types.ts'
 
-export function useCapabilities() {
+export function useCapabilitiesSettings() {
     function byProviderType(providerType: ProviderType): ProviderCapability[] {
         return CapabilitiesRegister[providerType] || []
     }

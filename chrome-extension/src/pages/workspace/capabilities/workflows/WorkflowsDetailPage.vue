@@ -3,7 +3,7 @@ import { useRouteParams } from '@vueuse/router'
 import { computed, defineAsyncComponent } from 'vue'
 import { NoDataMessage } from '@/shared/components/messages'
 import { PageHeader } from '@/shared/components/page-header'
-import { useProvidersStore } from '@/core/store/useProvidersStore.ts'
+import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.ts'
 import { useWorkflowDetails } from '@/capabilities/workflow/composables/useWorkflowDetails.ts'
 import { useViewMode, ViewModeSelect } from '@/widgets/view-mode'
 

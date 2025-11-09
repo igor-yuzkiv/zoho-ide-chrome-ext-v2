@@ -1,6 +1,6 @@
 import { CapabilityType } from '@/config/capabilities.config.ts'
-import { selectProviderRecordsQuery } from '@/core/cache'
-import type { ServiceProvider } from '@/core/types/provider.types.ts'
+import { selectProviderRecordsQuery } from '@/shared/cache'
+import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
 import type { GlobalSearchDocument, GlobalSearchModule } from '@/shared/libs/global-search/lib/global-search.types.ts'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import type { IWorkflowEntity } from '@/capabilities/workflow/workflow.types.ts'

@@ -6,8 +6,8 @@ import fetchCrmFunctionDetailsRequest from '@/shared/integrations/zoho-crm/reque
 import fetchCrmFunctionsRequest from '@/shared/integrations/zoho-crm/requests/fetch-crm-functions.request.ts'
 import type { ZohoCrmFunction } from '@/shared/integrations/zoho-crm/types/crm.functions.types.ts'
 import type { CrmServiceProviderMetadata } from '@/shared/integrations/zoho-crm/types/crm.provider.types.ts'
-import type { CapabilityPort, ICapabilityEntity } from '@/core/types/capability.types.ts'
-import type { ServiceProvider } from '@/core/types/provider.types.ts'
+import type { CapabilityPort, ICapabilityEntity } from '@/entities/capability/capability.types.ts'
+import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
 
 async function fetchFunctionsDetails(
     tabId: number,

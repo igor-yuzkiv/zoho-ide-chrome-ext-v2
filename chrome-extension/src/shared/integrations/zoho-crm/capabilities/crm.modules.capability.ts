@@ -3,8 +3,8 @@ import type { Result } from '@/shared/types/result.types.ts'
 import { assertCrmMetadata } from '@/shared/integrations/zoho-crm/crm.utils.ts'
 import { mapManyCrmModulesToEntities } from '@/shared/integrations/zoho-crm/mappers/crm.metadata.mapper.ts'
 import fetchCrmModulesRequest from '@/shared/integrations/zoho-crm/requests/fetch.crm-modules.request.ts'
-import type { CapabilityPort, ICapabilityEntity } from '@/core/types/capability.types.ts'
-import type { ServiceProvider } from '@/core/types/provider.types.ts'
+import type { CapabilityPort, ICapabilityEntity } from '@/entities/capability/capability.types.ts'
+import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
 
 export function crmModulesCapabilityPortFactory(provider: ServiceProvider): Result<CapabilityPort> {
     const metadata = assertCrmMetadata(provider)

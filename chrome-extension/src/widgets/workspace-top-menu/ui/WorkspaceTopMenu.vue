@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ServiceProvider } from '@/core/types/provider.types.ts'
+import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import { useGlobalSearch } from '@/shared/libs/global-search'

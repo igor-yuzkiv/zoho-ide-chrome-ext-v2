@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useProvidersStore } from '@/core/store/useProvidersStore.ts'
+import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.ts'
 import { onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { LoadingOverlay } from '@/shared/components/loading'

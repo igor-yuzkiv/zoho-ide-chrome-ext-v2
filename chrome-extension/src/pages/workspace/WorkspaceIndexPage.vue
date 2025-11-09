@@ -2,7 +2,7 @@
 import { useRouteParams } from '@vueuse/router'
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
-import { useProvidersStore } from '@/core/store/useProvidersStore.ts'
+import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.ts'
 
 const providers = useProvidersStore()
 const providerId = useRouteParams<string>('providerId')

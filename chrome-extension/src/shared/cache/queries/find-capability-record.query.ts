@@ -1,6 +1,6 @@
-import type { ICapabilityEntity } from '@/core/types/capability.types.ts'
-import { providersCacheDb } from '@/core/cache'
-import { generateCacheRecordId } from '@/core/cache/cache-record.service.ts'
+import type { ICapabilityEntity } from '@/entities/capability/capability.types.ts'
+import { providersCacheDb } from '@/shared/cache'
+import { generateCacheRecordId } from '@/shared/cache/cache-record.service.ts'
 
 export default async function <T extends ICapabilityEntity = ICapabilityEntity>(
     providerId: string,

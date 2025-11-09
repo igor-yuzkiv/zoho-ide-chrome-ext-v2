@@ -4,7 +4,7 @@ import WfActionNode from '@/capabilities/workflow/components/schema-nodes/WfActi
 import WfConditionNode from '@/capabilities/workflow/components/schema-nodes/WfConditionNode.vue'
 import WfWhenNode from '@/capabilities/workflow/components/schema-nodes/WfWhenNode.vue'
 import type { IWorkflowEntity } from '@/capabilities/workflow/workflow.types.ts'
-import type { ProviderType } from '@/core/types/provider.types.ts'
+import type { ProviderType } from '@/entities/provider/provider.types.ts'
 import { VueFlow } from '@vue-flow/core'
 import { watchEffect } from 'vue'
 

@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { CodeEditor } from '@/shared/components/code-editor'
 import type { IWorkflowEntity } from '@/capabilities/workflow/workflow.types.ts'
-import type { ProviderType } from '@/core/types/provider.types.ts'
+import type { ProviderType } from '@/entities/provider/provider.types.ts'
 
 const props = defineProps<{
     providerType: ProviderType

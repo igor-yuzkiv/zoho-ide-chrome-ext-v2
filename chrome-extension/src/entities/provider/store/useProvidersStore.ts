@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import type { BrowserTab } from '@/shared/libs/browser/browser.types.ts'
 import type { Maybe } from '@/shared/types/result.types.ts'
-import type { ServiceProvider } from '@/core/types/provider.types.ts'
+import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
 
 function resolveProvidersFromChromeTabs(chromeTabs: BrowserTab[], acc = new Map()): Map<string, ServiceProvider> {
     return Object.values(ProvidersRegister).reduce<Map<string, ServiceProvider>>((acc, factory) => {

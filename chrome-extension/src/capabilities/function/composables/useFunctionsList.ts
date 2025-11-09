@@ -3,7 +3,7 @@ import { keepPreviousData, useQuery } from '@tanstack/vue-query'
 import { type MaybeRef, toValue } from 'vue'
 import type { IEntity } from '@/shared/types/entitiy.types.ts'
 import type { IFunctionEntity } from '@/capabilities/function/function.types.ts'
-import { selectProviderRecordsQuery } from '@/core/cache'
+import { selectProviderRecordsQuery } from '@/shared/cache'
 
 export function useFunctionsList<TOrigin extends IEntity = IEntity>(providerId: MaybeRef<string>) {
     const { isPending, data } = useQuery<IFunctionEntity<TOrigin>[]>({
