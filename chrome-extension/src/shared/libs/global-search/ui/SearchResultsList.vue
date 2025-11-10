@@ -48,7 +48,7 @@ const itemsForDisplay = computed(() => {
             <div class="flex items-center gap-x-2">
                 <Button
                     text
-                    class="text-sm opacity-0 group-hover:opacity-100 py-1 px-2"
+                    class="text-sm opacity-0 group-hover:opacity-100 py-0 px-2"
                     @click.stop="$emit('item:view', result)"
                 >
                     View
