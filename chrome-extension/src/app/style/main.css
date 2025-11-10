@@ -1,7 +1,6 @@
 @import 'tailwindcss';
 @import 'tailwindcss-primeui';
 @import './variables.css';
-@import './app.css';
 
 @import '@vue-flow/core/dist/style.css';
 @import '@vue-flow/core/dist/theme-default.css';
@@ -11,7 +10,6 @@
 @layer base {
     html {
         font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-        font-size: var(--font-size-base);
     }
 }
 
@@ -38,4 +36,8 @@
 
 *::-webkit-scrollbar-track {
     background: transparent;
+}
+
+.app-list-item-active {
+    @apply bg-blue-700 text-white;
 }
