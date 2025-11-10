@@ -1,4 +1,4 @@
-import { ProvidersRegister } from '@/config/providers.config.ts'
+import { ProvidersRegister } from '@/config/providers.register.ts'
 import { type Serializer, useStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'

@@ -1,4 +1,5 @@
-import { CapabilitiesRegister, CAPABILITY_DEFAULT_ICON } from '@/config/capabilities.config.ts'
+import { CAPABILITY_DEFAULT_ICON } from '@/config/capabilities.config.ts'
+import { CapabilitiesRegister } from '@/config/capabilities.register.ts'
 import type { Maybe } from '@/shared/types/result.types.ts'
 import type { CapabilityPort, ProviderCapability } from '@/entities/capability/capability.types.ts'
 import type { ProviderType, ServiceProvider } from '@/entities/provider/provider.types.ts'
