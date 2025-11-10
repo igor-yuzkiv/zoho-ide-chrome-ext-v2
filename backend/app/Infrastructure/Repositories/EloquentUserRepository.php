@@ -7,6 +7,9 @@ use App\Domains\User\Entities\User;
 use App\Domains\User\Repositories\UserRepository;
 use App\Infrastructure\Mappers\UserMapper;
 use App\Infrastructure\Models\UserModel;
+use App\Shared\DTO\PageResult;
+use App\Shared\DTO\PaginationParams;
+use App\Shared\DTO\SortParams;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -17,6 +20,27 @@ readonly class EloquentUserRepository implements UserRepository
     public function nextIdentifier(): string
     {
         return Str::ulid();
+    }
+
+    public function paginate(PaginationParams $paginationParams, SortParams $sortParams): PageResult
+    {
+        $result = UserModel::query()
+            ->orderBy($sortParams->field, $sortParams->direction)
+            ->paginate(
+                perPage: $paginationParams->perPage,
+                page: $paginationParams->page,
+            );
+
+        $users = $result->getCollection()->map(fn (UserModel $model) => $this->mapper->makeFromModel($model));
+
+        return new PageResult(
+            data: $users,
+            page: $result->currentPage(),
+            perPage: $result->perPage(),
+            total: $result->total(),
+            lastPage: $result->lastPage(),
+            hasMore: $result->hasMorePages(),
+        );
     }
 
     public function find(string $id): ?User

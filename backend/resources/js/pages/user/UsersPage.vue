@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { Button } from "primevue";
 import { CreateUserDialog, useCreateUser } from "@/features/user/create";
+import { UsersDataTable, useUsersList } from "@/features/user/list";
 
+const { data: users } = useUsersList();
 const createUser = useCreateUser();
 </script>
 
@@ -12,6 +14,10 @@ const createUser = useCreateUser();
             <div class="flex items-center gap-x-2">
                 <Button @click="createUser.open()">New</Button>
             </div>
+        </div>
+
+        <div class="flex flex-col w-full h-full overflow-auto">
+            <UsersDataTable :users="users" />
         </div>
     </div>
 
