@@ -1,0 +1,10 @@
+@import 'tailwindcss';
+@import 'tailwindcss-primeui';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+    html {
+        font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    }
+}
