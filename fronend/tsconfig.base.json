@@ -24,6 +24,11 @@
         "noEmit": true,
         "noUnusedParameters": true,
         "erasableSyntaxOnly": true,
-        "noUncheckedSideEffectImports": true
+        "noUncheckedSideEffectImports": true,
+        "baseUrl": "./",
+        "paths": {
+            "@zoho-ide/ui-kit": ["packages/ui-kit/src/index.ts"],
+            "@zoho-ide/ui-kit/*": ["packages/ui-kit/src/*"]
+        }
     }
 }

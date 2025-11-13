@@ -1,0 +1,42 @@
+@import 'tailwindcss';
+@import 'tailwindcss-primeui';
+
+@import './variables.css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+    html {
+        font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+        font-size: var(--font-size-base);
+    }
+}
+
+@layer components {
+    .border,
+    .border-r,
+    .border-l,
+    .border-t,
+    .border-b,
+    .border-x,
+    .border-y {
+        border-color: var(--theme-border);
+    }
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: #454545;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.app-list-item-active {
+    @apply bg-blue-700 text-white;
+}
