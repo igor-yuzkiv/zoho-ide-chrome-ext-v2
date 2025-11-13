@@ -1,0 +1,327 @@
+{
+  "version": "6.0",
+  "nxVersion": "22.0.3",
+  "pathMappings": {},
+  "nxJsonPlugins": [
+    {
+      "name": "@nx/js/typescript",
+      "options": {
+        "typecheck": {
+          "targetName": "typecheck"
+        },
+        "build": {
+          "targetName": "build",
+          "configName": "tsconfig.lib.json",
+          "buildDepsName": "build-deps",
+          "watchDepsName": "watch-deps"
+        }
+      }
+    },
+    {
+      "name": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    },
+    {
+      "name": "@nx/vite/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "testTargetName": "test",
+        "serveTargetName": "serve",
+        "devTargetName": "dev",
+        "previewTargetName": "preview",
+        "serveStaticTargetName": "serve-static",
+        "typecheckTargetName": "typecheck",
+        "buildDepsTargetName": "build-deps",
+        "watchDepsTargetName": "watch-deps"
+      }
+    }
+  ],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": ".gitignore",
+        "hash": "16023894880854878455"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "14688272390704683536"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "1670301819016160202"
+      },
+      {
+        "file": "dist/out-tsc/tsconfig.app.tsbuildinfo",
+        "hash": "10792596163473563378"
+      },
+      {
+        "file": "eslint.config.mjs",
+        "hash": "14257474917386269139"
+      },
+      {
+        "file": "nx.json",
+        "hash": "11917429431918650527"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "5141178225160323832"
+      },
+      {
+        "file": "package.json",
+        "hash": "14451172280716673549"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "1462079353083993730"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "10936168742027482080"
+      }
+    ],
+    "projectFileMap": {
+      "chrome-ext": [
+        {
+          "file": "apps/chrome-ext/eslint.config.mjs",
+          "hash": "13398901324266619476",
+          "deps": [
+            "npm:eslint-plugin-vue",
+            [
+              "npm:@typescript-eslint/parser",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/chrome-ext/index.html",
+          "hash": "8378431078937096484"
+        },
+        {
+          "file": "apps/chrome-ext/project.json",
+          "hash": "13421830085221748479"
+        },
+        {
+          "file": "apps/chrome-ext/src/app/App.vue",
+          "hash": "4254196270422633935"
+        },
+        {
+          "file": "apps/chrome-ext/src/main.ts",
+          "hash": "10700652376587491655",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "apps/chrome-ext/src/pages/HomeView.vue",
+          "hash": "12427011500882794439"
+        },
+        {
+          "file": "apps/chrome-ext/src/router/index.ts",
+          "hash": "13366765132335749954",
+          "deps": [
+            "npm:vue-router"
+          ]
+        },
+        {
+          "file": "apps/chrome-ext/src/styles.css",
+          "hash": "13638528872262091660"
+        },
+        {
+          "file": "apps/chrome-ext/src/vue-shims.d.ts",
+          "hash": "4764550786764599429",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "apps/chrome-ext/tsconfig.app.json",
+          "hash": "7527146995565050153"
+        },
+        {
+          "file": "apps/chrome-ext/tsconfig.json",
+          "hash": "2150520929781857135"
+        },
+        {
+          "file": "apps/chrome-ext/tsconfig.vite.json",
+          "hash": "14882441486983597008"
+        },
+        {
+          "file": "apps/chrome-ext/vite.config.ts",
+          "hash": "18365860820931466457",
+          "deps": [
+            "npm:@nx/vite",
+            "npm:@vitejs/plugin-vue",
+            "npm:vite"
+          ]
+        }
+      ],
+      "admin": [
+        {
+          "file": "apps/admin/dist/assets/AboutView-BuOaoUuw.js",
+          "hash": "4152139428424423133"
+        },
+        {
+          "file": "apps/admin/dist/assets/AboutView-Dh5J6qK3.css",
+          "hash": "2290230890630221318"
+        },
+        {
+          "file": "apps/admin/dist/assets/index-CAzQeFYD.css",
+          "hash": "6068886463586526475"
+        },
+        {
+          "file": "apps/admin/dist/assets/index-CKfnNQ4z.js",
+          "hash": "701919847270859876"
+        },
+        {
+          "file": "apps/admin/dist/index.html",
+          "hash": "13792132088686652336"
+        },
+        {
+          "file": "apps/admin/eslint.config.mjs",
+          "hash": "13398901324266619476",
+          "deps": [
+            "npm:eslint-plugin-vue",
+            [
+              "npm:@typescript-eslint/parser",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/admin/index.html",
+          "hash": "12381838854574059890"
+        },
+        {
+          "file": "apps/admin/package.json",
+          "hash": "12561137403848841051"
+        },
+        {
+          "file": "apps/admin/src/app/App.vue",
+          "hash": "10891699717582451698"
+        },
+        {
+          "file": "apps/admin/src/main.ts",
+          "hash": "10700652376587491655",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "apps/admin/src/pages/HomeView.vue",
+          "hash": "7115939813931699560"
+        },
+        {
+          "file": "apps/admin/src/router/index.ts",
+          "hash": "1719974965457031522",
+          "deps": [
+            "npm:vue-router"
+          ]
+        },
+        {
+          "file": "apps/admin/src/styles.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/admin/src/vue-shims.d.ts",
+          "hash": "4764550786764599429",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "apps/admin/tsconfig.app.json",
+          "hash": "13699059879088471970"
+        },
+        {
+          "file": "apps/admin/tsconfig.json",
+          "hash": "16701947038475385572"
+        },
+        {
+          "file": "apps/admin/tsconfig.vite.json",
+          "hash": "14882441486983597008"
+        },
+        {
+          "file": "apps/admin/vite.config.ts",
+          "hash": "16889421767898252554",
+          "deps": [
+            "npm:@tailwindcss/vite",
+            "npm:@vitejs/plugin-vue",
+            "npm:vite"
+          ]
+        }
+      ],
+      "ui-kit": [
+        {
+          "file": "packages/ui-kit/eslint.config.mjs",
+          "hash": "13398901324266619476",
+          "deps": [
+            "npm:eslint-plugin-vue",
+            [
+              "npm:@typescript-eslint/parser",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "packages/ui-kit/index.html",
+          "hash": "1320626491807133202"
+        },
+        {
+          "file": "packages/ui-kit/project.json",
+          "hash": "17427518021298742239"
+        },
+        {
+          "file": "packages/ui-kit/src/TestButton.vue",
+          "hash": "16929436756270268281"
+        },
+        {
+          "file": "packages/ui-kit/src/index.ts",
+          "hash": "580250441183152163"
+        },
+        {
+          "file": "packages/ui-kit/src/main.ts",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/ui-kit/src/style/main.css",
+          "hash": "6331649281891829465"
+        },
+        {
+          "file": "packages/ui-kit/src/style/variables.css",
+          "hash": "5634862891116181888"
+        },
+        {
+          "file": "packages/ui-kit/src/vue-shims.d.ts",
+          "hash": "4764550786764599429",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/ui-kit/tsconfig.app.json",
+          "hash": "7527146995565050153"
+        },
+        {
+          "file": "packages/ui-kit/tsconfig.json",
+          "hash": "2150520929781857135"
+        },
+        {
+          "file": "packages/ui-kit/tsconfig.vite.json",
+          "hash": "14882441486983597008"
+        },
+        {
+          "file": "packages/ui-kit/vite.config.ts",
+          "hash": "17970800512330403627",
+          "deps": [
+            "npm:@nx/vite",
+            "npm:@vitejs/plugin-vue",
+            "npm:vite"
+          ]
+        }
+      ]
+    }
+  },
+  "externalNodesHash": "467276729608602255"
+}

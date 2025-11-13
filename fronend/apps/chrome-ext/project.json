@@ -1,0 +1,8 @@
+{
+    "name": "chrome-ext",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "application",
+    "sourceRoot": "apps/chrome-ext/src",
+    "// targets": "to see all targets run: nx show project chrome-ext --web",
+    "targets": {}
+}
