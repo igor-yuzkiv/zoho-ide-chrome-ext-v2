@@ -21,7 +21,6 @@
         "eslint.config.mjs"
     ],
     "include": [
-        "src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.vue",
-        "../../packages/ui-kit/src"
+        "src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.vue"
     ]
 }
