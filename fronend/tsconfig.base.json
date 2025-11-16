@@ -6,7 +6,7 @@
         "importHelpers": true,
         "isolatedModules": true,
         "target": "ES2023",
-        "lib": ["ES2023"],
+        "lib": ["ES2023", "DOM"],
         "module": "ESNext",
         "moduleResolution": "bundler",
         "noEmitOnError": true,
