@@ -8,7 +8,7 @@ import dts from 'vite-plugin-dts'
 
 export default defineConfig(() => ({
     root: __dirname,
-    cacheDir: '../../node_modules/.vite/packages/ui-kit',
+    cacheDir: '../../node_modules/.vite/packages/shared',
     plugins: [
         vue(),
         nxViteTsPaths(),
@@ -22,7 +22,7 @@ export default defineConfig(() => ({
     // Configuration for building your library.
     // See: https://vitejs.dev/guide/build.html#library-mode
     build: {
-        outDir: '../../dist/packages/ui-kit',
+        outDir: '../../dist/packages/shared',
         emptyOutDir: true,
         reportCompressedSize: true,
         commonjsOptions: {
@@ -31,7 +31,7 @@ export default defineConfig(() => ({
         lib: {
             // Could also be a dictionary or array of multiple entry points.
             entry: 'src/index.ts',
-            name: 'ui-kit',
+            name: 'shared',
             fileName: 'index',
             // Change this to the formats you want to support.
             // Don't forget to update your package.json as well.

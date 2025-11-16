@@ -1,7 +1,7 @@
 import App from './app/App.vue'
 import router from './router'
 import './styles.css'
-import { PluginsRegister } from '@zoho-ide/ui-kit'
+import { PluginsRegister } from '@zoho-ide/shared'
 import { createApp } from 'vue'
 
 const app = createApp(App)

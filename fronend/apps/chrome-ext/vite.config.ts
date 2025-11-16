@@ -10,14 +10,13 @@ export default defineConfig(() => ({
     root: __dirname,
     cacheDir: '../../node_modules/.vite/apps/chrome-ext',
     server: {
-        port: 4200,
+        port: 4201,
         host: 'localhost',
     },
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('/src', import.meta.url)),
-            '@zoho-ide/ui-kit': fileURLToPath(new URL('../../packages/ui-kit/src/index.ts', import.meta.url)),
-            '@zoho-ide/ui-kit/*': fileURLToPath(new URL('../../packages/ui-kit/src/*', import.meta.url)),
+            '@zoho-ide/shared': fileURLToPath(new URL('../../packages/shared/src/index.ts', import.meta.url))
         },
         extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue', '.css'],
     },

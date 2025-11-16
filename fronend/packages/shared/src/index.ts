@@ -1,4 +1,4 @@
-import "./styles/ui-kit.css"
+import "./styles/main.css"
 
 export { default as TestComp } from './components/TestComp.vue'
 

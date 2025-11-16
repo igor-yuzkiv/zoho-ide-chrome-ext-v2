@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TestComp } from '@zoho-ide/ui-kit'
+import { TestComp } from '@zoho-ide/shared'
 import { Button } from 'primevue'
 </script>
 
