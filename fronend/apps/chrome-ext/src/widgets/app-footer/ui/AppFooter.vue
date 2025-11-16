@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { IconButton } from '@/shared/components/button'
+import { IconButton } from '@zoho-ide/ui-kit/components'
 import { useAppTheme } from '@zoho-ide/ui-kit/composables'
 
 const appTheme = useAppTheme()

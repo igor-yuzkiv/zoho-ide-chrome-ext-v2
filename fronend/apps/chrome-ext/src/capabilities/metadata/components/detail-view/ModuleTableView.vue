@@ -3,7 +3,7 @@ import { computed, ref } from 'vue'
 import Column from 'primevue/column'
 import DataTable from 'primevue/datatable'
 import InputText from 'primevue/inputtext'
-import { CopyText } from '@/shared/components/copy-text'
+import { CopyText } from '@zoho-ide/ui-kit/components'
 import type {
     IModuleFieldMetadataEntity,
     IModuleMetadataEntity,
