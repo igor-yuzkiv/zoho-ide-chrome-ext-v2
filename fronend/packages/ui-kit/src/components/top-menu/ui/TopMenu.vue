@@ -11,6 +11,7 @@ defineProps<TopMenuProps>()
             :key="item.title"
             :to="item.route"
             class="hover:underline hover:bg-primary px-3 rounded-lg"
+            active-class="app-list-item-active"
         >
             {{ item.title }}
         </router-link>

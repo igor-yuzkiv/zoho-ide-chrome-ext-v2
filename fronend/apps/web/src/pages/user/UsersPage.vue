@@ -7,7 +7,7 @@ const createUser = useCreateUser()
 </script>
 
 <template>
-    <div class="flex flex-col w-full h-full">
+    <div class="flex h-full w-full flex-col overflow-hidden">
         <div class="flex flex-col w-full h-full overflow-auto bg-primary rounded-lg">
             <UsersDataTable :users="users" />
         </div>
