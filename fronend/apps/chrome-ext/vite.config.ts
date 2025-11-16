@@ -28,13 +28,13 @@ export default defineConfig(({ mode }) => {
         resolve: {
             alias: {
                 '@': fileURLToPath(new URL('/src', import.meta.url)),
-                '@zoho-ide/ui-kit': fileURLToPath(new URL('../../packages/ui-kit/src/index.ts', import.meta.url)),
-                '@zoho-ide/backend-api': fileURLToPath(new URL('../../packages/backend-api/src/index.ts', import.meta.url)),
+                '@zoho-ide/ui-kit/*': fileURLToPath(new URL('../../packages/ui-kit/src/*', import.meta.url)),
+                '@zoho-ide/backend-api/*': fileURLToPath(new URL('../../packages/backend-api/src/*', import.meta.url)),
             },
             extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue', '.css'],
         },
         preview: {
-            port: 4300,
+            port: 4301,
             host: 'localhost',
         },
         plugins: [vue(), tailwindcss(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],

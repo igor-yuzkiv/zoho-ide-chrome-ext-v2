@@ -3,6 +3,8 @@ import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig, loadEnv } from 'vite'
+import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin'
+import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin'
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '')
@@ -26,8 +28,8 @@ export default defineConfig(({ mode }) => {
         resolve: {
             alias: {
                 '@': fileURLToPath(new URL('/src', import.meta.url)),
-                '@zoho-ide/ui-kit': fileURLToPath(new URL('../../packages/ui-kit/src/index.ts', import.meta.url)),
-                '@zoho-ide/backend-api': fileURLToPath(new URL('../../packages/backend-api/src/index.ts', import.meta.url)),
+                '@zoho-ide/ui-kit/*': fileURLToPath(new URL('../../packages/ui-kit/src/*', import.meta.url)),
+                '@zoho-ide/backend-api/*': fileURLToPath(new URL('../../packages/backend-api/src/*', import.meta.url)),
             },
             extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue', '.css'],
         },
@@ -35,7 +37,7 @@ export default defineConfig(({ mode }) => {
             port: 4300,
             host: 'localhost',
         },
-        plugins: [vue(), tailwindcss()],
+        plugins: [vue(), tailwindcss(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
         // Uncomment this if you are using workers.
         // worker: {
         //  plugins: [],

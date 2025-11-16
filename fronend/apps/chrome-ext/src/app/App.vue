@@ -10,7 +10,7 @@ import { AppFooter } from '@/widgets/app-footer'
 import { AppTopMenu } from '@/widgets/app-top-menu'
 import Toast from 'primevue/toast'
 import ConfirmDialog from 'primevue/confirmdialog'
-import { useAppTheme } from '@zoho-ide/ui-kit'
+import { useAppTheme } from '@zoho-ide/ui-kit/composables'
 
 const appState = useAppStateStore()
 const tabs = useBrowserTabsStore()

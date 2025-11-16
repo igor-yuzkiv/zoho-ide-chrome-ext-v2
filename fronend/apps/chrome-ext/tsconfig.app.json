@@ -6,8 +6,8 @@
         "baseUrl": "./",
         "paths": {
             "@/*": ["src/*"],
-            "@zoho-ide/ui-kit": ["../../packages/ui-kit/src/index.ts"],
-            "@zoho-ide/backend-api": ["../../packages/backend-api/src/index.ts"]
+            "@zoho-ide/ui-kit/*": ["../../packages/ui-kit/src/*"],
+            "@zoho-ide/backend-api/*": ["../../packages/backend-api/src/*"]
         }
     },
     "exclude": [
@@ -22,7 +22,10 @@
         "eslint.config.mjs"
     ],
     "include": [
-        "src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.vue",
+        "src/**/*.js",
+        "src/**/*.jsx",
+        "src/**/*.ts",
+        "src/**/*.vue",
         "../../packages/ui-kit/src",
         "../../packages/backend-api/src"
     ]

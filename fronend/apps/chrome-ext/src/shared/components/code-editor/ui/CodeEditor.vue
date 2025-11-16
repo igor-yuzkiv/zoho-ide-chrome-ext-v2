@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAppTheme } from '@zoho-ide/ui-kit'
+import { useAppTheme } from '@zoho-ide/ui-kit/composables'
 
 const appTheme = useAppTheme()
 const modelValue = defineModel<string>()
