@@ -29,3 +29,5 @@ dist-ssr
 /docker/
 /fronend/.nx/workspace-data/
 /fronend/.nx/cache/
+/fronend/dist/
+/fronend/apps/**/dist/
