@@ -17,18 +17,13 @@
         "skipLibCheck": true,
         "strict": true,
         "customConditions": ["my-workspace"],
-        "types": [],
+        "types": ["node"],
         "allowImportingTsExtensions": true,
         "verbatimModuleSyntax": true,
         "moduleDetection": "force",
         "noEmit": true,
         "noUnusedParameters": true,
         "erasableSyntaxOnly": true,
-        "noUncheckedSideEffectImports": true,
-        "baseUrl": "./",
-        "paths": {
-            "@zoho-ide/shared": ["packages/ui-kit/src/index.ts"],
-            "@zoho-ide/shared/*": ["packages/ui-kit/src/*"]
-        }
+        "noUncheckedSideEffectImports": true
     }
 }
