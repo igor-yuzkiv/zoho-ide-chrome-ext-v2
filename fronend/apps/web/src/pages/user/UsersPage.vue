@@ -1,22 +1,14 @@
 <script setup lang="ts">
-import { Button } from "primevue";
-import { CreateUserDialog, useCreateUser } from "@/features/user/create";
-import { UsersDataTable, useUsersList } from "@/features/user/list";
+import { CreateUserDialog, useCreateUser } from '@/features/user/create'
+import { UsersDataTable, useUsersList } from '@/features/user/list'
 
-const { data: users } = useUsersList();
-const createUser = useCreateUser();
+const { data: users } = useUsersList()
+const createUser = useCreateUser()
 </script>
 
 <template>
-    <div class="flex flex-col w-full h-full overflow-hidden p-1">
-        <div class="flex items-center justify-between py-1">
-            <h1 class="text-xl font-bold">Users</h1>
-            <div class="flex items-center gap-x-2">
-                <Button @click="createUser.open()">New</Button>
-            </div>
-        </div>
-
-        <div class="flex flex-col w-full h-full overflow-auto">
+    <div class="flex flex-col w-full h-full">
+        <div class="flex flex-col w-full h-full overflow-auto bg-primary rounded-lg">
             <UsersDataTable :users="users" />
         </div>
     </div>

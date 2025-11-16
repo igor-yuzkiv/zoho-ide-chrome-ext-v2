@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { TopMenu } from '@zoho-ide/ui-kit/components'
+import type { TopMenuItem } from '@zoho-ide/ui-kit/components'
 import { computed } from 'vue'
-import type { RouteLocationRaw } from 'vue-router'
 import { Icon } from '@iconify/vue'
 import { useGlobalSearch } from '@/shared/libs/global-search'
 import { AppRouteName } from '@/app/router/app-routes.ts'
@@ -9,10 +10,8 @@ import { useCurrentProvider } from '@/entities/provider/composables/useCurrentPr
 const globalSearch = useGlobalSearch()
 const { data: currentProvider } = useCurrentProvider()
 
-const navItems = computed(() => {
-    const result: Array<{ title: string; route: RouteLocationRaw }> = [
-        { title: 'Home', route: { name: AppRouteName.home } },
-    ]
+const navItems = computed<TopMenuItem[]>(() => {
+    const result: TopMenuItem[] = [{ title: 'Home', route: { name: AppRouteName.home } }]
 
     if (!currentProvider.value) {
         return result
@@ -36,16 +35,7 @@ const navItems = computed(() => {
 
 <template>
     <div class="relative flex w-full shrink-0 justify-between overflow-hidden pt-1 px-1">
-        <div class="flex items-center gap-x-2 shrink-0">
-            <router-link
-                v-for="item in navItems"
-                :key="item.title"
-                :to="item.route"
-                class="hover:underline hover:bg-primary px-3 rounded-lg"
-            >
-                {{ item.title }}
-            </router-link>
-        </div>
+        <TopMenu :items="navItems" />
 
         <div
             @click="globalSearch.open()"

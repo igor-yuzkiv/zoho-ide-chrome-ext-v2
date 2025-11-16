@@ -2,6 +2,9 @@
 @import 'tailwindcss-primeui';
 @import './variables.css';
 
+@source "../**/*.{html,js,ts,vue,tsx,jsx}";
+
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {

@@ -1,10 +1,10 @@
-<script setup lang="ts">
-import { AppRouteName } from "@/app/router/app-routes.ts";
-</script>
+<script setup lang="ts"></script>
 
 <template>
-    <div class="flex flex-col w-full h-full overflow-hidden p-1">
-        <router-link :to="{ name: AppRouteName.users }" class="link">Users 1</router-link>
+    <div class="flex items-center justify-center w-full h-full">
+        <div class="flex w-full h-full items-center justify-center bg-primary rounded-lg">
+            <h1>home</h1>
+        </div>
     </div>
 </template>
 
