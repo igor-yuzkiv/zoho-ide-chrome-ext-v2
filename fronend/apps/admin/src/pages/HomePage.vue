@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TestComp } from '@zoho-ide/shared'
+import { TestComp } from '@zoho-ide/ui-kit'
 import { Button } from 'primevue'
 import axios from 'axios'
 

@@ -4,6 +4,6 @@
     "references": [
         { "path": "./apps/admin" },
         { "path": "./apps/chrome-ext" },
-        { "path": "./packages/shared" }
+        { "path": "./packages/ui-kit" }
     ]
 }
