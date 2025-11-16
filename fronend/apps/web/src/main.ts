@@ -1,9 +1,16 @@
-import App from './app/App.vue'
-import router from './app/router'
-import { registerUiKitPlugins } from '@zoho-ide/ui-kit'
+import { createPinia } from 'pinia'
 import { createApp } from 'vue'
+import AppComponent from '@/app/App.vue'
+import { registerPlugins } from '@/app/plugins'
+import { router } from '@/app/router'
+// import '@/app/style/md-editor.css'
 
-const app = createApp(App)
-registerUiKitPlugins(app)
+const app = createApp(AppComponent)
+const pinia = createPinia()
+
+app.use(pinia)
 app.use(router)
+
+registerPlugins(app)
+
 app.mount('#root')

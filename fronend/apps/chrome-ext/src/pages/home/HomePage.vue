@@ -1,0 +1,50 @@
+<script setup lang="ts">
+import { Icon } from '@iconify/vue'
+import { AppRouteName } from '@/app/router/app-routes.ts'
+import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.ts'
+
+const providersStore = useProvidersStore()
+</script>
+
+<template>
+    <div class="flex h-full w-full items-center justify-center overflow-hidden px-2 p-1">
+        <div class="flex w-full h-full items-center justify-center bg-primary rounded-lg">
+            <div class="flex flex-col p-3 h-3/4">
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-x-2 text-4xl">
+                        <Icon icon="logos:zoho" />
+                        <h1 class="font-bold">Zoho Studio</h1>
+                    </div>
+                    <h3 class="mt-2 text-lg font-medium text-gray-700 dark:text-gray-400">
+                        Development Environment for Zoho
+                    </h3>
+                </div>
+
+                <div class="flex flex-col mt-14">
+                    <h3 class="text-2xl font-medium">Services</h3>
+                    <div class="flex items-center gap-x-2 text-gray-700 dark:text-gray-400">
+                        <Icon icon="material-symbols:info-outline" />
+                        To make a service appear in the list, simply open any Zoho service in a neighboring browser tab.
+                    </div>
+
+                    <div class="grid grid-cols-2 mt-3">
+                        <div v-for="provider in providersStore.providersList" :key="provider.id">
+                            <router-link
+                                :to="{ name: AppRouteName.workspaceIndex, params: { providerId: provider.id } }"
+                                class="flex items-center gap-x-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer px-2"
+                                :class="{
+                                    'text-gray-500': !provider.tabId,
+                                }"
+                            >
+                                <Icon :icon="provider.serviceIcon" class="w-5 h-5" />
+                                <div>{{ provider.title }}</div>
+                            </router-link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<style scoped></style>

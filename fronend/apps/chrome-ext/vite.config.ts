@@ -43,7 +43,7 @@ export default defineConfig(({ mode }) => {
         //  plugins: [ nxViteTsPaths() ],
         // },
         build: {
-            outDir: '../../dist/apps/chrome-ext',
+            outDir: './extension/dist',
             emptyOutDir: true,
             reportCompressedSize: true,
             commonjsOptions: {
