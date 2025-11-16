@@ -4,6 +4,7 @@
     "references": [
         { "path": "./apps/web" },
         { "path": "./apps/chrome-ext" },
-        { "path": "./packages/ui-kit" }
+        { "path": "./packages/ui-kit" },
+        { "path": "./packages/backend-api" }
     ]
 }

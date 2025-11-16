@@ -24,6 +24,10 @@
         "noEmit": true,
         "noUnusedParameters": true,
         "erasableSyntaxOnly": true,
-        "noUncheckedSideEffectImports": true
+        "noUncheckedSideEffectImports": true,
+        "paths": {
+            "ui-kit": ["packages/ui-kit/src/index.ts"],
+            "backend-api": ["packages/backend-api/src/index.ts"]
+        }
     }
 }
