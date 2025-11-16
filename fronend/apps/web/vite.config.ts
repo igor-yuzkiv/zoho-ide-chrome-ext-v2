@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => {
 
     return {
         root: __dirname,
-        cacheDir: '../../node_modules/.vite/apps/admin',
+        cacheDir: '../../node_modules/.vite/apps/web',
         base: '',
         server: {
             port: 4200,
@@ -40,7 +40,7 @@ export default defineConfig(({ mode }) => {
         //  plugins: [],
         // },
         build: {
-            outDir: '../../dist/apps/admin',
+            outDir: '../../dist/apps/web',
             emptyOutDir: true,
             reportCompressedSize: true,
             commonjsOptions: {

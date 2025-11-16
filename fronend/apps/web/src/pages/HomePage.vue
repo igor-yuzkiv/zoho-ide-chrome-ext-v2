@@ -1,5 +1,5 @@
 <script setup lang="ts"></script>
 
 <template>
-    <main>Admin APP: Home</main>
+    <main>web APP: Home</main>
 </template>

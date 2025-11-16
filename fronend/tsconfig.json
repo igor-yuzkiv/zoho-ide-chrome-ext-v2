@@ -2,7 +2,7 @@
     "compileOnSave": false,
     "files": [],
     "references": [
-        { "path": "./apps/admin" },
+        { "path": "./apps/web" },
         { "path": "./apps/chrome-ext" },
         { "path": "./packages/ui-kit" }
     ]
