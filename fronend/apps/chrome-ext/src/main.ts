@@ -1,4 +1,6 @@
 import './bootstrap.ts'
+import '@vue-flow/core/dist/style.css';
+import '@vue-flow/core/dist/theme-default.css';
 import { registerUiKitPlugins } from '@zoho-ide/ui-kit/index.ts'
 import { createPinia } from 'pinia'
 import { createApp } from 'vue'
