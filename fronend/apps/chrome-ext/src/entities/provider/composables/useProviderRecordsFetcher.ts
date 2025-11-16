@@ -9,8 +9,8 @@ export function useProviderRecordsFetcher() {
 
     async function fetchAllCapabilityRecords(
         port: CapabilityPort,
-        page: number = 1,
-        perPage: number = 50,
+        page = 1,
+        perPage = 50,
         result: ICapabilityEntity[] = []
     ) {
         const response = await port.list({ page, perPage })

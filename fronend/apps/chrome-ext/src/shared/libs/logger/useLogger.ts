@@ -1,4 +1,4 @@
-export function useLogger(context: string = '') {
+export function useLogger(context = '') {
     function log(message: string, ...optionalParams: unknown[]) {
         console.log(`[LOG] [${context}] ${message}`, ...optionalParams)
     }
