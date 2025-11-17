@@ -2,14 +2,14 @@ import {
     GLOBAL_SEARCH_DEFAULT_OPTIONS,
     GlobalSearchPluginSettingsSymbol,
     GlobalSearchPluginSymbol,
-} from './global-search.constants.ts'
+} from '@/shared/libs/global-search/lib/global-search.constants.ts'
 import type {
     GlobalSearchEventTypes,
     GlobalSearchOpenParams,
     IGlobalSearchPluginOptions,
     IGlobalSearchService,
     OpenGlobalSearchHandler,
-} from './global-search.types.ts'
+} from '@/shared/libs/global-search/lib/global-search.types.ts'
 import mitt from 'mitt'
 import { type App } from 'vue'
 
@@ -24,6 +24,9 @@ export const GlobalSearchPluginService = {
             onClose: (handler: () => void) => emitter.on('close', handler),
         })
 
-        app.provide(GlobalSearchPluginSettingsSymbol, { ...GLOBAL_SEARCH_DEFAULT_OPTIONS, ...options })
+        app.provide<IGlobalSearchPluginOptions>(GlobalSearchPluginSettingsSymbol, {
+            ...GLOBAL_SEARCH_DEFAULT_OPTIONS,
+            ...options,
+        })
     },
 }

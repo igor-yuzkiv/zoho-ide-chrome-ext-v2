@@ -1,29 +1,25 @@
 import { inject } from 'vue'
+import { useGlobalSearchSettings } from '@/shared/libs/global-search/lib/composables/useGlobalSearchSettings.ts'
 import { globalSearchIndex } from '@/shared/libs/global-search/lib/global-search-index.ts'
-import {
-    GlobalSearchPluginSettingsSymbol,
-    GlobalSearchPluginSymbol,
-} from '@/shared/libs/global-search/lib/global-search.constants.ts'
+import { GlobalSearchPluginSymbol } from '@/shared/libs/global-search/lib/global-search.constants.ts'
 import type {
     GlobalSearchOpenParams,
-    IGlobalSearchPluginOptions,
     IGlobalSearchService,
 } from '@/shared/libs/global-search/lib/global-search.types.ts'
 
-
 export function useGlobalSearch() {
     const service = inject<IGlobalSearchService>(GlobalSearchPluginSymbol)
-    const pluginOptions = inject<IGlobalSearchPluginOptions>(GlobalSearchPluginSettingsSymbol)
+    const settings = useGlobalSearchSettings()
 
     async function bootstrap(context?: Record<string, unknown>) {
-        if (!pluginOptions?.modules?.length) {
+        if (!settings.modules.value.length) {
             console.warn('No Global Search modules to index.')
             return
         }
 
         globalSearchIndex.clear()
 
-        for (const module of pluginOptions.modules) {
+        for (const module of settings.modules.value) {
             const documents = await module.provideIndexDocuments(context)
             if (!documents.length) {
                 continue
