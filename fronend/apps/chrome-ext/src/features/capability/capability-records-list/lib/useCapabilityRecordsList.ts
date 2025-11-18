@@ -11,7 +11,7 @@ export function useCapabilityRecordsList<T extends ICapabilityEntity>(
         queryKey: [capabilityType, providerId],
         placeholderData: keepPreviousData,
         queryFn: () => selectProviderRecordsQuery<T>(toValue(providerId), toValue(capabilityType)),
-        staleTime: 10 * 60 * 1000, // 2 minutes
+        initialData: [],
     })
 
     return {

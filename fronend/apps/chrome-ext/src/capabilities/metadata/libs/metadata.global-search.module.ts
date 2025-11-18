@@ -49,14 +49,16 @@ export const FieldsGlobalSearchModule: GlobalSearchModule = {
             content: [i.moduleApiName, i.moduleId, i.apiName, i.displayName, i.dataType].join(','),
         }))
     },
-    getNavigationRoute: (document: GlobalSearchDocument) => {
+    getNavigationRoute(document: GlobalSearchDocument) {
         const parts = document.content.split(',')
         const moduleId = parts[1]
-        if (moduleId) {
-            return {
-                name: AppRouteName.workspaceModules,
-                params: { moduleId: moduleId },
-            }
+        if (!moduleId) {
+            return;
+        }
+
+        return {
+            name: AppRouteName.workspaceModules,
+            params: { moduleId: moduleId },
         }
     },
 }

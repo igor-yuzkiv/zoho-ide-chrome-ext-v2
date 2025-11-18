@@ -1,24 +1,28 @@
 <script setup lang="ts">
+import { FunctionIcon, useFunctionsList } from '@/capabilities/function'
 import { useRouteParams } from '@vueuse/router'
+import { ListBox, ListItem } from '@zoho-ide/ui-kit/components'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import { FunctionsListItem, useFunctionsList } from '@/capabilities/function'
-import { CapabilityEntitiesMenu } from '@/features/capability/capability-records-list'
 
 const providerId = useRouteParams<string>('providerId')
 const functions = useFunctionsList(providerId)
 </script>
 
 <template>
-    <CapabilityEntitiesMenu :records="functions.data.value || []">
+    <ListBox class="w-[20rem]" :items="functions.data.value" searchable :searchFields="['displayName']">
         <template #item="{ item }">
-            <FunctionsListItem
-                :fx="item"
+            <ListItem
                 as="router-link"
                 :to="{ name: AppRouteName.workspaceFunctions, params: { providerId, functionId: item.id } }"
-                active-class="app-list-item-active"
-            />
+                :tooltip="`${item.type}: ${item.displayName}`"
+            >
+                <template #icon>
+                    <FunctionIcon :type="item.type" class="shrink-0" />
+                </template>
+                <div class="truncate">{{ item.displayName }}</div>
+            </ListItem>
         </template>
-    </CapabilityEntitiesMenu>
+    </ListBox>
 </template>
 
 <style scoped></style>

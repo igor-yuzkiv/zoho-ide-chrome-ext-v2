@@ -1,25 +1,26 @@
 <script setup lang="ts">
+import type { IModuleMetadataEntity } from '@/capabilities/metadata/metadata.types.ts'
 import { CapabilityType } from '@/config/capabilities.config.ts'
 import { useRouteParams } from '@vueuse/router'
+import { ListBox, ListItem } from '@zoho-ide/ui-kit/components'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import type { IModuleMetadataEntity } from '@/capabilities/metadata/metadata.types.ts'
-import { useCapabilityRecordsList, CapabilityEntitiesMenu, CapabilityEntityListItem } from '@/features/capability/capability-records-list'
+import { useCapabilityRecordsList } from '@/features/capability/capability-records-list'
 
 const providerId = useRouteParams<string>('providerId')
-const modules = useCapabilityRecordsList<IModuleMetadataEntity>(CapabilityType.MODULES, providerId)
+const { data: modules } = useCapabilityRecordsList<IModuleMetadataEntity>(CapabilityType.MODULES, providerId)
 </script>
 
 <template>
-    <CapabilityEntitiesMenu :records="modules.data.value || []">
+    <ListBox class="w-[20rem]" :items="modules" searchable :searchFields="['displayName']">
         <template #item="{ item }">
-            <CapabilityEntityListItem
-                :item="item"
+            <ListItem
+                icon="streamline-sharp:module"
                 as="router-link"
                 :to="{ name: AppRouteName.workspaceModules, params: { providerId, moduleId: item.id } }"
-                active-class="app-list-item-active"
+                :title="item.displayName"
             />
         </template>
-    </CapabilityEntitiesMenu>
+    </ListBox>
 </template>
 
 <style scoped></style>

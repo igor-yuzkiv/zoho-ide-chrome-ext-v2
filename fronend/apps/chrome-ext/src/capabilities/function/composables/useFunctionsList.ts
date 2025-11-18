@@ -9,8 +9,10 @@ export function useFunctionsList<TOrigin extends IEntity = IEntity>(providerId: 
     const { isPending, data } = useQuery<IFunctionEntity<TOrigin>[]>({
         queryKey: [CapabilityType.FUNCTIONS, providerId],
         placeholderData: keepPreviousData,
-        queryFn: () =>
-            selectProviderRecordsQuery<IFunctionEntity<TOrigin>>(toValue(providerId), CapabilityType.FUNCTIONS),
+        queryFn: () => {
+            return selectProviderRecordsQuery<IFunctionEntity<TOrigin>>(toValue(providerId), CapabilityType.FUNCTIONS)
+        },
+        initialData: [],
     })
 
     return {

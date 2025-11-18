@@ -1,25 +1,26 @@
 <script setup lang="ts">
+import type { IWorkflowEntity } from '@/capabilities/workflow/workflow.types.ts'
 import { CapabilityType } from '@/config/capabilities.config.ts'
 import { useRouteParams } from '@vueuse/router'
+import { ListBox, ListItem } from '@zoho-ide/ui-kit/components'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import type { IWorkflowEntity } from '@/capabilities/workflow/workflow.types.ts'
-import { useCapabilityRecordsList, CapabilityEntitiesMenu, CapabilityEntityListItem } from '@/features/capability/capability-records-list'
+import { useCapabilityRecordsList } from '@/features/capability/capability-records-list'
 
 const providerId = useRouteParams<string>('providerId')
-const workflows = useCapabilityRecordsList<IWorkflowEntity>(CapabilityType.WORKFLOWS, providerId)
+const { data: workflows } = useCapabilityRecordsList<IWorkflowEntity>(CapabilityType.WORKFLOWS, providerId)
 </script>
 
 <template>
-    <CapabilityEntitiesMenu :records="workflows.data.value || []">
+    <ListBox class="w-[20rem]" :items="workflows" searchable :searchFields="['displayName']">
         <template #item="{ item }">
-            <CapabilityEntityListItem
-                :item="item"
+            <ListItem
+                icon="mdi:workflow"
                 as="router-link"
                 :to="{ name: AppRouteName.workspaceWorkflows, params: { providerId, workflowId: item.id } }"
-                active-class="app-list-item-active"
+                :title="item.displayName"
             />
         </template>
-    </CapabilityEntitiesMenu>
+    </ListBox>
 </template>
 
 <style scoped></style>
