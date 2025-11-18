@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
 import { defineAsyncComponent } from 'vue'
-import { NoDataMessage } from '@zoho-ide/ui-kit/components'
-import { PageHeader } from '@/shared/components/page-header'
+import { NoDataMessage, PageHeader } from '@zoho-ide/ui-kit/components'
 import { useModuleDetails } from '@/capabilities/metadata'
 import { useModuleFields } from '@/capabilities/metadata/composables/useModuleFields.ts'
 import { useViewMode, ViewModeSelect } from '@/widgets/view-mode'

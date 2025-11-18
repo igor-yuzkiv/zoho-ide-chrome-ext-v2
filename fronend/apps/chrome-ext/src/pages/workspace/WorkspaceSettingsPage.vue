@@ -3,7 +3,7 @@ import { ref, watch } from 'vue'
 import { InputText } from 'primevue'
 import { Button } from 'primevue'
 import { useConfirm, useToast } from 'primevue'
-import { PageHeader } from '@/shared/components/page-header'
+import { PageHeader } from '@zoho-ide/ui-kit/components'
 import { useCurrentProvider } from '@/entities/provider/composables/useCurrentProvider.ts'
 
 const toast = useToast()
