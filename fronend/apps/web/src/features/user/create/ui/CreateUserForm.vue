@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { InputText, Password } from 'primevue'
 import { FieldContainer } from '@/shared/components/form'
-import type { CreateUserFromData } from '@/entities/user/model/user.types.ts'
+import type { CreateUserRequestPayload } from '@zoho-ide/backend-api/entities/user'
 import { defaultCreateUserFormData } from '@/features/user/create/lib/create-user.defaults.ts'
 
 const props = withDefaults(
@@ -12,16 +12,16 @@ const props = withDefaults(
     { isLoading: false, formErrors: () => ({}) }
 )
 
-const formData = defineModel<CreateUserFromData>('form-data', { default: defaultCreateUserFormData })
+const formData = defineModel<CreateUserRequestPayload>('form-data', { default: defaultCreateUserFormData })
 
-function handleFieldChange(field: keyof CreateUserFromData, value: unknown) {
+function handleFieldChange(field: keyof CreateUserRequestPayload, value: unknown) {
     formData.value = {
         ...formData.value,
         [field]: value,
     }
 }
 
-function getFieldErrors(field: keyof CreateUserFromData): string[] | undefined {
+function getFieldErrors(field: keyof CreateUserRequestPayload): string[] | undefined {
     return props.formErrors ? props.formErrors[field] : undefined
 }
 </script>

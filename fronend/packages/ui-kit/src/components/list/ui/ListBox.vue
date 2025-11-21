@@ -45,7 +45,6 @@ const getItemSearchValue = (item: T): string => {
 
 const mapItem = (item: T) => {
     const title = item[props.itemTitle] as string
-    console.log(getItemSearchValue(item))
 
     return {
         original: item,

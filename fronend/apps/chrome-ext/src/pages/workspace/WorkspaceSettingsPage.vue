@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import { PageHeader } from '@zoho-ide/ui-kit/components'
+import { useToast } from '@zoho-ide/ui-kit/composables'
 import { ref, watch } from 'vue'
 import { InputText } from 'primevue'
 import { Button } from 'primevue'
-import { useConfirm, useToast } from 'primevue'
-import { PageHeader } from '@zoho-ide/ui-kit/components'
+import { useConfirm } from 'primevue'
 import { useCurrentProvider } from '@/entities/provider/composables/useCurrentProvider.ts'
 
 const toast = useToast()
@@ -22,7 +23,7 @@ function handleSave() {
 
 function handleClearCache() {
     if (!isOnline.value) {
-        toast.add({ severity: 'warn', summary: 'Warning', detail: 'Cannot clear cache while provider offline', life: 3000 })
+        toast.warn({ detail: 'Cannot clear cache while provider offline' })
         return
     }
 

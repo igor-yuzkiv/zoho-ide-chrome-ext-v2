@@ -47,8 +47,6 @@ async function regular(
         data: { functions: [payload] },
     })
 
-    console.log(response)
-
     if (!response.ok) {
         return response
     }

@@ -93,7 +93,7 @@ export function useCapabilitiesCacheManager() {
 
             //TODO: remove mock data saving after testing
             if (import.meta.env.VITE_COLLECT_MOCK_DATA === 'true') {
-                console.log('[useProviderCacheBootstrap] COLLECTING MOCK DATA FOR', {
+                console.warn('[useProviderCacheBootstrap] COLLECTING MOCK DATA FOR', {
                     provider: provider.id,
                     capability: cap.type,
                 })

@@ -1,21 +1,20 @@
-import { useMutation, useQueryClient } from '@tanstack/vue-query'
+import { useMutation, useQueryClient } from '@tanstack/vue-query';
+import { createUserRequest, type CreateUserRequestPayload, type IUser, UserQueryKeys } from '@zoho-ide/backend-api/entities/user';
+import { useToast } from '@zoho-ide/ui-kit/composables'
 import { ref } from 'vue'
 import { ApiError } from '@/shared/api/api.error.ts'
-import { useToast } from '@/shared/composables/useToast.ts'
-import { createUserRequest } from '@/entities/user/api'
-import { UserKeys } from '@/entities/user/model/user.keys.ts'
-import type { CreateUserFromData, IUser } from '@/entities/user/model/user.types.ts'
-import { defaultCreateUserFormData } from '@/features/user/create/lib/create-user.defaults.ts'
+import { defaultCreateUserFormData } from '@/features/user/create/lib/create-user.defaults.ts';
+
 
 export function useCreateUser() {
-    const formData = ref<CreateUserFromData>(defaultCreateUserFormData())
+    const formData = ref<CreateUserRequestPayload>(defaultCreateUserFormData())
     const queryClient = useQueryClient()
     const toast = useToast()
     const formErrors = ref<Record<string, string[]>>({})
 
-    const { mutate, isPending } = useMutation<IUser, ApiError | Error, CreateUserFromData>({
+    const { data, isSuccess, mutate, isPending } = useMutation<IUser, ApiError | Error, CreateUserRequestPayload>({
         mutationFn: (data) => createUserRequest(data),
-        onSuccess: () => queryClient.invalidateQueries({ queryKey: UserKeys.all }).catch(console.error),
+        onSuccess: () => queryClient.invalidateQueries({ queryKey: UserQueryKeys.all }).catch(console.error),
         onError: (error) => {
             let errorMessage = 'An unexpected error occurred. Please try again.'
 
@@ -38,6 +37,8 @@ export function useCreateUser() {
 
     return {
         formData,
+        data,
+        isSuccess,
         isPending,
         submit,
         formErrors,

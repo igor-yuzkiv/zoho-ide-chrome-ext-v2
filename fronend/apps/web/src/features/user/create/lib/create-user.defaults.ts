@@ -1,8 +1,8 @@
-import type { CreateUserFromData } from "@/entities/user/model/user.types.ts";
+import type { CreateUserRequestPayload } from '@zoho-ide/backend-api/entities/user'
 
-export const defaultCreateUserFormData = (): CreateUserFromData => ({
-    name: "",
-    email: "",
-    password: "",
-    password_confirmation: "",
-});
+export const defaultCreateUserFormData = (): CreateUserRequestPayload => ({
+    name: '',
+    email: '',
+    password: '',
+    password_confirmation: '',
+})
