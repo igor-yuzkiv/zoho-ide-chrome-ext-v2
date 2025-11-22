@@ -33,7 +33,7 @@ function resolveProvidersFromChromeTabs(chromeTabs: BrowserTab[], prev = new Map
             if (!result.ok) {
                 continue
             }
-            const instance = prev.has(result.value.id) ? prev.get(result.value.id)! : result.value
+            const instance = prev.has(result.value.id) ? prev.get(result.value.id) : result.value
 
             instance.tabId = tab.id
             acc.set(instance.id, instance)
@@ -58,7 +58,7 @@ export const useProvidersStore = defineStore('providers', () => {
 
         const normalized = new Map<string, ServiceProvider>()
         for (const sp of cachedProviders.value) {
-            if (sp?.tabId || !tabs.items.has(sp.tabId!)) {
+            if (sp?.tabId || !sp.tabId || !tabs.items.has(sp.tabId)) {
                 sp.tabId = undefined
             }
 

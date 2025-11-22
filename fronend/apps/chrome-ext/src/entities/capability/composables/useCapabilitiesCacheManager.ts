@@ -17,7 +17,7 @@ async function saveFieldsMockData(provider: ServiceProvider, records: IModuleFie
         }
 
         if (record.moduleApiName in acc) {
-            acc[record.moduleApiName]!.push(record)
+            acc[record.moduleApiName].push(record)
         } else {
             acc[record.moduleApiName] = [record]
         }

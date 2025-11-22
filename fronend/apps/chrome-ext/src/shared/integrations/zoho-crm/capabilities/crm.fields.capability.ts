@@ -1,16 +1,13 @@
+import type { IModuleFieldMetadataEntity, IModuleMetadataEntity } from '@/capabilities/metadata/metadata.types.ts'
 import { CapabilityType } from '@/config/capabilities.config.ts'
-import type { PaginatedResult } from '@/shared/types/pagination.types.ts'
-import type { Result } from '@/shared/types/result.types.ts'
 import { assertCrmMetadata } from '@/shared/integrations/zoho-crm/crm.utils.ts'
 import { mapManyCrmFieldsToEntities } from '@/shared/integrations/zoho-crm/mappers/crm.metadata.mapper.ts'
 import fetchCrmModuleFieldsRequest from '@/shared/integrations/zoho-crm/requests/fetch.crm-module-fields.request.ts'
 import type { CrmModuleField, CrmModuleMetadata } from '@/shared/integrations/zoho-crm/types/crm.metadata.types.ts'
-import type { CapabilityPort } from '@/entities/capability/capability.types.ts'
-import type {
-    IModuleFieldMetadataEntity,
-    IModuleMetadataEntity,
-} from '@/capabilities/metadata/metadata.types.ts'
+import type { PaginatedResult } from '@/shared/types/pagination.types.ts'
+import type { Result } from '@/shared/types/result.types.ts'
 import { selectProviderRecordsQuery } from '@/entities/capability/cache'
+import type { CapabilityPort } from '@/entities/capability/capability.types.ts'
 import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
 
 async function fetchModuleFields(
@@ -57,7 +54,13 @@ export function crmFieldsCapabilityPortFactory(provider: ServiceProvider): Resul
                 }
 
                 const fields = await Promise.all(
-                    modules.map((module) => fetchModuleFields(provider.tabId!, metadata.orgId, module.originEntity))
+                    modules.map((module) => {
+                        if (!provider.tabId) {
+                            return Promise.resolve([])
+                        }
+
+                        return fetchModuleFields(provider.tabId, metadata.orgId, module.originEntity)
+                    })
                 ).then((fieldsArrays) => fieldsArrays.flat())
 
                 return {

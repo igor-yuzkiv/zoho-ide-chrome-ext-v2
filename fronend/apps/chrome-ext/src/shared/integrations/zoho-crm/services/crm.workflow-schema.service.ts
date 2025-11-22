@@ -64,7 +64,7 @@ export function stringifyWfCriteriaOrGroup(criteriaOrGroup: Maybe<WfCriteria | W
 export function buildZohoCrmWhenNode(
     whenStatement: WfExecuteWhen,
     position: { x: number; y: number },
-    id: string = 'when'
+    id = 'when'
 ): Node<WfWhenStatementNodeData> {
     const defaultCriteria = 'This rule will execute whenever the trigger event occurs'
 
@@ -89,7 +89,7 @@ export function buildZohoCrmWhenNode(
 export function buildZohoCrmConditionNode(
     condition: WfCondition,
     position: { x: number; y: number },
-    index: number = 1
+    index = 1
 ): Node<WfConditionNodeData> {
     const defaultCriteria = 'No criteria defined'
 
@@ -113,7 +113,7 @@ export function buildWfActionNode(
     action: WfAction,
     position: { x: number; y: number },
     id: string,
-    label: string = 'Action'
+    label = 'Action'
 ): Node<WfActionNodeData> {
     return {
         id,
@@ -127,7 +127,7 @@ export function buildWfActionNode(
     }
 }
 
-function makeEdge(from: string, to: string, label?: string, animated: boolean = true): Edge {
+function makeEdge(from: string, to: string, label?: string, animated = true): Edge {
     return {
         id: `edge-${from}-to-${to}`,
         source: from,
