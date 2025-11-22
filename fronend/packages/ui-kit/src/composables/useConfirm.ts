@@ -7,6 +7,7 @@ export function useConfirm() {
     async function requireAsync(options: Partial<ConfirmationOptions>): Promise<boolean> {
         return new Promise<boolean>((resolve) => {
             baseConfirm.require({
+                header: 'Confirmation',
                 ...options,
                 accept: () => resolve(true),
                 reject: () => resolve(false),

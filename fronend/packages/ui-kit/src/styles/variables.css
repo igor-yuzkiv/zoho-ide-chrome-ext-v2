@@ -3,7 +3,6 @@
     --app-color-secondary: #f7f8fa;
     --app-color-selection: #dfe1e5;
     --theme-border: #e1e1e1;
-    --app-text-secondary: #6b7280;
 
     --p-surface-0: #ffffff;
     --p-surface-50: #f9fafb;
@@ -37,7 +36,6 @@
     --app-color-secondary: #3c3f41;
     --app-color-selection: #2d2d30;
     --theme-border: #515151;
-    --app-text-secondary: #9ca3af;
 }
 
 @theme {

@@ -44,5 +44,5 @@
 }
 
 .app-secondary-text {
-    color: var(--app-text-secondary);
+    @apply text-gray-400;
 }
