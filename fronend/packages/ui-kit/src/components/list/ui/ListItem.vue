@@ -12,18 +12,23 @@ defineProps<{
 
 <template>
     <component
-        class="flex items-center w-full cursor-pointer hover:bg-selection px-1 rounded gap-x-2"
+        class="flex items-center justify-between w-full cursor-pointer hover:bg-selection px-2 rounded"
         :is="as || 'div'"
         v-tooltip="{ value: tooltip || title }"
         active-class="app-list-item-active"
     >
-        <slot name="icon">
-            <Icon v-if="icon" :icon="icon" class="shrink-0"/>
-        </slot>
+        <div class="flex items-center gap-x-2 w-full">
+            <slot name="icon">
+                <Icon v-if="icon" :icon="icon" class="shrink-0" />
+            </slot>
 
-        <slot>
-            <div class="truncate">{{ title }}</div>
-        </slot>
+            <slot>
+                <div class="truncate">{{ title }}</div>
+            </slot>
+        </div>
+        <div class="flex items-center gap-x-2">
+            <slot name="actions" />
+        </div>
     </component>
 </template>
 

@@ -6,4 +6,8 @@ const router = createRouter({
     routes: AppRoutes,
 });
 
+router.onError((error) => {
+    console.log('roter error', error);
+})
+
 export { router };

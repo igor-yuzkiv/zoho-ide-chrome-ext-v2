@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { useValidationErrors } from '@zoho-ide/backend-api/shared/errors/useValidationErrors.ts'
-import type { CreateUserRequestPayload } from '@zoho-ide/backend-api/user'
+import type { UpdateUserRequestPayload } from '@zoho-ide/backend-api/user'
 import { FieldContainer } from '@zoho-ide/ui-kit/components'
 import { computed } from 'vue'
-import { InputText, Password } from 'primevue'
+import { InputText } from 'primevue'
 
 const props = withDefaults(defineProps<{ formErrors?: Record<string, string[]> }>(), { formErrors: () => ({}) })
-const formData = defineModel<CreateUserRequestPayload>('form-data', { required: true })
+const formData = defineModel<UpdateUserRequestPayload>('form-data', { required: true })
 const validationErrors = useValidationErrors(computed(() => props.formErrors))
-const handleFieldChange = (field: keyof CreateUserRequestPayload, value: unknown) => {
+const handleFieldChange = (field: keyof UpdateUserRequestPayload, value: unknown) => {
     formData.value = { ...formData.value, [field]: value }
 }
 </script>
@@ -29,30 +29,8 @@ const handleFieldChange = (field: keyof CreateUserRequestPayload, value: unknown
                 fluid
                 :model-value="formData.email"
                 @update:model-value="handleFieldChange('email', $event)"
-                type="email"
                 :invalid="validationErrors.has('email')"
-            />
-        </FieldContainer>
-
-        <FieldContainer label="Password" input-id="password" :error-message="validationErrors.get('password')">
-            <Password
-                fluid
-                :model-value="formData.password"
-                @update:model-value="handleFieldChange('password', $event)"
-                :invalid="validationErrors.has('password')"
-            />
-        </FieldContainer>
-
-        <FieldContainer
-            label="Password Confirmation"
-            input-id="password_confirmation"
-            :error-message="validationErrors.get('password_confirmation')"
-        >
-            <Password
-                fluid
-                :model-value="formData.password_confirmation"
-                @update:model-value="handleFieldChange('password_confirmation', $event)"
-                :invalid="validationErrors.has('password_confirmation')"
+                type="email"
             />
         </FieldContainer>
     </div>

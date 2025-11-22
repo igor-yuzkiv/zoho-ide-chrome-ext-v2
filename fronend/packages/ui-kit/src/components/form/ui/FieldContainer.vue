@@ -1,17 +1,15 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { IftaLabel, Message } from 'primevue'
-import { computed } from "vue";
 
 const props = defineProps<{
     label: string
     errorMessage?: string | string[]
-    inputId:string,
+    inputId: string
 }>()
 
 const hasErrors = computed(() => {
-    return Array.isArray(props.errorMessage)
-        ? props.errorMessage.length > 0
-        : !!props.errorMessage
+    return Array.isArray(props.errorMessage) ? props.errorMessage.length > 0 : !!props.errorMessage
 })
 
 const message = computed(() => {
@@ -20,16 +18,15 @@ const message = computed(() => {
     }
     return props.errorMessage
 })
-
 </script>
 
 <template>
     <IftaLabel>
         <slot></slot>
         <label :for="inputId">
-            <slot name="label">{{label}}</slot>
+            <slot name="label">{{ label }}</slot>
         </label>
-        <Message v-show="hasErrors" class="ml-1" size="small" variant="simple" severity="error">{{message}}</Message>
+        <Message v-show="hasErrors" class="ml-1" size="small" variant="simple" severity="error">{{ message }}</Message>
     </IftaLabel>
 </template>
 

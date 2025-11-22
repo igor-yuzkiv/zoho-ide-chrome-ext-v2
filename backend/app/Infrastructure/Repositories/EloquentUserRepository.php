@@ -64,4 +64,9 @@ readonly class EloquentUserRepository implements UserRepository
 
         return $this->mapper->makeFromModel($model);
     }
+
+    public function delete(string $userId): bool
+    {
+        return UserModel::where('id', $userId)->delete() > 0;
+    }
 }

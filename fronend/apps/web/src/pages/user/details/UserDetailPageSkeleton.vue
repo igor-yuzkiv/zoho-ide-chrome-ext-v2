@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { useRouteParams } from '@vueuse/router'
-import { PageHeader } from '@zoho-ide/ui-kit/components'
+import { PageHeaderSkeleton } from '@zoho-ide/ui-kit/components'
+import { Skeleton } from 'primevue'
 
-const userId = useRouteParams('id')
 </script>
 
 <template>
     <div class="flex flex-col h-full overflow-hidden w-full gap-1">
-        <PageHeader title="UserDetailsPage"/>
+        <PageHeaderSkeleton />
         <div class="flex flex-col w-full h-full bg-primary p-2 rounded-lg">
-            {{ userId }}
+            <Skeleton width="100%" height="100%" class="rounded-lg" />
         </div>
     </div>
 </template>

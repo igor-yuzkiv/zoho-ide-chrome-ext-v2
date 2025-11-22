@@ -16,6 +16,7 @@ Route::group(
         Route::get('{userId}', 'show')->name('show');
         Route::post('', 'create')->name('create');
         Route::put('{userId}', 'update')->name('update');
+        Route::delete('{userId}', 'delete')->name('delete');
     }
 );
 

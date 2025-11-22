@@ -1,5 +1,18 @@
 export interface IUser extends Record<string, unknown> {
-    id: string;
-    name: string;
-    email: string;
+    id: string
+    name: string
+    email: string
+    acronym: string
+}
+
+export interface CreateUserRequestPayload {
+    name: string
+    email: string
+    password: string
+    password_confirmation: string
+}
+
+export interface UpdateUserRequestPayload {
+    name: string
+    email: string
 }

@@ -12,7 +12,7 @@ const router = useRouter()
 
 watchEffect(() => {
     if (isSuccess.value && newUser.value?.id) {
-        router.push({ name: AppRouteName.userDetails, params: { id: newUser.value.id } })
+        router.push({ name: AppRouteName.userDetails, params: { userId: newUser.value.id } })
     }
 })
 </script>
@@ -24,9 +24,12 @@ watchEffect(() => {
                 <Button label="Create User" text @click="submit" />
             </template>
         </PageHeader>
-        <div class="flex flex-col w-full h-full bg-primary p-2 rounded-lg">
-            <CreateUserForm v-model:form-data="formData" :form-errors="formErrors" />
-        </div>
+        
+        <CreateUserForm
+            class="flex flex-col w-full h-full bg-primary p-2 rounded-lg"
+            v-model:form-data="formData"
+            :form-errors="formErrors"
+        />
     </div>
 </template>
 

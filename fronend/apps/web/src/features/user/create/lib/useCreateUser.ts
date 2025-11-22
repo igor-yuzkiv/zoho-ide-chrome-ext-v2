@@ -3,7 +3,13 @@ import { createUserRequest, type CreateUserRequestPayload, type IUser, UserQuery
 import { useToast } from '@zoho-ide/ui-kit/composables'
 import { ref } from 'vue'
 import { ApiError } from '@zoho-ide/backend-api/index.ts'
-import { defaultCreateUserFormData } from '@/features/user/create/lib/create-user.defaults.ts';
+
+export const defaultCreateUserFormData = (): CreateUserRequestPayload => ({
+    name: '',
+    email: '',
+    password: '',
+    password_confirmation: '',
+})
 
 export function useCreateUser() {
     const formData = ref<CreateUserRequestPayload>(defaultCreateUserFormData())
@@ -13,7 +19,10 @@ export function useCreateUser() {
 
     const { data, isSuccess, mutate, isPending } = useMutation<IUser, ApiError | Error, CreateUserRequestPayload>({
         mutationFn: (data) => createUserRequest(data),
-        onSuccess: () => queryClient.invalidateQueries({ queryKey: UserQueryKeys.all }).catch(console.error),
+        onSuccess: () => {
+            // TODO: invalidate only the specific user keys
+            queryClient.invalidateQueries({ queryKey: UserQueryKeys.all }).catch(console.error)
+        },
         onError: (error) => {
             let errorMessage = 'An unexpected error occurred. Please try again.'
 
@@ -29,7 +38,7 @@ export function useCreateUser() {
         },
     })
 
-    async function submit() {
+    function submit() {
         formErrors.value = {}
         mutate(formData.value)
     }

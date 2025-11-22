@@ -4,7 +4,7 @@ import { fetchUsersRequest, type IUser, UserQueryKeys } from '@zoho-ide/backend-
 
 export function useUsersList() {
     const { isPending, isFetching, data } = useQuery<IUser[]>({
-        queryKey: [...UserQueryKeys.lists()],
+        queryKey: UserQueryKeys.lists(),
         placeholderData: keepPreviousData,
         queryFn: () => fetchUsersRequest().then((r) => r.data),
         initialData: [],

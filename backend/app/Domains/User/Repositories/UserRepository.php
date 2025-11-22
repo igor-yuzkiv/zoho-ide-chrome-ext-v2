@@ -20,4 +20,6 @@ interface UserRepository
     public function find(string $id): ?User;
 
     public function save(SaveUserDto $dto): User;
+
+    public function delete(string $userId): bool;
 }
