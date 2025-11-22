@@ -11,7 +11,7 @@ const { data: users } = useUsersList()
 const { removeUserWithConfirmation } = useDeleteUser()
 const openUserId = useRouteParams('userId')
 
-// TODO: pagination, searching, filtering
+// TODO: pagination, searching, filtering, prevent remove current user
 
 function handleDeleteUser(userId: string, userName: string) {
     removeUserWithConfirmation(userId, userName).then((isRemoved) => {

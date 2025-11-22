@@ -17,6 +17,7 @@ export const useAuthStore = defineStore('backend-api.auth', () => {
 
         const response = await fetchCurrentUserRequest()
         console.log('Fetched current user:', response)
+        //TODO: ...
     }
 
     async function login(email: string, password: string) {

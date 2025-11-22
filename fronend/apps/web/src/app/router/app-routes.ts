@@ -1,5 +1,7 @@
 import type { RouteRecordRaw } from 'vue-router'
 
+//TODO: layouts (auth, default), auth middleware
+
 export const AppRouteName = {
     error: 'error',
     login: 'login',
