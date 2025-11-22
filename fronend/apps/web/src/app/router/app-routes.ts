@@ -3,7 +3,8 @@ import type { RouteRecordRaw } from 'vue-router'
 export const AppRouteName = {
     error: 'error',
     home: 'home',
-    users: 'users.index',
+    users: 'users.group',
+    usersIndex: 'users.index',
     userDetails: 'users.details',
     userCreate: 'users.create',
 }
@@ -17,8 +18,13 @@ export const AppRoutes: RouteRecordRaw[] = [
     {
         name: AppRouteName.users,
         path: '/users',
-        component: () => import('@/pages/user/index/UsersIndexPage.vue'),
+        component: () => import('@/pages/user/UsersLayoutPage.vue'),
         children: [
+            {
+                name: AppRouteName.usersIndex,
+                path: '',
+                component: () => import('@/pages/user/index/UsersIndexPage.vue'),
+            },
             {
                 name: AppRouteName.userCreate,
                 path: 'create',

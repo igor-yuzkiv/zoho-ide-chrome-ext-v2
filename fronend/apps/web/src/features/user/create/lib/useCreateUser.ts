@@ -20,8 +20,7 @@ export function useCreateUser() {
     const { data, isSuccess, mutate, isPending } = useMutation<IUser, ApiError | Error, CreateUserRequestPayload>({
         mutationFn: (data) => createUserRequest(data),
         onSuccess: () => {
-            // TODO: invalidate only the specific user keys
-            queryClient.invalidateQueries({ queryKey: UserQueryKeys.all }).catch(console.error)
+            queryClient.invalidateQueries({ queryKey: UserQueryKeys.lists() }).catch(console.error)
         },
         onError: (error) => {
             let errorMessage = 'An unexpected error occurred. Please try again.'

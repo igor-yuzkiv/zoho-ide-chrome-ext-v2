@@ -17,13 +17,13 @@ const { submit, formData, formErrors } = useUpdateUser(user)
 
 watch(isError, (newValue) => {
     if (newValue) {
-        router.replace({ name: AppRouteName.users })
+        router.replace({ name: AppRouteName.usersIndex })
     }
 })
 </script>
 
 <template>
-    <UserDetailPageSkeleton v-if="!user || isFetching" />
+    <UserDetailPageSkeleton v-if="isFetching" />
     <div v-else class="flex flex-col h-full overflow-hidden w-full gap-1">
         <PageHeader :title="user?.name" :description="user?.email">
             <template #prepend>

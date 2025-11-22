@@ -8,7 +8,7 @@ import { AppRouteName } from '@/app/router/app-routes.ts'
 
 const NAV_ITEMS: TopMenuItem[] = [
     { title: 'Home', route: { name: AppRouteName.home } },
-    { title: 'Users', route: { name: AppRouteName.users } },
+    { title: 'Users', route: { name: AppRouteName.usersIndex } },
 ]
 const appTheme = useAppTheme()
 

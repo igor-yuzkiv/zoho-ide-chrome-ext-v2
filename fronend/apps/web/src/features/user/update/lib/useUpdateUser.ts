@@ -20,9 +20,9 @@ export function useUpdateUser(user: MaybeRefOrGetter<IUser | undefined>) {
         mutationFn: (payload) => {
             return updateUserRequest(payload.userId, payload.data)
         },
-        onSuccess: () => {
-            // TODO: invalidate only the specific user keys
-            queryClient.invalidateQueries({ queryKey: UserQueryKeys.all }).catch(console.error)
+        onSuccess: ({ id }) => {
+            queryClient.invalidateQueries({ queryKey: UserQueryKeys.lists() }).catch(console.error)
+            queryClient.invalidateQueries({ queryKey: UserQueryKeys.details(id) }).catch(console.error)
         },
         onError: (error) => {
             let errorMessage = 'An unexpected error occurred. Please try again.'
@@ -46,18 +46,15 @@ export function useUpdateUser(user: MaybeRefOrGetter<IUser | undefined>) {
         }
     }
 
-    watch(
-        () => toValue(user),
-        (newValue) => {
-            if (newValue) {
-                formData.value = {
-                    name: newValue.name,
-                    email: newValue.email,
-                }
-            }
+    function resetFormData(partialData?: Partial<UpdateUserRequestPayload>) {
+        const defaultData = defaultUpdateUserFormData()
+        formData.value = {
+            name: partialData?.name ?? defaultData.name,
+            email: partialData?.email ?? defaultData.email,
         }
-    )
+    }
 
+    watch(() => toValue(user), resetFormData, { immediate: true })
     return {
         formData,
         formErrors,
