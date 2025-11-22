@@ -15,7 +15,7 @@ export function mapManyToWorkflowEntity(workflows: ZohoCrmWorkflow[]): IWorkflow
 }
 
 export function assertCrmWorkflowFromEntity(workflow: IWorkflowEntity): ZohoCrmWorkflow | undefined {
-    if (workflow?.originEntity && (workflow.originEntity as ZohoCrmWorkflow).id) {
-        return workflow.originEntity as ZohoCrmWorkflow
-    }
+    return workflow?.originEntity && (workflow.originEntity as ZohoCrmWorkflow).id
+        ? (workflow.originEntity as ZohoCrmWorkflow)
+        : undefined
 }

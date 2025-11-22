@@ -1,12 +1,16 @@
+import type { IWorkflowEntity, WorkflowSchemaBuilder } from '@/capabilities/workflow/workflow.types.ts'
 import { WorkflowSchemaBuilderRegister } from '@/config/workflows.config.ts'
 import type { Edge, Node } from '@vue-flow/core'
-import { ref } from 'vue'
+import { type Ref, ref } from 'vue'
 import { useLogger } from '@/shared/libs/logger/useLogger.ts'
 import type { Maybe } from '@/shared/types/result.types.ts'
-import type { IWorkflowEntity, WorkflowSchemaBuilder } from '@/capabilities/workflow/workflow.types.ts'
 import type { ProviderType } from '@/entities/provider/provider.types.ts'
 
-export function useWorkflowSchema() {
+export function useWorkflowSchema(): {
+    render: (providerType: ProviderType, workflow: IWorkflowEntity) => void
+    nodes: Ref<Node[]>
+    edges: Ref<Edge[]>
+} {
     const logger = useLogger('useWorkflowSchema')
     const nodes = ref<Node[]>([])
     const edges = ref<Edge[]>([])
@@ -38,9 +42,5 @@ export function useWorkflowSchema() {
         edges.value = []
     }
 
-    return {
-        render,
-        nodes,
-        edges,
-    }
+    return { render, nodes, edges }
 }
