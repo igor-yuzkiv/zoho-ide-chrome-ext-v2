@@ -41,6 +41,10 @@
 
 .app-list-item-active {
     @apply bg-blue-700 text-white;
+
+    .app-secondary-text {
+        @apply text-gray-300;
+    }
 }
 
 .app-secondary-text {

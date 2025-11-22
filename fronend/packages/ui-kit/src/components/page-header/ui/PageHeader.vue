@@ -6,7 +6,7 @@ defineProps<{
 </script>
 
 <template>
-    <div class="flex items-center justify-between bg-primary p-1 rounded-lg px-2">
+    <div class="flex items-center justify-between bg-primary p-1 rounded-lg p-2">
         <slot>
             <div class="flex items-center gap-x-1">
                 <slot name="prepend" />
