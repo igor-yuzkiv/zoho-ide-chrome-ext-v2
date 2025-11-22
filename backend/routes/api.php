@@ -1,12 +1,32 @@
 <?php
 
+use App\Api\Http\Controllers\AuthController;
 use App\Api\Http\Controllers\MockApiController;
 use App\Api\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
+/**
+ * Authentication Routes
+ */
 Route::group(
     [
         'middleware' => ['api'],
+        'prefix'     => 'auth',
+        'as'         => 'auth.',
+        'controller' => AuthController::class,
+    ],
+    function () {
+        Route::post('login', 'login')->name('login');
+        Route::post('me', 'me')->name('me')->middleware('auth:sanctum');
+    }
+);
+
+/**
+ * User Management Routes
+ */
+Route::group(
+    [
+        'middleware' => ['api', 'auth:sanctum'],
         'prefix'     => 'users',
         'as'         => 'users.',
         'controller' => UserController::class,
@@ -20,6 +40,9 @@ Route::group(
     }
 );
 
+/**
+ * Mock API Routes
+ */
 Route::group(
     [
         'middleware' => ['api'],

@@ -35,11 +35,21 @@ abstract class Controller
         return response()->json(['message' => $message], Response::HTTP_NO_CONTENT);
     }
 
-    public function validationErrorResponse(array $errors, string $message = 'Validation Error'): JsonResponse
+    public function serverErrorResponse(string $message = 'Internal Server Error'): JsonResponse
+    {
+        return response()->json(['message' => $message], Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
+
+    public function validationErrorResponse(string $message = 'Validation Error', array $errors = []): JsonResponse
     {
         return response()->json([
             'message' => $message,
             'errors'  => $errors,
         ], Response::HTTP_UNPROCESSABLE_ENTITY);
+    }
+
+    public function unauthorizedResponse(string $message = 'Unauthorized'): JsonResponse
+    {
+        return response()->json(['message' => $message], Response::HTTP_UNAUTHORIZED);
     }
 }

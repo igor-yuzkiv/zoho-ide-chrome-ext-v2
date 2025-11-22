@@ -2,6 +2,7 @@ import type { RouteRecordRaw } from 'vue-router'
 
 export const AppRouteName = {
     error: 'error',
+    login: 'login',
     home: 'home',
     users: 'users.group',
     usersIndex: 'users.index',
@@ -14,6 +15,11 @@ export const AppRoutes: RouteRecordRaw[] = [
         name: AppRouteName.home,
         path: '/',
         component: () => import('@/pages/home/HomePage.vue'),
+    },
+    {
+        name: AppRouteName.login,
+        path: '/login',
+        component: () => import('@/pages/login/LoginPage.vue'),
     },
     {
         name: AppRouteName.users,
