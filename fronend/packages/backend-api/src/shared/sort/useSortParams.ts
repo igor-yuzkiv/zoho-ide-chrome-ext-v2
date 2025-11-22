@@ -1,5 +1,5 @@
+import type { SortParams } from './sort.types.ts'
 import { computed, ref } from 'vue'
-import type { SortParams } from '@/shared/types/sort.types.ts'
 
 export function useSortParams() {
     const sortBy = ref<string | null>(null)

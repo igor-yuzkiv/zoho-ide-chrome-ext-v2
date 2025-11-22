@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { InputText, Password } from 'primevue'
 import { FieldContainer } from '@/shared/components/form'
-import type { CreateUserRequestPayload } from '@zoho-ide/backend-api/entities/user'
+import type { CreateUserRequestPayload } from '@zoho-ide/backend-api/user'
 import { defaultCreateUserFormData } from '@/features/user/create/lib/create-user.defaults.ts'
 
 const props = withDefaults(

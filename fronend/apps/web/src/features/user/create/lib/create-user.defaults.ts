@@ -1,4 +1,4 @@
-import type { CreateUserRequestPayload } from '@zoho-ide/backend-api/entities/user'
+import type { CreateUserRequestPayload } from '@zoho-ide/backend-api/user'
 
 export const defaultCreateUserFormData = (): CreateUserRequestPayload => ({
     name: '',

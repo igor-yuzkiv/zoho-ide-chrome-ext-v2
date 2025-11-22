@@ -1,7 +1,6 @@
-export * from './lib/api.client.ts';
-export * from './lib/api.error.ts';
-export * from './lib/api.utils.ts';
+export * from './api.client.ts'
+export * from './api.error.ts'
+export * from './api.utils.ts'
 
-export * from './composables';
-
-export * from './entities/user';
+export * from './user'
+export * from './shared'

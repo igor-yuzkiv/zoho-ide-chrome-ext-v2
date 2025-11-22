@@ -1,5 +1,11 @@
 {
     "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@zoho-ide/ui-kit/*": ["packages/ui-kit/src/*"],
+            "@zoho-ide/backend-api/*": ["packages/backend-api/src/*"]
+        },
+
         "composite": true,
         "declarationMap": true,
         "emitDeclarationOnly": true,
@@ -25,5 +31,6 @@
         "noUnusedParameters": true,
         "erasableSyntaxOnly": true,
         "noUncheckedSideEffectImports": true
-    }
+    },
+    "include": ["packages/**/*"]
 }

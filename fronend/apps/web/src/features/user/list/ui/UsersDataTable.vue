@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IUser } from "@zoho-ide/backend-api/entities/user";
+import type { IUser } from "@zoho-ide/backend-api/user";
 import { DataTable, Column } from "primevue";
 
 defineProps<{ users: IUser[] }>();

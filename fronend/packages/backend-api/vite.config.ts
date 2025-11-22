@@ -2,7 +2,6 @@
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin'
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin'
 import vue from '@vitejs/plugin-vue'
-import { fileURLToPath, URL } from 'node:url'
 import * as path from 'path'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
@@ -42,11 +41,5 @@ export default defineConfig(() => ({
             // External packages that should not be bundled into your library.
             external: [],
         },
-    },
-    resolve: {
-        alias: {
-            '@': fileURLToPath(new URL('/src', import.meta.url)),
-        },
-        extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue', '.css'],
     },
 }))
