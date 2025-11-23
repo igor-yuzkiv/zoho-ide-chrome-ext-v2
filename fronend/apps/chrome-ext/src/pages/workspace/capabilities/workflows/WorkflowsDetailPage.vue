@@ -42,7 +42,7 @@ const viewMode = useViewMode(
 
         <div
             v-if="viewMode.currentComponent.value"
-            class="flex h-full w-full flex-col overflow-auto bg-primary rounded-lg"
+            class="flex h-full w-full flex-col overflow-auto app-card"
         >
             <component
                 :is="viewMode.currentComponent.value"
@@ -54,7 +54,7 @@ const viewMode = useViewMode(
 
     <NoDataMessage
         v-else
-        class="h-full w-full bg-primary rounded-lg"
+        class="h-full w-full app-card"
         title="Workflow Not Selected"
         message="Select a workflow to view its details"
     />

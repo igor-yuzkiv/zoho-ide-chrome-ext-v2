@@ -50,7 +50,7 @@ onMounted(async () => {
             <div class="flex h-full overflow-hidden shrink-0">
                 <CapabilitiesMenu :providerId="providerId" :capabilities="providerCapabilities" />
 
-                <div class="flex flex-col w-full h-full overflow-hidden bg-primary rounded-lg">
+                <div class="flex flex-col w-full h-full overflow-hidden app-card">
                     <router-view name="menu" />
                 </div>
             </div>

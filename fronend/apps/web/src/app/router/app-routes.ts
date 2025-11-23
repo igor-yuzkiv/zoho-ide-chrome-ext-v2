@@ -1,4 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router'
+import AuthLayout from '@/app/layouts/AuthLayout.vue'
 
 //TODO: layouts (auth, default), auth middleware
 
@@ -22,6 +23,9 @@ export const AppRoutes: RouteRecordRaw[] = [
         name: AppRouteName.login,
         path: '/login',
         component: () => import('@/pages/login/LoginPage.vue'),
+        meta: {
+            layout: AuthLayout,
+        },
     },
     {
         name: AppRouteName.users,

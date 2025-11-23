@@ -8,7 +8,7 @@ const providersStore = useProvidersStore()
 
 <template>
     <div class="flex h-full w-full items-center justify-center overflow-hidden px-2 p-1">
-        <div class="flex w-full h-full items-center justify-center bg-primary rounded-lg">
+        <div class="flex w-full h-full items-center justify-center app-card">
             <div class="flex flex-col p-3 h-3/4">
                 <div class="flex flex-col">
                     <div class="flex items-center gap-x-2 text-4xl">

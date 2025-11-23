@@ -41,7 +41,7 @@ watch(isError, (newValue) => {
             </template>
         </PageHeader>
 
-        <div class="flex flex-col w-full h-full bg-primary p-2 rounded-lg">
+        <div class="flex flex-col w-full h-full app-card p-2">
             <UpdateUserForm v-model:form-data="formData" :form-errors="formErrors" />
         </div>
     </div>

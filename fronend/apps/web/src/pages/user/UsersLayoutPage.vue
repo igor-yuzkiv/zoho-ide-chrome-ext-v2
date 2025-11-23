@@ -24,9 +24,9 @@ function handleDeleteUser(userId: string, userName: string) {
 </script>
 
 <template>
-    <div class="flex h-full w-full overflow-hidden gap-2 p-1">
+    <div class="flex h-full w-full overflow-hidden gap-2">
         <ListBox
-            class="shrink-0 bg-primary p-2 rounded-lg w-lg"
+            class="shrink-0 app-card w-lg px-2"
             :items="users"
             searchable
             :search-fields="['name', 'email']"

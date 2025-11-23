@@ -2,7 +2,7 @@
 
 <template>
     <div class="flex items-center justify-center w-full h-full">
-        <div class="flex w-full h-full items-center justify-center bg-primary rounded-lg">
+        <div class="flex w-full h-full items-center justify-center app-card">
             <h1>home</h1>
         </div>
     </div>

@@ -50,3 +50,8 @@
 .app-secondary-text {
     @apply text-gray-400;
 }
+
+.app-card {
+    @apply border bg-primary rounded-lg;
+    border-color: var(--theme-border);
+}

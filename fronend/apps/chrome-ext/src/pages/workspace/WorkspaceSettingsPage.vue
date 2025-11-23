@@ -48,7 +48,7 @@ watch(currentProvider, (newProvider) => (providerTitle.value = newProvider?.titl
             </template>
         </PageHeader>
 
-        <div class="flex h-full w-full flex-col overflow-hidden p-2 bg-primary rounded-lg">
+        <div class="flex h-full w-full flex-col overflow-hidden p-2 app-card">
             <div class="flex flex-col">
                 <label for="provider_title" class="font-bold block mb-2">Provider Name</label>
                 <InputText fluid id="provider_title" placeholder="Provider Name" v-model="providerTitle" />

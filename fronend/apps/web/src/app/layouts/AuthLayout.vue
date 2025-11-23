@@ -1,0 +1,18 @@
+<script setup lang="ts">
+import { ToggleThemeButton } from '@zoho-ide/ui-kit/components'
+import { useAppTheme } from '@zoho-ide/ui-kit/composables'
+
+const appTheme = useAppTheme()
+</script>
+
+<template>
+    <div class="relative bg-secondary flex h-screen w-full flex-col overflow-hidden">
+        <div class="absolute top-2 right-2">
+            <ToggleThemeButton :is-dark="appTheme.isDark.value" @click="appTheme.toggle()" />
+        </div>
+
+        <slot></slot>
+    </div>
+</template>
+
+<style scoped></style>

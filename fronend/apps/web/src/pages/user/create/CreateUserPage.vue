@@ -26,7 +26,7 @@ watchEffect(() => {
         </PageHeader>
         
         <CreateUserForm
-            class="flex flex-col w-full h-full bg-primary p-2 rounded-lg"
+            class="flex flex-col w-full h-full p-2 app-card"
             v-model:form-data="formData"
             :form-errors="formErrors"
         />
