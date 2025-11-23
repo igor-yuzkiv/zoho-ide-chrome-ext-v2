@@ -17,7 +17,7 @@ Route::group(
     ],
     function () {
         Route::post('login', 'login')->name('login');
-        Route::post('me', 'me')->name('me')->middleware('auth:sanctum');
+        Route::get('me', 'me')->name('me')->middleware('auth:sanctum');
     }
 );
 

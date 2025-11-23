@@ -14,4 +14,4 @@ app.use(router)
 registerUiKitPlugins(app)
 registerAppPlugins(app)
 
-app.mount('#root')
+router.isReady().then(() => app.mount('#root'))

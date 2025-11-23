@@ -1,7 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router'
-import AuthLayout from '@/app/layouts/AuthLayout.vue'
-
-//TODO: layouts (auth, default), auth middleware
+import { AppLayout } from '@/app/layouts/app.layout.config.ts'
 
 export const AppRouteName = {
     error: 'error',
@@ -15,22 +13,23 @@ export const AppRouteName = {
 
 export const AppRoutes: RouteRecordRaw[] = [
     {
-        name: AppRouteName.home,
-        path: '/',
-        component: () => import('@/pages/home/HomePage.vue'),
-    },
-    {
         name: AppRouteName.login,
         path: '/login',
         component: () => import('@/pages/login/LoginPage.vue'),
-        meta: {
-            layout: AuthLayout,
-        },
+        meta: { layout: AppLayout.auth },
+    },
+
+    {
+        name: AppRouteName.home,
+        path: '/',
+        component: () => import('@/pages/home/HomePage.vue'),
+        meta: { authenticated: true },
     },
     {
         name: AppRouteName.users,
         path: '/users',
         component: () => import('@/pages/user/UsersLayoutPage.vue'),
+        meta: { authenticated: true },
         children: [
             {
                 name: AppRouteName.usersIndex,

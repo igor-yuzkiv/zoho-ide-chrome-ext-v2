@@ -2,6 +2,10 @@ import { ApiError } from './api.error.ts'
 import { TOKEN_LOCAL_STORAGE_KEY } from './auth/auth.config.ts'
 import axios from 'axios'
 
+function getAuthToken(): string | null {
+    return localStorage.getItem(TOKEN_LOCAL_STORAGE_KEY) || null
+}
+
 export const apiClient = axios.create({
     baseURL: '/api',
     withCredentials: true,
@@ -14,7 +18,7 @@ export const apiClient = axios.create({
 })
 
 apiClient.interceptors.request.use((config) => {
-    const token = localStorage.getItem(TOKEN_LOCAL_STORAGE_KEY)
+    const token = getAuthToken()
     if (token) {
         config.headers.Authorization = `Bearer ${token}`
     }

@@ -4,21 +4,12 @@ import { fetchCurrentUserRequest } from './requests/fetch.current-user.request.t
 import { loginRequest } from './requests/login.request.ts'
 import { useStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 export const useAuthStore = defineStore('backend-api.auth', () => {
     const user = ref<IUser | null>(null)
     const token = useStorage<string | undefined>(TOKEN_LOCAL_STORAGE_KEY, undefined)
-
-    async function loadCurrentUser() {
-        if (!token.value) {
-            throw new Error('No token found')
-        }
-
-        const response = await fetchCurrentUserRequest()
-        console.log('Fetched current user:', response)
-        //TODO: ...
-    }
+    const isAuthenticated = computed(() => !!token.value)
 
     async function login(email: string, password: string) {
         const response = await loginRequest(email, password)
@@ -30,5 +21,33 @@ export const useAuthStore = defineStore('backend-api.auth', () => {
         user.value = response.data
     }
 
-    return { user, login, loadCurrentUser }
+    function logout() {
+        user.value = null
+        token.value = undefined
+    }
+
+    async function ensureUser() {
+        if (user.value) {
+            return
+        }
+
+        if (!token.value) {
+            throw new Error('No token found')
+        }
+
+        const response = await fetchCurrentUserRequest().then((res) => res.data)
+        if (!response) {
+            throw new Error('Failed to fetch current user')
+        }
+
+        user.value = response
+    }
+
+    return {
+        user,
+        isAuthenticated,
+        login,
+        logout,
+        ensureUser,
+    }
 })
