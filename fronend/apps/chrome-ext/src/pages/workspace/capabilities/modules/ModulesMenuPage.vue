@@ -11,7 +11,7 @@ const { data: modules } = useCapabilityRecordsList<IModuleMetadataEntity>(Capabi
 </script>
 
 <template>
-    <ListBox class="w-[20rem]" :items="modules" searchable :searchFields="['displayName']">
+    <ListBox :items="modules" searchable :searchFields="['displayName']">
         <template #item="{ item }">
             <ListItem
                 icon="streamline-sharp:module"

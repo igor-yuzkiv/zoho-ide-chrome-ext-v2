@@ -11,7 +11,7 @@ const { data: workflows } = useCapabilityRecordsList<IWorkflowEntity>(Capability
 </script>
 
 <template>
-    <ListBox class="w-[20rem]" :items="workflows" searchable :searchFields="['displayName']">
+    <ListBox :items="workflows" searchable :searchFields="['displayName']">
         <template #item="{ item }">
             <ListItem
                 icon="mdi:workflow"

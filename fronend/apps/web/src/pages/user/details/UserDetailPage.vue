@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import UserDetailPageSkeleton from '@/pages/user/details/UserDetailPageSkeleton.vue'
 import { useRouteParams } from '@vueuse/router'
 import { PageHeader } from '@zoho-ide/ui-kit/components'
 import { watch } from 'vue'
@@ -12,7 +11,7 @@ import { useUpdateUser } from '@/features/user/update/lib/useUpdateUser.ts'
 
 const router = useRouter()
 const userId = useRouteParams<string>('userId')
-const { data: user, isError, isFetching } = useUserDetails(userId)
+const { data: user, isError } = useUserDetails(userId)
 const { submit, formData, formErrors } = useUpdateUser(user)
 
 watch(isError, (newValue) => {
@@ -23,8 +22,7 @@ watch(isError, (newValue) => {
 </script>
 
 <template>
-    <UserDetailPageSkeleton v-if="isFetching" />
-    <div v-else class="flex flex-col h-full overflow-hidden w-full gap-1">
+    <div class="flex flex-col h-full overflow-hidden w-full gap-1">
         <PageHeader :title="user?.name" :description="user?.email">
             <template #prepend>
                 <Avatar

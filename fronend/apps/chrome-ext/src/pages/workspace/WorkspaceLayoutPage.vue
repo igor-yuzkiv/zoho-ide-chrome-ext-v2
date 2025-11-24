@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import { useCapabilitiesConfig } from '@/entities/capability/composables/useCapabilitiesConfig.ts'
-import { useCapabilitiesCacheManager } from '@/entities/capability/composables/useCapabilitiesCacheManager.ts'
-import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.ts'
 import { useRouteParams } from '@vueuse/router'
 import { computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import Splitter from 'primevue/splitter'
+import SplitterPanel from 'primevue/splitterpanel'
 import { GlobalSearchDialog, useGlobalSearch } from '@/shared/libs/global-search'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { useAppStateStore } from '@/app/store/useAppStateStore.ts'
+import { useCapabilitiesCacheManager } from '@/entities/capability/composables/useCapabilitiesCacheManager.ts'
+import { useCapabilitiesConfig } from '@/entities/capability/composables/useCapabilitiesConfig.ts'
+import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.ts'
 import { CapabilitiesMenu } from '@/features/capability/capabilities-menu'
 
 const router = useRouter()
@@ -46,19 +48,21 @@ onMounted(async () => {
 
 <template>
     <div v-if="provider" class="flex h-full w-full flex-col overflow-hidden">
-        <div class="flex h-full w-full overflow-hidden gap-x-1 p-1">
-            <div class="flex h-full overflow-hidden shrink-0">
+        <Splitter
+            class="flex h-full w-full overflow-hidden bg-transparent"
+            :pt="{ gutter: { class: 'bg-transparent' } }"
+        >
+            <SplitterPanel class="flex h-full overflow-hidden" :size="1" style="min-width: 10rem">
                 <CapabilitiesMenu :providerId="providerId" :capabilities="providerCapabilities" />
 
                 <div class="flex flex-col w-full h-full overflow-hidden app-card">
                     <router-view name="menu" />
                 </div>
-            </div>
-
-            <div class="flex flex-col w-full h-full overflow-hidden">
+            </SplitterPanel>
+            <SplitterPanel class="flex flex-col w-full h-full overflow-hidden">
                 <router-view />
-            </div>
-        </div>
+            </SplitterPanel>
+        </Splitter>
     </div>
 
     <GlobalSearchDialog />

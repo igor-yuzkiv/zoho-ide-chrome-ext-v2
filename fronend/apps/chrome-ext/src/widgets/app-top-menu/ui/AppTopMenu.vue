@@ -34,9 +34,7 @@ const navItems = computed<TopMenuItem[]>(() => {
 </script>
 
 <template>
-    <div class="relative flex w-full shrink-0 justify-between overflow-hidden pt-1 px-1">
-        <TopMenu :items="navItems" />
-
+    <TopMenu :items="navItems" class="relative">
         <div
             @click="globalSearch.open()"
             class="fixed left-[45%] cursor-pointer flex items-center justify-center gap-x-2 bg-primary border rounded-lg w-64 hover:bg-gray-100 dark:hover:bg-black/60 text-sm dark:text-gray-300"
@@ -46,11 +44,13 @@ const navItems = computed<TopMenuItem[]>(() => {
             <div class="truncate">{{ currentProvider?.title || 'Search' }}</div>
         </div>
 
-        <div class="flex items-center gap-x-1 pr-2 hover:underline cursor-pointer">
-            <div>Igor Yuzkiv</div>
-            <Icon class="text-2xl" :icon="'mdi:account-circle'" />
-        </div>
-    </div>
+        <template #right-content>
+            <div class="flex items-center gap-x-1 pr-2 hover:underline cursor-pointer">
+                <div>Igor Yuzkiv</div>
+                <Icon class="text-2xl" :icon="'mdi:account-circle'" />
+            </div>
+        </template>
+    </TopMenu>
 </template>
 
 <style scoped></style>

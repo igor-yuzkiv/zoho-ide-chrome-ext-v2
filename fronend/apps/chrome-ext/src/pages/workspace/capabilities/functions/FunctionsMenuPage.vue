@@ -9,7 +9,7 @@ const functions = useFunctionsList(providerId)
 </script>
 
 <template>
-    <ListBox class="w-[20rem]" :items="functions.data.value" searchable :searchFields="['displayName']">
+    <ListBox :items="functions.data.value" searchable :searchFields="['displayName']">
         <template #item="{ item }">
             <ListItem
                 as="router-link"
