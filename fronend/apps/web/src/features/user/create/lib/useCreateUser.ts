@@ -1,8 +1,9 @@
-import { useMutation, useQueryClient } from '@tanstack/vue-query';
-import { createUserRequest, type CreateUserRequestPayload, type IUser, UserQueryKeys } from '@zoho-ide/backend-api/user';
+import { useMutation, useQueryClient } from '@tanstack/vue-query'
+import { ApiError } from '@zoho-ide/backend-api/index.ts'
+import { createUserRequest, type CreateUserRequestPayload, UserQueryKeys } from '@zoho-ide/backend-api/user'
+import type { IUser } from '@zoho-ide/shared/entities/user'
 import { useToast } from '@zoho-ide/ui-kit/composables'
 import { ref } from 'vue'
-import { ApiError } from '@zoho-ide/backend-api/index.ts'
 
 export const defaultCreateUserFormData = (): CreateUserRequestPayload => ({
     name: '',

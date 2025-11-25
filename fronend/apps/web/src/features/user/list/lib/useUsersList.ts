@@ -1,6 +1,6 @@
 import { keepPreviousData, useQuery } from '@tanstack/vue-query';
-import { fetchUsersRequest, type IUser, UserQueryKeys } from '@zoho-ide/backend-api/user'
-
+import { fetchUsersRequest, UserQueryKeys } from '@zoho-ide/backend-api/user'
+import type { IUser } from '@zoho-ide/shared/entities/user'
 
 export function useUsersList() {
     const { isPending, isFetching, data } = useQuery<IUser[]>({

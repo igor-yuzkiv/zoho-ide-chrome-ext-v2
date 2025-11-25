@@ -2,8 +2,16 @@
     "extends": "./tsconfig.json",
     "compilerOptions": {
         "outDir": "../../dist/out-tsc",
-        "types": ["vite/client"]
+        "baseUrl": "./",
+        "types": ["vite/client"],
+        "paths": {
+            "@zoho-ide/shared/*": ["../../packages/shared/src/*"]
+        }
     },
     "exclude": ["src/**/*.spec.ts", "src/**/*.test.ts", "src/**/*.spec.vue", "src/**/*.test.vue"],
-    "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.vue"]
+    "include": [
+        "src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.vue",
+        "../../packages/shared/src"
+    ],
+
 }

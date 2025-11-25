@@ -1,8 +1,9 @@
 import { useMutation, useQueryClient } from '@tanstack/vue-query'
 import { ApiError } from '@zoho-ide/backend-api/api.error.ts'
-import { type IUser, updateUserRequest, type UpdateUserRequestPayload, UserQueryKeys } from '@zoho-ide/backend-api/user'
+import { updateUserRequest, type UpdateUserRequestPayload, UserQueryKeys } from '@zoho-ide/backend-api/user'
 import { useToast } from '@zoho-ide/ui-kit/composables'
 import { type MaybeRefOrGetter, ref, toValue, watch } from 'vue'
+import type { IUser } from '@zoho-ide/shared/entities/user'
 
 export const defaultUpdateUserFormData = (): UpdateUserRequestPayload => ({ name: '', email: '' })
 
