@@ -70,6 +70,7 @@ export function useCapabilitiesCacheManager() {
         )
     }
 
+
     async function bootstrap(provider: ServiceProvider) {
         const caps = capabilities.byProvider(provider)
         if (!caps.length) {

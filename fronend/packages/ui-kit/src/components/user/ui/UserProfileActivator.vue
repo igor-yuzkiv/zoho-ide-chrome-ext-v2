@@ -1,18 +1,25 @@
 <script setup lang="ts">
+import type { Component } from 'vue'
 import { Icon } from '@iconify/vue'
 
-defineProps<{
-    userName?: string
-}>()
+withDefaults(
+    defineProps<{
+        userName?: string
+        as?: string | Component
+    }>(),
+    {
+        as: 'div',
+    }
+)
 </script>
 
 <template>
-    <div class="flex items-center gap-x-1 pr-2 hover:underline cursor-pointer">
+    <component :is="as" class="flex items-center gap-x-1 pr-2 hover:underline cursor-pointer">
         <div>
             {{ userName ? userName : 'Login' }}
         </div>
         <Icon v-if="userName" class="text-2xl" :icon="'mdi:account-circle'" />
-    </div>
+    </component>
 </template>
 
 <style scoped></style>

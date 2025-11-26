@@ -3,6 +3,8 @@ import type { RouteRecordRaw } from 'vue-router'
 export const AppRouteName = {
     error: 'error',
     home: 'home',
+    login: 'auth.login',
+    currentUserProfile: 'auth.user-profile',
     workspace: 'workspace',
     workspaceIndex: 'workspace.index',
     workspaceSettings: 'settings',
@@ -18,6 +20,16 @@ export const AppRoutes: RouteRecordRaw[] = [
         component: () => import('@/pages/home/HomePage.vue'),
     },
     {
+        name: AppRouteName.login,
+        path: '/login',
+        component: () => import('@/pages/auth/LoginPage.vue'),
+    },
+    {
+        name: AppRouteName.currentUserProfile,
+        path: '/my-profile',
+        component: () => import('@/pages/auth/CurrentUserProfilePage.vue'),
+    },
+    {
         name: AppRouteName.workspace,
         path: '/workspace/:providerId',
         component: () => import('@/pages/workspace/WorkspaceLayoutPage.vue'),
@@ -25,11 +37,13 @@ export const AppRoutes: RouteRecordRaw[] = [
             {
                 name: AppRouteName.workspaceIndex,
                 path: '',
+                meta: { hideMenu: true },
                 component: () => import('@/pages/workspace/WorkspaceIndexPage.vue'),
             },
             {
                 name: AppRouteName.workspaceSettings,
                 path: 'settings',
+                meta: { hideMenu: true },
                 component: () => import('@/pages/workspace/WorkspaceSettingsPage.vue'),
             },
             {

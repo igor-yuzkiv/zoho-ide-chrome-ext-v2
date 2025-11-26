@@ -4,6 +4,16 @@
         "outDir": "../../dist/out-tsc",
         "types": ["vite/client"],
         "baseUrl": "./",
+        "paths": {
+            "@zoho-ide/shared/*": ["../../packages/shared/src/*"]
+        }
     },
-    "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
+    "include": [
+        "src/**/*.js",
+        "src/**/*.jsx",
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "src/**/*.vue",
+        "../../packages/shared/src"
+    ]
 }

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { TopMenu } from '@zoho-ide/ui-kit/components'
+import { useAuthStore } from '@zoho-ide/backend-api/auth'
+import { TopMenu, UserProfile } from '@zoho-ide/ui-kit/components'
 import type { TopMenuItem } from '@zoho-ide/ui-kit/components'
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
@@ -7,6 +8,7 @@ import { useGlobalSearch } from '@/shared/libs/global-search'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { useCurrentProvider } from '@/entities/provider/composables/useCurrentProvider.ts'
 
+const authStore = useAuthStore()
 const globalSearch = useGlobalSearch()
 const { data: currentProvider } = useCurrentProvider()
 
@@ -45,10 +47,11 @@ const navItems = computed<TopMenuItem[]>(() => {
         </div>
 
         <template #right-content>
-            <div class="flex items-center gap-x-1 pr-2 hover:underline cursor-pointer">
-                <div>Igor Yuzkiv</div>
-                <Icon class="text-2xl" :icon="'mdi:account-circle'" />
-            </div>
+            <UserProfile
+                :user="authStore.user"
+                :login-route="{ name: AppRouteName.login }"
+                :profile-route="{ name: AppRouteName.currentUserProfile }"
+            />
         </template>
     </TopMenu>
 </template>

@@ -8,6 +8,7 @@ import { defineConfig, loadEnv } from 'vite'
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '')
+    console.log('Vite mode:', {mode, api: env.VITE_API_BASE_URL})
 
     return {
         root: __dirname,
@@ -18,7 +19,7 @@ export default defineConfig(({ mode }) => {
             host: 'localhost',
             proxy: {
                 '/api': {
-                    target: env.VITE_API_BASE_URL,
+                    target: env.VITE_API_PROXY_URL,
                     changeOrigin: true,
                     secure: false,
                     rewrite: (path) => path.replace(/^\/api/, ''),

@@ -11,6 +11,8 @@ import { AppTopMenu } from '@/widgets/app-top-menu'
 import Toast from 'primevue/toast'
 import ConfirmDialog from 'primevue/confirmdialog'
 import { useAppTheme } from '@zoho-ide/ui-kit/composables'
+import { useAuthStore } from '@zoho-ide/backend-api/auth'
+const authStore = useAuthStore()
 
 const appState = useAppStateStore()
 const tabs = useBrowserTabsStore()
@@ -25,6 +27,7 @@ onMounted(async () => {
         appState.showLoadingOverlay()
         providersStore.bootstrap()
         await tabs.bootstrap()
+        await authStore.ensureUser().catch(console.error)
     } catch (e) {
         console.error(e)
         router.push({ name: AppRouteName.error }).catch(console.error)

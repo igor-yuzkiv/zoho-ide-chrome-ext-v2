@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
 import { computed, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import Splitter from 'primevue/splitter'
 import SplitterPanel from 'primevue/splitterpanel'
 import { GlobalSearchDialog, useGlobalSearch } from '@/shared/libs/global-search'
@@ -13,6 +13,7 @@ import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.t
 import { CapabilitiesMenu } from '@/features/capability/capabilities-menu'
 
 const router = useRouter()
+const route = useRoute();
 const appState = useAppStateStore()
 const providers = useProvidersStore()
 const capabilities = useCapabilitiesConfig()
@@ -47,14 +48,14 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div v-if="provider" class="flex h-full w-full flex-col overflow-hidden">
+    <div v-if="provider" class="flex h-full w-full overflow-hidden">
+        <CapabilitiesMenu :providerId="providerId" :capabilities="providerCapabilities" />
+
         <Splitter
             class="flex h-full w-full overflow-hidden bg-transparent"
             :pt="{ gutter: { class: 'bg-transparent' } }"
         >
-            <SplitterPanel class="flex h-full overflow-hidden" :size="1" style="min-width: 10rem">
-                <CapabilitiesMenu :providerId="providerId" :capabilities="providerCapabilities" />
-
+            <SplitterPanel v-if="!route.meta?.hideMenu" class="flex h-full overflow-hidden" :size="1" style="min-width: 10rem; max-width: 50rem;">
                 <div class="flex flex-col w-full h-full overflow-hidden app-card">
                     <router-view name="menu" />
                 </div>

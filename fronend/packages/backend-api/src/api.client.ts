@@ -7,7 +7,7 @@ function getAuthToken(): string | null {
 }
 
 export const apiClient = axios.create({
-    baseURL: '/api',
+    baseURL: import.meta.env.VITE_API_BASE_URL,
     withCredentials: true,
     withXSRFToken: true,
     headers: {

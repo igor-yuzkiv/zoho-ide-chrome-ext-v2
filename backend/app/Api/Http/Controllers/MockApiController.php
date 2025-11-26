@@ -27,5 +27,7 @@ class MockApiController
         $request->validate(['data' => 'required|array']);
         $jsonData = json_encode($request->input('data'), JSON_PRETTY_PRINT);
         Storage::disk(self::DISK)->put(sprintf('%s/%s.json', self::DIRECTORY, $fileName), $jsonData);
+
+        return response()->json(['message' => 'Data saved successfully.'], 201);
     }
 }
