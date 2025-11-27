@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useAuthStore } from '@zoho-ide/backend-api/auth'
-import type { TopMenuItem } from '@zoho-ide/ui-kit/components'
+import { type TopMenuItem, UserProfile } from '@zoho-ide/ui-kit/components'
 import { ToggleThemeButton, TopMenu } from '@zoho-ide/ui-kit/components'
 import { useAppTheme } from '@zoho-ide/ui-kit/composables'
-import { Icon } from '@iconify/vue'
+import { useRouter } from 'vue-router'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 
 const NAV_ITEMS: TopMenuItem[] = [
@@ -13,16 +13,23 @@ const NAV_ITEMS: TopMenuItem[] = [
 
 const appTheme = useAppTheme()
 const authStore = useAuthStore()
+const router = useRouter()
+
+function handleClickSignIn() {
+    router.push({ name: AppRouteName.login })
+}
+
+function handleSignOut() {
+    authStore.logout()
+    router.push({ name: AppRouteName.login })
+}
 </script>
 
 <template>
     <div class="bg-secondary flex h-screen w-full flex-col overflow-hidden">
         <TopMenu :items="NAV_ITEMS">
             <template #right-content>
-                <div v-if="authStore.user" class="flex items-center gap-x-1 pr-2 hover:underline cursor-pointer">
-                    <div>{{ authStore.user.name }}</div>
-                    <Icon class="text-2xl" :icon="'mdi:account-circle'" />
-                </div>
+                <UserProfile :user="authStore.user" @sign-in="handleClickSignIn" @sign-out="handleSignOut" />
             </template>
         </TopMenu>
 

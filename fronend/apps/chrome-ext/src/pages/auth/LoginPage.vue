@@ -18,16 +18,17 @@ async function handleClickSubmit(data: { email: string; password: string }) {
         router.push({ name: AppRouteName.home }).catch(() => {})
     } catch (error) {
         errorMessage.value = error instanceof ApiError ? error.displayMessage : 'Login failed. Please try again.'
-    }
-    finally {
+    } finally {
         isLoading.value = false
     }
 }
 </script>
 
 <template>
-    <div class="flex items-center justify-center w-full h-full">
-        <LoginForm @submit="handleClickSubmit" :is-loading="isLoading" :error-message />
+    <div class="flex h-full w-full items-center justify-center overflow-hidden px-2 p-1">
+        <div class="flex w-full h-full items-center justify-center app-card">
+            <LoginForm class="w-lg" @submit="handleClickSubmit" :is-loading="isLoading" :error-message />
+        </div>
     </div>
 </template>
 

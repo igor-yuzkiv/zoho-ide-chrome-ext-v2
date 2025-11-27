@@ -27,7 +27,7 @@ async function handleClickSubmit(data: { email: string; password: string }) {
 
 <template>
     <div class="flex items-center justify-center w-full h-full">
-        <LoginForm @submit="handleClickSubmit" :is-loading="isLoading" :error-message />
+        <LoginForm class="bg-primary p-4 rounded-lg w-lg" @submit="handleClickSubmit" :is-loading="isLoading" :error-message />
     </div>
 </template>
 

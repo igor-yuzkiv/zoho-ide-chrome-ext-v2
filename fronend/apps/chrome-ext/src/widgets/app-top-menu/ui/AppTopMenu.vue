@@ -3,12 +3,14 @@ import { useAuthStore } from '@zoho-ide/backend-api/auth'
 import { TopMenu, UserProfile } from '@zoho-ide/ui-kit/components'
 import type { TopMenuItem } from '@zoho-ide/ui-kit/components'
 import { computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { Icon } from '@iconify/vue'
 import { useGlobalSearch } from '@/shared/libs/global-search'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { useCurrentProvider } from '@/entities/provider/composables/useCurrentProvider.ts'
 
 const authStore = useAuthStore()
+const router = useRouter()
 const globalSearch = useGlobalSearch()
 const { data: currentProvider } = useCurrentProvider()
 
@@ -33,6 +35,15 @@ const navItems = computed<TopMenuItem[]>(() => {
         },
     ])
 })
+
+function handleClickSignIn() {
+    router.push({ name: AppRouteName.login })
+}
+
+function handleSignOut() {
+    authStore.logout()
+    router.push({ name: AppRouteName.login })
+}
 </script>
 
 <template>
@@ -47,11 +58,7 @@ const navItems = computed<TopMenuItem[]>(() => {
         </div>
 
         <template #right-content>
-            <UserProfile
-                :user="authStore.user"
-                :login-route="{ name: AppRouteName.login }"
-                :profile-route="{ name: AppRouteName.currentUserProfile }"
-            />
+            <UserProfile :user="authStore.user" @sign-in="handleClickSignIn" @sign-out="handleSignOut" />
         </template>
     </TopMenu>
 </template>

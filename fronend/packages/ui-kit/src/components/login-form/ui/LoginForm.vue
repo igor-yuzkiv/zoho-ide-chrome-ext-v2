@@ -31,7 +31,7 @@ function handleClickSignIn() {
 </script>
 
 <template>
-    <div class="flex flex-col bg-primary p-4 rounded-lg w-lg">
+    <div class="flex flex-col">
         <h1 class="text-2xl font-bold">Sign In</h1>
 
         <div class="flex flex-col gap-2 mt-5">
