@@ -4,7 +4,6 @@ export const AppRouteName = {
     error: 'error',
     home: 'home',
     login: 'auth.login',
-    currentUserProfile: 'auth.user-profile',
     workspace: 'workspace',
     workspaceIndex: 'workspace.index',
     workspaceSettings: 'settings',
@@ -22,12 +21,7 @@ export const AppRoutes: RouteRecordRaw[] = [
     {
         name: AppRouteName.login,
         path: '/login',
-        component: () => import('@/pages/auth/LoginPage.vue'),
-    },
-    {
-        name: AppRouteName.currentUserProfile,
-        path: '/my-profile',
-        component: () => import('@/pages/auth/CurrentUserProfilePage.vue'),
+        component: () => import('@/pages/login/LoginPage.vue'),
     },
     {
         name: AppRouteName.workspace,

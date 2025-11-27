@@ -1,0 +1,46 @@
+<?php
+
+namespace App\Infrastructure\Models;
+
+use Illuminate\Database\Eloquent\Concerns\HasUlids;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+
+class KnowledgeBaseItemModel extends Model
+{
+    use HasUlids;
+
+    protected $table = 'knowledge_base_items';
+
+    public $incrementing = false;
+
+    protected $fillable = [
+        'id',
+        'title',
+        'content',
+        'parent_id',
+        'created_by',
+        'updated_by',
+    ];
+
+    public function parent(): HasOne
+    {
+        return $this->hasOne(KnowledgeBaseItemModel::class, 'parent_id');
+    }
+
+    public function children(): HasMany
+    {
+        return $this->hasMany(KnowledgeBaseItemModel::class, 'parent_id');
+    }
+
+    public function createdBy(): HasOne
+    {
+        return $this->hasOne(UserModel::class, 'created_by');
+    }
+
+    public function updatedBy(): HasOne
+    {
+        return $this->hasOne(UserModel::class, 'updated_by');
+    }
+}

@@ -9,6 +9,12 @@ export const AppRouteName = {
     usersIndex: 'users.index',
     userDetails: 'users.details',
     userCreate: 'users.create',
+
+    /**
+     * Knowledge Base
+     */
+    kbIndex: 'kb.index',
+    kbNewArticle: 'kb.article.new',
 }
 
 export const AppRoutes: RouteRecordRaw[] = [
@@ -25,6 +31,14 @@ export const AppRoutes: RouteRecordRaw[] = [
         component: () => import('@/pages/home/HomePage.vue'),
         meta: { authenticated: true },
     },
+
+    {
+        name: AppRouteName.kbIndex,
+        path: '/knowledge-base',
+        component: () => import('@/pages/knowledge-base/KnowledgeBaseIndexPage.vue'),
+        meta: { authenticated: true },
+    },
+
     {
         name: AppRouteName.users,
         path: '/users',

@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-    User Profile Page
+    ArticleForm
 </template>
 
 <style scoped></style>
