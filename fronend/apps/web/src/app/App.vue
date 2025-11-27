@@ -2,16 +2,26 @@
 import { useAppTheme } from '@zoho-ide/ui-kit/composables'
 import ConfirmDialog from 'primevue/confirmdialog'
 import Toast from 'primevue/toast'
-import { useAppLayouts } from '@/app/layouts'
+import { useRoute } from 'vue-router'
+import { computed } from 'vue'
+import { AppLayoutComponent } from '@/app/layouts/app-layouts.config.ts'
 
-const { layoutComponent } = useAppLayouts()
+const route = useRoute()
+
+const layoutComponent = computed(() => {
+    const layoutName = route.meta?.layout
+    if (layoutName && layoutName in AppLayoutComponent) {
+        return AppLayoutComponent[layoutName]
+    }
+
+    return AppLayoutComponent.default
+})
+
 useAppTheme().initialize()
 </script>
 
 <template>
-    <component :is="layoutComponent">
-        <router-view />
-    </component>
+    <component :is="layoutComponent" />
 
     <Toast />
     <ConfirmDialog />

@@ -11,7 +11,7 @@ const appTheme = useAppTheme()
             <ToggleThemeButton :is-dark="appTheme.isDark.value" @click="appTheme.toggle()" />
         </div>
 
-        <slot></slot>
+        <router-view />
     </div>
 </template>
 

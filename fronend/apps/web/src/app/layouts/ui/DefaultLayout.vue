@@ -3,7 +3,9 @@ import { useAuthStore } from '@zoho-ide/backend-api/auth'
 import { type TopMenuItem, UserProfile } from '@zoho-ide/ui-kit/components'
 import { ToggleThemeButton, TopMenu } from '@zoho-ide/ui-kit/components'
 import { useAppTheme } from '@zoho-ide/ui-kit/composables'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
+import Splitter from 'primevue/splitter'
+import SplitterPanel from 'primevue/splitterpanel'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 
 const NAV_ITEMS: TopMenuItem[] = [
@@ -15,6 +17,7 @@ const NAV_ITEMS: TopMenuItem[] = [
 const appTheme = useAppTheme()
 const authStore = useAuthStore()
 const router = useRouter()
+const route = useRoute()
 
 function handleClickSignIn() {
     router.push({ name: AppRouteName.login })
@@ -35,7 +38,24 @@ function handleSignOut() {
         </TopMenu>
 
         <main class="flex h-full w-full flex-col overflow-hidden px-2">
-            <slot />
+            <Splitter
+                class="flex h-full w-full overflow-hidden bg-transparent"
+                :pt="{ gutter: { class: 'bg-transparent' } }"
+            >
+                <SplitterPanel
+                    v-if="!route.meta?.hideSidebarMenu"
+                    class="flex h-full overflow-hidden"
+                    :size="5"
+                    style="min-width: 10rem; max-width: 50rem"
+                >
+                    <div class="flex flex-col w-full h-full overflow-hidden app-card">
+                        <router-view name="menu" />
+                    </div>
+                </SplitterPanel>
+                <SplitterPanel class="flex flex-col w-full h-full overflow-hidden">
+                    <router-view />
+                </SplitterPanel>
+            </Splitter>
         </main>
 
         <div class="flex items-center justify-end py-1 px-2">
