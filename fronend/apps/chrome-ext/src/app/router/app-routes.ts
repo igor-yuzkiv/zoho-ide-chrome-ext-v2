@@ -1,4 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router'
+import { AppLayout } from '@/app/layouts/app-layouts.config.ts'
 
 export const AppRouteName = {
     error: 'error',
@@ -16,55 +17,53 @@ export const AppRoutes: RouteRecordRaw[] = [
     {
         name: AppRouteName.home,
         path: '/',
+        meta: { hideSidebarMenu: true },
         component: () => import('@/pages/home/HomePage.vue'),
     },
     {
         name: AppRouteName.login,
         path: '/login',
+        meta: { hideSidebarMenu: true, hideTopbar: true },
         component: () => import('@/pages/login/LoginPage.vue'),
     },
     {
-        name: AppRouteName.workspace,
+        name: AppRouteName.workspaceIndex,
         path: '/workspace/:providerId',
-        component: () => import('@/pages/workspace/WorkspaceLayoutPage.vue'),
-        children: [
-            {
-                name: AppRouteName.workspaceIndex,
-                path: '',
-                meta: { hideMenu: true },
-                component: () => import('@/pages/workspace/WorkspaceIndexPage.vue'),
-            },
-            {
-                name: AppRouteName.workspaceSettings,
-                path: 'settings',
-                meta: { hideMenu: true },
-                component: () => import('@/pages/workspace/WorkspaceSettingsPage.vue'),
-            },
-            {
-                name: AppRouteName.workspaceFunctions,
-                path: 'capabilities/functions/:functionId?',
-                components: {
-                    default: () => import('@/pages/workspace/capabilities/functions/FunctionsDetailPage.vue'),
-                    menu: () => import('@/pages/workspace/capabilities/functions/FunctionsMenuPage.vue'),
-                },
-            },
-            {
-                name: AppRouteName.workspaceWorkflows,
-                path: 'capabilities/workflows/:workflowId?',
-                components: {
-                    default: () => import('@/pages/workspace/capabilities/workflows/WorkflowsDetailPage.vue'),
-                    menu: () => import('@/pages/workspace/capabilities/workflows/WorkflowsMenuPage.vue'),
-                },
-            },
-            {
-                name: AppRouteName.workspaceModules,
-                path: 'capabilities/modules/:moduleId?',
-                components: {
-                    default: () => import('@/pages/workspace/capabilities/modules/ModulesDetailPage.vue'),
-                    menu: () => import('@/pages/workspace/capabilities/modules/ModulesMenuPage.vue'),
-                },
-            },
-        ],
+        meta: { hideSidebarMenu: true, layout: AppLayout.workspace },
+        component: () => import('@/pages/workspace/WorkspaceIndexPage.vue'),
+    },
+    {
+        name: AppRouteName.workspaceSettings,
+        path: '/workspace/:providerId/settings',
+        meta: { hideSidebarMenu: true, layout: AppLayout.workspace },
+        component: () => import('@/pages/workspace/settings/WorkspaceSettingsPage.vue'),
+    },
+    {
+        name: AppRouteName.workspaceFunctions,
+        path: '/workspace/:providerId/capabilities/functions/:functionId?',
+        meta: { hideSidebarMenu: false, layout: AppLayout.workspace },
+        components: {
+            default: () => import('@/pages/workspace/functions/FunctionsDetailPage.vue'),
+            menu: () => import('@/pages/workspace/functions/FunctionsMenuPage.vue'),
+        },
+    },
+    {
+        name: AppRouteName.workspaceWorkflows,
+        path: '/workspace/:providerId/capabilities/workflows/:workflowId?',
+        meta: { hideSidebarMenu: false, layout: AppLayout.workspace },
+        components: {
+            default: () => import('@/pages/workspace/workflows/WorkflowsDetailPage.vue'),
+            menu: () => import('@/pages/workspace/workflows/WorkflowsMenuPage.vue'),
+        },
+    },
+    {
+        name: AppRouteName.workspaceModules,
+        path: '/workspace/:providerId/capabilities/modules/:moduleId?',
+        meta: { hideSidebarMenu: false, layout: AppLayout.workspace },
+        components: {
+            default: () => import('@/pages/workspace/modules/ModulesDetailPage.vue'),
+            menu: () => import('@/pages/workspace/modules/ModulesMenuPage.vue'),
+        },
     },
     {
         name: AppRouteName.error,

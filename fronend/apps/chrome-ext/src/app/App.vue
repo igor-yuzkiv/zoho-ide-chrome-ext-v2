@@ -1,27 +1,37 @@
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue'
-import { useRouter } from 'vue-router'
+import { useAuthStore } from '@zoho-ide/backend-api/auth'
 import { LoadingOverlay } from '@zoho-ide/ui-kit/components'
+import { useAppTheme } from '@zoho-ide/ui-kit/composables'
+import { computed, onMounted, ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import ConfirmDialog from 'primevue/confirmdialog'
+import Toast from 'primevue/toast'
 import { useBrowserTabsStore } from '@/shared/libs/browser/store/useBrowserTabsStore.ts'
+import { AppLayoutComponent } from '@/app/layouts/app-layouts.config.ts'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { useAppStateStore } from '@/app/store/useAppStateStore.ts'
 import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.ts'
-import { AppFooter } from '@/widgets/app-footer'
-import { AppTopMenu } from '@/widgets/app-top-menu'
-import Toast from 'primevue/toast'
-import ConfirmDialog from 'primevue/confirmdialog'
-import { useAppTheme } from '@zoho-ide/ui-kit/composables'
-import { useAuthStore } from '@zoho-ide/backend-api/auth'
+
 const authStore = useAuthStore()
 
 const appState = useAppStateStore()
 const tabs = useBrowserTabsStore()
 const providersStore = useProvidersStore()
 const router = useRouter()
+const route = useRoute()
 const isInitialized = ref(false)
 
+const layoutComponent = computed(() => {
+    const layoutName = route.meta?.layout
+    if (layoutName && layoutName in AppLayoutComponent) {
+        return AppLayoutComponent[layoutName]
+    }
+
+    return AppLayoutComponent.default
+})
+
 watch(() => tabs.items, providersStore.handleChangeBrowserTabs)
-useAppTheme().initialize();
+useAppTheme().initialize()
 onMounted(async () => {
     try {
         appState.showLoadingOverlay()
@@ -39,17 +49,9 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="relative bg-secondary flex h-screen w-full flex-col overflow-hidden">
-        <AppTopMenu />
+    <component v-if="isInitialized" :is="layoutComponent" />
 
-        <main v-if="isInitialized" class="flex h-full w-full flex-col overflow-hidden">
-            <router-view />
-        </main>
-
-        <AppFooter />
-    </div>
-
-    <LoadingOverlay v-if="appState.loadingOverlay" />
+    <LoadingOverlay v-if="appState.loadingOverlay || !isInitialized" />
     <Toast />
     <ConfirmDialog />
 </template>

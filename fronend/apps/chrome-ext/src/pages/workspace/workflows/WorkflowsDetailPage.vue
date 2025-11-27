@@ -17,14 +17,14 @@ const viewMode = useViewMode(
             value: 'json',
             icon: 'si:json-duotone',
             component: defineAsyncComponent(
-                () => import('@/capabilities/workflow/components/detail-view/WorkflowJsonView.vue')
+                () => import('../../../capabilities/workflow/components/detail-view/WorkflowJsonView.vue')
             ),
         },
         {
             value: 'schema',
             icon: 'material-symbols:schema',
             component: defineAsyncComponent(
-                () => import('@/capabilities/workflow/components/detail-view/WorkflowSchemaView.vue')
+                () => import('../../../capabilities/workflow/components/detail-view/WorkflowSchemaView.vue')
             ),
         },
     ],

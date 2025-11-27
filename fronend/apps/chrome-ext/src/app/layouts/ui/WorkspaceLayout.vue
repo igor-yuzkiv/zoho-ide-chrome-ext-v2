@@ -11,9 +11,11 @@ import { useCapabilitiesCacheManager } from '@/entities/capability/composables/u
 import { useCapabilitiesConfig } from '@/entities/capability/composables/useCapabilitiesConfig.ts'
 import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.ts'
 import { CapabilitiesMenu } from '@/features/capability/capabilities-menu'
+import { AppFooter } from '@/widgets/app-footer'
+import { AppTopMenu } from '@/widgets/app-top-menu'
 
 const router = useRouter()
-const route = useRoute();
+const route = useRoute()
 const appState = useAppStateStore()
 const providers = useProvidersStore()
 const capabilities = useCapabilitiesConfig()
@@ -48,22 +50,33 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div v-if="provider" class="flex h-full w-full overflow-hidden">
-        <CapabilitiesMenu :providerId="providerId" :capabilities="providerCapabilities" />
+    <div class="relative bg-secondary flex h-screen w-full flex-col overflow-hidden">
+        <AppTopMenu />
 
-        <Splitter
-            class="flex h-full w-full overflow-hidden bg-transparent"
-            :pt="{ gutter: { class: 'bg-transparent' } }"
-        >
-            <SplitterPanel v-if="!route.meta?.hideMenu" class="flex h-full overflow-hidden" :size="1" style="min-width: 10rem; max-width: 50rem;">
-                <div class="flex flex-col w-full h-full overflow-hidden app-card">
-                    <router-view name="menu" />
-                </div>
-            </SplitterPanel>
-            <SplitterPanel class="flex flex-col w-full h-full overflow-hidden">
-                <router-view />
-            </SplitterPanel>
-        </Splitter>
+        <main v-if="provider" class="flex h-full w-full overflow-hidden">
+            <CapabilitiesMenu :providerId="providerId" :capabilities="providerCapabilities" />
+
+            <Splitter
+                class="flex h-full w-full overflow-hidden bg-transparent"
+                :pt="{ gutter: { class: 'bg-transparent' } }"
+            >
+                <SplitterPanel
+                    v-if="!route.meta?.hideSidebarMenu"
+                    class="flex h-full overflow-hidden"
+                    :size="5"
+                    style="min-width: 10rem; max-width: 50rem"
+                >
+                    <div class="flex flex-col w-full h-full overflow-hidden app-card">
+                        <router-view name="menu" />
+                    </div>
+                </SplitterPanel>
+                <SplitterPanel class="flex flex-col w-full h-full overflow-hidden">
+                    <router-view />
+                </SplitterPanel>
+            </Splitter>
+        </main>
+
+        <AppFooter />
     </div>
 
     <GlobalSearchDialog />

@@ -17,12 +17,12 @@ const viewMode = useViewMode(
         {
             value: 'json',
             icon: 'si:json-duotone',
-            component: defineAsyncComponent(() => import('@/capabilities/metadata/components/detail-view/ModuleJsonView.vue')),
+            component: defineAsyncComponent(() => import('../../../capabilities/metadata/components/detail-view/ModuleJsonView.vue')),
         },
         {
             value: 'table',
             icon: 'material-symbols:table-sharp',
-            component: defineAsyncComponent(() => import('@/capabilities/metadata/components/detail-view/ModuleTableView.vue')),
+            component: defineAsyncComponent(() => import('../../../capabilities/metadata/components/detail-view/ModuleTableView.vue')),
         },
     ],
     'table'
