@@ -17,6 +17,17 @@ readonly class EloquentKnowledgeBaseItemRepository implements KnowledgeBaseItemR
         return Str::ulid();
     }
 
+    public function find(string $id): ?KnowledgeBaseItem
+    {
+        $model = KnowledgeBaseItemModel::find($id);
+
+        if (!$model) {
+            return null;
+        }
+
+        return $this->mapper->makeFromModel($model);
+    }
+
     public function save(KnowledgeBaseItem $item): KnowledgeBaseItem
     {
         $attributes = $this->mapper->mapToModelAttributes($item);

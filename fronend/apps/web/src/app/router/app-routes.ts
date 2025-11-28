@@ -29,10 +29,21 @@ export const AppRoutes: RouteRecordRaw[] = [
     {
         name: AppRouteName.kbIndex,
         path: '/knowledge-base',
-        component: () => import('@/pages/knowledge-base/KnowledgeBaseIndexPage.vue'),
         meta: { authenticated: true },
+        components: {
+            default: () => import('@/pages/knowledge-base/KnowledgeBaseIndexPage.vue'),
+            menu: () => import('@/pages/knowledge-base/KnowledgeSidebarMenu.vue'),
+        },
     },
-
+    {
+        name: AppRouteName.kbNewArticle,
+        path: '/knowledge-base/new-article',
+        meta: { authenticated: true },
+        components: {
+            default: () => import('@/pages/knowledge-base/articles/CreateArticlePage.vue'),
+            menu: () => import('@/pages/knowledge-base/KnowledgeSidebarMenu.vue'),
+        },
+    },
     {
         name: AppRouteName.usersIndex,
         path: '/users',
@@ -44,7 +55,7 @@ export const AppRoutes: RouteRecordRaw[] = [
     },
     {
         name: AppRouteName.userCreate,
-        path: '/users/create',
+        path: '/users/new-user',
         meta: { authenticated: true },
         components: {
             default: () => import('@/pages/user/create/CreateUserPage.vue'),

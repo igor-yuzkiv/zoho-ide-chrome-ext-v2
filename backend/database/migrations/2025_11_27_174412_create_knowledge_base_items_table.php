@@ -18,11 +18,14 @@ return new class extends Migration
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
 
-            $table->foreign('parent_id')->references('id')->on('knowledge_base_items')->onDelete('cascade');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('set null');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('set null');
 
             $table->timestamps();
+        });
+
+        Schema::table('knowledge_base_items', function (Blueprint $table) {
+            $table->foreign('parent_id')->references('id')->on('knowledge_base_items')->onDelete('cascade');
         });
     }
 

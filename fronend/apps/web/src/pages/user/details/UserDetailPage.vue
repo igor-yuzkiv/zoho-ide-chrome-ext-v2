@@ -5,9 +5,7 @@ import { watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { Avatar, Button } from 'primevue'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import { useUserDetails } from '@/features/user/details/lib/useUserDetails.ts'
-import { UpdateUserForm } from '@/features/user/update'
-import { useUpdateUser } from '@/features/user/update/lib/useUpdateUser.ts'
+import { useUpdateUser, UpdateUserForm, useUserDetails } from '@/features/user'
 
 const router = useRouter()
 const userId = useRouteParams<string>('userId')

@@ -1,6 +1,6 @@
 import { apiClient } from '../../api.client.ts'
 import type { PagingParams, PagingResponse, SortParams } from '../../shared'
-import type { IUser } from '../user.types.ts'
+import type { IUser } from '@zoho-ide/shared/entities/user'
 
 export async function fetchUsersRequest(
     paging: PagingParams = { page: 1, per_page: 15 },

@@ -3,6 +3,7 @@
 .md-editor-dark,
 .md-editor-modal-container[data-theme='dark'] {
     --md-color: #fff;
+    --md-bk-color: #232323;
 }
 
 .md-editor-previewOnly {

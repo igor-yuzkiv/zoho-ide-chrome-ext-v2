@@ -1,4 +1,4 @@
-import type { IEntity } from '@/shared/types/entitiy.types.ts'
+import type { IEntity } from '@zoho-ide/shared/types'
 import type { ICapabilityEntity } from '@/entities/capability/capability.types.ts'
 
 export interface IModuleMetadataEntity<TOrigin extends IEntity = IEntity> extends ICapabilityEntity {

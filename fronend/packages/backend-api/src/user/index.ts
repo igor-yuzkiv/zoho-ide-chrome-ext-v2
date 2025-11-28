@@ -1,5 +1,5 @@
-export * from './user.types.ts'
-export * from './user.keys.ts'
+export * from './types.ts'
+export * from './keys.ts'
 
 export * from './requests/create.user.request.ts'
 export * from './requests/update.user.request.ts'

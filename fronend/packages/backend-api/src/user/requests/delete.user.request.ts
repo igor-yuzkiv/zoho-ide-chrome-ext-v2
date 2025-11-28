@@ -1,7 +1,5 @@
 import { apiClient } from '../../api.client.ts'
 
-export type DeleteUserByIdResponse = { status: boolean }
-
-export async function deleteUserByIdRequest(userId: string): Promise<DeleteUserByIdResponse> {
+export async function deleteUserByIdRequest(userId: string): Promise<{ status: boolean }> {
     return apiClient.delete(`/users/${userId}`).then((response) => response.data)
 }

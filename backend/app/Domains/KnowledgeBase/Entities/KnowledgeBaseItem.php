@@ -11,9 +11,9 @@ class KnowledgeBaseItem
         public string $title,
         public ?string $content,
         public ?string $parentId,
-        public ?string $createdBy,
-        public ?string $updatedBy,
-        public Carbon $createdAt,
-        public ?Carbon $updatedAt,
+        public ?string $createdBy = null,
+        public ?string $updatedBy = null,
+        public ?Carbon $createdAt = null,
+        public ?Carbon $updatedAt = null,
     ) {}
 }

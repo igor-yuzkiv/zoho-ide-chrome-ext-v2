@@ -4,8 +4,7 @@ import { useAuthStore } from '@zoho-ide/backend-api/auth'
 import { IconButton, ListBox, ListItem } from '@zoho-ide/ui-kit/components'
 import { useRouter } from 'vue-router'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import { useDeleteUser } from '@/features/user/delete'
-import { useUsersList } from '@/features/user/list'
+import { useDeleteUser, useUsersList } from '@/features/user'
 
 const router = useRouter()
 const { data: users } = useUsersList()

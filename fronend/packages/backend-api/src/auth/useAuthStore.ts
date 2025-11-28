@@ -1,4 +1,4 @@
-import { type IUser } from '../user'
+import { type IUser } from '@zoho-ide/shared/entities/user'
 import { TOKEN_LOCAL_STORAGE_KEY } from './auth.config.ts'
 import { fetchCurrentUserRequest } from './requests/fetch.current-user.request.ts'
 import { loginRequest } from './requests/login.request.ts'

@@ -1,9 +1,26 @@
 <?php
 
 use App\Api\Http\Controllers\AuthController;
+use App\Api\Http\Controllers\KnowledgeBaseController;
 use App\Api\Http\Controllers\MockApiController;
 use App\Api\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
+/**
+ * Mock API Routes
+ */
+Route::group(
+    [
+        'middleware' => ['api'],
+        'prefix'     => 'mock',
+        'as'         => 'mock.',
+        'controller' => MockApiController::class,
+    ],
+    function () {
+        Route::get('{fileName}', 'get')->name('get');
+        Route::post('{fileName}', 'create')->name('create');
+    }
+);
 
 /**
  * Authentication Routes
@@ -41,17 +58,17 @@ Route::group(
 );
 
 /**
- * Mock API Routes
+ * Knowledge Base Routes
  */
 Route::group(
     [
-        'middleware' => ['api'],
-        'prefix'     => 'mock',
-        'as'         => 'mock.',
-        'controller' => MockApiController::class,
+        'middleware' => ['api', 'auth:sanctum'],
+        'prefix'     => 'knowledge-base/items',
+        'as'         => 'knowledge_base.items.',
+        'controller' => KnowledgeBaseController::class,
     ],
     function () {
-        Route::get('{fileName}', 'get')->name('get');
-        Route::post('{fileName}', 'create')->name('create');
+        Route::post('', 'create')->name('create');
+        Route::put('{itemId}', 'update')->name('update');
     }
 );

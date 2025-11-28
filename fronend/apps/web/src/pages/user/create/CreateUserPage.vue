@@ -4,8 +4,7 @@ import { watchEffect } from 'vue'
 import { useRouter } from 'vue-router'
 import { Button } from 'primevue'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import { useCreateUser } from '@/features/user/create'
-import CreateUserForm from '@/features/user/create/ui/CreateUserForm.vue'
+import { useCreateUser, CreateUserForm } from '@/features/user'
 
 const { formData, formErrors, submit, data: newUser, isSuccess } = useCreateUser()
 const router = useRouter()

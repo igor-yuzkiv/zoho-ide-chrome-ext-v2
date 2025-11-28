@@ -11,8 +11,8 @@ use Illuminate\Support\ServiceProvider;
 class RepositoryServiceProvider extends ServiceProvider
 {
     private const REGISTER = [
-        UserRepository::class => EloquentUserRepository::class,
-        KnowledgeBaseItemRepository::class, EloquentKnowledgeBaseItemRepository::class,
+        UserRepository::class              => EloquentUserRepository::class,
+        KnowledgeBaseItemRepository::class => EloquentKnowledgeBaseItemRepository::class,
     ];
 
     public function register(): void

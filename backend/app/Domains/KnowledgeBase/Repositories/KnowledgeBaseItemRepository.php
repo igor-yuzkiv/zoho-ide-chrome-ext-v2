@@ -8,5 +8,7 @@ interface KnowledgeBaseItemRepository
 {
     public function nextIdentifier(): string;
 
+    public function find(string $id): ?KnowledgeBaseItem;
+
     public function save(KnowledgeBaseItem $item): KnowledgeBaseItem;
 }

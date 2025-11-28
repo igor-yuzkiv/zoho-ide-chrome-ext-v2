@@ -1,7 +1,7 @@
 import { CapabilityType } from '@/config/capabilities.config.ts'
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
 import { type MaybeRef, toValue } from 'vue'
-import type { IEntity } from '@/shared/types/entitiy.types.ts'
+import type { IEntity } from '@zoho-ide/shared/types'
 import type { IFunctionEntity } from '@/capabilities/function/function.types.ts'
 import { selectProviderRecordsQuery } from '@/entities/capability/cache'
 
