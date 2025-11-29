@@ -6,7 +6,7 @@ import {
     type SaveKbItemRequestPayload,
     updateKbItemRequest,
 } from '@zoho-ide/knowledge-base/index.ts'
-import { useToast } from '@zoho-ide/ui-kit/composables'
+import { useToast } from '@zoho-ide/shared/composables'
 import { type MaybeRefOrGetter, ref, toValue, watch } from 'vue'
 
 const defaultCreateKbItemFormData = (): SaveKbItemRequestPayload => ({

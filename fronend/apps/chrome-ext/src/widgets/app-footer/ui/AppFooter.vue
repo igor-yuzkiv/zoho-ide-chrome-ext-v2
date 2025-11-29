@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { IconButton, ToggleThemeButton } from '@zoho-ide/ui-kit/components'
-import { useAppTheme } from '@zoho-ide/ui-kit/composables'
+import { useAppTheme } from '@zoho-ide/shared/composables'
 
 const appTheme = useAppTheme()
 </script>

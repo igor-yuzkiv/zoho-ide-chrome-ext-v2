@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/vue-query'
 import { ApiError } from '@zoho-ide/shared/api'
 import { UserQueryKeys, deleteUserByIdRequest, type DeleteUserByIdResponse } from '@zoho-ide/shared/entities/user'
-import { useConfirm, useToast } from '@zoho-ide/ui-kit/composables'
+import { useConfirm, useToast } from '@zoho-ide/shared/composables'
 import { type MaybeRefOrGetter, toValue } from 'vue'
 
 export function useDeleteUser() {

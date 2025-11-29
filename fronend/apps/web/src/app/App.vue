@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAppTheme } from '@zoho-ide/ui-kit/composables'
+import { useAppTheme } from '@zoho-ide/shared/composables'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import ConfirmDialog from 'primevue/confirmdialog'
