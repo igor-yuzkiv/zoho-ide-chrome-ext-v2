@@ -1,6 +1,6 @@
 import { apiClient } from '../../../api'
 import type { PagingParams, PagingResponse, SortParams } from '../../../types'
-import type { IUser } from '../user.types.ts'
+import type { IUser } from '../types/user.types.ts'
 
 export async function fetchUsersRequest(
     paging: PagingParams = { page: 1, per_page: 15 },

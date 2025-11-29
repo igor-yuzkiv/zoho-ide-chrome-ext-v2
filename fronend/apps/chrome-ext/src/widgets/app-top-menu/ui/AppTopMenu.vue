@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAuthStore } from '@zoho-ide/shared/entities/auth'
+import { useAuthStore } from '@zoho-ide/shared/store'
 import { TopMenu } from '@zoho-ide/shared/components'
 import { type  TopMenuItem, UserProfile } from '@zoho-ide/shared/components'
 import { computed } from 'vue'

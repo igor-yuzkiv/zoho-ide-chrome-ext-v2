@@ -1,8 +1,5 @@
-import { TOKEN_LOCAL_STORAGE_KEY } from '../../config/auth.config.ts'
-import { fetchCurrentUserRequest } from './requests/fetch.current-user.request.ts'
-import { loginRequest } from './requests/login.request.ts'
+import { type IUser, TOKEN_LOCAL_STORAGE_KEY, fetchCurrentUserRequest, loginRequest } from '../entities/user'
 import { useStorage } from '@vueuse/core'
-import { type IUser } from '../user'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 

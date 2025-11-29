@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useAppTheme } from '@zoho-ide/shared/composables'
-import { useAuthStore } from '@zoho-ide/shared/entities/auth'
+import { useAuthStore } from '@zoho-ide/shared/store'
 import { type TopMenuItem, UserProfile } from '@zoho-ide/shared/components'
 import { ToggleThemeButton, TopMenu } from '@zoho-ide/shared/components'
 import { useRoute, useRouter } from 'vue-router'

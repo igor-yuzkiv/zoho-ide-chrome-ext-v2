@@ -7,3 +7,5 @@ export const UserQueryKeys = {
 }
 
 export const UserEntityType = 'user'
+
+export const TOKEN_LOCAL_STORAGE_KEY = 'backend_api_auth_token'
