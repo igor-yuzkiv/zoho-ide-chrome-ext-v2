@@ -1,5 +1,5 @@
 import { apiClient } from '../../api.client.ts'
-import type { SaveKbItemRequestPayload } from '../types'
+import type { SaveKbItemRequestPayload } from '../knowledge-base.api.types.ts'
 import type { IKnowledgeBaseItem } from '@zoho-ide/shared/entities/knowledge-base'
 
 export function createKbItemRequest(payload: SaveKbItemRequestPayload): Promise<IKnowledgeBaseItem> {

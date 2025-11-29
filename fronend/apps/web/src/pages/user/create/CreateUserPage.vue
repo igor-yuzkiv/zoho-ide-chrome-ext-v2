@@ -4,7 +4,7 @@ import { watchEffect } from 'vue'
 import { useRouter } from 'vue-router'
 import { Button } from 'primevue'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import { useCreateUser, CreateUserForm } from '@/features/user'
+import { CreateUserForm, useCreateUser } from '@/features/user'
 
 const { formData, formErrors, submit, data: newUser, isSuccess } = useCreateUser()
 const router = useRouter()
@@ -23,7 +23,7 @@ watchEffect(() => {
                 <Button label="Create User" text @click="submit" />
             </template>
         </PageHeader>
-        
+
         <CreateUserForm
             class="flex flex-col w-full h-full p-2 app-card"
             v-model:form-data="formData"

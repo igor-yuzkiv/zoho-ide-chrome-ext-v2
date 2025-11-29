@@ -1,2 +1,2 @@
-export * from './user';
-export * from './knowledge-base';
+export * from './user'
+export * from './knowledge-base'

@@ -1,8 +1,8 @@
+import type { IFunctionEntity } from '@/capabilities/function/function.types.ts'
 import { CapabilityType } from '@/config/capabilities.config.ts'
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
-import { type MaybeRef, ref, toValue, watch } from 'vue'
 import type { IEntity } from '@zoho-ide/shared/types'
-import type { IFunctionEntity } from '@/capabilities/function/function.types.ts'
+import { type MaybeRef, ref, toValue, watch } from 'vue'
 import { findCapabilityRecordQuery } from '@/entities/capability/cache'
 
 export function useFunctionDetails<TOrigin extends IEntity = IEntity>(

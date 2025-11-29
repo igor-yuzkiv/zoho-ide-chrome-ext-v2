@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/vue-query'
 import { ApiError } from '@zoho-ide/backend-api/api.error.ts'
-import { deleteUserByIdRequest, type DeleteUserByIdResponse, UserQueryKeys } from '@zoho-ide/backend-api/user'
+import { deleteUserByIdRequest, type DeleteUserByIdResponse } from '@zoho-ide/backend-api/user'
+import { UserQueryKeys } from '@zoho-ide/shared/entities/user'
 import { useConfirm, useToast } from '@zoho-ide/ui-kit/composables'
 import { type MaybeRefOrGetter, toValue } from 'vue'
 
@@ -25,7 +26,7 @@ export function useDeleteUser() {
     })
 
     async function removeUser(userId: MaybeRefOrGetter<string>): Promise<boolean> {
-        return await mutateAsync({ userId: toValue(userId) }).then(r => r.status)
+        return await mutateAsync({ userId: toValue(userId) }).then((r) => r.status)
     }
 
     async function removeUserWithConfirmation(

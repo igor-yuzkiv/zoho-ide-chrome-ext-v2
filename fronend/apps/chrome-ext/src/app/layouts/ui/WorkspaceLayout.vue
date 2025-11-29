@@ -53,7 +53,7 @@ onMounted(async () => {
     <div class="relative bg-secondary flex h-screen w-full flex-col overflow-hidden">
         <AppTopMenu />
 
-        <main v-if="provider" class="flex h-full w-full overflow-hidden  px-2">
+        <main v-if="provider" class="flex h-full w-full overflow-hidden px-2">
             <CapabilitiesMenu :providerId="providerId" :capabilities="providerCapabilities" />
 
             <Splitter

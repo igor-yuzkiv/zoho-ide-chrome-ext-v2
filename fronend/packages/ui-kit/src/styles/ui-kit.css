@@ -5,7 +5,6 @@
 
 @source "../**/*.{html,js,ts,vue,tsx,jsx}";
 
-
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
@@ -53,6 +52,6 @@
 }
 
 .app-card {
-    @apply border bg-primary rounded-lg;
+    @apply bg-primary rounded-lg border;
     border-color: var(--theme-border);
 }

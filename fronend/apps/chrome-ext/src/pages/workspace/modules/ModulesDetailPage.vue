@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useRouteParams } from '@vueuse/router'
-import { defineAsyncComponent } from 'vue'
-import { NoDataMessage, PageHeader } from '@zoho-ide/ui-kit/components'
 import { useModuleDetails } from '@/capabilities/metadata'
 import { useModuleFields } from '@/capabilities/metadata/composables/useModuleFields.ts'
+import { useRouteParams } from '@vueuse/router'
+import { NoDataMessage, PageHeader } from '@zoho-ide/ui-kit/components'
+import { defineAsyncComponent } from 'vue'
 import { useViewMode, ViewModeSelect } from '@/widgets/view-mode'
 
 const providerId = useRouteParams<string>('providerId')
@@ -17,12 +17,16 @@ const viewMode = useViewMode(
         {
             value: 'json',
             icon: 'si:json-duotone',
-            component: defineAsyncComponent(() => import('../../../capabilities/metadata/components/detail-view/ModuleJsonView.vue')),
+            component: defineAsyncComponent(
+                () => import('../../../capabilities/metadata/components/detail-view/ModuleJsonView.vue')
+            ),
         },
         {
             value: 'table',
             icon: 'material-symbols:table-sharp',
-            component: defineAsyncComponent(() => import('../../../capabilities/metadata/components/detail-view/ModuleTableView.vue')),
+            component: defineAsyncComponent(
+                () => import('../../../capabilities/metadata/components/detail-view/ModuleTableView.vue')
+            ),
         },
     ],
     'table'
@@ -37,10 +41,7 @@ const viewMode = useViewMode(
             </template>
         </PageHeader>
 
-        <div
-            v-if="viewMode.currentComponent.value"
-            class="flex h-full w-full flex-col overflow-auto app-card"
-        >
+        <div v-if="viewMode.currentComponent.value" class="flex h-full w-full flex-col overflow-auto app-card">
             <component :is="viewMode.currentComponent.value" :module="module.data.value" :fields="fields.data.value" />
         </div>
     </div>

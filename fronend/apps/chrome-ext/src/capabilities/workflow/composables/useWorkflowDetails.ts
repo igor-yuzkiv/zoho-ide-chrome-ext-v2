@@ -1,8 +1,8 @@
+import type { IWorkflowEntity } from '@/capabilities/workflow/workflow.types.ts'
 import { CapabilityType } from '@/config/capabilities.config.ts'
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
-import { type MaybeRef, toValue } from 'vue'
 import type { IEntity } from '@zoho-ide/shared/types'
-import type { IWorkflowEntity } from '@/capabilities/workflow/workflow.types.ts'
+import { type MaybeRef, toValue } from 'vue'
 import { findCapabilityRecordQuery } from '@/entities/capability/cache'
 
 export function useWorkflowDetails<TOrigin extends IEntity = IEntity>(

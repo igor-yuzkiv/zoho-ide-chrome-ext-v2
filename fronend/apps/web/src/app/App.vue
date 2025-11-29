@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useAppTheme } from '@zoho-ide/ui-kit/composables'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 import ConfirmDialog from 'primevue/confirmdialog'
 import Toast from 'primevue/toast'
-import { useRoute } from 'vue-router'
-import { computed } from 'vue'
 import { AppLayoutComponent } from '@/app/layouts/app-layouts.config.ts'
 
 const route = useRoute()

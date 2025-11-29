@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useWorkflowDetails } from '@/capabilities/workflow/composables/useWorkflowDetails.ts'
 import { useRouteParams } from '@vueuse/router'
-import { defineAsyncComponent } from 'vue'
 import { NoDataMessage, PageHeader } from '@zoho-ide/ui-kit/components'
+import { defineAsyncComponent } from 'vue'
 import { useCurrentProvider } from '@/entities/provider/composables/useCurrentProvider.ts'
 import { useViewMode, ViewModeSelect } from '@/widgets/view-mode'
 
@@ -40,10 +40,7 @@ const viewMode = useViewMode(
             </template>
         </PageHeader>
 
-        <div
-            v-if="viewMode.currentComponent.value"
-            class="flex h-full w-full flex-col overflow-auto app-card"
-        >
+        <div v-if="viewMode.currentComponent.value" class="flex h-full w-full flex-col overflow-auto app-card">
             <component
                 :is="viewMode.currentComponent.value"
                 :workflow="workflow.data.value"
