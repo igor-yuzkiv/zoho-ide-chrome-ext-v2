@@ -1,5 +1,6 @@
 <?php
 
+use App\Api\Http\Controllers\AttachmentsController;
 use App\Api\Http\Controllers\AuthController;
 use App\Api\Http\Controllers\KnowledgeBaseController;
 use App\Api\Http\Controllers\MockApiController;
@@ -72,5 +73,20 @@ Route::group(
         Route::get('{itemId}', 'show')->name('show');
         Route::post('', 'create')->name('create');
         Route::put('{itemId}', 'update')->name('update');
+    }
+);
+
+/**
+ * Attachments routes
+ */
+Route::group(
+    [
+        'prefix' => '/attachments',
+        'as'     => 'attachments.',
+    ],
+    function () {
+        Route::get('{entityName}/{entityId}', [AttachmentsController::class, 'getEntityAttachments'])->name('getEntityAttachments');
+        Route::post('{entityName}/{entityId}/attach', [AttachmentsController::class, 'attachToEntity'])->name('attachToEntity');
+        Route::post('upload/tmp', [AttachmentsController::class, 'uploadTmpAttachment'])->name('uploadTmpAttachment');
     }
 );

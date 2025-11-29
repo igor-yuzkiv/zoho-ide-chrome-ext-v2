@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Api\Console\Commands\IgorTestCommand;
+use App\Domains\Attachment\Contracts\AttachmentsStorageService;
+use App\Infrastructure\Services\Attachments\LocalAttachmentsStorageService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -12,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(AttachmentsStorageService::class, LocalAttachmentsStorageService::class);
     }
 
     /**
