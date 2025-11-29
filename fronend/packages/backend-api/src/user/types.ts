@@ -9,3 +9,5 @@ export interface UpdateUserRequestPayload {
     name: string
     email: string
 }
+
+export type DeleteUserByIdResponse = { status: boolean };
