@@ -68,6 +68,8 @@ Route::group(
         'controller' => KnowledgeBaseController::class,
     ],
     function () {
+        Route::get('', 'index')->name('index');
+        Route::get('{itemId}', 'show')->name('show');
         Route::post('', 'create')->name('create');
         Route::put('{itemId}', 'update')->name('update');
     }

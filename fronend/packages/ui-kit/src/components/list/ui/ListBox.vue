@@ -12,7 +12,6 @@ const props = withDefaults(
         itemKey?: string
         itemTitle?: string
         itemIcon?: string
-        defaultIcon?: string
         searchable?: boolean
         searchFields?: string[]
         searchPlaceholder?: string
@@ -22,7 +21,7 @@ const props = withDefaults(
     {
         itemKey: 'id',
         itemTitle: 'title',
-        defaultIcon: 'icon-park-outline:dot',
+        itemIcon: 'icon-park-outline:dot',
         searchable: false,
         searchPlaceholder: 'Start typing to search...',
         searchFields: () => ['title'],
@@ -50,7 +49,6 @@ const mapItem = (item: T) => {
         original: item,
         key: item[props.itemKey] as string,
         title: title,
-        icon: props.itemIcon ? (item[props.itemIcon] as string) : props.defaultIcon,
         tooltip: props.tooltipField ? (item[props.tooltipField] as string) : title,
         searchValue: getItemSearchValue(item),
     }
@@ -86,7 +84,7 @@ const itemsForDisplay = computed(() => {
                         <ListItem
                             @click="$emit('itemClick', item.original)"
                             :title="item.title"
-                            :icon="item.icon || defaultIcon"
+                            :icon="itemIcon"
                             :tooltip="item.tooltip"
                             v-bind="itemAttributes"
                         />

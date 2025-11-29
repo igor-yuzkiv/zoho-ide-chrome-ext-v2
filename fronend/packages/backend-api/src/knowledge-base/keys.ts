@@ -1,5 +1,7 @@
+import type { MaybeRefOrGetter } from 'vue'
+
 export const KnowledgeBaseQueryKeys = {
     all: ['knowledge-base'],
     items: () => [...KnowledgeBaseQueryKeys.all, 'items'],
-    item: (itemId: string | number) => [...KnowledgeBaseQueryKeys.all, 'item', itemId],
+    item: (itemId: MaybeRefOrGetter) => [...KnowledgeBaseQueryKeys.all, 'item', itemId],
 }

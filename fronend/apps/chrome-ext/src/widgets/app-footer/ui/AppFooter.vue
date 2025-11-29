@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ToggleThemeButton } from '@zoho-ide/ui-kit/components'
+import { IconButton, ToggleThemeButton } from '@zoho-ide/ui-kit/components'
 import { useAppTheme } from '@zoho-ide/ui-kit/composables'
 
 const appTheme = useAppTheme()
@@ -11,6 +11,7 @@ const appTheme = useAppTheme()
             <slot name="before"></slot>
         </div>
         <div class="flex items-center justify-end gap-x-2">
+            <IconButton icon="carbon:ibm-watson-knowledge-catalog" text size="small" class="p-0" />
             <ToggleThemeButton :is-dark="appTheme.isDark.value" @click="appTheme.toggle()" />
         </div>
     </footer>

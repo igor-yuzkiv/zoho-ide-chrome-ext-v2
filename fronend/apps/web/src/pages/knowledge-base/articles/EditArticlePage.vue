@@ -1,19 +1,31 @@
 <script setup lang="ts">
+import { useRouteParams } from '@vueuse/router'
 import { useValidationErrors } from '@zoho-ide/backend-api/shared/errors/useValidationErrors.ts'
 import { FieldContainer, PageHeader } from '@zoho-ide/ui-kit/components'
 import { ArticleContentEditor } from '@zoho-ide/ui-kit/widgets'
 import { Button, InputText } from 'primevue'
-import { useCreateKbItem } from '@/features/knowledge-base'
+import { AppRouteName } from '@/app/router/app-routes.ts'
+import { useKbItemDetails } from '@/features/knowledge-base'
+import { useUpdateKbItem } from '@/features/knowledge-base/lib/useUpdateKbItem.ts'
 
-const { formData, submit, formErrors } = useCreateKbItem()
+const itemId = useRouteParams<string>('itemId')
+const { data } = useKbItemDetails(itemId)
+const { formData, submit, formErrors } = useUpdateKbItem(data)
 const validationErrors = useValidationErrors(() => formErrors.value)
 </script>
 
 <template>
-    <div class="flex flex-col h-full overflow-hidden w-full gap-1">
-        <PageHeader title="New Article">
+    <div v-if="data" class="flex flex-col h-full overflow-hidden w-full gap-1">
+        <PageHeader :title="data.title">
             <template #actions>
-                <Button label="Create" text @click="submit" />
+                <Button
+                    label="Cancel"
+                    text
+                    severity="secondary"
+                    as="router-link"
+                    :to="{ name: AppRouteName.kbItemDetails, params: { itemId: data.id } }"
+                />
+                <Button label="Save" text @click="submit" />
             </template>
         </PageHeader>
 

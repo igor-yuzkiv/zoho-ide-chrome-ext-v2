@@ -1,1 +1,3 @@
-export { default as ArticleForm } from '@/features/knowledge-base/ui/ArticleCard.vue'
+export { useCreateKbItem } from './lib/useCreateKbItem.ts'
+export { useKbItemsList } from './lib/useKbItemsList.ts'
+export { useKbItemDetails } from './lib/useKbItemDetails.ts'

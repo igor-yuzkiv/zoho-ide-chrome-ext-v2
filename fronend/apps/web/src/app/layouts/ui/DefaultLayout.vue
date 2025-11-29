@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useAuthStore } from '@zoho-ide/backend-api/auth'
-import { type TopMenuItem, UserProfile } from '@zoho-ide/ui-kit/components'
+import { type TopMenuItem } from '@zoho-ide/ui-kit/components'
+import { UserProfile } from '@zoho-ide/ui-kit/widgets'
 import { ToggleThemeButton, TopMenu } from '@zoho-ide/ui-kit/components'
 import { useAppTheme } from '@zoho-ide/ui-kit/composables'
 import { useRoute, useRouter } from 'vue-router'

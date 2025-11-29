@@ -5,11 +5,15 @@ export const AppRouteName = {
     error: 'error',
     login: 'login',
     home: 'home',
+
     usersIndex: 'users.index',
     userDetails: 'users.details',
     userCreate: 'users.create',
+
     kbIndex: 'kb.index',
-    kbNewArticle: 'kb.article.new',
+    kbNewItem: 'kb.item.new',
+    kbItemDetails: 'kb.item.details',
+    kbItemEdit: 'kb.item.edit',
 }
 
 export const AppRoutes: RouteRecordRaw[] = [
@@ -19,31 +23,16 @@ export const AppRoutes: RouteRecordRaw[] = [
         component: () => import('@/pages/login/LoginPage.vue'),
         meta: { layout: AppLayout.auth },
     },
-
     {
         name: AppRouteName.home,
         path: '/',
         component: () => import('@/pages/home/HomePage.vue'),
         meta: { authenticated: true, hideSidebarMenu: true },
     },
-    {
-        name: AppRouteName.kbIndex,
-        path: '/knowledge-base',
-        meta: { authenticated: true },
-        components: {
-            default: () => import('@/pages/knowledge-base/KnowledgeBaseIndexPage.vue'),
-            menu: () => import('@/pages/knowledge-base/KnowledgeSidebarMenu.vue'),
-        },
-    },
-    {
-        name: AppRouteName.kbNewArticle,
-        path: '/knowledge-base/new-article',
-        meta: { authenticated: true },
-        components: {
-            default: () => import('@/pages/knowledge-base/articles/CreateArticlePage.vue'),
-            menu: () => import('@/pages/knowledge-base/KnowledgeSidebarMenu.vue'),
-        },
-    },
+
+    /**
+     * Users Routes
+     */
     {
         name: AppRouteName.usersIndex,
         path: '/users',
@@ -71,6 +60,47 @@ export const AppRoutes: RouteRecordRaw[] = [
             menu: () => import('@/pages/user/UsersSidebarMenu.vue'),
         },
     },
+
+    /**
+     * Knowledge Base Routes
+     */
+    {
+        name: AppRouteName.kbIndex,
+        path: '/knowledge-base',
+        meta: { authenticated: true },
+        components: {
+            default: () => import('@/pages/knowledge-base/KnowledgeBaseIndexPage.vue'),
+            menu: () => import('@/pages/knowledge-base/KnowledgeSidebarMenu.vue'),
+        },
+    },
+    {
+        name: AppRouteName.kbNewItem,
+        path: '/knowledge-base/new',
+        meta: { authenticated: true },
+        components: {
+            default: () => import('@/pages/knowledge-base/articles/CreateArticlePage.vue'),
+            menu: () => import('@/pages/knowledge-base/KnowledgeSidebarMenu.vue'),
+        },
+    },
+    {
+        name: AppRouteName.kbItemDetails,
+        path: '/knowledge-base/items/:itemId/details',
+        meta: { authenticated: true },
+        components: {
+            default: () => import('@/pages/knowledge-base/articles/ArticleDetailPage.vue'),
+            menu: () => import('@/pages/knowledge-base/KnowledgeSidebarMenu.vue'),
+        },
+    },
+    {
+        name: AppRouteName.kbItemEdit,
+        path: '/knowledge-base/items/:itemId/edit',
+        meta: { authenticated: true },
+        components: {
+            default: () => import('@/pages/knowledge-base/articles/EditArticlePage.vue'),
+            menu: () => import('@/pages/knowledge-base/KnowledgeSidebarMenu.vue'),
+        },
+    },
+
     {
         name: AppRouteName.error,
         path: '/:pathMatch(.*)*',

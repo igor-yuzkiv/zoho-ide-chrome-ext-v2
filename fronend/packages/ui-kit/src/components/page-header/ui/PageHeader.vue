@@ -14,9 +14,11 @@ defineProps<{
                     <h1 class="font-bold text-lg">
                         <slot name="title">{{ title }}</slot>
                     </h1>
-                    <p class="text-gray-500 text-xs">
-                        <slot name="description">{{ description }}</slot>
-                    </p>
+                    <slot name="description">
+                        <p class="text-gray-500 text-xs">
+                            {{ description }}
+                        </p>
+                    </slot>
                 </div>
             </div>
         </slot>
