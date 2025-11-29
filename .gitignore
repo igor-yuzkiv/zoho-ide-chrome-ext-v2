@@ -31,3 +31,4 @@ dist-ssr
 /fronend/.nx/cache/
 /fronend/dist/
 /fronend/apps/**/dist/
+*.tsbuildinfo

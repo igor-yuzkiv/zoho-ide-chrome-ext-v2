@@ -1,7 +1,7 @@
 {
     "extends": "../../tsconfig.base.json",
     "compilerOptions": {
-        "outDir": "../../dist/out-tsc",
+        "outDir": "../../dist/shared",
         "types": ["vite/client"],
         "rootDir": "src",
         "jsx": "preserve",

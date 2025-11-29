@@ -1,14 +1,17 @@
 {
     "extends": "../../tsconfig.base.json",
     "compilerOptions": {
-        "outDir": "../../dist/out-tsc",
-        "types": ["vite/client"],
+        "outDir": "../../dist/chrome-ext",
+        "types": ["vite/client", "chrome"],
         "baseUrl": "./",
+        "target": "ES2023",
+        "lib": ["ES2023", "DOM"],
+        "module": "ESNext",
+        "moduleResolution": "bundler",
         "paths": {
             "@/*": ["src/*"],
             "@zoho-ide/shared": ["../../packages/shared/src/index.ts"],
-            "@zoho-ide/knowledge-base": ["../../packages/knowledge-base/src/index.ts"],
-            "@zoho-ide/attachments": ["../../packages/attachments/src/index.ts"]
+            "@zoho-ide/knowledge-base": ["../../packages/knowledge-base/src/index.ts"]
         }
     },
     "exclude": [
@@ -22,21 +25,9 @@
         "eslint.config.cjs",
         "eslint.config.mjs"
     ],
-    "include": [
-        "src/**/*.js",
-        "src/**/*.jsx",
-        "src/**/*.ts",
-        "src/**/*.vue",
-        "../../packages/knowledge-base/src",
-        "../../packages/attachments/src",
-        "../../packages/shared/src"
-    ],
+    "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.vue"],
     "references": [
-        {
-            "path": "../../packages/knowledge-base/tsconfig.lib.json"
-        },
-        {
-            "path": "../../packages/shared/tsconfig.lib.json"
-        }
+        { "path": "../../packages/knowledge-base/tsconfig.lib.json" },
+        { "path": "../../packages/shared/tsconfig.lib.json" }
     ]
 }

@@ -1,7 +1,7 @@
 {
     "extends": "../../tsconfig.base.json",
     "compilerOptions": {
-        "outDir": "../../dist/out-tsc",
+        "outDir": "../../dist/knowledge-base",
         "types": ["vite/client"],
         "rootDir": "src",
         "jsx": "preserve",
@@ -14,11 +14,7 @@
     "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
     "exclude": ["eslint.config.js", "eslint.config.cjs", "eslint.config.mjs"],
     "references": [
-        {
-            "path": "../attachments/tsconfig.lib.json"
-        },
-        {
-            "path": "../shared/tsconfig.lib.json"
-        }
+        { "path": "../attachments/tsconfig.lib.json" },
+        { "path": "../shared/tsconfig.lib.json" }
     ]
 }

@@ -3,14 +3,8 @@
     "files": [],
     "include": ["vite.config.ts"],
     "references": [
-        {
-            "path": "../attachments"
-        },
-        {
-            "path": "../shared"
-        },
-        {
-            "path": "./tsconfig.lib.json"
-        }
+        { "path": "../attachments" },
+        { "path": "../shared" },
+        { "path": "./tsconfig.lib.json" }
     ]
 }

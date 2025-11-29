@@ -1,7 +1,7 @@
 {
     "extends": "../../tsconfig.base.json",
     "compilerOptions": {
-        "outDir": "../../dist/out-tsc",
+        "outDir": "../../dist/chrome-ext",
         "types": ["vite/client", "chrome"],
         "baseUrl": "./",
         "target": "ES2023",
@@ -24,7 +24,7 @@
         "eslint.config.cjs",
         "eslint.config.mjs"
     ],
-    "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.vue", "../../packages/shared/src"],
+    "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.vue"],
     "references": [
         {
             "path": "../../packages/shared/tsconfig.lib.json"
