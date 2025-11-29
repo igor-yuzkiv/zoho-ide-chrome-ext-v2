@@ -2,8 +2,8 @@ import type { IAttachment } from '../types'
 import { apiClient } from '@zoho-ide/shared/api'
 
 export function attachToEntityRequest(
-    entityId: string,
     entityType: string,
+    entityId: string,
     file: File,
     role = 'attachment'
 ): Promise<IAttachment> {

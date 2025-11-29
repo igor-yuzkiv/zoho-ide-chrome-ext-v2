@@ -3,8 +3,8 @@ import type {  PagingParams, PagingResponse, SortParams } from '@zoho-ide/shared
 import type { IAttachment } from '../types'
 
 export function fetchEntityAttachmentsRequest(
-    entityId: string,
     entityType: string,
+    entityId: string,
     paging: PagingParams = { page: 1, per_page: 15 },
     sort?: SortParams
 ): Promise<PagingResponse<IAttachment>> {
