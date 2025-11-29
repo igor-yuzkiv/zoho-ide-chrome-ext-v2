@@ -3,7 +3,6 @@
         "baseUrl": ".",
         "rootDir": ".",
         "paths": {
-            "@zoho-ide/ui-kit/*": ["packages/ui-kit/src/*"],
             "@zoho-ide/shared": ["packages/shared/src/index.ts"],
             "@zoho-ide/knowledge-base": ["packages/knowledge-base/src/*"]
         },

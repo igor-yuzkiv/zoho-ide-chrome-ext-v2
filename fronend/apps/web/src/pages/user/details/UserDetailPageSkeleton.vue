@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PageHeaderSkeleton } from '@zoho-ide/ui-kit/components'
+import { PageHeaderSkeleton } from '@zoho-ide/shared/components'
 import { Skeleton } from 'primevue'
 
 </script>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { NoDataMessage } from '@zoho-ide/ui-kit/components'
+import { NoDataMessage } from '@zoho-ide/shared/components'
 </script>
 
 <template>

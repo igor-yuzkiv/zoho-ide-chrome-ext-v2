@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useFunctionDetails } from '@/capabilities/function'
 import { useRouteParams } from '@vueuse/router'
-import { NoDataMessage } from '@zoho-ide/ui-kit/components'
+import { NoDataMessage } from '@zoho-ide/shared/components'
 import { CodeEditor } from '@/shared/components/code-editor'
 
 const providerId = useRouteParams<string>('providerId')

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useValidationErrors } from '@zoho-ide/shared/composables'
 import type { CreateUserRequestPayload } from '@zoho-ide/shared/entities/user'
-import { FieldContainer } from '@zoho-ide/ui-kit/components'
+import { FieldContainer } from '@zoho-ide/shared/components'
 import { computed } from 'vue'
 import { InputText, Password } from 'primevue'
 

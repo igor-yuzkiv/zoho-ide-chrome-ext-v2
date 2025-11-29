@@ -5,7 +5,6 @@
         "baseUrl": "./",
         "paths": {
             "@/*": ["src/*"],
-            "@zoho-ide/ui-kit/*": ["../../packages/ui-kit/src/*"],
             "@zoho-ide/shared/*": ["../../packages/shared/src/*"]
         }
     },
@@ -25,7 +24,6 @@
         "src/**/*.jsx",
         "src/**/*.ts",
         "src/**/*.vue",
-        "../../packages/ui-kit/src",
         "../../packages/shared/src"
     ]
 }

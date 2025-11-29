@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useAuthStore } from '@zoho-ide/shared/entities/auth'
-import { LoadingOverlay } from '@zoho-ide/ui-kit/components'
+import { LoadingOverlay } from '@zoho-ide/shared/components'
 import { useAppTheme } from '@zoho-ide/shared/composables'
 import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'

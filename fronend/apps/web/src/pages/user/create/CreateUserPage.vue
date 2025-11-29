@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PageHeader } from '@zoho-ide/ui-kit/components'
+import { PageHeader } from '@zoho-ide/shared/components'
 import { watchEffect } from 'vue'
 import { useRouter } from 'vue-router'
 import { Button } from 'primevue'

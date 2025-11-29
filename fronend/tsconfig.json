@@ -4,8 +4,7 @@
     "references": [
         { "path": "./apps/web" },
         { "path": "./apps/chrome-ext" },
-        { "path": "./packages/ui-kit" },
+        { "path": "./packages/shared" },
         { "path": "./packages/knowledge-base" },
-        { "path": "./packages/shared" }
     ]
 }

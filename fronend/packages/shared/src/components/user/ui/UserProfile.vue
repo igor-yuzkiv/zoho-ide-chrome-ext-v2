@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IUser } from '@zoho-ide/shared/entities/user'
+import type { IUser } from '../../../entities/user'
 import { computed, useTemplateRef } from 'vue'
 import { Avatar, Button, Popover } from 'primevue'
 import { Icon } from '@iconify/vue'

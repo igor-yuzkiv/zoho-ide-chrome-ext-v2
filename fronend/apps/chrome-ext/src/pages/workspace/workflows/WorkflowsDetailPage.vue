@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useWorkflowDetails } from '@/capabilities/workflow/composables/useWorkflowDetails.ts'
 import { useRouteParams } from '@vueuse/router'
-import { NoDataMessage, PageHeader } from '@zoho-ide/ui-kit/components'
+import { NoDataMessage, PageHeader } from '@zoho-ide/shared/components'
 import { defineAsyncComponent } from 'vue'
 import { useCurrentProvider } from '@/entities/provider/composables/useCurrentProvider.ts'
 import { useViewMode, ViewModeSelect } from '@/widgets/view-mode'

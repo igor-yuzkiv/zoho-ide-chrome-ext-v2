@@ -2,7 +2,7 @@
 import { useCreateKbItem } from '../lib/useCreateKbItem.ts'
 import { type IKnowledgeBaseItem } from '@zoho-ide/knowledge-base/index.ts'
 import { useValidationErrors } from '@zoho-ide/shared/composables'
-import { FieldContainer } from '@zoho-ide/ui-kit/components'
+import { FieldContainer } from '@zoho-ide/shared/components'
 import { Button, InputText } from 'primevue'
 import Dialog from 'primevue/dialog'
 

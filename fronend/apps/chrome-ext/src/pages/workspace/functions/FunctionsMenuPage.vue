@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { FunctionIcon, useFunctionsList } from '@/capabilities/function'
 import { useRouteParams } from '@vueuse/router'
-import { ListBox, ListItem } from '@zoho-ide/ui-kit/components'
+import { ListBox, ListItem } from '@zoho-ide/shared/components'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 
 const providerId = useRouteParams<string>('providerId')

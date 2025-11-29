@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
 import { useValidationErrors } from '@zoho-ide/shared/composables'
-import { FieldContainer, PageHeader } from '@zoho-ide/ui-kit/components'
+import { FieldContainer, PageHeader } from '@zoho-ide/shared/components'
 import { ArticleContentEditor } from '@zoho-ide/knowledge-base/index.ts'
 import { Button, InputText } from 'primevue'
 import { AppRouteName } from '@/app/router/app-routes.ts'
