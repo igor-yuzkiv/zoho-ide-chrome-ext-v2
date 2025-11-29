@@ -1,2 +1,3 @@
-export { default as ArticleView } from './article/ArticleView.vue'
-export { default as ArticleContentEditor } from './article/ArticleContentEditor.vue'
+export { default as ArticleView } from './ArticleView.vue'
+export { default as ArticleContentEditor } from './ArticleContentEditor.vue'
+export { default as CreateKbItemPopup } from './CreateKbItemPopup.vue'

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useCreateKbItem } from '../lib/useCreateKbItem.ts'
-import { type IKnowledgeBaseItem } from '@zoho-ide/knowledge-base'
+import { useCreateKnowledgeBaseItem } from '../mutations'
+import { type IKnowledgeBaseItem } from '../types'
 import { useValidationErrors } from '@zoho-ide/shared'
 import { FieldContainer } from '@zoho-ide/shared'
 import { Button, InputText } from 'primevue'
@@ -8,8 +8,7 @@ import Dialog from 'primevue/dialog'
 
 const emit = defineEmits<{ (event: 'created', item: IKnowledgeBaseItem): void }>()
 const visible = defineModel<boolean>('visible', { default: false })
-
-const { formData, submitAsync, formErrors, isPending } = useCreateKbItem()
+const { formData, submitAsync, formErrors, isPending } = useCreateKnowledgeBaseItem()
 const validationErrors = useValidationErrors(() => formErrors.value)
 
 function handleClickSubmit() {

@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { type IKnowledgeBaseItem } from '@zoho-ide/knowledge-base'
+import { CreateKbItemPopup, type IKnowledgeBaseItem, useKnowledgeBaseItemsListQuery } from '@zoho-ide/knowledge-base'
 import { IconButton, ListBox, ListItem } from '@zoho-ide/shared'
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import { useKbItemsList } from '@/features/knowledge-base'
-import { CreateKbItemPopup } from '@/features/knowledge-base'
 
-const { data: items } = useKbItemsList()
+const { data: items } = useKnowledgeBaseItemsListQuery()
 const newItemDialogVisible = ref(false)
 const router = useRouter()
 const route = useRoute()

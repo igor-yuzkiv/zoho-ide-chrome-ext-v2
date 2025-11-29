@@ -1,8 +1,10 @@
+import { fetchKbItemByIdRequest } from '../api'
+import { KnowledgeBaseQueryKeys } from '../knowledge-base.constants.ts'
+import type { IKnowledgeBaseItem } from '../types'
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
-import { fetchKbItemByIdRequest, type IKnowledgeBaseItem, KnowledgeBaseQueryKeys } from '@zoho-ide/knowledge-base'
 import { type MaybeRefOrGetter, toValue } from 'vue'
 
-export function useKbItemDetails(itemId: MaybeRefOrGetter<string>) {
+export function useKnowledgeBaseItemDetailsQuery(itemId: MaybeRefOrGetter<string>) {
     const { isPending, isFetching, data, isError } = useQuery<IKnowledgeBaseItem>({
         queryKey: [...KnowledgeBaseQueryKeys.item(itemId)],
         placeholderData: keepPreviousData,

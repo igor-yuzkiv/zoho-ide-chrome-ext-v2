@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useAppTheme } from '@zoho-ide/shared'
-import type { IKnowledgeBaseItem } from '../../types'
+import type { IKnowledgeBaseItem } from '../types'
 import { MdPreview } from 'md-editor-v3'
 import { config as mdEditorConfig } from 'md-editor-v3'
 import Tag from 'primevue/tag'

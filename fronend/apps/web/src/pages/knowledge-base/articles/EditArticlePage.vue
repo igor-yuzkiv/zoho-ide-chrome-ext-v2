@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
-import { ArticleContentEditor } from '@zoho-ide/knowledge-base'
+import { ArticleContentEditor, useKnowledgeBaseItemDetailsQuery, useUpdateKnowledgeBaseItem } from '@zoho-ide/knowledge-base'
 import { FieldContainer, PageHeader } from '@zoho-ide/shared'
 import { useValidationErrors } from '@zoho-ide/shared'
 import { Button, InputText } from 'primevue'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import { useKbItemDetails } from '@/features/knowledge-base'
-import { useUpdateKbItem } from '@/features/knowledge-base/lib/useUpdateKbItem.ts'
 
 const itemId = useRouteParams<string>('itemId')
-const { data } = useKbItemDetails(itemId)
-const { formData, submit, formErrors } = useUpdateKbItem(data)
+const { data } = useKnowledgeBaseItemDetailsQuery(itemId)
+const { formData, submit, formErrors } = useUpdateKnowledgeBaseItem(data)
 const validationErrors = useValidationErrors(() => formErrors.value)
 </script>
 

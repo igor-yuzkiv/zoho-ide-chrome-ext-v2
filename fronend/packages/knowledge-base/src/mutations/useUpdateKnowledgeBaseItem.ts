@@ -1,12 +1,8 @@
+import { updateKbItemRequest } from '../api'
+import { KnowledgeBaseQueryKeys } from '../knowledge-base.constants.ts'
+import type { IKnowledgeBaseItem, SaveKbItemRequestPayload } from '../types'
 import { useMutation, useQueryClient } from '@tanstack/vue-query'
-import { ApiError } from '@zoho-ide/shared'
-import {
-    type IKnowledgeBaseItem,
-    KnowledgeBaseQueryKeys,
-    type SaveKbItemRequestPayload,
-    updateKbItemRequest,
-} from '@zoho-ide/knowledge-base'
-import { useToast } from '@zoho-ide/shared'
+import { ApiError, useToast } from '@zoho-ide/shared'
 import { type MaybeRefOrGetter, ref, toValue, watch } from 'vue'
 
 const defaultCreateKbItemFormData = (): SaveKbItemRequestPayload => ({
@@ -14,7 +10,7 @@ const defaultCreateKbItemFormData = (): SaveKbItemRequestPayload => ({
     content: '',
 })
 
-export function useUpdateKbItem(kbItem: MaybeRefOrGetter<IKnowledgeBaseItem | undefined>) {
+export function useUpdateKnowledgeBaseItem(kbItem: MaybeRefOrGetter<IKnowledgeBaseItem | undefined>) {
     const formData = ref<SaveKbItemRequestPayload>(defaultCreateKbItemFormData())
     const queryClient = useQueryClient()
     const toast = useToast()

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { KnowledgeBaseItemEntityType } from '../../knowledge-base.constants.ts'
-import type { EditorImageUploadPayload } from '../../types'
+import { KnowledgeBaseItemEntityType } from '../knowledge-base.constants.ts'
+import type { EditorImageUploadPayload } from '../types'
 import { attachToEntityRequest } from '@zoho-ide/attachments'
 import { useAppTheme } from '@zoho-ide/shared'
 import { MdEditor } from 'md-editor-v3'
