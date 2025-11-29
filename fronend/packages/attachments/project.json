@@ -1,0 +1,9 @@
+{
+    "name": "attachments",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "packages/attachments/src",
+    "projectType": "library",
+    "tags": [],
+    "// targets": "to see all targets run: nx show project attachments --web",
+    "targets": {}
+}
