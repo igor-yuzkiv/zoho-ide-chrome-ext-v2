@@ -9,6 +9,7 @@ use App\Application\KnowledgeBase\Handlers\CreateKbItemHandler;
 use App\Application\KnowledgeBase\Handlers\UpdateKbItemHandler;
 use App\Domains\KnowledgeBase\Repositories\KnowledgeBaseItemRepository;
 use App\Shared\Http\Controller;
+use Illuminate\Http\JsonResponse;
 
 class KnowledgeBaseController extends Controller
 {
@@ -31,7 +32,7 @@ class KnowledgeBaseController extends Controller
         return KnowledgeBaseItemResource::collection($pageResult->data)->additional(['meta' => $pageResult->getMetadata()]);
     }
 
-    public function show(string $itemId): KnowledgeBaseItemResource
+    public function show(string $itemId): KnowledgeBaseItemResource|JsonResponse
     {
         $item = $this->kbItemRepository->find($itemId);
         if (!$item) {
