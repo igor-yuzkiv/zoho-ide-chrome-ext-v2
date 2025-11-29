@@ -1,5 +1,5 @@
 import type { Edge, Node } from '@vue-flow/core'
-import type { IEntity } from '@zoho-ide/shared/types'
+import type { IEntity } from '@zoho-ide/shared'
 import type { Result } from '@/shared/types/result.types.ts'
 import type { ICapabilityEntity } from '@/entities/capability/capability.types.ts'
 

@@ -6,8 +6,8 @@ import {
     type EditorImageUploadPayload,
     KnowledgeBaseItemEntityType,
 } from '@zoho-ide/knowledge-base'
-import { FieldContainer, PageHeader } from '@zoho-ide/shared/components'
-import { useValidationErrors } from '@zoho-ide/shared/composables'
+import { FieldContainer, PageHeader } from '@zoho-ide/shared'
+import { useValidationErrors } from '@zoho-ide/shared'
 import { Button, InputText } from 'primevue'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { useKbItemDetails } from '@/features/knowledge-base'

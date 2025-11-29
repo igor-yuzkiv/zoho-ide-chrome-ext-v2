@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { EditorImageUploadPayload } from '../../types'
-import { useAppTheme } from '@zoho-ide/shared/composables'
+import { useAppTheme } from '@zoho-ide/shared'
 import { MdEditor } from 'md-editor-v3'
 import { config as mdEditorConfig } from 'md-editor-v3'
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { type IKnowledgeBaseItem } from '@zoho-ide/knowledge-base'
-import { IconButton, ListBox, ListItem } from '@zoho-ide/shared/components'
+import { IconButton, ListBox, ListItem } from '@zoho-ide/shared'
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { AppRouteName } from '@/app/router/app-routes.ts'

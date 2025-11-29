@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/vue-query'
-import { ApiError } from '@zoho-ide/shared/api'
+import { ApiError } from '@zoho-ide/shared'
 import { createKbItemRequest, type SaveKbItemRequestPayload, type IKnowledgeBaseItem, KnowledgeBaseQueryKeys } from '@zoho-ide/knowledge-base'
-import { useToast } from '@zoho-ide/shared/composables'
+import { useToast } from '@zoho-ide/shared'
 import { ref } from 'vue'
 
 const defaultCreateKbItemFormData = (): SaveKbItemRequestPayload => ({

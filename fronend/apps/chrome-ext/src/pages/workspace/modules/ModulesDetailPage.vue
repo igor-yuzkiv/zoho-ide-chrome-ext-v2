@@ -2,7 +2,7 @@
 import { useModuleDetails } from '@/capabilities/metadata'
 import { useModuleFields } from '@/capabilities/metadata/composables/useModuleFields.ts'
 import { useRouteParams } from '@vueuse/router'
-import { NoDataMessage, PageHeader } from '@zoho-ide/shared/components'
+import { NoDataMessage, PageHeader } from '@zoho-ide/shared'
 import { defineAsyncComponent } from 'vue'
 import { useViewMode, ViewModeSelect } from '@/widgets/view-mode'
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ToggleThemeButton } from '@zoho-ide/shared/components'
-import { useAppTheme } from '@zoho-ide/shared/composables'
+import { ToggleThemeButton } from '@zoho-ide/shared'
+import { useAppTheme } from '@zoho-ide/shared'
 
 const appTheme = useAppTheme()
 </script>

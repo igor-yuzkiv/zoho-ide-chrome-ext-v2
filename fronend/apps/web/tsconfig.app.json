@@ -5,7 +5,7 @@
         "baseUrl": "./",
         "paths": {
             "@/*": ["src/*"],
-            "@zoho-ide/shared/*": ["../../packages/shared/src/*"],
+            "@zoho-ide/shared": ["../../packages/shared/src/index.ts"],
             "@zoho-ide/knowledge-base": ["../../packages/knowledge-base/src/index.ts"],
             "@zoho-ide/attachments": ["../../packages/attachments/src/index.ts"],
         }

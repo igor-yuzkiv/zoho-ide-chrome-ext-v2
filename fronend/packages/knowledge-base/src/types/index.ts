@@ -1,4 +1,4 @@
-import type { IEntity } from '@zoho-ide/shared/types'
+import type { IEntity } from '@zoho-ide/shared'
 
 export interface IKnowledgeBaseItem extends IEntity {
     id: string

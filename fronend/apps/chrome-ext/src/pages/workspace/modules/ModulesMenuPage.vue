@@ -2,7 +2,7 @@
 import type { IModuleMetadataEntity } from '@/capabilities/metadata/metadata.types.ts'
 import { CapabilityType } from '@/config/capabilities.config.ts'
 import { useRouteParams } from '@vueuse/router'
-import { ListBox, ListItem } from '@zoho-ide/shared/components'
+import { ListBox, ListItem } from '@zoho-ide/shared'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { useCapabilityRecordsList } from '@/features/capability/capability-records-list'
 

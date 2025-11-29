@@ -1,5 +1,5 @@
 import type { IAttachment } from '../types'
-import { apiClient } from '@zoho-ide/shared/api'
+import { apiClient } from '@zoho-ide/shared'
 
 export function uploadTmpAttachmentRequest(file: File, role = 'tmp'): Promise<IAttachment> {
     const formData = new FormData()

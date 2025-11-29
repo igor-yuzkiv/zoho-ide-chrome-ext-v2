@@ -1,7 +1,7 @@
 import type { IModuleFieldMetadataEntity } from '@/capabilities/metadata/metadata.types.ts'
 import { CapabilityType } from '@/config/capabilities.config.ts'
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
-import type { IEntity } from '@zoho-ide/shared/types'
+import type { IEntity } from '@zoho-ide/shared'
 import { computed, type MaybeRef, toValue } from 'vue'
 import { selectProviderRecordsQuery } from '@/entities/capability/cache'
 

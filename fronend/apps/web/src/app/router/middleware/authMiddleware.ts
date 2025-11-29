@@ -1,4 +1,4 @@
-import { useAuthStore } from '@zoho-ide/shared/store'
+import { useAuthStore } from '@zoho-ide/shared'
 import type { NavigationGuard } from 'vue-router'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useAuthStore } from '@zoho-ide/shared/store'
-import { LoadingOverlay } from '@zoho-ide/shared/components'
-import { useAppTheme } from '@zoho-ide/shared/composables'
+import { useAuthStore } from '@zoho-ide/shared'
+import { LoadingOverlay } from '@zoho-ide/shared'
+import { useAppTheme } from '@zoho-ide/shared'
 import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import ConfirmDialog from 'primevue/confirmdialog'

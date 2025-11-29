@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { PageHeader } from '@zoho-ide/shared/components'
-import { useToast } from '@zoho-ide/shared/composables'
+import { PageHeader } from '@zoho-ide/shared'
+import { useToast } from '@zoho-ide/shared'
 import { ref, watch } from 'vue'
 import { InputText } from 'primevue'
 import { Button } from 'primevue'

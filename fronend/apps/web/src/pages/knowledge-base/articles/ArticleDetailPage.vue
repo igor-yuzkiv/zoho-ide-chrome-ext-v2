@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
-import { PageHeader } from '@zoho-ide/shared/components'
+import { PageHeader } from '@zoho-ide/shared'
 import { ArticleView } from '@zoho-ide/knowledge-base'
 import { Button } from 'primevue'
 import { AppRouteName } from '@/app/router/app-routes.ts'

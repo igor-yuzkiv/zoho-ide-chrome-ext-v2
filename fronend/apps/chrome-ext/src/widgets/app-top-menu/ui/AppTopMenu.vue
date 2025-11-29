@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useAuthStore } from '@zoho-ide/shared/store'
-import { TopMenu } from '@zoho-ide/shared/components'
-import { type  TopMenuItem, UserProfile } from '@zoho-ide/shared/components'
+import { useAuthStore } from '@zoho-ide/shared'
+import { TopMenu } from '@zoho-ide/shared'
+import { type  TopMenuItem, UserProfile } from '@zoho-ide/shared'
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { Icon } from '@iconify/vue'

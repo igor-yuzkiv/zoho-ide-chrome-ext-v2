@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAppTheme } from '@zoho-ide/shared/composables'
+import { useAppTheme } from '@zoho-ide/shared'
 import type { IKnowledgeBaseItem } from '../../types'
 import { MdPreview } from 'md-editor-v3'
 import { config as mdEditorConfig } from 'md-editor-v3'

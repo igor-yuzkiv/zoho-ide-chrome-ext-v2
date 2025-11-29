@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
-import { PageHeader } from '@zoho-ide/shared/components'
+import { PageHeader } from '@zoho-ide/shared'
 import { watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { Avatar, Button } from 'primevue'

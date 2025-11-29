@@ -1,5 +1,5 @@
-import { apiClient } from '@zoho-ide/shared/api'
-import type {  PagingParams, PagingResponse, SortParams } from '@zoho-ide/shared/types'
+import { apiClient } from '@zoho-ide/shared'
+import type {  PagingParams, PagingResponse, SortParams } from '@zoho-ide/shared'
 import type { IAttachment } from '../types'
 
 export function fetchEntityAttachmentsRequest(
