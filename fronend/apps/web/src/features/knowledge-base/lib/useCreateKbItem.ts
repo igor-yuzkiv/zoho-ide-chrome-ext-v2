@@ -1,7 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/vue-query'
-import { ApiError } from '@zoho-ide/backend-api/api.error.ts'
-import { createKbItemRequest, type SaveKbItemRequestPayload } from '@zoho-ide/backend-api/knowledge-base'
-import { type IKnowledgeBaseItem, KnowledgeBaseQueryKeys } from '@zoho-ide/shared/entities/knowledge-base'
+import { ApiError } from '@zoho-ide/shared/api'
+import { createKbItemRequest, type SaveKbItemRequestPayload, type IKnowledgeBaseItem, KnowledgeBaseQueryKeys } from '@zoho-ide/knowledge-base/index.ts'
 import { useToast } from '@zoho-ide/ui-kit/composables'
 import { ref } from 'vue'
 

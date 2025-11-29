@@ -1,6 +1,5 @@
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
-import { fetchUserByIdRequest } from '@zoho-ide/backend-api/user'
-import { type IUser, UserQueryKeys } from '@zoho-ide/shared/entities/user'
+import { type IUser, UserQueryKeys,fetchUserByIdRequest } from '@zoho-ide/shared/entities/user'
 import { type MaybeRefOrGetter, toValue } from 'vue'
 
 export function useUserDetails(userId: MaybeRefOrGetter<string>) {

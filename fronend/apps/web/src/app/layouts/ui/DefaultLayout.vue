@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAuthStore } from '@zoho-ide/backend-api/auth'
+import { useAuthStore } from '@zoho-ide/shared/entities/auth'
 import { type TopMenuItem } from '@zoho-ide/ui-kit/components'
 import { ToggleThemeButton, TopMenu } from '@zoho-ide/ui-kit/components'
 import { useAppTheme } from '@zoho-ide/ui-kit/composables'

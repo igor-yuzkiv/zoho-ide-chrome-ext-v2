@@ -6,7 +6,6 @@
         "paths": {
             "@/*": ["src/*"],
             "@zoho-ide/ui-kit/*": ["../../packages/ui-kit/src/*"],
-            "@zoho-ide/backend-api/*": ["../../packages/backend-api/src/*"],
             "@zoho-ide/shared/*": ["../../packages/shared/src/*"]
         }
     },
@@ -27,7 +26,6 @@
         "src/**/*.ts",
         "src/**/*.vue",
         "../../packages/ui-kit/src",
-        "../../packages/backend-api/src",
         "../../packages/shared/src"
     ]
 }

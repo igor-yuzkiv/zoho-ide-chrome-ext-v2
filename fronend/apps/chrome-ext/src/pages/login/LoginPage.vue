@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ApiError } from '@zoho-ide/backend-api/api.error.ts'
-import { useAuthStore } from '@zoho-ide/backend-api/auth'
+import { ApiError } from '@zoho-ide/shared/api'
+import { useAuthStore } from '@zoho-ide/shared/entities/auth'
 import { LoginForm } from '@zoho-ide/ui-kit/components'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'

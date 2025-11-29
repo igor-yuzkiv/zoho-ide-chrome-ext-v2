@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
-import { useAuthStore } from '@zoho-ide/backend-api/auth'
+import { useAuthStore } from '@zoho-ide/shared/entities/auth'
 import { IconButton, ListBox, ListItem } from '@zoho-ide/ui-kit/components'
 import { useRouter } from 'vue-router'
 import { AppRouteName } from '@/app/router/app-routes.ts'

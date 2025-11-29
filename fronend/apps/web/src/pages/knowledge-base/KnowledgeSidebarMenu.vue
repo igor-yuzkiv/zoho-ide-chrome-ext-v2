@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type IKnowledgeBaseItem } from '@zoho-ide/shared/entities/knowledge-base'
+import { type IKnowledgeBaseItem } from '@zoho-ide/knowledge-base/index.ts'
 import { IconButton, ListBox, ListItem } from '@zoho-ide/ui-kit/components'
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'

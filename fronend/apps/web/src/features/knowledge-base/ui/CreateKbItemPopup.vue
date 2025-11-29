@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useValidationErrors } from '@zoho-ide/backend-api/shared/errors/useValidationErrors.ts'
-import { type IKnowledgeBaseItem } from '@zoho-ide/shared/entities/knowledge-base'
+import { useCreateKbItem } from '../lib/useCreateKbItem.ts'
+import { type IKnowledgeBaseItem } from '@zoho-ide/knowledge-base/index.ts'
+import { useValidationErrors } from '@zoho-ide/shared/composables'
 import { FieldContainer } from '@zoho-ide/ui-kit/components'
 import { Button, InputText } from 'primevue'
 import Dialog from 'primevue/dialog'
-import { useCreateKbItem } from '@/features/knowledge-base'
 
 const emit = defineEmits<{ (event: 'created', item: IKnowledgeBaseItem): void }>()
 const visible = defineModel<boolean>('visible', { default: false })

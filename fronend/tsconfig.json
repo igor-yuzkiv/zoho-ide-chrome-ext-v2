@@ -5,7 +5,7 @@
         { "path": "./apps/web" },
         { "path": "./apps/chrome-ext" },
         { "path": "./packages/ui-kit" },
-        { "path": "./packages/backend-api" },
+        { "path": "./packages/knowledge-base" },
         { "path": "./packages/shared" }
     ]
 }

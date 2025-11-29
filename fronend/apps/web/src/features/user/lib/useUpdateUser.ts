@@ -1,7 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/vue-query'
-import { ApiError } from '@zoho-ide/backend-api/api.error.ts'
-import { updateUserRequest, type UpdateUserRequestPayload } from '@zoho-ide/backend-api/user'
-import { type IUser, UserQueryKeys } from '@zoho-ide/shared/entities/user'
+import { ApiError } from '@zoho-ide/shared/api';
+import { type IUser, UserQueryKeys, updateUserRequest, type UpdateUserRequestPayload } from '@zoho-ide/shared/entities/user'
 import { useToast } from '@zoho-ide/ui-kit/composables'
 import { type MaybeRefOrGetter, ref, toValue, watch } from 'vue'
 

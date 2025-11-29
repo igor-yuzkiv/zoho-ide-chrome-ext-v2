@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAuthStore } from '@zoho-ide/backend-api/auth'
+import { useAuthStore } from '@zoho-ide/shared/entities/auth'
 import { TopMenu } from '@zoho-ide/ui-kit/components'
 import type { TopMenuItem } from '@zoho-ide/ui-kit/components'
 import { UserProfile } from '@zoho-ide/ui-kit/widgets'
