@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { useAuthStore } from '@zoho-ide/shared/entities/auth'
-import { type TopMenuItem } from '@zoho-ide/ui-kit/components'
-import { ToggleThemeButton, TopMenu } from '@zoho-ide/ui-kit/components'
 import { useAppTheme } from '@zoho-ide/shared/composables'
-import { UserProfile } from '@zoho-ide/ui-kit/widgets'
+import { useAuthStore } from '@zoho-ide/shared/entities/auth'
+import { type TopMenuItem, UserProfile } from '@zoho-ide/ui-kit/components'
+import { ToggleThemeButton, TopMenu } from '@zoho-ide/ui-kit/components'
 import { useRoute, useRouter } from 'vue-router'
 import Splitter from 'primevue/splitter'
 import SplitterPanel from 'primevue/splitterpanel'
