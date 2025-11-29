@@ -1,5 +1,5 @@
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
-import { fetchKbItemsRequest, type IKnowledgeBaseItem, KnowledgeBaseQueryKeys } from '@zoho-ide/knowledge-base/index.ts'
+import { fetchKbItemsRequest, type IKnowledgeBaseItem, KnowledgeBaseQueryKeys } from '@zoho-ide/knowledge-base'
 
 export function useKbItemsList() {
     const { isPending, isFetching, data } = useQuery<IKnowledgeBaseItem[]>({

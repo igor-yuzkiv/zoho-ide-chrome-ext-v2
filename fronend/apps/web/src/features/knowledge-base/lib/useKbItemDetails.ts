@@ -1,5 +1,5 @@
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
-import { fetchKbItemByIdRequest, type IKnowledgeBaseItem, KnowledgeBaseQueryKeys } from '@zoho-ide/knowledge-base/index.ts'
+import { fetchKbItemByIdRequest, type IKnowledgeBaseItem, KnowledgeBaseQueryKeys } from '@zoho-ide/knowledge-base'
 import { type MaybeRefOrGetter, toValue } from 'vue'
 
 export function useKbItemDetails(itemId: MaybeRefOrGetter<string>) {

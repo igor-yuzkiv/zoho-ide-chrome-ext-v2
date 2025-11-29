@@ -5,8 +5,8 @@
         "baseUrl": "./",
         "paths": {
             "@/*": ["src/*"],
-            "@zoho-ide/knowledge-base/*": ["../../packages/knowledge-base/src/*"],
-            "@zoho-ide/shared/*": ["../../packages/shared/src/*"]
+            "@zoho-ide/shared/*": ["../../packages/shared/src/*"],
+            "@zoho-ide/knowledge-base": ["../../packages/knowledge-base/src/index.ts"],
         }
     },
     "exclude": [

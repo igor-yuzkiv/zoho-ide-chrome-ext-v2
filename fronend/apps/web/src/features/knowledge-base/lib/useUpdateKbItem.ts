@@ -5,7 +5,7 @@ import {
     KnowledgeBaseQueryKeys,
     type SaveKbItemRequestPayload,
     updateKbItemRequest,
-} from '@zoho-ide/knowledge-base/index.ts'
+} from '@zoho-ide/knowledge-base'
 import { useToast } from '@zoho-ide/shared/composables'
 import { type MaybeRefOrGetter, ref, toValue, watch } from 'vue'
 

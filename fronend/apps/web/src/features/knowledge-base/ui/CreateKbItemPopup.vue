@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCreateKbItem } from '../lib/useCreateKbItem.ts'
-import { type IKnowledgeBaseItem } from '@zoho-ide/knowledge-base/index.ts'
+import { type IKnowledgeBaseItem } from '@zoho-ide/knowledge-base'
 import { useValidationErrors } from '@zoho-ide/shared/composables'
 import { FieldContainer } from '@zoho-ide/shared/components'
 import { Button, InputText } from 'primevue'
