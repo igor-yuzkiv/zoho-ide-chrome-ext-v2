@@ -16,6 +16,7 @@ const { data: workflows } = useCapabilityRecordsList<IWorkflowEntity>(Capability
             <ListItem
                 icon="mdi:workflow"
                 as="router-link"
+                active-class="app-list-item-active"
                 :to="{ name: AppRouteName.workspaceWorkflows, params: { providerId, workflowId: item.id } }"
                 :title="item.displayName"
             />

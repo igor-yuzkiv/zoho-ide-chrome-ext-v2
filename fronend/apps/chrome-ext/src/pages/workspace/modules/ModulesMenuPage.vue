@@ -16,6 +16,7 @@ const { data: modules } = useCapabilityRecordsList<IModuleMetadataEntity>(Capabi
             <ListItem
                 icon="streamline-sharp:module"
                 as="router-link"
+                active-class="app-list-item-active"
                 :to="{ name: AppRouteName.workspaceModules, params: { providerId, moduleId: item.id } }"
                 :title="item.displayName"
             />

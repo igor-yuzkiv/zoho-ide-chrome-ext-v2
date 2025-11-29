@@ -13,6 +13,7 @@ const functions = useFunctionsList(providerId)
         <template #item="{ item }">
             <ListItem
                 as="router-link"
+                active-class="app-list-item-active"
                 :to="{ name: AppRouteName.workspaceFunctions, params: { providerId, functionId: item.id } }"
                 :tooltip="`${item.type}: ${item.displayName}`"
             >

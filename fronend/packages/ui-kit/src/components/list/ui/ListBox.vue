@@ -17,6 +17,7 @@ const props = withDefaults(
         searchPlaceholder?: string
         tooltipField?: keyof T
         itemAttributes?: Record<string, unknown>
+        isActiveItem?: (item: T) => boolean
     }>(),
     {
         itemKey: 'id',
@@ -45,12 +46,15 @@ const getItemSearchValue = (item: T): string => {
 const mapItem = (item: T) => {
     const title = item[props.itemTitle] as string
 
+    const isActive = props.isActiveItem ? props.isActiveItem(item) : false
+
     return {
         original: item,
         key: item[props.itemKey] as string,
         title: title,
         tooltip: props.tooltipField ? (item[props.tooltipField] as string) : title,
         searchValue: getItemSearchValue(item),
+        isActive,
     }
 }
 
@@ -80,7 +84,7 @@ const itemsForDisplay = computed(() => {
         <div class="flex h-full flex-col overflow-x-hidden overflow-y-auto">
             <ul v-if="itemsForDisplay.length" class="w-full">
                 <li v-for="item in itemsForDisplay" :key="item.key">
-                    <slot name="item" :item="item.original">
+                    <slot name="item" :item="item.original" :active="item.isActive">
                         <ListItem
                             @click="$emit('itemClick', item.original)"
                             :title="item.title"

@@ -2,13 +2,20 @@
 import { useAppTheme } from '../../../composables'
 import type { IKnowledgeBaseItem } from '@zoho-ide/shared/entities/knowledge-base'
 import { MdPreview } from 'md-editor-v3'
+import { config as mdEditorConfig } from 'md-editor-v3'
 import Tag from 'primevue/tag'
 import { Icon } from '@iconify/vue'
 
-defineProps<{
-    article: IKnowledgeBaseItem
-}>()
+mdEditorConfig({
+    katexConfig(base: any) {
+        return {
+            ...base,
+            strict: false, // Disable strict mode to allow all cyrylic characters
+        }
+    },
+})
 
+defineProps<{ article: IKnowledgeBaseItem }>()
 const { isDark } = useAppTheme()
 </script>
 

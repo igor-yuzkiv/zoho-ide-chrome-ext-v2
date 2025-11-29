@@ -16,7 +16,7 @@ export function useCreateKbItem() {
     const toast = useToast()
     const formErrors = ref<Record<string, string[]>>({})
 
-    const { data, isSuccess, mutate, isPending } = useMutation<
+    const { data, isSuccess, mutate, mutateAsync, isPending } = useMutation<
         IKnowledgeBaseItem,
         ApiError | Error,
         SaveKbItemRequestPayload
@@ -45,9 +45,15 @@ export function useCreateKbItem() {
         mutate(formData.value)
     }
 
+    async function submitAsync() {
+        formErrors.value = {}
+        return await mutateAsync(formData.value)
+    }
+
     return {
         formData,
         submit,
+        submitAsync,
         isPending,
         isSuccess,
         data,

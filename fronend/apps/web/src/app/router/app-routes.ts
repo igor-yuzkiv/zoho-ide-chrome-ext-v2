@@ -11,7 +11,6 @@ export const AppRouteName = {
     userCreate: 'users.create',
 
     kbIndex: 'kb.index',
-    kbNewItem: 'kb.item.new',
     kbItemDetails: 'kb.item.details',
     kbItemEdit: 'kb.item.edit',
 }
@@ -70,15 +69,6 @@ export const AppRoutes: RouteRecordRaw[] = [
         meta: { authenticated: true },
         components: {
             default: () => import('@/pages/knowledge-base/KnowledgeBaseIndexPage.vue'),
-            menu: () => import('@/pages/knowledge-base/KnowledgeSidebarMenu.vue'),
-        },
-    },
-    {
-        name: AppRouteName.kbNewItem,
-        path: '/knowledge-base/new',
-        meta: { authenticated: true },
-        components: {
-            default: () => import('@/pages/knowledge-base/articles/CreateArticlePage.vue'),
             menu: () => import('@/pages/knowledge-base/KnowledgeSidebarMenu.vue'),
         },
     },

@@ -15,7 +15,6 @@ defineProps<{
         class="flex items-center justify-between w-full cursor-pointer hover:bg-selection px-2 rounded"
         :is="as || 'div'"
         v-tooltip="{ value: tooltip || title }"
-        active-class="app-list-item-active"
     >
         <div class="flex items-center gap-x-2 w-full">
             <slot name="icon">

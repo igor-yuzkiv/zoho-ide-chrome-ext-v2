@@ -13,7 +13,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
         return [
             'id'         => $this->id,
             'title'      => $this->title,
-            'content'    => $this->content,
+            'content'    => $this->content ?? '',
             'parent_id'  => $this->parentId,
             'created_by' => $this->createdBy,
             'update_by'  => $this->updatedBy,

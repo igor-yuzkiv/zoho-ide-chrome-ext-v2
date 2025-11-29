@@ -32,6 +32,7 @@ function handleDeleteUser(userId: string, userName: string) {
         <template #item="{ item }">
             <ListItem
                 as="router-link"
+                active-class="app-list-item-active"
                 :to="{ name: AppRouteName.userDetails, params: { userId: item.id } }"
                 icon="fa:user"
             >

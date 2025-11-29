@@ -3,9 +3,6 @@ import { useAppTheme } from '../../../composables'
 import { MdEditor } from 'md-editor-v3'
 import { config as mdEditorConfig } from 'md-editor-v3'
 
-const { isDark } = useAppTheme()
-const modelValue = defineModel<string>({ default: '' })
-
 mdEditorConfig({
     katexConfig(base: any) {
         return {
@@ -14,6 +11,9 @@ mdEditorConfig({
         }
     },
 })
+
+const { isDark } = useAppTheme()
+const modelValue = defineModel<string>({ default: '' })
 </script>
 
 <template>
