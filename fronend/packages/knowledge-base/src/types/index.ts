@@ -13,3 +13,8 @@ export interface SaveKbItemRequestPayload {
     content?: string
     parentId?: string
 }
+
+export type EditorImageUploadPayload = {
+    files: File[];
+    callback: (urls: string[]) => void
+}

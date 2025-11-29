@@ -1,8 +1,13 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
-import { useValidationErrors } from '@zoho-ide/shared/composables'
+import { attachToEntityRequest } from '@zoho-ide/attachments'
+import {
+    ArticleContentEditor,
+    type EditorImageUploadPayload,
+    KnowledgeBaseItemEntityType,
+} from '@zoho-ide/knowledge-base'
 import { FieldContainer, PageHeader } from '@zoho-ide/shared/components'
-import { ArticleContentEditor } from '@zoho-ide/knowledge-base'
+import { useValidationErrors } from '@zoho-ide/shared/composables'
 import { Button, InputText } from 'primevue'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { useKbItemDetails } from '@/features/knowledge-base'
@@ -12,6 +17,27 @@ const itemId = useRouteParams<string>('itemId')
 const { data } = useKbItemDetails(itemId)
 const { formData, submit, formErrors } = useUpdateKbItem(data)
 const validationErrors = useValidationErrors(() => formErrors.value)
+
+async function handleUploadImages(payload: EditorImageUploadPayload) {
+    console.log('Uploading images:', payload)
+    if (!payload.files.length || !data.value) {
+        return
+    }
+
+    const responses = await Promise.all(
+        payload.files.map((file) => {
+            return attachToEntityRequest(
+                KnowledgeBaseItemEntityType,
+                data.value!.id,
+                file,
+                'knowledge_base_article_content_image'
+            )
+        })
+    )
+
+    const uploadedImageUrls = responses.map((res) => res.public_link)
+    payload.callback(uploadedImageUrls)
+}
 </script>
 
 <template>
@@ -40,7 +66,12 @@ const validationErrors = useValidationErrors(() => formErrors.value)
             </FieldContainer>
         </div>
 
-        <ArticleContentEditor v-model="formData.content" :item-id="data.id" class="flex-grow" />
+        <ArticleContentEditor
+            v-model="formData.content"
+            :item-id="data.id"
+            class="flex-grow overflow-auto"
+            @upload-img="handleUploadImages"
+        />
     </div>
 </template>
 

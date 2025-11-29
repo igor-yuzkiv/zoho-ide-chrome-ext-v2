@@ -7,6 +7,7 @@
             "@/*": ["src/*"],
             "@zoho-ide/shared/*": ["../../packages/shared/src/*"],
             "@zoho-ide/knowledge-base": ["../../packages/knowledge-base/src/index.ts"],
+            "@zoho-ide/attachments": ["../../packages/attachments/src/index.ts"],
         }
     },
     "exclude": [
@@ -26,6 +27,7 @@
         "src/**/*.ts",
         "src/**/*.vue",
         "../../packages/knowledge-base/src",
+        "../../packages/attachments/src",
         "../../packages/shared/src"
     ]
 }
