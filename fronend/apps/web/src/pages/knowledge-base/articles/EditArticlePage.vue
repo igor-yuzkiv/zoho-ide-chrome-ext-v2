@@ -40,7 +40,7 @@ const validationErrors = useValidationErrors(() => formErrors.value)
             </FieldContainer>
         </div>
 
-        <ArticleContentEditor v-model="formData.content" class="flex-grow" />
+        <ArticleContentEditor v-model="formData.content" :item-id="data.id" class="flex-grow" />
     </div>
 </template>
 

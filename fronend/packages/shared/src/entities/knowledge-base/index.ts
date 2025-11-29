@@ -1,2 +1,2 @@
 export * from './knowledge-base.types.ts'
-export * from './knowledge-base.keys.ts'
+export * from './knowledge-base.constants.ts'
