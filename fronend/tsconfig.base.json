@@ -2,11 +2,6 @@
     "compilerOptions": {
         "baseUrl": ".",
         "rootDir": ".",
-        "paths": {
-            "@zoho-ide/shared": ["packages/shared/src/index.ts"],
-            "@zoho-ide/knowledge-base": ["packages/knowledge-base/src/index.ts"],
-            "@zoho-ide/attachments": ["packages/attachments/src/index.ts"]
-        },
         "composite": true,
         "declarationMap": true,
         "emitDeclarationOnly": true,
@@ -14,8 +9,8 @@
         "isolatedModules": true,
         "target": "ES2023",
         "lib": ["ES2023", "DOM"],
-        "module": "ESNext",
-        "moduleResolution": "bundler",
+        "module": "nodenext",
+        "moduleResolution": "nodenext",
         "noEmitOnError": true,
         "noFallthroughCasesInSwitch": true,
         "noImplicitOverride": true,
@@ -23,15 +18,14 @@
         "noUnusedLocals": true,
         "skipLibCheck": true,
         "strict": true,
-        "customConditions": ["zoho-ide"],
-        "types": ["node"],
+        "customConditions": [
+            "my-workspace"
+        ],
         "allowImportingTsExtensions": true,
-        "verbatimModuleSyntax": true,
-        "moduleDetection": "force",
-        "noEmit": true,
-        "noUnusedParameters": true,
-        "erasableSyntaxOnly": true,
-        "noUncheckedSideEffectImports": true
-    },
-    "include": ["packages/**/*"]
+        "paths": {
+            "@zoho-ide/shared": ["packages/shared/src/index.ts"],
+            "@zoho-ide/knowledge-base": ["packages/knowledge-base/src/index.ts"],
+            "@zoho-ide/attachments": ["packages/attachments/src/index.ts"]
+        }
+    }
 }

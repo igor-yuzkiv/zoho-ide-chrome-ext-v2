@@ -1,8 +1,13 @@
 {
     "extends": "../../tsconfig.base.json",
     "compilerOptions": {
+        "outDir": "../../dist/out-tsc",
         "types": ["vite/client", "chrome"],
         "baseUrl": "./",
+        "target": "ES2023",
+        "lib": ["ES2023", "DOM"],
+        "module": "ESNext",
+        "moduleResolution": "bundler",
         "paths": {
             "@/*": ["src/*"],
             "@zoho-ide/shared": ["../../packages/shared/src/index.ts"]
@@ -19,11 +24,10 @@
         "eslint.config.cjs",
         "eslint.config.mjs"
     ],
-    "include": [
-        "src/**/*.js",
-        "src/**/*.jsx",
-        "src/**/*.ts",
-        "src/**/*.vue",
-        "../../packages/shared/src"
+    "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.vue", "../../packages/shared/src"],
+    "references": [
+        {
+            "path": "../../packages/shared/tsconfig.lib.json"
+        }
     ]
 }

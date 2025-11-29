@@ -27,6 +27,7 @@ export default defineConfig(({ mode }) => {
         },
         resolve: {
             alias: {
+                // @ts-expect-error TS1470: The 'import.meta' meta-property is not allowed in files which will build into CommonJS output.
                 '@': fileURLToPath(new URL('/src', import.meta.url)),
             },
             extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue', '.css'],

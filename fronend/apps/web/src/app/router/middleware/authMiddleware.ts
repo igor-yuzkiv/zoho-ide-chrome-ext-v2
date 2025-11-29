@@ -2,7 +2,6 @@ import { useAuthStore } from '@zoho-ide/shared'
 import type { NavigationGuard } from 'vue-router'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 
-// @ts-expect-error Vue: from is declared but its value is never read
 export const authMiddleware: NavigationGuard = async (to, from, next) => {
     if (!to.meta?.authenticated) {
         return next()

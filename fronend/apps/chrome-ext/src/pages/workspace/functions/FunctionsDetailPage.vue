@@ -4,6 +4,7 @@ import { useRouteParams } from '@vueuse/router'
 import { NoDataMessage } from '@zoho-ide/shared'
 import { CodeEditor } from '@/shared/components/code-editor'
 
+
 const providerId = useRouteParams<string>('providerId')
 const functionId = useRouteParams<string>('functionId')
 const functionDetails = useFunctionDetails(providerId, functionId)

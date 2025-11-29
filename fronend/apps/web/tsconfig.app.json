@@ -1,13 +1,14 @@
 {
     "extends": "../../tsconfig.base.json",
     "compilerOptions": {
+        "outDir": "../../dist/out-tsc",
         "types": ["vite/client"],
         "baseUrl": "./",
         "paths": {
             "@/*": ["src/*"],
             "@zoho-ide/shared": ["../../packages/shared/src/index.ts"],
             "@zoho-ide/knowledge-base": ["../../packages/knowledge-base/src/index.ts"],
-            "@zoho-ide/attachments": ["../../packages/attachments/src/index.ts"],
+            "@zoho-ide/attachments": ["../../packages/attachments/src/index.ts"]
         }
     },
     "exclude": [
@@ -29,5 +30,13 @@
         "../../packages/knowledge-base/src",
         "../../packages/attachments/src",
         "../../packages/shared/src"
+    ],
+    "references": [
+        {
+            "path": "../../packages/knowledge-base/tsconfig.lib.json"
+        },
+        {
+            "path": "../../packages/shared/tsconfig.lib.json"
+        }
     ]
 }

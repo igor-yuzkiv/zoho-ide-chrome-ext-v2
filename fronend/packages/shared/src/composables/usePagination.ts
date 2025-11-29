@@ -1,4 +1,4 @@
-import type { PagingParams, PagingResponseMeta } from '../types/pagination.types.ts'
+import type { PagingParams, PagingResponseMeta } from '../types'
 import { computed, ref } from 'vue'
 
 export function usePagination(initialParams: PagingParams = { page: 1, per_page: 15 }) {

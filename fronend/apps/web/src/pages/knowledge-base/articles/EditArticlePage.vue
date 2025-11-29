@@ -1,11 +1,6 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
-import { attachToEntityRequest } from '@zoho-ide/attachments'
-import {
-    ArticleContentEditor,
-    type EditorImageUploadPayload,
-    KnowledgeBaseItemEntityType,
-} from '@zoho-ide/knowledge-base'
+import { ArticleContentEditor } from '@zoho-ide/knowledge-base'
 import { FieldContainer, PageHeader } from '@zoho-ide/shared'
 import { useValidationErrors } from '@zoho-ide/shared'
 import { Button, InputText } from 'primevue'
@@ -17,27 +12,6 @@ const itemId = useRouteParams<string>('itemId')
 const { data } = useKbItemDetails(itemId)
 const { formData, submit, formErrors } = useUpdateKbItem(data)
 const validationErrors = useValidationErrors(() => formErrors.value)
-
-async function handleUploadImages(payload: EditorImageUploadPayload) {
-    console.log('Uploading images:', payload)
-    if (!payload.files.length || !data.value) {
-        return
-    }
-
-    const responses = await Promise.all(
-        payload.files.map((file) => {
-            return attachToEntityRequest(
-                KnowledgeBaseItemEntityType,
-                data.value!.id,
-                file,
-                'knowledge_base_article_content_image'
-            )
-        })
-    )
-
-    const uploadedImageUrls = responses.map((res) => res.public_link)
-    payload.callback(uploadedImageUrls)
-}
 </script>
 
 <template>
@@ -66,12 +40,7 @@ async function handleUploadImages(payload: EditorImageUploadPayload) {
             </FieldContainer>
         </div>
 
-        <ArticleContentEditor
-            v-model="formData.content"
-            :item-id="data.id"
-            class="flex-grow overflow-auto"
-            @upload-img="handleUploadImages"
-        />
+        <ArticleContentEditor v-model="formData.content" class="flex-grow overflow-auto" :item-id="data.id" />
     </div>
 </template>
 

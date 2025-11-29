@@ -2,5 +2,15 @@
     "extends": "../../tsconfig.base.json",
     "files": [],
     "include": ["vite.config.ts"],
-    "references": [{ "path": "./tsconfig.app.json" }]
+    "references": [
+        {
+            "path": "../../packages/knowledge-base"
+        },
+        {
+            "path": "../../packages/shared"
+        },
+        {
+            "path": "./tsconfig.app.json"
+        }
+    ]
 }

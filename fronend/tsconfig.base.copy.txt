@@ -1,9 +1,11 @@
 {
     "compilerOptions": {
         "baseUrl": ".",
+        "rootDir": ".",
         "paths": {
-            "@zoho-ide/backend-api/*": ["packages/backend-api/src/*"],
-            "@zoho-ide/shared": ["packages/shared/src/index.ts"]
+            "@zoho-ide/shared": ["packages/shared/src/index.ts"],
+            "@zoho-ide/knowledge-base": ["packages/knowledge-base/src/index.ts"],
+            "@zoho-ide/attachments": ["packages/attachments/src/index.ts"]
         },
         "composite": true,
         "declarationMap": true,

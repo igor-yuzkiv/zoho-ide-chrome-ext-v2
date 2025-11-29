@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { KnowledgeBaseItemEntityType } from '../../knowledge-base.constants.ts'
 import type { EditorImageUploadPayload } from '../../types'
+import { attachToEntityRequest } from '@zoho-ide/attachments'
 import { useAppTheme } from '@zoho-ide/shared'
 import { MdEditor } from 'md-editor-v3'
 import { config as mdEditorConfig } from 'md-editor-v3'
@@ -13,14 +15,30 @@ mdEditorConfig({
     },
 })
 
-const emit = defineEmits<{ (event: 'upload-img', value: EditorImageUploadPayload): void }>()
+const props = defineProps<{itemId: string}>()
 const { isDark } = useAppTheme()
 const modelValue = defineModel<string>({ default: '' })
 
-function handleUploadImages(files: File[], callback: (urls: string[]) => void) {
-    emit('upload-img', { files, callback })
-}
+async function handleUploadImages(payload: EditorImageUploadPayload) {
+    console.log('Uploading images:', payload)
+    if (!payload.files.length) {
+        return
+    }
 
+    const responses = await Promise.all(
+        payload.files.map((file) => {
+            return attachToEntityRequest(
+                KnowledgeBaseItemEntityType,
+                props.itemId,
+                file,
+                'knowledge_base_article_content_image'
+            )
+        })
+    )
+
+    const uploadedImageUrls = responses.map((res) => res.public_link)
+    payload.callback(uploadedImageUrls)
+}
 </script>
 
 <template>
