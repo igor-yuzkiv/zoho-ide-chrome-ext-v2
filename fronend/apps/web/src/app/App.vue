@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAppTheme } from '@zoho-ide/shared'
+import { useAppThemeStore } from '@zoho-ide/shared'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import ConfirmDialog from 'primevue/confirmdialog'
@@ -17,7 +17,7 @@ const layoutComponent = computed(() => {
     return AppLayoutComponent.default
 })
 
-useAppTheme().initialize()
+useAppThemeStore().initialize()
 </script>
 
 <template>

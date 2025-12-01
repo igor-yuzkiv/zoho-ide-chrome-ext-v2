@@ -1,7 +1,8 @@
 import { usePreferredDark, useStorage } from '@vueuse/core'
+import { defineStore } from 'pinia'
 import { computed } from 'vue'
 
-export function useAppTheme() {
+export const useAppThemeStore = defineStore('shared.appAppTheme', () => {
     const currenTheme = useStorage('theme', '')
     const isDarkPreferred = usePreferredDark()
     const isDark = computed(() => currenTheme.value === 'dark')
@@ -28,4 +29,4 @@ export function useAppTheme() {
     }
 
     return { isDark, toggle, initialize }
-}
+})

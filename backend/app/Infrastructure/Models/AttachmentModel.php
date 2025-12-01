@@ -16,13 +16,15 @@ class AttachmentModel extends Model
     protected $fillable = [
         'id',
         'file_name',
-        'entity_name',
-        'entity_id',
         'extension',
         'mime_type',
         'size',
         'role',
         'is_temp',
+
+        // TODO: refactor to polymorphic relation
+        'entity_name',
+        'entity_id',
     ];
 
     protected $casts = [

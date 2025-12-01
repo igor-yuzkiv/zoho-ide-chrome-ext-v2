@@ -3,6 +3,7 @@ import { useCreateKnowledgeBaseItem } from '../mutations'
 import { type IKnowledgeBaseItem } from '../types'
 import { useValidationErrors } from '@zoho-ide/shared'
 import { FieldContainer } from '@zoho-ide/shared'
+import { TagsMultiSelect } from '@zoho-ide/tags'
 import { Button, InputText } from 'primevue'
 import Dialog from 'primevue/dialog'
 
@@ -28,14 +29,18 @@ function handleClickSubmit() {
         class="w-lg"
         :closable="false"
     >
-        <FieldContainer label="Name" input-id="article_name" :error-message="validationErrors.get('title')">
-            <InputText
-                fluid
-                placeholder="Enter article name"
-                v-model="formData.title"
-                :invalid="validationErrors.has('title')"
-            />
-        </FieldContainer>
+        <div class="flex flex-col gap-2">
+            <FieldContainer label="Name" input-id="article_name" :error-message="validationErrors.get('title')">
+                <InputText
+                    fluid
+                    placeholder="Enter article name"
+                    v-model="formData.title"
+                    :invalid="validationErrors.has('title')"
+                />
+            </FieldContainer>
+
+            <TagsMultiSelect />
+        </div>
 
         <template #footer>
             <div class="flex items-center justify-between">

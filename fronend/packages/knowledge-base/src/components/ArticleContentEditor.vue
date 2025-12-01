@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { KnowledgeBaseItemEntityType } from '../knowledge-base.constants.ts'
 import { attachToEntityRequest } from '@zoho-ide/attachments'
-import { useAppTheme } from '@zoho-ide/shared'
+import { useAppThemeStore } from '@zoho-ide/shared'
 import { MdEditor } from 'md-editor-v3'
 import { config as mdEditorConfig } from 'md-editor-v3'
 
@@ -15,7 +15,7 @@ mdEditorConfig({
 })
 
 const props = defineProps<{ itemId: string }>()
-const { isDark } = useAppTheme()
+const appTheme = useAppThemeStore()
 const modelValue = defineModel<string>({ default: '' })
 
 //TODO: upload images only after save article
@@ -49,7 +49,7 @@ async function handleUploadImages(files: File[], callback: (urls: string[]) => v
         language="en-US"
         previewTheme="github"
         codeTheme="github"
-        :theme="isDark ? 'dark' : 'light'"
+        :theme="appTheme.isDark ? 'dark' : 'light'"
         @onUploadImg="handleUploadImages"
     />
 </template>

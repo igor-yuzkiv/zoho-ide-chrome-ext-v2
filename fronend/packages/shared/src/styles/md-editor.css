@@ -21,3 +21,7 @@
     margin: 0.5em 0 0.3em 0;
     font-weight: bold;
 }
+
+.md-editor-preview .md-editor-code .md-editor-code-head {
+    z-index: 1;
+}

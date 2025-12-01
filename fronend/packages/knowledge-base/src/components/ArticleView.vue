@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAppTheme } from '@zoho-ide/shared'
+import { useAppThemeStore } from '@zoho-ide/shared'
 import type { IKnowledgeBaseItem } from '../types'
 import { MdPreview } from 'md-editor-v3'
 import { config as mdEditorConfig } from 'md-editor-v3'
@@ -16,7 +16,8 @@ mdEditorConfig({
 })
 
 defineProps<{ article: IKnowledgeBaseItem }>()
-const { isDark } = useAppTheme()
+const appTheme = useAppThemeStore()
+
 </script>
 
 <template>
@@ -24,13 +25,13 @@ const { isDark } = useAppTheme()
         <div class="flex flex-col w-full h-full overflow-auto p-3">
             <MdPreview
                 :modelValue="article?.content || '*No description*'"
-                :theme="isDark ? 'dark' : 'light'"
+                :theme="appTheme.isDark ? 'dark' : 'light'"
                 language="en-US"
             />
         </div>
 
         <div class="flex items-center justify-between dark:bg-secondary/60">
-            <div class="flex items-center gap-x-2 px-2">
+            <div class="flex items-center gap-x-2">
                 <Tag severity="success" class="py-0">Zoho Crm</Tag>
                 <Tag class="py-0">Deluge</Tag>
             </div>

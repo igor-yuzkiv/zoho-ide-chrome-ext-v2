@@ -4,6 +4,9 @@
     "include": ["vite.config.ts"],
     "references": [
         {
+            "path": "../shared"
+        },
+        {
             "path": "./tsconfig.lib.json"
         }
     ]

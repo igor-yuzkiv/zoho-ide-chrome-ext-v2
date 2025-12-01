@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAppTheme } from '@zoho-ide/shared'
+import { useAppThemeStore } from '@zoho-ide/shared'
 import { useAuthStore } from '@zoho-ide/shared'
 import { type TopMenuItem, UserProfile } from '@zoho-ide/shared'
 import { ToggleThemeButton, TopMenu } from '@zoho-ide/shared'
@@ -14,7 +14,7 @@ const NAV_ITEMS: TopMenuItem[] = [
     { title: 'Knowledge Base', route: { name: AppRouteName.kbIndex } },
 ]
 
-const appTheme = useAppTheme()
+const appTheme = useAppThemeStore()
 const authStore = useAuthStore()
 const router = useRouter()
 const route = useRoute()
@@ -59,7 +59,7 @@ function handleSignOut() {
         </main>
 
         <div class="flex items-center justify-end py-1 px-2">
-            <ToggleThemeButton :is-dark="appTheme.isDark.value" @click="appTheme.toggle()" />
+            <ToggleThemeButton :is-dark="appTheme.isDark" @click="appTheme.toggle" />
         </div>
     </div>
 </template>

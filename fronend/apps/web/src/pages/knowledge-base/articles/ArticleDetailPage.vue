@@ -23,7 +23,7 @@ const { data } = useKnowledgeBaseItemDetailsQuery(itemId)
             </template>
         </PageHeader>
 
-        <ArticleView v-if="data" :article="data" />
+        <ArticleView v-if="data" :article="data" class="px-3"/>
     </div>
 </template>
 

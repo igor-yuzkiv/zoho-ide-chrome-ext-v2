@@ -4,6 +4,7 @@ use App\Api\Http\Controllers\AttachmentsController;
 use App\Api\Http\Controllers\AuthController;
 use App\Api\Http\Controllers\KnowledgeBaseController;
 use App\Api\Http\Controllers\MockApiController;
+use App\Api\Http\Controllers\TagController;
 use App\Api\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -88,5 +89,19 @@ Route::group(
         Route::get('{entityName}/{entityId}', [AttachmentsController::class, 'getEntityAttachments'])->name('getEntityAttachments');
         Route::post('{entityName}/{entityId}/attach', [AttachmentsController::class, 'attachToEntity'])->name('attachToEntity');
         Route::post('upload/tmp', [AttachmentsController::class, 'uploadTmpAttachment'])->name('uploadTmpAttachment');
+    }
+);
+
+/**
+ * Tags routes
+ */
+Route::group(
+    [
+        'prefix' => '/tags',
+        'as'     => 'tags.',
+    ],
+    function () {
+        Route::post('', [TagController::class, 'create'])->name('create');
+        Route::post('search', [TagController::class, 'search'])->name('search');
     }
 );
