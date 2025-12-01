@@ -18,9 +18,7 @@
         "noUnusedLocals": true,
         "skipLibCheck": true,
         "strict": true,
-        "customConditions": [
-            "my-workspace"
-        ],
+        "customConditions": ["my-workspace"],
         "allowImportingTsExtensions": true,
         "paths": {
             "@zoho-ide/shared": ["packages/shared/src/index.ts"],

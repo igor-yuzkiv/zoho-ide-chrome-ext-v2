@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
-import { PageHeader } from '@zoho-ide/shared'
 import { ArticleView, useKnowledgeBaseItemDetailsQuery } from '@zoho-ide/knowledge-base'
+import { PageHeader } from '@zoho-ide/shared'
 import { Button } from 'primevue'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 
@@ -23,7 +23,7 @@ const { data } = useKnowledgeBaseItemDetailsQuery(itemId)
             </template>
         </PageHeader>
 
-        <ArticleView v-if="data" :article="data" class="px-3"/>
+        <ArticleView v-if="data" :article="data" />
     </div>
 </template>
 

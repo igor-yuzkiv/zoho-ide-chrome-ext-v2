@@ -1,17 +1,13 @@
 import { updateKbItemRequest } from '../api'
-import { KnowledgeBaseQueryKeys } from '../knowledge-base.constants.ts'
-import type { IKnowledgeBaseItem, SaveKbItemRequestPayload } from '../types'
+import { defaultKbItemFormData, KnowledgeBaseQueryKeys } from '../knowledge-base.constants.ts'
+import { mapKbItemFormDataToRequestPayload } from '../knowledge-base.mappers.ts'
+import type { IKnowledgeBaseItem, KbItemFormData } from '../types'
 import { useMutation, useQueryClient } from '@tanstack/vue-query'
 import { ApiError, useToast } from '@zoho-ide/shared'
 import { type MaybeRefOrGetter, ref, toValue, watch } from 'vue'
 
-const defaultCreateKbItemFormData = (): SaveKbItemRequestPayload => ({
-    title: '',
-    content: '',
-})
-
 export function useUpdateKnowledgeBaseItem(kbItem: MaybeRefOrGetter<IKnowledgeBaseItem | undefined>) {
-    const formData = ref<SaveKbItemRequestPayload>(defaultCreateKbItemFormData())
+    const formData = ref<KbItemFormData>(defaultKbItemFormData())
     const queryClient = useQueryClient()
     const toast = useToast()
     const formErrors = ref<Record<string, string[]>>({})
@@ -19,10 +15,10 @@ export function useUpdateKnowledgeBaseItem(kbItem: MaybeRefOrGetter<IKnowledgeBa
     const { data, isSuccess, mutate, isPending } = useMutation<
         IKnowledgeBaseItem,
         ApiError | Error,
-        { itemId: string; data: SaveKbItemRequestPayload }
+        { itemId: string; data: KbItemFormData }
     >({
         mutationFn: (payload) => {
-            return updateKbItemRequest(payload.itemId, payload.data)
+            return updateKbItemRequest(payload.itemId, mapKbItemFormDataToRequestPayload(payload.data))
         },
         onSuccess: ({ id }) => {
             queryClient.invalidateQueries({ queryKey: KnowledgeBaseQueryKeys.items() }).catch(console.error)
@@ -50,14 +46,14 @@ export function useUpdateKnowledgeBaseItem(kbItem: MaybeRefOrGetter<IKnowledgeBa
         }
     }
 
-    function resetFormData(partialData?: Partial<SaveKbItemRequestPayload>) {
+    function resetFormData(partialData?: Partial<KbItemFormData>) {
         if (!partialData) {
-            formData.value = defaultCreateKbItemFormData()
+            formData.value = defaultKbItemFormData()
             return
         }
 
         formData.value = {
-            ...defaultCreateKbItemFormData(),
+            ...defaultKbItemFormData(),
             ...partialData,
         }
     }

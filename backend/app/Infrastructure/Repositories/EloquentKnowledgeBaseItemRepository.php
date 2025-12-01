@@ -20,9 +20,10 @@ readonly class EloquentKnowledgeBaseItemRepository implements KnowledgeBaseItemR
         return Str::ulid();
     }
 
-    public function paginate(PaginationParams $paginationParams, SortParams $sortParams): PageResult
+    public function list(PaginationParams $paginationParams, SortParams $sortParams): PageResult
     {
         $result = KnowledgeBaseItemModel::query()
+            ->select(['id', 'title', 'parent_id', 'created_at', 'updated_at'])
             ->orderBy($sortParams->field, $sortParams->direction)
             ->paginate(
                 perPage: $paginationParams->perPage,
@@ -43,7 +44,9 @@ readonly class EloquentKnowledgeBaseItemRepository implements KnowledgeBaseItemR
 
     public function find(string $id): ?KnowledgeBaseItem
     {
-        $model = KnowledgeBaseItemModel::find($id);
+        $model = KnowledgeBaseItemModel::query()
+            ->with(['tags'])
+            ->find($id);
 
         if (!$model) {
             return null;
@@ -52,15 +55,28 @@ readonly class EloquentKnowledgeBaseItemRepository implements KnowledgeBaseItemR
         return $this->mapper->makeFromModel($model);
     }
 
-    public function save(KnowledgeBaseItem $item): KnowledgeBaseItem
+    private function updateOrCreate(KnowledgeBaseItem $item): KnowledgeBaseItemModel
     {
         $attributes = $this->mapper->mapToModelAttributes($item);
 
-        $model = KnowledgeBaseItemModel::updateOrCreate(
+        return KnowledgeBaseItemModel::updateOrCreate(
             ['id' => $item->id],
             $attributes
         );
+    }
+
+    public function save(KnowledgeBaseItem $item): KnowledgeBaseItem
+    {
+        $model = $this->updateOrCreate($item);
 
         return $this->mapper->makeFromModel($model);
+    }
+
+    public function saveWithTags(KnowledgeBaseItem $item, array $tagIds): KnowledgeBaseItem
+    {
+        $model = $this->updateOrCreate($item);
+        $model->tags()->sync($tagIds);
+
+        return $this->mapper->makeFromModel($model->load('tags'));
     }
 }

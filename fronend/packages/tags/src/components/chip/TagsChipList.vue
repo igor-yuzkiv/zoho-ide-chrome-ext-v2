@@ -12,17 +12,19 @@ withDefaults(
         tags: ITagEntity[]
         itemClass?: string
         showCloseIcon?: boolean
+        inline?: boolean
     }>(),
     {
         tags: () => [],
         itemClass: '',
         showCloseIcon: false,
+        inline: false,
     }
 )
 </script>
 
 <template>
-    <div class="flex gap-1" style="flex-wrap: wrap">
+    <div class="tags-chip-list" :class="inline ? 'tags-chip-list-inline' : ''">
         <TagChip
             class="shrink-0"
             v-for="tag in tags"
@@ -37,4 +39,20 @@ withDefaults(
     </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.tags-chip-list {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tags-chip-list-inline {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+*::-webkit-scrollbar {
+    width: 3px !important;
+    height: 3px !important;
+}
+</style>

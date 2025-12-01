@@ -11,9 +11,11 @@ interface KnowledgeBaseItemRepository
 {
     public function nextIdentifier(): string;
 
-    public function paginate(PaginationParams $paginationParams, SortParams $sortParams): PageResult;
+    public function list(PaginationParams $paginationParams, SortParams $sortParams): PageResult;
 
     public function find(string $id): ?KnowledgeBaseItem;
 
     public function save(KnowledgeBaseItem $item): KnowledgeBaseItem;
+
+    public function saveWithTags(KnowledgeBaseItem $item, array $tagIds): KnowledgeBaseItem;
 }

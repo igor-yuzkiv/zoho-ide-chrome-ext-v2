@@ -6,7 +6,6 @@ class SearchTagsQuery
 {
     public function __construct(
         public string $searchTerm = '',
-        public int $limit = 10,
-        public array $excludeIds = []
+        public int $limit = 10
     ) {}
 }

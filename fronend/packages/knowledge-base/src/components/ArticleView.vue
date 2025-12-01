@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useAppThemeStore } from '@zoho-ide/shared'
 import type { IKnowledgeBaseItem } from '../types'
+import { useAppThemeStore } from '@zoho-ide/shared'
+import { TagsChipList } from '@zoho-ide/tags'
 import { MdPreview } from 'md-editor-v3'
 import { config as mdEditorConfig } from 'md-editor-v3'
-import Tag from 'primevue/tag'
 import { Icon } from '@iconify/vue'
 
 mdEditorConfig({
@@ -17,7 +17,6 @@ mdEditorConfig({
 
 defineProps<{ article: IKnowledgeBaseItem }>()
 const appTheme = useAppThemeStore()
-
 </script>
 
 <template>
@@ -30,13 +29,12 @@ const appTheme = useAppThemeStore()
             />
         </div>
 
-        <div class="flex items-center justify-between dark:bg-secondary/60">
-            <div class="flex items-center gap-x-2">
-                <Tag severity="success" class="py-0">Zoho Crm</Tag>
-                <Tag class="py-0">Deluge</Tag>
+        <div class="flex items-center justify-between bg-secondary/60 overflow-hidden px-1">
+            <div class="flex overflow-hidden">
+                <TagsChipList v-if="article?.tags?.length" :tags="article.tags" inline item-class="py-0" />
             </div>
 
-            <div class="flex items-center h-full text-gray-400">
+            <div class="flex items-center h-full text-gray-400 truncate shrink-0">
                 <div
                     class="flex items-center gap-x-2 hover:bg-black/50 dark:hover:bg-primary cursor-pointer px-2 h-full hover:text-white"
                 >

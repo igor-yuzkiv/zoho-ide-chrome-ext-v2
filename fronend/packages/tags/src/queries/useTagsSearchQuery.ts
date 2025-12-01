@@ -1,7 +1,7 @@
 import { searchTagsRequest } from '../api'
 import { TagsQueryKeys } from '../tags.constants.ts'
 import { ITagEntity } from '../types'
-import { useQuery } from '@tanstack/vue-query'
+import { keepPreviousData, useQuery } from '@tanstack/vue-query'
 import { MaybeRefOrGetter, refDebounced } from '@vueuse/core'
 import { ref, toValue } from 'vue'
 
@@ -17,6 +17,7 @@ export function useTagsSearchQuery(limit: MaybeRefOrGetter<number> = 10) {
                 limit: toValue(limit),
             })
         },
+        placeholderData: keepPreviousData,
         initialData: [],
     })
 

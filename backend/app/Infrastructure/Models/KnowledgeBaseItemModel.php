@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class KnowledgeBaseItemModel extends Model
 {
@@ -42,5 +43,10 @@ class KnowledgeBaseItemModel extends Model
     public function updatedBy(): HasOne
     {
         return $this->hasOne(UserModel::class, 'updated_by');
+    }
+
+    public function tags(): MorphToMany
+    {
+        return $this->morphToMany(TagModel::class, 'taggable', 'taggables', 'taggable_id', 'tag_id');
     }
 }

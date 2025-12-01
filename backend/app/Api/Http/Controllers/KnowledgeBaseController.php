@@ -20,7 +20,7 @@ class KnowledgeBaseController extends Controller
 
     public function index()
     {
-        $pageResult = $this->kbItemRepository->paginate(
+        $pageResult = $this->kbItemRepository->list(
             paginationParams: $this->getPaginationParams(),
             sortParams: $this->getSortParams(),
         );
@@ -44,7 +44,7 @@ class KnowledgeBaseController extends Controller
 
     public function create(SaveKbItemRequest $request, CreateKbItemHandler $handler): KnowledgeBaseItemResource
     {
-        $command = $request->toCreateCommand($this->authGateway->user());
+        $command = $request->toCommand($this->authGateway->user());
         $item = $handler($command);
 
         return new KnowledgeBaseItemResource($item);
@@ -52,8 +52,8 @@ class KnowledgeBaseController extends Controller
 
     public function update(string $itemId, SaveKbItemRequest $request, UpdateKbItemHandler $handler): KnowledgeBaseItemResource
     {
-        $command = $request->toUpdateCommand($itemId, $this->authGateway->user());
-        $item = $handler($command);
+        $command = $request->toCommand($this->authGateway->user());
+        $item = $handler($itemId, $command);
 
         return new KnowledgeBaseItemResource($item);
     }

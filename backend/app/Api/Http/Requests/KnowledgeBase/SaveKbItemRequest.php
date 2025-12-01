@@ -2,8 +2,7 @@
 
 namespace App\Api\Http\Requests\KnowledgeBase;
 
-use App\Application\KnowledgeBase\Commands\CreateKbItemCommand;
-use App\Application\KnowledgeBase\Commands\UpdateKbItemCommand;
+use App\Application\KnowledgeBase\Commands\SaveKbItemCommand;
 use App\Domains\User\Entities\User;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -12,9 +11,12 @@ class SaveKbItemRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'     => 'required|string|max:255',
-            'content'   => 'nullable|string',
+            'title' => 'required|string|max:255',
+            'content' => 'nullable|string',
             'parent_id' => 'nullable|string|exists:knowledge_base_items,id',
+
+            'tags_ids' => 'nullable|array',
+            'tags_ids.*' => 'string|exists:tags,id',
         ];
     }
 
@@ -23,24 +25,14 @@ class SaveKbItemRequest extends FormRequest
         return true;
     }
 
-    public function toCreateCommand(?User $user): CreateKbItemCommand
+    public function toCommand(?User $user): SaveKbItemCommand
     {
-        return new CreateKbItemCommand(
+        return new SaveKbItemCommand(
             title: $this->input('title'),
             content: $this->input('content'),
             parentId: $this->input('parent_id'),
-            user: $user
-        );
-    }
-
-    public function toUpdateCommand(string $id, ?User $user): UpdateKbItemCommand
-    {
-        return new UpdateKbItemCommand(
-            id: $id,
-            title: $this->input('title'),
-            content: $this->input('content'),
-            parentId: $this->input('parent_id'),
-            user: $user
+            user: $user,
+            tagIds: $this->input('tags_ids', []),
         );
     }
 }

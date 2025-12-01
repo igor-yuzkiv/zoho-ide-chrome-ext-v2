@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import { useCreateTagMutation } from '../../mutations/useCreateTagMutation.ts'
 import { useTagsSearchQuery } from '../../queries'
 import { ITagEntity } from '../../types'
+import TagChip from '../chip/TagChip.vue'
 import TagsChipList from '../chip/TagsChipList.vue'
-import CreateNewTag from './CreateNewTag.vue'
 import { onClickOutside } from '@vueuse/core'
+import { HexColorPicker } from '@zoho-ide/shared'
 import { computed, ref, useId, useTemplateRef } from 'vue'
-import { IftaLabel, InputText, Popover } from 'primevue'
+import { Button, IftaLabel, InputText, Popover } from 'primevue'
 
 const modelValue = defineModel<ITagEntity[]>({ type: Array, default: () => [] })
 const selectedTagIds = computed(() => new Set(modelValue.value.map((tag) => tag.id)))
@@ -13,8 +15,20 @@ const selectedTagIds = computed(() => new Set(modelValue.value.map((tag) => tag.
 const inputId = useId()
 const containerRef = useTemplateRef('container')
 const popoverRef = useTemplateRef('popover')
-const newTagColor = ref('#002eff')
+
 const { searchTerm, data: searchResults } = useTagsSearchQuery(20)
+const tagsForAdd = computed(() => searchResults.value.filter((tag) => !selectedTagIds.value.has(tag.id)))
+
+const newTagColor = ref('#002eff')
+const isNewTagCanBeCreated = computed(() => {
+    if (!searchTerm.value.length) {
+        return false
+    }
+
+    return !searchResults.value.some((tag) => tag.name.toLowerCase() === searchTerm.value.toLowerCase())
+})
+
+const { mutateAsync: submitNewTag, isPending: isNewTagCreating } = useCreateTagMutation()
 
 function showPopover(event: Event) {
     if (popoverRef.value) {
@@ -42,13 +56,26 @@ function handleClickDeleteTag(tag: ITagEntity) {
     modelValue.value = modelValue.value.filter((t) => t.id !== tag.id)
 }
 
-onClickOutside(containerRef, hidePopover, { ignore: ['.vc-colorpicker--container'] })
+function handleClickCreateTag() {
+    if (!isNewTagCanBeCreated.value || isNewTagCreating.value) {
+        return
+    }
+
+    submitNewTag({ name: searchTerm.value, color: newTagColor.value }).then((response) => {
+        if (response) {
+            handleClickAddTag(response)
+            searchTerm.value = ''
+        }
+    })
+}
+
+onClickOutside(containerRef, hidePopover, { ignore: ['.vc-colorpicker--container', `#${inputId}`] })
 </script>
 
 <template>
     <div class="flex flex-col" v-bind="$attrs">
         <IftaLabel>
-            <label :for="inputId">Label</label>
+            <label :for="inputId">Tags</label>
             <InputText
                 v-model.lazy.trim="searchTerm"
                 autocomplete="off"
@@ -56,6 +83,7 @@ onClickOutside(containerRef, hidePopover, { ignore: ['.vc-colorpicker--container
                 :id="inputId"
                 @input="showPopover"
                 @focus="showPopover"
+                placeholder="Start typing to search tags..."
             />
         </IftaLabel>
 
@@ -64,10 +92,17 @@ onClickOutside(containerRef, hidePopover, { ignore: ['.vc-colorpicker--container
 
     <Popover ref="popover" class="w-lg" :dismissable="false">
         <div class="flex flex-col gap-2" ref="container">
-            <CreateNewTag v-if="searchTerm.length" :name="searchTerm" v-model:color="newTagColor" />
+            <div v-if="isNewTagCanBeCreated" class="flex items-center justify-between">
+                <TagChip :name="searchTerm" :color="newTagColor" />
+
+                <div class="flex items-center gap-x-2">
+                    <Button text @click="handleClickCreateTag" :disabled="isNewTagCreating">Create</Button>
+                    <HexColorPicker v-model="newTagColor" />
+                </div>
+            </div>
 
             <TagsChipList
-                :tags="searchResults"
+                :tags="tagsForAdd"
                 class="flex-wrap"
                 item-class="cursor-pointer"
                 @item:click="handleClickAddTag"

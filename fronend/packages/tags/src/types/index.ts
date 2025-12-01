@@ -13,6 +13,5 @@ export type SaveTagRequestPayload = {
 
 export type SearchTagsRequestPayload = {
     search_term?: string
-    limit?: number,
-    exclude_ids?: string[],
+    limit?: number
 }

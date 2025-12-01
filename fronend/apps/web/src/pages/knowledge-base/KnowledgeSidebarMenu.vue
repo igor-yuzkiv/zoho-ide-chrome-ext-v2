@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { CreateKbItemPopup, type IKnowledgeBaseItem, useKnowledgeBaseItemsListQuery } from '@zoho-ide/knowledge-base'
+import {
+    type IKnowledgeBaseItem,
+    NewKnowledgeBaseItemPopup,
+    useKnowledgeBaseItemsListQuery,
+} from '@zoho-ide/knowledge-base'
 import { IconButton, ListBox, ListItem } from '@zoho-ide/shared'
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
@@ -41,7 +45,7 @@ const isActiveListItem = (item: IKnowledgeBaseItem) => {
         </template>
     </ListBox>
 
-    <CreateKbItemPopup v-model:visible="newItemDialogVisible" @created="handleItemCreated" />
+    <NewKnowledgeBaseItemPopup v-model:visible="newItemDialogVisible" @created="handleItemCreated" />
 </template>
 
 <style scoped></style>

@@ -1,15 +1,18 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
-import { ArticleContentEditor, useKnowledgeBaseItemDetailsQuery, useUpdateKnowledgeBaseItem } from '@zoho-ide/knowledge-base'
-import { FieldContainer, PageHeader } from '@zoho-ide/shared'
-import { useValidationErrors } from '@zoho-ide/shared'
-import { Button, InputText } from 'primevue'
+import {
+    ArticleContentEditor,
+    KnowledgeBaseItemForm,
+    useKnowledgeBaseItemDetailsQuery,
+    useUpdateKnowledgeBaseItem,
+} from '@zoho-ide/knowledge-base'
+import { PageHeader } from '@zoho-ide/shared'
+import { Button } from 'primevue'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 
 const itemId = useRouteParams<string>('itemId')
 const { data } = useKnowledgeBaseItemDetailsQuery(itemId)
 const { formData, submit, formErrors } = useUpdateKnowledgeBaseItem(data)
-const validationErrors = useValidationErrors(() => formErrors.value)
 </script>
 
 <template>
@@ -27,15 +30,8 @@ const validationErrors = useValidationErrors(() => formErrors.value)
             </template>
         </PageHeader>
 
-        <div class="flex flex-col w-full app-card p-2">
-            <FieldContainer label="Name" input-id="article_name" :error-message="validationErrors.get('title')">
-                <InputText
-                    fluid
-                    placeholder="Enter article name"
-                    v-model="formData.title"
-                    :invalid="validationErrors.has('title')"
-                />
-            </FieldContainer>
+        <div class="flex flex-col w-full app-card p-2 gap-2">
+            <KnowledgeBaseItemForm :form-errors="formErrors" v-model="formData" />
         </div>
 
         <ArticleContentEditor v-model="formData.content" class="flex-grow overflow-auto" :item-id="data.id" />

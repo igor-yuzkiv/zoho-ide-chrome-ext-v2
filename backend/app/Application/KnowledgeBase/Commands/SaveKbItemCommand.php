@@ -4,12 +4,13 @@ namespace App\Application\KnowledgeBase\Commands;
 
 use App\Domains\User\Entities\User;
 
-final class CreateKbItemCommand
+final class SaveKbItemCommand
 {
     public function __construct(
         public string $title,
         public ?string $content,
         public ?string $parentId,
-        public ?User $user
+        public ?User $user,
+        public array $tagIds = []
     ) {}
 }

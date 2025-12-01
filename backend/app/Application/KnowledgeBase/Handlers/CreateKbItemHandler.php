@@ -2,7 +2,7 @@
 
 namespace App\Application\KnowledgeBase\Handlers;
 
-use App\Application\KnowledgeBase\Commands\CreateKbItemCommand;
+use App\Application\KnowledgeBase\Commands\SaveKbItemCommand;
 use App\Domains\KnowledgeBase\Entities\KnowledgeBaseItem;
 use App\Domains\KnowledgeBase\Repositories\KnowledgeBaseItemRepository;
 
@@ -12,7 +12,7 @@ readonly class CreateKbItemHandler
         private KnowledgeBaseItemRepository $repository
     ) {}
 
-    public function __invoke(CreateKbItemCommand $command): KnowledgeBaseItem
+    public function __invoke(SaveKbItemCommand $command): KnowledgeBaseItem
     {
         $item = new KnowledgeBaseItem(
             id: $this->repository->nextIdentifier(),
@@ -22,6 +22,6 @@ readonly class CreateKbItemHandler
             createdBy: $command->user?->id,
         );
 
-        return $this->repository->save($item);
+        return $this->repository->saveWithTags($item, $command->tagIds);
     }
 }

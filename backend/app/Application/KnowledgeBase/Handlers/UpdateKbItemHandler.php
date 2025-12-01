@@ -2,7 +2,7 @@
 
 namespace App\Application\KnowledgeBase\Handlers;
 
-use App\Application\KnowledgeBase\Commands\UpdateKbItemCommand;
+use App\Application\KnowledgeBase\Commands\SaveKbItemCommand;
 use App\Domains\KnowledgeBase\Entities\KnowledgeBaseItem;
 use App\Domains\KnowledgeBase\Repositories\KnowledgeBaseItemRepository;
 
@@ -12,9 +12,9 @@ readonly class UpdateKbItemHandler
         private KnowledgeBaseItemRepository $repository
     ) {}
 
-    public function __invoke(UpdateKbItemCommand $command): KnowledgeBaseItem
+    public function __invoke(string $itemId, SaveKbItemCommand $command): KnowledgeBaseItem
     {
-        $item = $this->repository->find($command->id);
+        $item = $this->repository->find($itemId);
         if (!$item) {
             throw new \RuntimeException('Knowledge base item not found');
         }
@@ -24,6 +24,6 @@ readonly class UpdateKbItemHandler
         $item->parentId = $command->parentId;
         $item->updatedBy = $command->user?->id;
 
-        return $this->repository->save($item);
+        return $this->repository->saveWithTags($item, $command->tagIds);
     }
 }

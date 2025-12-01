@@ -23,7 +23,6 @@ class EloquentTagRepository implements TagRepository
     {
         $models = TagModel::search($query->searchTerm)
             ->take($query->limit)
-            ->whereNotIn('id', $query->excludeIds)
             ->get();
 
         return $this->mapper->toEntityCollection($models);
