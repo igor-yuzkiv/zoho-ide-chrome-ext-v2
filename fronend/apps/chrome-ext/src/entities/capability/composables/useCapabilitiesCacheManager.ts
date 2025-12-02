@@ -103,7 +103,15 @@ export function useCapabilitiesCacheManager() {
         }
     }
 
+    async function clearCacheForProvider(providerId: string) {
+        await providersCacheDb.records
+            .where('providerId')
+            .equals(providerId)
+            .delete()
+    }
+
     return {
         bootstrap,
+        clearCacheForProvider,
     }
 }

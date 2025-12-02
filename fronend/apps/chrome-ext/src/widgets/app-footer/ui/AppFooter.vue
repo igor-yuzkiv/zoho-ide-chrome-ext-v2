@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { IconButton, ToggleThemeButton } from '@zoho-ide/shared'
+import { ToggleThemeButton } from '@zoho-ide/shared'
 import { useAppThemeStore } from '@zoho-ide/shared'
 
 const appTheme = useAppThemeStore()
@@ -11,7 +11,6 @@ const appTheme = useAppThemeStore()
             <slot name="before"></slot>
         </div>
         <div class="flex items-center justify-end gap-x-2">
-            <IconButton icon="carbon:ibm-watson-knowledge-catalog" text size="small" class="p-0" />
             <ToggleThemeButton :is-dark="appTheme.isDark" @click="appTheme.toggle" />
         </div>
     </footer>
