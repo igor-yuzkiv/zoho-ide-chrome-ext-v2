@@ -11,7 +11,15 @@ const { script, data } = useFunctionDetails(providerId, functionId)
 
 <template>
     <div v-if="data" class="flex h-full w-full flex-col overflow-hidden gap-1">
-        <PageHeader :title="data.displayName" />
+        <PageHeader :title="data.displayName">
+            <template #description>
+                <p class="text-gray-500 text-xs">
+                    <b class="capitalize">{{ data.type }}: </b>
+                    <span v-if="data?.apiName">{{ data.apiName }}</span>
+                    <i v-else> No API Name </i>
+                </p>
+            </template>
+        </PageHeader>
 
         <div class="flex h-full w-full flex-col overflow-auto app-card">
             <CodeEditor v-model="script" />

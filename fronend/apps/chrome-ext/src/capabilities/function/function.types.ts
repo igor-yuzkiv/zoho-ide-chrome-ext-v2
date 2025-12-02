@@ -7,6 +7,7 @@ export interface IFunctionEntity<TOrigin extends IEntity = IEntity> extends ICap
     id: string
     type: FunctionType
     displayName: string
+    apiName?: string | null
     originEntity: TOrigin
     script?: string | null
 }

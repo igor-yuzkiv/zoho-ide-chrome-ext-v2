@@ -32,6 +32,7 @@ export function mapToFunctionEntity(fx: ZohoCrmFunction): IFunctionEntity<ZohoCr
     return {
         id: fx.id,
         displayName: normalizeCrmFunctionName(fx),
+        apiName: fx.api_name,
         type: mapFunctionCategoryToType(fx?.category),
         originEntity: fx,
         script: fx?.script,
