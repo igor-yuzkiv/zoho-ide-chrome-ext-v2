@@ -1,18 +1,21 @@
 <script setup lang="ts">
 import { useFunctionDetails } from '@/capabilities/function'
 import { useRouteParams } from '@vueuse/router'
-import { NoDataMessage } from '@zoho-ide/shared'
+import { NoDataMessage, PageHeader } from '@zoho-ide/shared'
 import { CodeEditor } from '@/shared/components/code-editor'
-
 
 const providerId = useRouteParams<string>('providerId')
 const functionId = useRouteParams<string>('functionId')
-const functionDetails = useFunctionDetails(providerId, functionId)
+const { script, data } = useFunctionDetails(providerId, functionId)
 </script>
 
 <template>
-    <div v-if="functionId" class="flex h-full w-full flex-col overflow-hidden app-card">
-        <CodeEditor v-model="functionDetails.script.value" />
+    <div v-if="data" class="flex h-full w-full flex-col overflow-hidden gap-1">
+        <PageHeader :title="data.displayName" />
+
+        <div class="flex h-full w-full flex-col overflow-auto app-card">
+            <CodeEditor v-model="script" />
+        </div>
     </div>
 
     <NoDataMessage
