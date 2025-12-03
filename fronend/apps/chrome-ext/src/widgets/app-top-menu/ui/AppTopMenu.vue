@@ -14,8 +14,13 @@ const router = useRouter()
 const globalSearch = useGlobalSearch()
 const { data: currentProvider } = useCurrentProvider()
 
+
 const navItems = computed<TopMenuItem[]>(() => {
     const result: TopMenuItem[] = [{ title: 'Home', route: { name: AppRouteName.home } }]
+
+    if (authStore.isAuthenticated) {
+        result.push({ title: 'Knowledge Base', route: { name: AppRouteName.knowledgeBaseIndex } })
+    }
 
     if (!currentProvider.value) {
         return result

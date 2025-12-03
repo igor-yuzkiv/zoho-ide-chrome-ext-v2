@@ -10,7 +10,8 @@
         "moduleResolution": "bundler",
         "paths": {
             "@/*": ["src/*"],
-            "@zoho-ide/shared": ["../../packages/shared/src/index.ts"]
+            "@zoho-ide/shared": ["../../packages/shared/src/index.ts"],
+            "@zoho-ide/knowledge-base": ["../../packages/knowledge-base/src/index.ts"]
         }
     },
     "exclude": [
@@ -26,6 +27,9 @@
     ],
     "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.vue"],
     "references": [
+        {
+            "path": "../../packages/knowledge-base/tsconfig.lib.json"
+        },
         {
             "path": "../../packages/shared/tsconfig.lib.json"
         }

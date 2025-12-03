@@ -4,6 +4,9 @@
     "include": ["vite.config.ts"],
     "references": [
         {
+            "path": "../../packages/knowledge-base"
+        },
+        {
             "path": "../../packages/shared"
         },
         {

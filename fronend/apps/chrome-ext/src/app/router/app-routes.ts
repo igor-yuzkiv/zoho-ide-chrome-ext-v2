@@ -11,6 +11,9 @@ export const AppRouteName = {
     workspaceFunctions: 'workspace.functions',
     workspaceWorkflows: 'workspace.workflows',
     workspaceModules: 'workspace.modules',
+
+    knowledgeBaseIndex: 'knowledge-base.index',
+    knowledgeBaseArticle: 'knowledge-base.article',
 } as const
 
 export const AppRoutes: RouteRecordRaw[] = [
@@ -26,6 +29,8 @@ export const AppRoutes: RouteRecordRaw[] = [
         meta: { hideSidebarMenu: true, hideTopbar: true },
         component: () => import('@/pages/login/LoginPage.vue'),
     },
+
+    /** * Workspace Routes */
     {
         name: AppRouteName.workspaceIndex,
         path: '/workspace/:providerId',
@@ -65,6 +70,28 @@ export const AppRoutes: RouteRecordRaw[] = [
             menu: () => import('@/pages/workspace/modules/ModulesMenuPage.vue'),
         },
     },
+
+    /** * Knowledge Base Routes */
+    {
+        name: AppRouteName.knowledgeBaseIndex,
+        path: '/knowledge-base',
+        meta: { hideSidebarMenu: false, layout: AppLayout.default },
+        components: {
+            default: () => import('@/pages/knowledge-base/KbIndexPage.vue'),
+            menu: () => import('@/pages/knowledge-base/KbSidebarMenu.vue'),
+        },
+    },
+    {
+        name: AppRouteName.knowledgeBaseArticle,
+        path: '/knowledge-base/article/:itemId',
+        meta: { hideSidebarMenu: false, layout: AppLayout.default },
+        components: {
+            default: () => import('@/pages/knowledge-base/KbArticlePage.vue'),
+            menu: () => import('@/pages/knowledge-base/KbSidebarMenu.vue'),
+        },
+    },
+
+    /** * Error Route */
     {
         name: AppRouteName.error,
         path: '/:pathMatch(.*)*',
