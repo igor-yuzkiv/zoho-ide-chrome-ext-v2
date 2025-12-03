@@ -57,6 +57,7 @@
         "@vueuse/core": "^13.9.0",
         "@vueuse/router": "^13.9.0",
         "axios": "^1.12.2",
+        "date-fns": "^4.1.0",
         "dexie": "^4.2.1",
         "flexsearch": "^0.8.212",
         "jszip": "^3.10.1",

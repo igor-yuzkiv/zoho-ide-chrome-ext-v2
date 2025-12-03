@@ -30,9 +30,9 @@ class EloquentTagRepository implements TagRepository
 
     public function save(Tag $tag): Tag
     {
-        $model = $this->mapper->fromEntity($tag);
+        $model = $this->mapper->mapToModel($tag);
         $model->updateOrCreate(['id' => $tag->id], $model->toArray());
 
-        return $this->mapper->toEntity($model);
+        return $this->mapper->makeFromModel($model);
     }
 }

@@ -2,9 +2,12 @@
 
 namespace App\Infrastructure\Repositories;
 
+use App\Domains\KnowledgeBase\Entities\KbItemWithRelations;
 use App\Domains\KnowledgeBase\Entities\KnowledgeBaseItem;
 use App\Domains\KnowledgeBase\Repositories\KnowledgeBaseItemRepository;
 use App\Infrastructure\Mappers\KnowledgeBaseItemMapper;
+use App\Infrastructure\Mappers\TagMapper;
+use App\Infrastructure\Mappers\UserMapper;
 use App\Infrastructure\Models\KnowledgeBaseItemModel;
 use App\Shared\DTO\PageResult;
 use App\Shared\DTO\PaginationParams;
@@ -13,7 +16,11 @@ use Illuminate\Support\Str;
 
 readonly class EloquentKnowledgeBaseItemRepository implements KnowledgeBaseItemRepository
 {
-    public function __construct(private KnowledgeBaseItemMapper $mapper) {}
+    public function __construct(
+        private KnowledgeBaseItemMapper $mapper,
+        private UserMapper $userMapper,
+        private TagMapper $tagMapper,
+    ) {}
 
     public function nextIdentifier(): string
     {
@@ -44,15 +51,27 @@ readonly class EloquentKnowledgeBaseItemRepository implements KnowledgeBaseItemR
 
     public function find(string $id): ?KnowledgeBaseItem
     {
+        $model = KnowledgeBaseItemModel::find($id);
+
+        return $model ? $this->mapper->makeFromModel($model) : null;
+    }
+
+    public function findWithRelations(string $id): ?KbItemWithRelations
+    {
         $model = KnowledgeBaseItemModel::query()
-            ->with(['tags'])
+            ->with(['tags', 'createdBy', 'updatedBy'])
             ->find($id);
 
         if (!$model) {
             return null;
         }
 
-        return $this->mapper->makeFromModel($model);
+        return new KbItemWithRelations(
+            item: $this->mapper->makeFromModel($model),
+            tags: $this->tagMapper->toEntityCollection($model->tags),
+            createdBy: $model->createdBy ? $this->userMapper->makeFromModel($model->createdBy) : null,
+            updatedBy: $model->updatedBy ? $this->userMapper->makeFromModel($model->updatedBy) : null,
+        );
     }
 
     private function updateOrCreate(KnowledgeBaseItem $item): KnowledgeBaseItemModel

@@ -37,12 +37,12 @@ class KnowledgeBaseItemModel extends Model
 
     public function createdBy(): HasOne
     {
-        return $this->hasOne(UserModel::class, 'created_by');
+        return $this->hasOne(UserModel::class, 'id', 'created_by');
     }
 
     public function updatedBy(): HasOne
     {
-        return $this->hasOne(UserModel::class, 'updated_by');
+        return $this->hasOne(UserModel::class, 'id', 'updated_by');
     }
 
     public function tags(): MorphToMany

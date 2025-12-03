@@ -19,7 +19,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
             'update_by'  => $this->updatedBy,
             'created_at' => $this->createdAt?->toIso8601String(),
             'updated_at' => $this->updatedAt?->toIso8601String(),
-            'tags'       => TagResource::collection($this->tags),
         ];
     }
 }

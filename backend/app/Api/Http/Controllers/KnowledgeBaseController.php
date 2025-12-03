@@ -3,6 +3,7 @@
 namespace App\Api\Http\Controllers;
 
 use App\Api\Http\Requests\KnowledgeBase\SaveKbItemRequest;
+use App\Api\Resources\KbItemWithRelationsResource;
 use App\Api\Resources\KnowledgeBaseItemResource;
 use App\Application\Auth\Contracts\AuthGateway;
 use App\Application\KnowledgeBase\Handlers\CreateKbItemHandler;
@@ -32,14 +33,14 @@ class KnowledgeBaseController extends Controller
         return KnowledgeBaseItemResource::collection($pageResult->data)->additional(['meta' => $pageResult->getMetadata()]);
     }
 
-    public function show(string $itemId): KnowledgeBaseItemResource|JsonResponse
+    public function show(string $itemId): KbItemWithRelationsResource|JsonResponse
     {
-        $item = $this->kbItemRepository->find($itemId);
+        $item = $this->kbItemRepository->findWithRelations($itemId);
         if (!$item) {
             return $this->noContentResponse('Article not found');
         }
 
-        return new KnowledgeBaseItemResource($item);
+        return new KbItemWithRelationsResource($item);
     }
 
     public function create(SaveKbItemRequest $request, CreateKbItemHandler $handler): KnowledgeBaseItemResource

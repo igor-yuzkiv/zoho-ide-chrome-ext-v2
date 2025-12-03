@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import type { IKnowledgeBaseItem } from '../types'
+import type { IKnowledgeBaseItemDetails } from '../types'
 import { useAppThemeStore } from '@zoho-ide/shared'
 import { TagsChipList } from '@zoho-ide/tags'
+import { format } from 'date-fns'
 import { MdPreview } from 'md-editor-v3'
 import { config as mdEditorConfig } from 'md-editor-v3'
+import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 
 mdEditorConfig({
@@ -15,8 +17,12 @@ mdEditorConfig({
     },
 })
 
-defineProps<{ article: IKnowledgeBaseItem }>()
+const props = defineProps<{ article: IKnowledgeBaseItemDetails }>()
 const appTheme = useAppThemeStore()
+
+const createdAt = computed(() => {
+    return props.article?.created_at ? format(props.article.created_at, 'yyyy-MM-dd') : ''
+})
 </script>
 
 <template>
@@ -36,10 +42,18 @@ const appTheme = useAppThemeStore()
 
             <div class="flex items-center h-full text-gray-400 truncate shrink-0">
                 <div
+                    v-if="article.created_by_user"
+                    class="flex items-center gap-x-2 hover:bg-black/50 dark:hover:bg-primary cursor-pointer px-2 h-full hover:text-white"
+                >
+                    <Icon icon="mdi:user" />
+                    <span>{{ article.created_by_user.name }}</span>
+                </div>
+                <div
+                    v-if="createdAt"
                     class="flex items-center gap-x-2 hover:bg-black/50 dark:hover:bg-primary cursor-pointer px-2 h-full hover:text-white"
                 >
                     <Icon icon="clarity:date-line" />
-                    <span>2025-11-12</span>
+                    <span>{{ createdAt }}</span>
                 </div>
                 <div
                     class="flex items-center gap-x-2 hover:bg-black/50 dark:hover:bg-primary cursor-pointer px-2 h-full hover:text-white"

@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
 
 class TagMapper
 {
-    public function toEntity(TagModel $model): Tag
+    public function makeFromModel(TagModel $model): Tag
     {
         return new Tag(
             id: $model->id,
@@ -23,10 +23,10 @@ class TagMapper
      */
     public function toEntityCollection(Collection $models): Collection
     {
-        return $models->map(fn (TagModel $model) => $this->toEntity($model));
+        return $models->map(fn (TagModel $model) => $this->makeFromModel($model));
     }
 
-    public function fromEntity(Tag $tag, TagModel $model = new TagModel): TagModel
+    public function mapToModel(Tag $tag, TagModel $model = new TagModel): TagModel
     {
         $model->id = $tag->id;
         $model->name = $tag->name;

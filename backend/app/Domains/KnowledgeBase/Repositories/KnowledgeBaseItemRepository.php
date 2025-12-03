@@ -2,6 +2,7 @@
 
 namespace App\Domains\KnowledgeBase\Repositories;
 
+use App\Domains\KnowledgeBase\Entities\KbItemWithRelations;
 use App\Domains\KnowledgeBase\Entities\KnowledgeBaseItem;
 use App\Shared\DTO\PageResult;
 use App\Shared\DTO\PaginationParams;
@@ -14,6 +15,8 @@ interface KnowledgeBaseItemRepository
     public function list(PaginationParams $paginationParams, SortParams $sortParams): PageResult;
 
     public function find(string $id): ?KnowledgeBaseItem;
+
+    public function findWithRelations(string $id): ?KbItemWithRelations;
 
     public function save(KnowledgeBaseItem $item): KnowledgeBaseItem;
 

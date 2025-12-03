@@ -1,4 +1,4 @@
-import type { IEntity } from '@zoho-ide/shared'
+import type { IEntity, IUser } from '@zoho-ide/shared'
 import type { ITagEntity } from '@zoho-ide/tags'
 
 export interface IKnowledgeBaseItem extends IEntity {
@@ -6,7 +6,16 @@ export interface IKnowledgeBaseItem extends IEntity {
     title: string
     content?: string
     parent_id?: string
-    tags?: ITagEntity[]
+    created_at?: string
+    updated_at?: string
+    created_by?: string
+    updated_by?: string
+}
+
+export interface IKnowledgeBaseItemDetails extends IKnowledgeBaseItem {
+    tags: ITagEntity[]
+    created_by_user?: IUser
+    updated_by_user?: IUser
 }
 
 export interface SaveKbItemRequestPayload {
