@@ -1,12 +1,12 @@
-import { providersCacheDb } from '@/entities/capability/cache'
-import { generateCacheRecordId } from '@/entities/capability/cache/cache-record.service.ts'
-import { useCapabilitiesConfig } from '@/entities/capability/composables/useCapabilitiesConfig.ts'
-import { useProviderRecordsFetcher } from '@/entities/provider/composables/useProviderRecordsFetcher.ts'
-import type { ICapabilityEntity } from '@/entities/capability/capability.types.ts'
-import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
+import type { IModuleFieldMetadataEntity } from '@/capabilities/metadata/metadata.types.ts'
 import { saveMockData } from '@/shared/api/mock/mock.api.ts'
 import { useLogger } from '@/shared/libs/logger/useLogger.ts'
-import type { IModuleFieldMetadataEntity } from '@/capabilities/metadata/metadata.types.ts'
+import { providersCacheDb } from '@/entities/capability/cache'
+import { generateCacheRecordId } from '@/entities/capability/cache/cache-record.service.ts'
+import type { ICapabilityEntity } from '@/entities/capability/capability.types.ts'
+import { useCapabilitiesConfig } from '@/entities/capability/composables/useCapabilitiesConfig.ts'
+import { useProviderRecordsFetcher } from '@/entities/provider/composables/useProviderRecordsFetcher.ts'
+import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
 
 //TODO: remove mock data saving after testing
 
@@ -70,7 +70,6 @@ export function useCapabilitiesCacheManager() {
         )
     }
 
-
     async function bootstrap(provider: ServiceProvider) {
         const caps = capabilities.byProvider(provider)
         if (!caps.length) {
@@ -79,6 +78,7 @@ export function useCapabilitiesCacheManager() {
         }
 
         for (const cap of caps) {
+            // TODO: add last updated check, if records are fresh enough, skip fetching, if not or last updated was performed long ago, fetch new records
             const hasRecords = await hasCapabilityRecordsInCache(provider.id, cap.type)
             if (hasRecords) {
                 continue
@@ -104,10 +104,7 @@ export function useCapabilitiesCacheManager() {
     }
 
     async function clearCacheForProvider(providerId: string) {
-        await providersCacheDb.records
-            .where('providerId')
-            .equals(providerId)
-            .delete()
+        await providersCacheDb.records.where('providerId').equals(providerId).delete()
     }
 
     return {

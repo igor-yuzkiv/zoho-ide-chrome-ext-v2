@@ -19,3 +19,5 @@ export interface SaveKbItemRequestPayload {
 export type KbItemFormData = Omit<SaveKbItemRequestPayload, 'tags_ids'> & {
     tags: ITagEntity[]
 }
+
+export type DeleteKbItemByIdResponse = { status: boolean; message: string }

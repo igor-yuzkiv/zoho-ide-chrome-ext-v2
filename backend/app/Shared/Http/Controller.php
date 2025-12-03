@@ -52,4 +52,9 @@ abstract class Controller
     {
         return response()->json(['message' => $message], Response::HTTP_UNAUTHORIZED);
     }
+
+    public function successResponse(array $data = []): JsonResponse
+    {
+        return response()->json($data, Response::HTTP_OK);
+    }
 }

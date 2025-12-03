@@ -7,6 +7,8 @@ import { Button } from 'primevue'
 import { useConfirm } from 'primevue'
 import { useCurrentProvider } from '@/entities/provider/composables/useCurrentProvider.ts'
 
+//TODO: Move Settings to root level
+
 const toast = useToast()
 const confirm = useConfirm()
 const { data: currentProvider, update: updateCurrentProvider, isOnline } = useCurrentProvider()

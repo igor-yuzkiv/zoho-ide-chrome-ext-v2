@@ -41,6 +41,7 @@ function handleDeleteUser(userId: string, userName: string) {
 
                 <template #actions>
                     <IconButton
+                        class="p-0"
                         :disabled="item.id === authStore.user?.id"
                         text
                         icon="material-symbols:delete"

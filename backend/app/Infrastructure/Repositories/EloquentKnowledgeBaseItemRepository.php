@@ -79,4 +79,13 @@ readonly class EloquentKnowledgeBaseItemRepository implements KnowledgeBaseItemR
 
         return $this->mapper->makeFromModel($model->load('tags'));
     }
+
+    public function deleteById(string $id): bool
+    {
+        $deleted = KnowledgeBaseItemModel::query()
+            ->where('id', $id)
+            ->delete();
+
+        return $deleted > 0;
+    }
 }

@@ -57,4 +57,17 @@ class KnowledgeBaseController extends Controller
 
         return new KnowledgeBaseItemResource($item);
     }
+
+    public function deleteById(string $id): JsonResponse
+    {
+        $deleted = $this->kbItemRepository->deleteById($id);
+        if (!$deleted) {
+            return $this->noContentResponse('Article not found');
+        }
+
+        return $this->successResponse([
+            'status'  => 'success',
+            'message' => 'Article deleted successfully',
+        ]);
+    }
 }

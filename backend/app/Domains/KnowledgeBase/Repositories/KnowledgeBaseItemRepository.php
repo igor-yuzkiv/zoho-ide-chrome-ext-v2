@@ -18,4 +18,6 @@ interface KnowledgeBaseItemRepository
     public function save(KnowledgeBaseItem $item): KnowledgeBaseItem;
 
     public function saveWithTags(KnowledgeBaseItem $item, array $tagIds): KnowledgeBaseItem;
+
+    public function deleteById(string $id): bool;
 }
