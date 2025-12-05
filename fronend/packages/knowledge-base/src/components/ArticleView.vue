@@ -4,18 +4,8 @@ import { useAppThemeStore } from '@zoho-ide/shared'
 import { TagsChipList } from '@zoho-ide/tags'
 import { format } from 'date-fns'
 import { MdPreview } from 'md-editor-v3'
-import { config as mdEditorConfig } from 'md-editor-v3'
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
-
-mdEditorConfig({
-    katexConfig(base: any) {
-        return {
-            ...base,
-            strict: false, // Disable strict mode to allow all cyrylic characters
-        }
-    },
-})
 
 const props = defineProps<{ article: IKnowledgeBaseItemDetails }>()
 const appTheme = useAppThemeStore()
