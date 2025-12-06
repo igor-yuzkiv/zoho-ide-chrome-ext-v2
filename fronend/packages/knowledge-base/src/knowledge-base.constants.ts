@@ -5,6 +5,7 @@ export const KnowledgeBaseQueryKeys = {
     all: ['knowledge-base'],
     items: () => [...KnowledgeBaseQueryKeys.all, 'items'],
     item: (itemId: MaybeRefOrGetter) => [...KnowledgeBaseQueryKeys.all, 'item', itemId],
+    templates: () => [...KnowledgeBaseQueryKeys.all, 'templates'],
 }
 
 export const KnowledgeBaseItemEntityType = 'knowledge_base_item'

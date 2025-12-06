@@ -24,7 +24,7 @@ withDefaults(
 </script>
 
 <template>
-    <div class="tags-chip-list" :class="inline ? 'tags-chip-list-inline' : ''">
+    <div class="tags-chip-list app-thin-scrollbar" :class="inline ? 'tags-chip-list-inline' : ''">
         <TagChip
             class="shrink-0"
             v-for="tag in tags"
@@ -49,10 +49,5 @@ withDefaults(
 .tags-chip-list-inline {
     flex-wrap: nowrap;
     overflow-x: auto;
-}
-
-*::-webkit-scrollbar {
-    width: 3px !important;
-    height: 3px !important;
 }
 </style>

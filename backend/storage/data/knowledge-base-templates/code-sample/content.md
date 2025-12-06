@@ -14,7 +14,7 @@ performs simple validation, and returns a structured response._
 ## Usage
 
 ```deluge
-TODO: describe how to use the code sample here.
+{{code}}
 ```
 
 ## Response

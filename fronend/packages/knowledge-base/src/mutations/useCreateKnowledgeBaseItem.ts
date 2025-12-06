@@ -36,6 +36,10 @@ export function useCreateKnowledgeBaseItem() {
         },
     })
 
+    function resetForm() {
+        formData.value = defaultKbItemFormData()
+    }
+
     function submit() {
         formErrors.value = {}
         mutate(formData.value)
@@ -54,5 +58,6 @@ export function useCreateKnowledgeBaseItem() {
         isSuccess,
         data,
         formErrors,
+        resetForm,
     }
 }

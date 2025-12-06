@@ -26,6 +26,16 @@ readonly class EloquentKnowledgeBaseTemplateRepository implements KnowledgeBaseT
         return $models->map(fn (KnowledgeBaseTemplateModel $model) => $this->mapper->makeFromModel($model));
     }
 
+    public function find(string $id): ?KnowledgeBaseTemplate
+    {
+        $model = KnowledgeBaseTemplateModel::find($id);
+        if (!$model) {
+            return null;
+        }
+
+        return $this->mapper->makeFromModel($model);
+    }
+
     public function import(ImportKnowledgeBaseTemplateDto $dto): KnowledgeBaseTemplate
     {
         $model = KnowledgeBaseTemplateModel::firstOrCreate(

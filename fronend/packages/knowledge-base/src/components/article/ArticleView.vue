@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import type { IKnowledgeBaseItemDetails } from '../../types'
-import { useAppThemeStore } from '@zoho-ide/shared'
+import MarkdownPreview from './MarkdownPreview.vue'
 import { TagsChipList } from '@zoho-ide/tags'
 import { format } from 'date-fns'
-import { MdPreview } from 'md-editor-v3'
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 
 const props = defineProps<{ article: IKnowledgeBaseItemDetails }>()
-const appTheme = useAppThemeStore()
 
 const createdAt = computed(() => {
     return props.article?.created_at ? format(props.article.created_at, 'yyyy-MM-dd') : ''
@@ -18,11 +16,7 @@ const createdAt = computed(() => {
 <template>
     <div class="flex flex-col w-full h-full app-card overflow-hidden">
         <div class="flex flex-col w-full h-full overflow-auto p-3">
-            <MdPreview
-                :modelValue="article?.content || '*No description*'"
-                :theme="appTheme.isDark ? 'dark' : 'light'"
-                language="en-US"
-            />
+            <MarkdownPreview :content="article.content" />
         </div>
 
         <div class="flex items-center justify-between bg-secondary/60 overflow-hidden px-1">

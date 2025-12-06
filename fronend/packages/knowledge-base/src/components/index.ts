@@ -1,3 +1,4 @@
+export { default as MarkdownPreview } from './article/MarkdownPreview.vue'
 export { default as ArticleView } from './article/ArticleView.vue'
 export { default as ArticleContentEditor } from './article/ArticleContentEditor.vue'
 export { default as NewKnowledgeBaseItemPopup } from './form/NewKnowledgeBaseItemPopup.vue'

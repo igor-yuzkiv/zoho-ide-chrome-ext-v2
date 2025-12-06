@@ -3,12 +3,13 @@
 namespace App\Api\Http\Controllers\KnowledgeBase;
 
 use App\Api\Http\Requests\KnowledgeBase\SaveKnowledgeBaseItemRequest;
-use App\Api\Resources\KnowledgeBase\KnowledgeBaseItemWithRelationsResource;
 use App\Api\Resources\KnowledgeBase\KnowledgeBaseItemResource;
+use App\Api\Resources\KnowledgeBase\KnowledgeBaseItemWithRelationsResource;
 use App\Application\Auth\Contracts\AuthGateway;
-use App\Application\KnowledgeBase\Handlers\CreateKnowledgeBaseItemHandler;
-use App\Application\KnowledgeBase\Handlers\UpdateKnowledgeBaseItemHandler;
+use App\Application\KnowledgeBase\Handlers\CreateKbItemHandler;
+use App\Application\KnowledgeBase\Handlers\UpdateKbItemHandler;
 use App\Domains\KnowledgeBase\Repositories\KnowledgeBaseItemRepository;
+use App\Domains\KnowledgeBase\Repositories\KnowledgeBaseTemplateRepository;
 use App\Shared\Http\Controller;
 use Illuminate\Http\JsonResponse;
 
@@ -16,7 +17,8 @@ class KnowledgeBaseController extends Controller
 {
     public function __construct(
         protected AuthGateway $authGateway,
-        protected KnowledgeBaseItemRepository $kbItemRepository
+        protected KnowledgeBaseItemRepository $kbItemRepository,
+        protected KnowledgeBaseTemplateRepository $templateRepository
     ) {}
 
     public function index()
@@ -43,7 +45,7 @@ class KnowledgeBaseController extends Controller
         return new KnowledgeBaseItemWithRelationsResource($item);
     }
 
-    public function create(SaveKnowledgeBaseItemRequest $request, CreateKnowledgeBaseItemHandler $handler): KnowledgeBaseItemResource
+    public function create(SaveKnowledgeBaseItemRequest $request, CreateKbItemHandler $handler): KnowledgeBaseItemResource
     {
         $command = $request->toCommand($this->authGateway->user());
         $item = $handler($command);
@@ -51,7 +53,7 @@ class KnowledgeBaseController extends Controller
         return new KnowledgeBaseItemResource($item);
     }
 
-    public function update(string $itemId, SaveKnowledgeBaseItemRequest $request, UpdateKnowledgeBaseItemHandler $handler): KnowledgeBaseItemResource
+    public function update(string $itemId, SaveKnowledgeBaseItemRequest $request, UpdateKbItemHandler $handler): KnowledgeBaseItemResource
     {
         $command = $request->toCommand($this->authGateway->user());
         $item = $handler($itemId, $command);

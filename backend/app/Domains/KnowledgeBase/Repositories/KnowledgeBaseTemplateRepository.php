@@ -15,5 +15,7 @@ interface KnowledgeBaseTemplateRepository
      */
     public function all(): Collection;
 
+    public function find(string $id): ?KnowledgeBaseTemplate;
+
     public function import(ImportKnowledgeBaseTemplateDto $dto): KnowledgeBaseTemplate;
 }

@@ -3,16 +3,6 @@ import { KnowledgeBaseItemEntityType } from '../../knowledge-base.constants.ts'
 import { attachToEntityRequest } from '@zoho-ide/attachments'
 import { useAppThemeStore } from '@zoho-ide/shared'
 import { MdEditor } from 'md-editor-v3'
-import { config as mdEditorConfig } from 'md-editor-v3'
-
-mdEditorConfig({
-    katexConfig(base: any) {
-        return {
-            ...base,
-            strict: false, // Disable strict mode to allow all cyrillic characters
-        }
-    },
-})
 
 const props = defineProps<{ itemId: string }>()
 const appTheme = useAppThemeStore()

@@ -1,6 +1,6 @@
-import { fetchKbItemByIdRequest } from '../api'
-import { KnowledgeBaseQueryKeys } from '../knowledge-base.constants.ts'
-import type { IKnowledgeBaseItemDetails } from '../types'
+import { fetchKbItemByIdRequest } from '../../api'
+import { KnowledgeBaseQueryKeys } from '../../knowledge-base.constants.ts'
+import type { IKnowledgeBaseItemDetails } from '../../types'
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
 import { type MaybeRefOrGetter, toValue } from 'vue'
 
