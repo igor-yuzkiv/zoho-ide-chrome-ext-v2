@@ -2,17 +2,17 @@
 
 namespace App\Application\KnowledgeBase\Handlers;
 
-use App\Application\KnowledgeBase\Commands\SaveKnowledgeBaseItemCommand;
+use App\Application\KnowledgeBase\Commands\SaveKbItemCommand;
 use App\Domains\KnowledgeBase\Entities\KnowledgeBaseItem;
 use App\Domains\KnowledgeBase\Repositories\KnowledgeBaseItemRepository;
 
-readonly class UpdateKnowledgeBaseItemHandler
+readonly class UpdateKbItemHandler
 {
     public function __construct(
         private KnowledgeBaseItemRepository $repository
     ) {}
 
-    public function __invoke(string $itemId, SaveKnowledgeBaseItemCommand $command): KnowledgeBaseItem
+    public function __invoke(string $itemId, SaveKbItemCommand $command): KnowledgeBaseItem
     {
         $item = $this->repository->find($itemId);
         if (!$item) {

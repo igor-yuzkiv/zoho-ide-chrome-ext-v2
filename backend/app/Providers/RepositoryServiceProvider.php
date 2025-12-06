@@ -4,10 +4,12 @@ namespace App\Providers;
 
 use App\Domains\Attachment\Repositories\AttachmentRepository;
 use App\Domains\KnowledgeBase\Repositories\KnowledgeBaseItemRepository;
+use App\Domains\KnowledgeBase\Repositories\KnowledgeBaseTemplateRepository;
 use App\Domains\Tag\Repositories\TagRepository;
 use App\Domains\User\Repositories\UserRepository;
 use App\Infrastructure\Repositories\EloquentAttachmentRepository;
 use App\Infrastructure\Repositories\EloquentKnowledgeBaseItemRepository;
+use App\Infrastructure\Repositories\EloquentKnowledgeBaseTemplateRepository;
 use App\Infrastructure\Repositories\EloquentTagRepository;
 use App\Infrastructure\Repositories\EloquentUserRepository;
 use Illuminate\Support\ServiceProvider;
@@ -15,10 +17,11 @@ use Illuminate\Support\ServiceProvider;
 class RepositoryServiceProvider extends ServiceProvider
 {
     private const REGISTER = [
-        UserRepository::class              => EloquentUserRepository::class,
-        KnowledgeBaseItemRepository::class => EloquentKnowledgeBaseItemRepository::class,
-        AttachmentRepository::class        => EloquentAttachmentRepository::class,
-        TagRepository::class               => EloquentTagRepository::class,
+        UserRepository::class                  => EloquentUserRepository::class,
+        KnowledgeBaseItemRepository::class     => EloquentKnowledgeBaseItemRepository::class,
+        KnowledgeBaseTemplateRepository::class => EloquentKnowledgeBaseTemplateRepository::class,
+        AttachmentRepository::class            => EloquentAttachmentRepository::class,
+        TagRepository::class                   => EloquentTagRepository::class,
     ];
 
     public function register(): void

@@ -1,6 +1,8 @@
 import type { IEntity, IUser } from '@zoho-ide/shared'
 import type { ITagEntity } from '@zoho-ide/tags'
 
+export type KnowledgeBaseCategory = 'code_samples'
+
 export interface IKnowledgeBaseItem extends IEntity {
     id: string
     title: string
@@ -30,3 +32,11 @@ export type KbItemFormData = Omit<SaveKbItemRequestPayload, 'tags_ids'> & {
 }
 
 export type DeleteKbItemByIdResponse = { status: boolean; message: string }
+
+export interface IKnowledgeBaseTemplate extends IEntity {
+    id: string
+    key: string
+    name: string
+    content?: string
+    category?: KnowledgeBaseCategory
+}

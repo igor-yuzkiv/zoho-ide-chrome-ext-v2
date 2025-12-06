@@ -54,3 +54,8 @@
     @apply bg-primary rounded-lg border;
     border-color: var(--theme-border);
 }
+
+.app-thin-scrollbar::-webkit-scrollbar {
+    width: 3px !important;
+    height: 3px !important;
+}

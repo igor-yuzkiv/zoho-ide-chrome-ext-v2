@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { defaultKbItemFormData } from '../knowledge-base.constants.ts'
-import type { IKnowledgeBaseItem, KbItemFormData } from '../types'
+import { defaultKbItemFormData } from '../../knowledge-base.constants.ts'
+import type { IKnowledgeBaseItem, KbItemFormData } from '../../types'
 import { FieldContainer, useValidationErrors } from '@zoho-ide/shared'
 import { TagsMultiSelect } from '@zoho-ide/tags'
 import { computed } from 'vue'

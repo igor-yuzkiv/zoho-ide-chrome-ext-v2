@@ -2,7 +2,7 @@
 
 namespace App\Api\Http\Requests\KnowledgeBase;
 
-use App\Application\KnowledgeBase\Commands\SaveKnowledgeBaseItemCommand;
+use App\Application\KnowledgeBase\Commands\SaveKbItemCommand;
 use App\Domains\User\Entities\User;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,9 +25,9 @@ class SaveKnowledgeBaseItemRequest extends FormRequest
         return true;
     }
 
-    public function toCommand(?User $user): SaveKnowledgeBaseItemCommand
+    public function toCommand(?User $user): SaveKbItemCommand
     {
-        return new SaveKnowledgeBaseItemCommand(
+        return new SaveKbItemCommand(
             title: $this->input('title'),
             content: $this->input('content'),
             parentId: $this->input('parent_id'),

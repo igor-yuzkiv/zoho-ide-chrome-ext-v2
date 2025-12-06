@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Api\Resources;
+namespace App\Api\Resources\KnowledgeBase;
 
+use App\Api\Resources\TagResource;
+use App\Api\Resources\UserResource;
 use App\Domains\KnowledgeBase\Entities\KnowledgeBaseItemWithRelations;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;

@@ -68,6 +68,14 @@ return [
             'throw'      => false,
             'report'     => false,
         ],
+
+        'data' => [
+            'driver' => 'local',
+            'root'   => storage_path('data'),
+            'serve'  => true,
+            'throw'  => false,
+            'report' => false,
+        ],
     ],
 
     /*

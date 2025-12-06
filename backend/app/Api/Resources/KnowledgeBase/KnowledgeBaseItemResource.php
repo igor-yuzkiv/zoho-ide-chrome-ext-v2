@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Api\Resources;
+namespace App\Api\Resources\KnowledgeBase;
 
 use App\Domains\KnowledgeBase\Entities\KnowledgeBaseItem;
 use Illuminate\Http\Request;
