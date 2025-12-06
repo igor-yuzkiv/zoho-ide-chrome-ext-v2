@@ -2,7 +2,8 @@
 
 use App\Api\Http\Controllers\AttachmentsController;
 use App\Api\Http\Controllers\AuthController;
-use App\Api\Http\Controllers\KnowledgeBaseController;
+use App\Api\Http\Controllers\KnowledgeBase\KnowledgeBaseController;
+use App\Api\Http\Controllers\KnowledgeBase\KnowledgeBaseTemplateController;
 use App\Api\Http\Controllers\MockApiController;
 use App\Api\Http\Controllers\TagController;
 use App\Api\Http\Controllers\UserController;
@@ -75,6 +76,18 @@ Route::group(
         Route::post('', 'create')->name('create');
         Route::put('{itemId}', 'update')->name('update');
         Route::delete('{itemId}', 'deleteById')->name('delete-by-id');
+    }
+);
+
+Route::group(
+    [
+        'middleware' => ['api', 'auth:sanctum'],
+        'prefix'     => 'knowledge-base/templates',
+        'as'         => 'knowledge_base.templates.',
+        'controller' => KnowledgeBaseTemplateController::class,
+    ],
+    function () {
+        Route::get('', 'index')->name('index');
     }
 );
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Api\Http\Controllers;
+namespace App\Api\Http\Controllers\KnowledgeBase;
 
 use App\Api\Http\Requests\KnowledgeBase\SaveKnowledgeBaseItemRequest;
-use App\Api\Resources\KnowledgeBaseItemWithRelationsResource;
-use App\Api\Resources\KnowledgeBaseItemResource;
+use App\Api\Resources\KnowledgeBase\KnowledgeBaseItemWithRelationsResource;
+use App\Api\Resources\KnowledgeBase\KnowledgeBaseItemResource;
 use App\Application\Auth\Contracts\AuthGateway;
 use App\Application\KnowledgeBase\Handlers\CreateKnowledgeBaseItemHandler;
 use App\Application\KnowledgeBase\Handlers\UpdateKnowledgeBaseItemHandler;

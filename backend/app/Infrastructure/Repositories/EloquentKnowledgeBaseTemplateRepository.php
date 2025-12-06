@@ -7,6 +7,7 @@ use App\Domains\KnowledgeBase\Entities\KnowledgeBaseTemplate;
 use App\Domains\KnowledgeBase\Repositories\KnowledgeBaseTemplateRepository;
 use App\Infrastructure\Mappers\KnowledgeBaseTemplateMapper;
 use App\Infrastructure\Models\KnowledgeBaseTemplateModel;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
 readonly class EloquentKnowledgeBaseTemplateRepository implements KnowledgeBaseTemplateRepository
@@ -16,6 +17,13 @@ readonly class EloquentKnowledgeBaseTemplateRepository implements KnowledgeBaseT
     public function nextIdentifier(): string
     {
         return Str::ulid();
+    }
+
+    public function all(): Collection
+    {
+        $models = KnowledgeBaseTemplateModel::all();
+
+        return $models->map(fn (KnowledgeBaseTemplateModel $model) => $this->mapper->makeFromModel($model));
     }
 
     public function import(ImportKnowledgeBaseTemplateDto $dto): KnowledgeBaseTemplate
