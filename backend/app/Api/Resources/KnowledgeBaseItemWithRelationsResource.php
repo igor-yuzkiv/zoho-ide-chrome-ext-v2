@@ -2,11 +2,11 @@
 
 namespace App\Api\Resources;
 
-use App\Domains\KnowledgeBase\Entities\KbItemWithRelations;
+use App\Domains\KnowledgeBase\Entities\KnowledgeBaseItemWithRelations;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/** @mixin KbItemWithRelations */ class KbItemWithRelationsResource extends JsonResource
+/** @mixin KnowledgeBaseItemWithRelations */ class KnowledgeBaseItemWithRelationsResource extends JsonResource
 {
     public function toArray(Request $request): array
     {

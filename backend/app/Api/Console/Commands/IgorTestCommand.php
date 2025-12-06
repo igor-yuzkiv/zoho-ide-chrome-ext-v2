@@ -3,6 +3,7 @@
 namespace App\Api\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Storage;
 
 class IgorTestCommand extends Command
 {
@@ -10,5 +11,7 @@ class IgorTestCommand extends Command
 
     protected $description = 'Command description';
 
-    public function handle(): void {}
+    public function handle(): void {
+        Storage::disk('data')->put('test.txt', 'test');
+    }
 }

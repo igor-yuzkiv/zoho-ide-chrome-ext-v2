@@ -2,17 +2,17 @@
 
 namespace App\Application\KnowledgeBase\Handlers;
 
-use App\Application\KnowledgeBase\Commands\SaveKbItemCommand;
+use App\Application\KnowledgeBase\Commands\SaveKnowledgeBaseItemCommand;
 use App\Domains\KnowledgeBase\Entities\KnowledgeBaseItem;
 use App\Domains\KnowledgeBase\Repositories\KnowledgeBaseItemRepository;
 
-readonly class CreateKbItemHandler
+readonly class CreateKnowledgeBaseItemHandler
 {
     public function __construct(
         private KnowledgeBaseItemRepository $repository
     ) {}
 
-    public function __invoke(SaveKbItemCommand $command): KnowledgeBaseItem
+    public function __invoke(SaveKnowledgeBaseItemCommand $command): KnowledgeBaseItem
     {
         $item = new KnowledgeBaseItem(
             id: $this->repository->nextIdentifier(),

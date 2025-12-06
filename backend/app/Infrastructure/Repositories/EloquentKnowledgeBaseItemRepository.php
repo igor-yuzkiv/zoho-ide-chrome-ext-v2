@@ -2,7 +2,7 @@
 
 namespace App\Infrastructure\Repositories;
 
-use App\Domains\KnowledgeBase\Entities\KbItemWithRelations;
+use App\Domains\KnowledgeBase\Entities\KnowledgeBaseItemWithRelations;
 use App\Domains\KnowledgeBase\Entities\KnowledgeBaseItem;
 use App\Domains\KnowledgeBase\Repositories\KnowledgeBaseItemRepository;
 use App\Infrastructure\Mappers\KnowledgeBaseItemMapper;
@@ -56,7 +56,7 @@ readonly class EloquentKnowledgeBaseItemRepository implements KnowledgeBaseItemR
         return $model ? $this->mapper->makeFromModel($model) : null;
     }
 
-    public function findWithRelations(string $id): ?KbItemWithRelations
+    public function findWithRelations(string $id): ?KnowledgeBaseItemWithRelations
     {
         $model = KnowledgeBaseItemModel::query()
             ->with(['tags', 'createdBy', 'updatedBy'])
@@ -66,7 +66,7 @@ readonly class EloquentKnowledgeBaseItemRepository implements KnowledgeBaseItemR
             return null;
         }
 
-        return new KbItemWithRelations(
+        return new KnowledgeBaseItemWithRelations(
             item: $this->mapper->makeFromModel($model),
             tags: $this->tagMapper->toEntityCollection($model->tags),
             createdBy: $model->createdBy ? $this->userMapper->makeFromModel($model->createdBy) : null,
