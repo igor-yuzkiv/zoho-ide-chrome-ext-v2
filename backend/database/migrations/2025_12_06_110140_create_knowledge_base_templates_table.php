@@ -16,7 +16,6 @@ return new class extends Migration
             $table->text('content')->nullable();
             $table->string('category')->nullable();
 
-            $table->index('key');
             $table->index('category');
 
             $table->timestamps();
