@@ -78,8 +78,12 @@ class ImportKnowledgeBaseTemplatesCommand extends Command
 
     private function loadTemplateMetadata(string $templateKey): array
     {
-        $jsonData = Storage::disk('data')->get("knowledge-base-templates/{$templateKey}/metadata.json");
-
+        $metadataPath = "knowledge-base-templates/{$templateKey}/metadata.json";
+        if (!Storage::disk('data')->exists($metadataPath)) {
+            $this->warn("Metadata file not found for template '{$templateKey}' at '{$metadataPath}'.");
+            return [];
+        }
+        $jsonData = Storage::disk('data')->get($metadataPath);
         return json_decode($jsonData, true) ?? [];
     }
 }
