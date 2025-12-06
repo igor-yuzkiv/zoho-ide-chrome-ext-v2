@@ -2,11 +2,11 @@
 
 namespace App\Api\Http\Requests\KnowledgeBase;
 
-use App\Application\KnowledgeBase\Commands\SaveKbItemCommand;
+use App\Application\KnowledgeBase\Commands\SaveKnowledgeBaseItemCommand;
 use App\Domains\User\Entities\User;
 use Illuminate\Foundation\Http\FormRequest;
 
-class SaveKbItemRequest extends FormRequest
+class SaveKnowledgeBaseItemRequest extends FormRequest
 {
     public function rules(): array
     {
@@ -25,9 +25,9 @@ class SaveKbItemRequest extends FormRequest
         return true;
     }
 
-    public function toCommand(?User $user): SaveKbItemCommand
+    public function toCommand(?User $user): SaveKnowledgeBaseItemCommand
     {
-        return new SaveKbItemCommand(
+        return new SaveKnowledgeBaseItemCommand(
             title: $this->input('title'),
             content: $this->input('content'),
             parentId: $this->input('parent_id'),

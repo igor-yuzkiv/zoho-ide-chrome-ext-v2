@@ -4,7 +4,7 @@ namespace App\Application\KnowledgeBase\Commands;
 
 use App\Domains\User\Entities\User;
 
-final class SaveKbItemCommand
+final class SaveKnowledgeBaseItemCommand
 {
     public function __construct(
         public string $title,

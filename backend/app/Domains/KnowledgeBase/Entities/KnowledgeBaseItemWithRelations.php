@@ -2,11 +2,10 @@
 
 namespace App\Domains\KnowledgeBase\Entities;
 
-use App\Domains\KnowledgeBase\Entities\KnowledgeBaseItem;
 use App\Domains\User\Entities\User;
 use Illuminate\Support\Collection;
 
-class KbItemWithRelations
+class KnowledgeBaseItemWithRelations
 {
     public function __construct(
         public KnowledgeBaseItem $item,
