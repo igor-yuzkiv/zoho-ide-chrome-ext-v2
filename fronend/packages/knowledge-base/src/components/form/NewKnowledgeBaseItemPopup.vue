@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useCreateKnowledgeBaseItem } from '../mutations'
-import { type IKnowledgeBaseItem } from '../types'
+import { useCreateKnowledgeBaseItem } from '../../mutations'
+import { type IKnowledgeBaseItem } from '../../types'
 import KnowledgeBaseItemForm from './KnowledgeBaseItemForm.vue'
 import { Button } from 'primevue'
 import Dialog from 'primevue/dialog'

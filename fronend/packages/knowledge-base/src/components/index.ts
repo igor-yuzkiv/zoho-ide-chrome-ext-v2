@@ -1,4 +1,4 @@
-export { default as ArticleView } from './ArticleView.vue'
-export { default as ArticleContentEditor } from './ArticleContentEditor.vue'
-export { default as NewKnowledgeBaseItemPopup } from './NewKnowledgeBaseItemPopup.vue'
-export { default as KnowledgeBaseItemForm } from './KnowledgeBaseItemForm.vue'
+export { default as ArticleView } from './article/ArticleView.vue'
+export { default as ArticleContentEditor } from './article/ArticleContentEditor.vue'
+export { default as NewKnowledgeBaseItemPopup } from './form/NewKnowledgeBaseItemPopup.vue'
+export { default as KnowledgeBaseItemForm } from './form/KnowledgeBaseItemForm.vue'

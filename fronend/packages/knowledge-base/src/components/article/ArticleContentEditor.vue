@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { KnowledgeBaseItemEntityType } from '../knowledge-base.constants.ts'
+import { KnowledgeBaseItemEntityType } from '../../knowledge-base.constants.ts'
 import { attachToEntityRequest } from '@zoho-ide/attachments'
 import { useAppThemeStore } from '@zoho-ide/shared'
 import { MdEditor } from 'md-editor-v3'

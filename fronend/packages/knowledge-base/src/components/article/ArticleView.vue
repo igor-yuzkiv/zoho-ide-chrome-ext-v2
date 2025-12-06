@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IKnowledgeBaseItemDetails } from '../types'
+import type { IKnowledgeBaseItemDetails } from '../../types'
 import { useAppThemeStore } from '@zoho-ide/shared'
 import { TagsChipList } from '@zoho-ide/tags'
 import { format } from 'date-fns'
