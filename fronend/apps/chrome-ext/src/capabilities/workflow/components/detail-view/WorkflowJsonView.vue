@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { CodeEditor } from '@/shared/components/code-editor'
 import type { IWorkflowEntity } from '@/capabilities/workflow/workflow.types.ts'
 import type { ProviderType } from '@/entities/provider/provider.types.ts'
+import { useAppThemeStore } from '@zoho-ide/shared'
+
+const appTheme = useAppThemeStore()
 
 const props = defineProps<{
     providerType: ProviderType
@@ -15,7 +17,7 @@ const jsonData = computed(() => {
 </script>
 
 <template>
-    <CodeEditor :model-value="jsonData" />
+    <vue-monaco-editor  language="json" :value="jsonData" :theme="appTheme.isDark ? 'vs-dark' : 'vs'"/>
 </template>
 
 <style scoped></style>

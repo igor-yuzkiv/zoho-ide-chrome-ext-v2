@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useFunctionDetails } from '@/capabilities/function'
 import { useRouteParams } from '@vueuse/router'
-import { NoDataMessage, PageHeader } from '@zoho-ide/shared'
-import { CodeEditor } from '@/shared/components/code-editor'
+import { NoDataMessage, PageHeader, useAppThemeStore } from '@zoho-ide/shared'
 
+const appTheme = useAppThemeStore()
 const providerId = useRouteParams<string>('providerId')
 const functionId = useRouteParams<string>('functionId')
 const { script, data } = useFunctionDetails(providerId, functionId)
@@ -22,7 +22,11 @@ const { script, data } = useFunctionDetails(providerId, functionId)
         </PageHeader>
 
         <div class="flex h-full w-full flex-col overflow-auto app-card">
-            <CodeEditor v-model="script" />
+            <vue-monaco-editor
+                language="javascript"
+                v-model:value="script"
+                :theme="appTheme.isDark ? 'vs-dark' : 'vs'"
+            />
         </div>
     </div>
 
