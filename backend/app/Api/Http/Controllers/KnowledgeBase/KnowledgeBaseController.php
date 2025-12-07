@@ -2,10 +2,12 @@
 
 namespace App\Api\Http\Controllers\KnowledgeBase;
 
-use App\Api\Http\Requests\KnowledgeBase\SaveKnowledgeBaseItemRequest;
+use App\Api\Http\Requests\KnowledgeBase\CreateKbItemFromTemplateRequest;
+use App\Api\Http\Requests\KnowledgeBase\SaveKbItemRequest;
 use App\Api\Resources\KnowledgeBase\KnowledgeBaseItemResource;
 use App\Api\Resources\KnowledgeBase\KnowledgeBaseItemWithRelationsResource;
 use App\Application\Auth\Contracts\AuthGateway;
+use App\Application\KnowledgeBase\Handlers\CreateKbItemFromTemplateHandler;
 use App\Application\KnowledgeBase\Handlers\CreateKbItemHandler;
 use App\Application\KnowledgeBase\Handlers\UpdateKbItemHandler;
 use App\Domains\KnowledgeBase\Repositories\KnowledgeBaseItemRepository;
@@ -45,7 +47,7 @@ class KnowledgeBaseController extends Controller
         return new KnowledgeBaseItemWithRelationsResource($item);
     }
 
-    public function create(SaveKnowledgeBaseItemRequest $request, CreateKbItemHandler $handler): KnowledgeBaseItemResource
+    public function create(SaveKbItemRequest $request, CreateKbItemHandler $handler): KnowledgeBaseItemResource
     {
         $command = $request->toCommand($this->authGateway->user());
         $item = $handler($command);
@@ -53,7 +55,20 @@ class KnowledgeBaseController extends Controller
         return new KnowledgeBaseItemResource($item);
     }
 
-    public function update(string $itemId, SaveKnowledgeBaseItemRequest $request, UpdateKbItemHandler $handler): KnowledgeBaseItemResource
+    public function createFromTemplate(string $templateId, CreateKbItemFromTemplateRequest $request, CreateKbItemFromTemplateHandler $handler)
+    {
+        $template = $this->templateRepository->find($templateId);
+        if (!$template) {
+            return $this->noContentResponse('Template not found');
+        }
+
+        $command = $request->toCommand($template, $this->authGateway->user());
+        $item = $handler($command);
+
+        return new KnowledgeBaseItemResource($item);
+    }
+
+    public function update(string $itemId, SaveKbItemRequest $request, UpdateKbItemHandler $handler): KnowledgeBaseItemResource
     {
         $command = $request->toCommand($this->authGateway->user());
         $item = $handler($itemId, $command);
