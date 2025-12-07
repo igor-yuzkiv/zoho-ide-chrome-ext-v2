@@ -15,12 +15,21 @@ const createdAt = computed(() => {
 
 <template>
     <div class="flex flex-col w-full h-full app-card overflow-hidden">
-        <div class="flex flex-col w-full h-full overflow-auto p-3">
+        <slot name="header">
+            <div class="flex justify-between pt-4 px-4">
+                <h1 class="text-3xl font-bold">{{ article.title }}</h1>
+                <div class="flex items-center gap-x-2">
+                    <slot name="header-actions" />
+                </div>
+            </div>
+        </slot>
+
+        <div class="flex flex-col w-full h-full overflow-auto px-2">
             <MarkdownPreview :content="article.content" />
         </div>
 
-        <div class="flex items-center justify-between bg-secondary/60 overflow-hidden px-1">
-            <div class="flex overflow-hidden">
+        <div class="flex items-center justify-between bg-secondary/60 overflow-hidden">
+            <div class="flex overflow-hidden p-2">
                 <TagsChipList v-if="article?.tags?.length" :tags="article.tags" inline item-class="py-0" />
             </div>
 

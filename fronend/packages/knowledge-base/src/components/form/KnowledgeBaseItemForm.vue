@@ -20,7 +20,7 @@ function handleChangeField(field: keyof IKnowledgeBaseItem, value: unknown) {
 
 <template>
     <div class="flex flex-col gap-2">
-        <FieldContainer label="Name" input-id="article_name" :error-message="validationErrors.get('title')">
+        <FieldContainer label="Title" input-id="article_name" :error-message="validationErrors.get('title')">
             <InputText
                 fluid
                 placeholder="Enter article name"

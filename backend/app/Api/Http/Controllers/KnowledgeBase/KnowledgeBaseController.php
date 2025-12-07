@@ -63,14 +63,11 @@ class KnowledgeBaseController extends Controller
 
     public function deleteById(string $id): JsonResponse
     {
-        $deleted = $this->kbItemRepository->deleteById($id);
-        if (!$deleted) {
-            return $this->noContentResponse('Article not found');
-        }
+        $status = $this->kbItemRepository->deleteById($id);
 
-        return $this->successResponse([
-            'status'  => 'success',
-            'message' => 'Article deleted successfully',
+        return response()->json([
+            'status'  => $status,
+            'message' => $status ? 'Article deleted successfully' : 'Article not found',
         ]);
     }
 }
