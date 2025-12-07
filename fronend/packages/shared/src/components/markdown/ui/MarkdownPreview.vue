@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAppThemeStore } from '@zoho-ide/shared'
+import { useAppThemeStore } from '../../../store'
 import { MdPreview } from 'md-editor-v3'
 import { computed } from 'vue'
 

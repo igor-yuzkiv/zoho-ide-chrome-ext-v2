@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { IKnowledgeBaseItemDetails } from '../../types'
-import MarkdownPreview from './MarkdownPreview.vue'
+import type { IKnowledgeBaseItemDetails } from '../types'
+import { MarkdownPreview } from '@zoho-ide/shared'
 import { TagsChipList } from '@zoho-ide/tags'
 import { format } from 'date-fns'
 import { computed } from 'vue'
@@ -14,25 +14,25 @@ const createdAt = computed(() => {
 </script>
 
 <template>
-    <div class="flex flex-col w-full h-full app-card overflow-hidden">
-        <slot name="header">
-            <div class="flex justify-between pt-4 px-4">
+    <div class="flex flex-col h-full overflow-hidden w-full app-card">
+        <div class="flex flex-col w-full p-3">
+            <div class="flex items-center justify-between w-full">
                 <h1 class="text-3xl font-bold">{{ article.title }}</h1>
                 <div class="flex items-center gap-x-2">
                     <slot name="header-actions" />
                 </div>
             </div>
-        </slot>
+
+            <div class="flex items-center">
+                <TagsChipList v-if="article?.tags?.length" :tags="article.tags" inline item-class="py-0" />
+            </div>
+        </div>
 
         <div class="flex flex-col w-full h-full overflow-auto px-2">
             <MarkdownPreview :content="article.content" />
         </div>
 
-        <div class="flex items-center justify-between bg-secondary/60 overflow-hidden">
-            <div class="flex overflow-hidden p-2">
-                <TagsChipList v-if="article?.tags?.length" :tags="article.tags" inline item-class="py-0" />
-            </div>
-
+        <div class="flex items-center justify-end bg-secondary/60 overflow-hidden">
             <div class="flex items-center h-full text-gray-400 truncate shrink-0">
                 <div
                     v-if="article.created_by_user"

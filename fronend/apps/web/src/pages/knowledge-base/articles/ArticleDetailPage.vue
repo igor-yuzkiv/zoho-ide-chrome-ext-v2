@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
-import { ArticleView, useDeleteKbItem, useKbItemDetailsQuery } from '@zoho-ide/knowledge-base'
+import { ArticleReadView, useDeleteKbItem, useKbItemDetailsQuery } from '@zoho-ide/knowledge-base'
 import { Button } from 'primevue'
 import { Icon } from '@iconify/vue'
 import { AppRouteName } from '@/app/router/app-routes.ts'
@@ -26,7 +26,7 @@ function handleDelete() {
 </script>
 
 <template>
-    <ArticleView v-if="data" :article="data">
+    <ArticleReadView v-if="data" :article="data">
         <template #header-actions>
             <Button v-if="data" size="small" text severity="secondary" :disabled="isRemovePending" @click="handleDelete">
                 <Icon icon="material-symbols:close" />
@@ -44,7 +44,7 @@ function handleDelete() {
                 <span>Edit</span>
             </Button>
         </template>
-    </ArticleView>
+    </ArticleReadView>
 </template>
 
 <style scoped></style>
