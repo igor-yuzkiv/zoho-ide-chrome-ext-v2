@@ -2,20 +2,20 @@
 import {
     type IKnowledgeBaseItem,
     NewKnowledgeBaseItemPopup,
-    useDeleteKnowledgeBaseItem,
-    useKnowledgeBaseItemsListQuery,
+    useDeleteKbItem,
+    useKbItemsListQuery,
 } from '@zoho-ide/knowledge-base'
 import { IconButton, ListBox, ListItem } from '@zoho-ide/shared'
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 
-const { data: items } = useKnowledgeBaseItemsListQuery()
+const { data: items } = useKbItemsListQuery()
 const newItemDialogVisible = ref(false)
 const router = useRouter()
 const route = useRoute()
 
-const { removeWithConfirmation } = useDeleteKnowledgeBaseItem()
+const { removeWithConfirmation } = useDeleteKbItem()
 
 function handleItemCreated(item: IKnowledgeBaseItem) {
     if (item && item.id) {

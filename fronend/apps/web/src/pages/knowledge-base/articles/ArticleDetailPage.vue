@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
-import { ArticleView, useKnowledgeBaseItemDetailsQuery } from '@zoho-ide/knowledge-base'
+import { ArticleView, useKbItemDetailsQuery } from '@zoho-ide/knowledge-base'
 import { PageHeader } from '@zoho-ide/shared'
 import { Button } from 'primevue'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 
 const itemId = useRouteParams<string>('itemId')
-const { data } = useKnowledgeBaseItemDetailsQuery(itemId)
+const { data } = useKbItemDetailsQuery(itemId)
 </script>
 
 <template>

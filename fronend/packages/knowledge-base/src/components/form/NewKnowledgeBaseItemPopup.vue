@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useCreateKnowledgeBaseItem } from '../../mutations'
-import { useKnowledgeBaseTemplatesListQuery } from '../../queries'
+import { useCreateKbItem } from '../../mutations'
+import { useKbTemplatesListQuery } from '../../queries'
 import { type IKnowledgeBaseItem } from '../../types'
 import { MarkdownPreview } from '../index.ts'
 import KnowledgeBaseItemForm from './KnowledgeBaseItemForm.vue'
@@ -11,13 +11,13 @@ import Dialog from 'primevue/dialog'
 
 const emit = defineEmits<{ (event: 'created', item: IKnowledgeBaseItem): void }>()
 const visible = defineModel<boolean>('visible', { default: false })
-const { formData, submitAsync, formErrors, isPending, resetForm } = useCreateKnowledgeBaseItem()
+const { formData, submitAsync, formErrors, isPending, resetForm } = useCreateKbItem()
 
 const {
     data: templates,
     isFetching: isFetchingTemplates,
     findById: findTemplateById,
-} = useKnowledgeBaseTemplatesListQuery()
+} = useKbTemplatesListQuery()
 
 const templateId = ref<string | undefined>()
 

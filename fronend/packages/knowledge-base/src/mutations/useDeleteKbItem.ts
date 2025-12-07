@@ -5,7 +5,7 @@ import { useMutation, useQueryClient } from '@tanstack/vue-query'
 import { ApiError, useConfirm, useToast } from '@zoho-ide/shared'
 import { MaybeRefOrGetter, toValue } from 'vue'
 
-export function useDeleteKnowledgeBaseItem() {
+export function useDeleteKbItem() {
     const queryClient = useQueryClient()
     const confirm = useConfirm()
     const toast = useToast()

@@ -1,3 +1,3 @@
-export * from './useCreateKnowledgeBaseItem.ts'
-export * from './useUpdateKnowledgeBaseItem.ts'
-export * from './useDeleteKnowledgeBaseItem.ts'
+export * from './useCreateKbItem.ts'
+export * from './useUpdateKbItem.ts'
+export * from './useDeleteKbItem.ts'

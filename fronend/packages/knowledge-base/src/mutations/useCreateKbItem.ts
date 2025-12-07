@@ -6,7 +6,7 @@ import { useMutation, useQueryClient } from '@tanstack/vue-query'
 import { ApiError, useToast } from '@zoho-ide/shared'
 import { ref } from 'vue'
 
-export function useCreateKnowledgeBaseItem() {
+export function useCreateKbItem() {
     const formData = ref<KbItemFormData>(defaultKbItemFormData())
     const queryClient = useQueryClient()
     const toast = useToast()

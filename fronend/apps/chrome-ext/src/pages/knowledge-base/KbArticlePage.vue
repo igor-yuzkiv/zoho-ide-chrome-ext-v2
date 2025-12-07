@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
-import { ArticleView, useKnowledgeBaseItemDetailsQuery } from '@zoho-ide/knowledge-base'
+import { ArticleView, useKbItemDetailsQuery } from '@zoho-ide/knowledge-base'
 
 const itemId = useRouteParams<string>('itemId')
-const { data } = useKnowledgeBaseItemDetailsQuery(itemId)
+const { data } = useKbItemDetailsQuery(itemId)
 </script>
 
 <template>

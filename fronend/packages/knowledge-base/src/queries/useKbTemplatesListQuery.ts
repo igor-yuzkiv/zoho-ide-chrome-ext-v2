@@ -1,9 +1,9 @@
-import { fetchKbTemplatesRequest } from '../../api'
-import { KnowledgeBaseQueryKeys } from '../../knowledge-base.constants.ts'
-import { IKnowledgeBaseTemplate } from '../../types'
+import { fetchKbTemplatesRequest } from '../api'
+import { KnowledgeBaseQueryKeys } from '../knowledge-base.constants.ts'
+import { IKnowledgeBaseTemplate } from '../types'
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
 
-export function useKnowledgeBaseTemplatesListQuery() {
+export function useKbTemplatesListQuery() {
     const { isPending, isFetching, data } = useQuery<IKnowledgeBaseTemplate[]>({
         queryKey: KnowledgeBaseQueryKeys.templates(),
         placeholderData: keepPreviousData,

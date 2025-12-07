@@ -6,7 +6,7 @@ import { useMutation, useQueryClient } from '@tanstack/vue-query'
 import { ApiError, useToast } from '@zoho-ide/shared'
 import { type MaybeRefOrGetter, ref, toValue, watch } from 'vue'
 
-export function useUpdateKnowledgeBaseItem(kbItem: MaybeRefOrGetter<IKnowledgeBaseItem | undefined>) {
+export function useUpdateKbItem(kbItem: MaybeRefOrGetter<IKnowledgeBaseItem | undefined>) {
     const formData = ref<KbItemFormData>(defaultKbItemFormData())
     const queryClient = useQueryClient()
     const toast = useToast()

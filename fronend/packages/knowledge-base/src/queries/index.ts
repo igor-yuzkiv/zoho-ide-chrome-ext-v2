@@ -1,3 +1,3 @@
-export * from './items/useKnowledgeBaseItemsListQuery.ts'
-export * from './items/useKnowledgeBaseItemDetailsQuery.ts'
-export * from './templates/useKnowledgeBaseTemplatesListQuery.ts'
+export * from './useKbItemsListQuery.ts'
+export * from './useKbItemDetailsQuery.ts'
+export * from './useKbTemplatesListQuery.ts'

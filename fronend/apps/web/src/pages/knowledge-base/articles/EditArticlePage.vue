@@ -3,16 +3,16 @@ import { useRouteParams } from '@vueuse/router'
 import {
     ArticleContentEditor,
     KnowledgeBaseItemForm,
-    useKnowledgeBaseItemDetailsQuery,
-    useUpdateKnowledgeBaseItem,
+    useKbItemDetailsQuery,
+    useUpdateKbItem,
 } from '@zoho-ide/knowledge-base'
 import { PageHeader } from '@zoho-ide/shared'
 import { Button } from 'primevue'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 
 const itemId = useRouteParams<string>('itemId')
-const { data } = useKnowledgeBaseItemDetailsQuery(itemId)
-const { formData, submit, formErrors } = useUpdateKnowledgeBaseItem(data)
+const { data } = useKbItemDetailsQuery(itemId)
+const { formData, submit, formErrors } = useUpdateKbItem(data)
 </script>
 
 <template>
