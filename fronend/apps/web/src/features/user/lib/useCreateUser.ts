@@ -23,6 +23,9 @@ export function useCreateUser() {
             queryClient.invalidateQueries({ queryKey: UserQueryKeys.lists() }).catch(console.error)
         },
         onError: (error) => {
+            // TODO: refactor: remove toast from mutations error handling,
+            //       add options- onError(error: Error, displayMessage: string)
+
             let errorMessage = 'An unexpected error occurred. Please try again.'
 
             if (error instanceof ApiError) {

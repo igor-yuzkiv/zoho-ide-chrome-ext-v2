@@ -3,12 +3,11 @@
 namespace App\Application\KnowledgeBase\Handlers;
 
 use App\Application\KnowledgeBase\Commands\CreateKbItemFromTemplateCommand;
-use App\Application\KnowledgeBase\Commands\SaveKbItemCommand;
 use App\Domains\KnowledgeBase\Entities\KnowledgeBaseItem;
 
 readonly class CreateKbItemFromTemplateHandler
 {
-    public function __construct(private SaveKbItemCommand $saveCommandHandler) {}
+    public function __construct(private CreateKbItemHandler $createKbItemHandler) {}
 
     public function __invoke(CreateKbItemFromTemplateCommand $command): KnowledgeBaseItem
     {
@@ -17,11 +16,15 @@ readonly class CreateKbItemFromTemplateHandler
         $saveCommand = $command->saveCommand;
         $saveCommand->content = $content;
 
-        return ($this->saveCommandHandler)($saveCommand);
+        return ($this->createKbItemHandler)($saveCommand);
     }
 
     public function renderTemplateContent(string $content, array $attributes): string
     {
-        return strtr($content, $attributes);
+        $wrappedAttributes = collect($attributes)
+            ->mapWithKeys(fn ($value, $key) => ["{{{$key}}}" => $value])
+            ->toArray();
+
+        return strtr($content, $wrappedAttributes);
     }
 }

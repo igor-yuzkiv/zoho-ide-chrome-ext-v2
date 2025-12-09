@@ -8,8 +8,7 @@ export function useKbTemplatesListQuery() {
         queryKey: KnowledgeBaseQueryKeys.templates(),
         placeholderData: keepPreviousData,
         queryFn: () => fetchKbTemplatesRequest(),
-        initialData: [],
-        staleTime: 1000 * 60 * 5,
+        initialData: []
     })
 
     function findById(id: string): IKnowledgeBaseTemplate | undefined {

@@ -1,13 +1,11 @@
-import { createKbItemRequest } from '../api'
-import { defaultKbItemFormData, KnowledgeBaseQueryKeys } from '../knowledge-base.constants.ts'
-import { mapKbItemFormDataToRequestPayload } from '../knowledge-base.mappers.ts'
-import type { IKnowledgeBaseItem, KbItemFormData } from '../types'
+import { createKbItemFromTemplateRequest } from '../api'
+import { KnowledgeBaseQueryKeys } from '../knowledge-base.constants.ts'
+import type { CreateKbItemFromTemplateRequestPayload, IKnowledgeBaseItem } from '../types'
 import { useMutation, useQueryClient } from '@tanstack/vue-query'
 import { ApiError, useToast } from '@zoho-ide/shared'
 import { ref } from 'vue'
 
-export function useCreateKbItem() {
-    const formData = ref<KbItemFormData>(defaultKbItemFormData())
+export function useCreateKbItemFromTemplate() {
     const queryClient = useQueryClient()
     const toast = useToast()
     const formErrors = ref<Record<string, string[]>>({})
@@ -15,9 +13,9 @@ export function useCreateKbItem() {
     const { data, isSuccess, mutate, mutateAsync, isPending } = useMutation<
         IKnowledgeBaseItem,
         ApiError | Error,
-        KbItemFormData
+        { templateId: string; payload: CreateKbItemFromTemplateRequestPayload }
     >({
-        mutationFn: (data) => createKbItemRequest(mapKbItemFormDataToRequestPayload(data)),
+        mutationFn: (data) => createKbItemFromTemplateRequest(data.templateId, data.payload),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: KnowledgeBaseQueryKeys.items() }).catch(console.error)
         },
@@ -39,25 +37,11 @@ export function useCreateKbItem() {
         },
     })
 
-    function resetFormData() {
-        formData.value = defaultKbItemFormData()
-    }
-
-    async function submitFormData() {
-        formErrors.value = {}
-        return await mutateAsync(formData.value)
-    }
-
     return {
         data,
-        isPending,
         isSuccess,
         mutate,
         mutateAsync,
-
-        formData,
-        formErrors,
-        resetFormData,
-        submitFormData,
+        isPending,
     }
 }

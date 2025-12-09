@@ -25,6 +25,9 @@ export function useUpdateKbItem(kbItem: MaybeRefOrGetter<IKnowledgeBaseItem | un
             queryClient.invalidateQueries({ queryKey: KnowledgeBaseQueryKeys.item(id) }).catch(console.error)
         },
         onError: (error) => {
+            // TODO: refactor: remove toast from mutations error handling,
+            //       add options- onError(error: Error, displayMessage: string)
+
             let errorMessage = 'An unexpected error occurred. Please try again.'
 
             if (error instanceof ApiError) {

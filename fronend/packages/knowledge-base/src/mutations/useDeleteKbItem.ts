@@ -16,6 +16,9 @@ export function useDeleteKbItem() {
             queryClient.invalidateQueries({ queryKey: KnowledgeBaseQueryKeys.items() }).catch(console.error)
         },
         onError: (error) => {
+            // TODO: refactor: remove toast from mutations error handling,
+            //       add options- onError(error: Error, displayMessage: string)
+
             let errorMessage = 'Failed to delete the knowledge base item.'
             if (error instanceof ApiError) {
                 errorMessage = error.displayMessage
