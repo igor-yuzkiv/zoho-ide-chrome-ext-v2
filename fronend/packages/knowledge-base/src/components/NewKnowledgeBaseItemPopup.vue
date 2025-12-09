@@ -10,7 +10,7 @@ import { Button, Dialog, InputText, Select } from 'primevue'
 
 const emit = defineEmits<{ (event: 'created', item: IKnowledgeBaseItem): void }>()
 const visible = defineModel<boolean>('visible', { default: false })
-const { formData, submitAsync, formErrors, isPending, resetForm } = useCreateKbItem()
+const { formData, submitFormData, formErrors, isPending, resetFormData } = useCreateKbItem()
 const validationErrors = useValidationErrors(computed(() => formErrors.value || {}))
 const { data: templates, isFetching: isFetchingTemplates, findById: findTemplateById } = useKbTemplatesListQuery()
 const templateId = ref<string | undefined>()
@@ -38,7 +38,7 @@ function handleChangeField(field: keyof IKnowledgeBaseItem, value: unknown) {
 }
 
 function handleClickSubmit() {
-    submitAsync().then((response) => {
+    submitFormData().then((response) => {
         visible.value = false
         emit('created', response)
     })
@@ -46,7 +46,7 @@ function handleClickSubmit() {
 
 watch(visible, (newVal) => {
     if (newVal === true) {
-        resetForm()
+        resetFormData()
         templateId.value = undefined
     }
 })

@@ -36,28 +36,25 @@ export function useCreateKbItem() {
         },
     })
 
-    function resetForm() {
+    function resetFormData() {
         formData.value = defaultKbItemFormData()
     }
 
-    function submit() {
-        formErrors.value = {}
-        mutate(formData.value)
-    }
-
-    async function submitAsync() {
+    async function submitFormData() {
         formErrors.value = {}
         return await mutateAsync(formData.value)
     }
 
     return {
-        formData,
-        submit,
-        submitAsync,
+        data,
         isPending,
         isSuccess,
-        data,
+        mutate,
+        mutateAsync,
+
+        formData,
         formErrors,
-        resetForm,
+        resetFormData,
+        submitFormData,
     }
 }

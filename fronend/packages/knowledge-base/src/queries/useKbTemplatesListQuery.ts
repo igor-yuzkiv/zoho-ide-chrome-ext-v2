@@ -1,6 +1,6 @@
 import { fetchKbTemplatesRequest } from '../api'
 import { KnowledgeBaseQueryKeys } from '../knowledge-base.constants.ts'
-import { IKnowledgeBaseTemplate } from '../types'
+import { IKnowledgeBaseTemplate, KnowledgeBaseCategory } from '../types'
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
 
 export function useKbTemplatesListQuery() {
@@ -9,10 +9,15 @@ export function useKbTemplatesListQuery() {
         placeholderData: keepPreviousData,
         queryFn: () => fetchKbTemplatesRequest(),
         initialData: [],
+        staleTime: 1000 * 60 * 5,
     })
 
     function findById(id: string): IKnowledgeBaseTemplate | undefined {
         return data.value.find((template) => template.id === id)
+    }
+
+    function findByCategory(category: KnowledgeBaseCategory): IKnowledgeBaseTemplate[] {
+        return data.value.filter((template) => template.category === category)
     }
 
     return {
@@ -20,5 +25,6 @@ export function useKbTemplatesListQuery() {
         isFetching,
         data,
         findById,
+        findByCategory,
     }
 }
