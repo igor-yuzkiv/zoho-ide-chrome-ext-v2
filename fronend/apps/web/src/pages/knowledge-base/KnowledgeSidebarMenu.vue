@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import {
-    type IKnowledgeBaseItem,
-    NewKnowledgeBaseItemPopup,
-    useKbItemsListQuery,
-} from '@zoho-ide/knowledge-base'
+import { type IKnowledgeBaseItem, NewKnowledgeBaseItemPopup, useKbItemsListQuery } from '@zoho-ide/knowledge-base'
 import { IconButton, ListBox, ListItem } from '@zoho-ide/shared'
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'

@@ -38,7 +38,7 @@ readonly class EloquentKnowledgeBaseTemplateRepository implements KnowledgeBaseT
 
     public function import(ImportKnowledgeBaseTemplateDto $dto): KnowledgeBaseTemplate
     {
-        $model = KnowledgeBaseTemplateModel::firstOrCreate(
+        $model = KnowledgeBaseTemplateModel::updateOrCreate(
             ['key' => $dto->key],
             [
                 'id'       => $this->nextIdentifier(),
