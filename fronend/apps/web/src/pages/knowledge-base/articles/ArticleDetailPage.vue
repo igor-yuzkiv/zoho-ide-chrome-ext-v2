@@ -34,7 +34,6 @@ function handleDelete() {
             </Button>
 
             <Button
-                v-if="data"
                 size="small"
                 text
                 as="router-link"

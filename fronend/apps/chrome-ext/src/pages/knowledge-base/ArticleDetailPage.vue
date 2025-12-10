@@ -13,7 +13,6 @@ const { data } = useKbItemDetailsQuery(itemId)
     <ArticleReadView v-if="data" :article="data">
         <template #header-actions>
             <Button
-                v-if="data"
                 size="small"
                 text
                 as="router-link"
