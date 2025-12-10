@@ -84,7 +84,7 @@ export const AppRoutes: RouteRecordRaw[] = [
     },
     {
         name: AppRouteName.knowledgeBaseArticleDetails,
-        path: '/knowledge-base/article/:itemId',
+        path: '/knowledge-base/article/:itemId/view',
         meta: { hideSidebarMenu: false, layout: AppLayout.default },
         components: {
             default: () => import('@/pages/knowledge-base/ArticleDetailPage.vue'),
@@ -93,7 +93,7 @@ export const AppRoutes: RouteRecordRaw[] = [
     },
     {
         name: AppRouteName.knowledgeBaseArticleEdit,
-        path: '/knowledge-base/article/:itemId',
+        path: '/knowledge-base/article/:itemId/edit',
         meta: { hideSidebarMenu: false, layout: AppLayout.default },
         components: {
             default: () => import('@/pages/knowledge-base/EditArticlePage.vue'),
