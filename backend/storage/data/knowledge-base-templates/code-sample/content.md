@@ -1,5 +1,3 @@
-# {{ name }}
-
 ## Overview
 _This code sample illustrates a basic Deluge function that fetches a CRM record,
 performs simple validation, and returns a structured response._

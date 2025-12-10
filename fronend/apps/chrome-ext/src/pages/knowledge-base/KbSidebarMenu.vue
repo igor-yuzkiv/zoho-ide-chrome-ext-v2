@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useKnowledgeBaseItemsListQuery } from '@zoho-ide/knowledge-base'
+import { useKbItemsListQuery } from '@zoho-ide/knowledge-base'
 import { ListBox, ListItem } from '@zoho-ide/shared'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 
-const { data: items } = useKnowledgeBaseItemsListQuery()
+const { data: items } = useKbItemsListQuery()
 </script>
 
 <template>

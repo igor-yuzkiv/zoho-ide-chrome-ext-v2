@@ -28,7 +28,7 @@ const navItems = computed<TopMenuItem[]>(() => {
 
     return result.concat([
         {
-            title: 'Dashboard',
+            title: currentProvider.value.title,
             route: { name: AppRouteName.workspaceIndex, params: { providerId: currentProvider.value.id } },
         },
         {

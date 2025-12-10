@@ -1,30 +1,30 @@
-import { updateKbItemRequest } from '../api'
+import { createKbItemRequest } from '../api'
 import { defaultKbItemFormData, KnowledgeBaseQueryKeys } from '../knowledge-base.constants.ts'
 import { mapKbItemFormDataToRequestPayload } from '../knowledge-base.mappers.ts'
 import type { IKnowledgeBaseItem, KbItemFormData } from '../types'
 import { useMutation, useQueryClient } from '@tanstack/vue-query'
 import { ApiError, useToast } from '@zoho-ide/shared'
-import { type MaybeRefOrGetter, ref, toValue, watch } from 'vue'
+import { ref } from 'vue'
 
-export function useUpdateKnowledgeBaseItem(kbItem: MaybeRefOrGetter<IKnowledgeBaseItem | undefined>) {
+export function useCreateKbItem() {
     const formData = ref<KbItemFormData>(defaultKbItemFormData())
     const queryClient = useQueryClient()
     const toast = useToast()
     const formErrors = ref<Record<string, string[]>>({})
 
-    const { data, isSuccess, mutate, isPending } = useMutation<
+    const { data, isSuccess, mutate, mutateAsync, isPending } = useMutation<
         IKnowledgeBaseItem,
         ApiError | Error,
-        { itemId: string; data: KbItemFormData }
+        KbItemFormData
     >({
-        mutationFn: (payload) => {
-            return updateKbItemRequest(payload.itemId, mapKbItemFormDataToRequestPayload(payload.data))
-        },
-        onSuccess: ({ id }) => {
+        mutationFn: (data) => createKbItemRequest(mapKbItemFormDataToRequestPayload(data)),
+        onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: KnowledgeBaseQueryKeys.items() }).catch(console.error)
-            queryClient.invalidateQueries({ queryKey: KnowledgeBaseQueryKeys.item(id) }).catch(console.error)
         },
         onError: (error) => {
+            // TODO: refactor: remove toast from mutations error handling,
+            //       add options- onError(error: Error, displayMessage: string)
+
             let errorMessage = 'An unexpected error occurred. Please try again.'
 
             if (error instanceof ApiError) {
@@ -39,33 +39,25 @@ export function useUpdateKnowledgeBaseItem(kbItem: MaybeRefOrGetter<IKnowledgeBa
         },
     })
 
-    function submit() {
-        const itemId = toValue(kbItem)?.id
-        if (itemId) {
-            mutate({ itemId, data: formData.value })
-        }
+    function resetFormData() {
+        formData.value = defaultKbItemFormData()
     }
 
-    function resetFormData(partialData?: Partial<KbItemFormData>) {
-        if (!partialData) {
-            formData.value = defaultKbItemFormData()
-            return
-        }
-
-        formData.value = {
-            ...defaultKbItemFormData(),
-            ...partialData,
-        }
+    async function submitFormData() {
+        formErrors.value = {}
+        return await mutateAsync(formData.value)
     }
-
-    watch(() => toValue(kbItem), resetFormData, { immediate: true })
 
     return {
-        formData,
-        formErrors,
-        submit,
+        data,
         isPending,
         isSuccess,
-        data,
+        mutate,
+        mutateAsync,
+
+        formData,
+        formErrors,
+        resetFormData,
+        submitFormData,
     }
 }

@@ -1,12 +1,37 @@
 <script setup lang="ts">
 import { useFunctionDetails } from '@/capabilities/function'
 import { useRouteParams } from '@vueuse/router'
+import { useCreateCodeSnippet } from '@zoho-ide/knowledge-base'
 import { NoDataMessage, PageHeader, useAppThemeStore } from '@zoho-ide/shared'
+import { useConfirm } from '@zoho-ide/shared'
+import { useRouter } from 'vue-router'
+import { Button } from 'primevue'
+import { Icon } from '@iconify/vue'
+import { AppRouteName } from '@/app/router/app-routes.ts'
 
+const confirm = useConfirm()
+const router = useRouter()
 const appTheme = useAppThemeStore()
 const providerId = useRouteParams<string>('providerId')
 const functionId = useRouteParams<string>('functionId')
 const { script, data } = useFunctionDetails(providerId, functionId)
+const { create: createCodeSnippet, isCanCreate: isCodeSnippetCanCreated } = useCreateCodeSnippet()
+
+async function handleCreateCodeSnippet() {
+    if (!isCodeSnippetCanCreated.value || !data.value || !script.value) {
+        return
+    }
+
+    confirm.require({
+        header: 'Create Knowledge Base Item',
+        message: `Are you sure you want to create a code snippet from function: ${data.value.displayName}?`,
+        accept: () => {
+            createCodeSnippet(`Code sample from function: ${data.value.displayName}`, script.value).then((response) => {
+                router.push({ name: AppRouteName.knowledgeBaseArticle, params: { itemId: response.id } })
+            })
+        },
+    })
+}
 </script>
 
 <template>
@@ -18,6 +43,13 @@ const { script, data } = useFunctionDetails(providerId, functionId)
                     <span v-if="data?.apiName">{{ data.apiName }}</span>
                     <i v-else> No API Name </i>
                 </p>
+            </template>
+
+            <template #actions>
+                <Button text v-if="isCodeSnippetCanCreated && script" @click="handleCreateCodeSnippet">
+                    <Icon icon="octicon:file-code-24" />
+                    Create Snippet
+                </Button>
             </template>
         </PageHeader>
 

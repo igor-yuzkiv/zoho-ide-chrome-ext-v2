@@ -1,32 +1,19 @@
 <script setup lang="ts">
-import { useCreateKnowledgeBaseItem } from '../../mutations'
-import { useKnowledgeBaseTemplatesListQuery } from '../../queries'
-import { type IKnowledgeBaseItem } from '../../types'
-import { MarkdownPreview } from '../index.ts'
-import KnowledgeBaseItemForm from './KnowledgeBaseItemForm.vue'
+import { useCreateKbItem } from '../mutations'
+import { useKbTemplatesListQuery } from '../queries'
+import { type IKnowledgeBaseItem } from '../types'
+import { MarkdownPreview, useValidationErrors } from '@zoho-ide/shared'
 import { FieldContainer } from '@zoho-ide/shared'
-import { ref, watch } from 'vue'
-import { Button, Select } from 'primevue'
-import Dialog from 'primevue/dialog'
+import { TagsMultiSelect } from '@zoho-ide/tags'
+import { computed, ref, watch } from 'vue'
+import { Button, Dialog, InputText, Select } from 'primevue'
 
 const emit = defineEmits<{ (event: 'created', item: IKnowledgeBaseItem): void }>()
 const visible = defineModel<boolean>('visible', { default: false })
-const { formData, submitAsync, formErrors, isPending, resetForm } = useCreateKnowledgeBaseItem()
-
-const {
-    data: templates,
-    isFetching: isFetchingTemplates,
-    findById: findTemplateById,
-} = useKnowledgeBaseTemplatesListQuery()
-
+const { formData, submitFormData, formErrors, isPending, resetFormData } = useCreateKbItem()
+const validationErrors = useValidationErrors(computed(() => formErrors.value || {}))
+const { data: templates, isFetching: isFetchingTemplates, findById: findTemplateById } = useKbTemplatesListQuery()
 const templateId = ref<string | undefined>()
-
-function handleClickSubmit() {
-    submitAsync().then((response) => {
-        visible.value = false
-        emit('created', response)
-    })
-}
 
 function handleSelectTemplate(value?: string) {
     templateId.value = value
@@ -43,9 +30,23 @@ function handleSelectTemplate(value?: string) {
     }
 }
 
+function handleChangeField(field: keyof IKnowledgeBaseItem, value: unknown) {
+    formData.value = {
+        ...formData.value,
+        [field]: value,
+    }
+}
+
+function handleClickSubmit() {
+    submitFormData().then((response) => {
+        visible.value = false
+        emit('created', response)
+    })
+}
+
 watch(visible, (newVal) => {
     if (newVal === true) {
-        resetForm()
+        resetFormData()
         templateId.value = undefined
     }
 })
@@ -59,13 +60,9 @@ watch(visible, (newVal) => {
         header="New Knowledge Base Item"
         content-class="flex w-full h-full gap-2 overflow-hidden"
         :closable="false"
-        class="transition-all duration-500 ease-in-out"
-        :class="templateId ? 'w-4/5 h-4/5' : 'w-1/5 h-auto'"
+        class="w-4/5 h-4/5"
     >
-        <div
-            class="flex flex-col gap-2 shrink-0 overflow-auto app-thin-scrollbar"
-            :class="templateId ? 'w-1/3' : 'w-full'"
-        >
+        <div class="flex flex-col gap-2 shrink-0 overflow-auto app-thin-scrollbar w-1/3">
             <FieldContainer label="Template" input-id="template_id">
                 <Select
                     fluid
@@ -80,10 +77,20 @@ watch(visible, (newVal) => {
                 />
             </FieldContainer>
 
-            <KnowledgeBaseItemForm :form-errors="formErrors" v-model="formData" />
+            <FieldContainer label="Title" input-id="article_name" :error-message="validationErrors.get('title')">
+                <InputText
+                    fluid
+                    placeholder="Enter article name"
+                    :value="formData.title"
+                    @update:model-value="handleChangeField('title', $event)"
+                    :invalid="validationErrors.has('title')"
+                />
+            </FieldContainer>
+
+            <TagsMultiSelect :model-value="formData.tags" @update:model-value="handleChangeField('tags', $event)" />
         </div>
 
-        <div v-show="templateId" class="flex w-full h-full overflow-auto app-thin-scrollbar app-card p-2">
+        <div class="flex w-full h-full overflow-auto app-thin-scrollbar app-card p-2">
             <MarkdownPreview :content="formData?.content" />
         </div>
 

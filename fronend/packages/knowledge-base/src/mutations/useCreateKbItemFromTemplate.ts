@@ -1,26 +1,23 @@
+import { createKbItemFromTemplateRequest } from '../api'
+import { KnowledgeBaseQueryKeys } from '../knowledge-base.constants.ts'
+import type { CreateKbItemFromTemplateRequestPayload, IKnowledgeBaseItem } from '../types'
 import { useMutation, useQueryClient } from '@tanstack/vue-query'
-import { ApiError } from '@zoho-ide/shared'
-import { type IUser, UserQueryKeys, createUserRequest, type CreateUserRequestPayload } from '@zoho-ide/shared'
-import { useToast } from '@zoho-ide/shared'
+import { ApiError, useToast } from '@zoho-ide/shared'
 import { ref } from 'vue'
 
-export const defaultCreateUserFormData = (): CreateUserRequestPayload => ({
-    name: '',
-    email: '',
-    password: '',
-    password_confirmation: '',
-})
-
-export function useCreateUser() {
-    const formData = ref<CreateUserRequestPayload>(defaultCreateUserFormData())
+export function useCreateKbItemFromTemplate() {
     const queryClient = useQueryClient()
     const toast = useToast()
     const formErrors = ref<Record<string, string[]>>({})
 
-    const { data, isSuccess, mutate, isPending } = useMutation<IUser, ApiError | Error, CreateUserRequestPayload>({
-        mutationFn: (data) => createUserRequest(data),
+    const { data, isSuccess, mutate, mutateAsync, isPending } = useMutation<
+        IKnowledgeBaseItem,
+        ApiError | Error,
+        { templateId: string; payload: CreateKbItemFromTemplateRequestPayload }
+    >({
+        mutationFn: (data) => createKbItemFromTemplateRequest(data.templateId, data.payload),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: UserQueryKeys.lists() }).catch(console.error)
+            queryClient.invalidateQueries({ queryKey: KnowledgeBaseQueryKeys.items() }).catch(console.error)
         },
         onError: (error) => {
             // TODO: refactor: remove toast from mutations error handling,
@@ -40,17 +37,11 @@ export function useCreateUser() {
         },
     })
 
-    function submit() {
-        formErrors.value = {}
-        mutate(formData.value)
-    }
-
     return {
-        formData,
         data,
         isSuccess,
+        mutate,
+        mutateAsync,
         isPending,
-        submit,
-        formErrors,
     }
 }

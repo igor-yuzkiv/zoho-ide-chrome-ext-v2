@@ -5,3 +5,4 @@ export * from './update.kb-item.request.ts'
 export * from './delete.kb-item.request.ts'
 
 export * from './fetch.kb-templates.request.ts'
+export * from './create.kb-item-from-template.request.ts'

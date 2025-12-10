@@ -74,6 +74,7 @@ Route::group(
         Route::get('', 'index')->name('index');
         Route::get('{itemId}', 'show')->name('show');
         Route::post('', 'create')->name('create');
+        Route::post('templates/{templateId}', 'createFromTemplate')->name('create-from-template');
         Route::put('{itemId}', 'update')->name('update');
         Route::delete('{itemId}', 'deleteById')->name('delete-by-id');
     }

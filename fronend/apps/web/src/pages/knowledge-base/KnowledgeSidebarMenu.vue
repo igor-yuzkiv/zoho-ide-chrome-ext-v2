@@ -1,21 +1,14 @@
 <script setup lang="ts">
-import {
-    type IKnowledgeBaseItem,
-    NewKnowledgeBaseItemPopup,
-    useDeleteKnowledgeBaseItem,
-    useKnowledgeBaseItemsListQuery,
-} from '@zoho-ide/knowledge-base'
+import { type IKnowledgeBaseItem, NewKnowledgeBaseItemPopup, useKbItemsListQuery } from '@zoho-ide/knowledge-base'
 import { IconButton, ListBox, ListItem } from '@zoho-ide/shared'
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 
-const { data: items } = useKnowledgeBaseItemsListQuery()
+const { data: items } = useKbItemsListQuery()
 const newItemDialogVisible = ref(false)
 const router = useRouter()
 const route = useRoute()
-
-const { removeWithConfirmation } = useDeleteKnowledgeBaseItem()
 
 function handleItemCreated(item: IKnowledgeBaseItem) {
     if (item && item.id) {
@@ -28,13 +21,6 @@ const isActiveListItem = (item: IKnowledgeBaseItem) => {
         [AppRouteName.kbItemDetails, AppRouteName.kbItemEdit].includes(route.name as string) &&
         route.params.itemId === item.id
     )
-}
-
-async function handleRemoveItem(itemId: string, itemTitle: string) {
-    const isRemoved = await removeWithConfirmation(itemId, itemTitle)
-    if (isRemoved && route.params.itemId === itemId) {
-        router.push({ name: AppRouteName.kbIndex }).catch(console.error)
-    }
 }
 </script>
 
@@ -51,16 +37,7 @@ async function handleRemoveItem(itemId: string, itemTitle: string) {
                 :to="{ name: AppRouteName.kbItemDetails, params: { itemId: item.id } }"
                 icon="carbon:ibm-watson-knowledge-catalog"
                 :title="item.title"
-            >
-                <template #actions>
-                    <IconButton
-                        class="p-0"
-                        text
-                        icon="material-symbols:delete"
-                        @click.prevent="handleRemoveItem(item.id, item.title)"
-                    />
-                </template>
-            </ListItem>
+            />
         </template>
     </ListBox>
 

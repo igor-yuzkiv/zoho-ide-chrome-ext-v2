@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { KnowledgeBaseItemEntityType } from '../../knowledge-base.constants.ts'
+import { KnowledgeBaseItemEntityType } from '../knowledge-base.constants.ts'
 import { attachToEntityRequest } from '@zoho-ide/attachments'
 import { useAppThemeStore } from '@zoho-ide/shared'
 import { MdEditor } from 'md-editor-v3'
@@ -34,8 +34,6 @@ async function handleUploadImages(files: File[], callback: (urls: string[]) => v
 <template>
     <MdEditor
         v-model="modelValue"
-        class="rounded-xl flex flex-grow app-card"
-        style="height: 70vh"
         language="en-US"
         previewTheme="github"
         codeTheme="github"

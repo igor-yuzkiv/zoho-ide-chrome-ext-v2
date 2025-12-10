@@ -27,6 +27,10 @@ export interface SaveKbItemRequestPayload {
     tags_ids?: string[]
 }
 
+export interface CreateKbItemFromTemplateRequestPayload extends SaveKbItemRequestPayload {
+    attributes?: Record<string, string>
+}
+
 export type KbItemFormData = Omit<SaveKbItemRequestPayload, 'tags_ids'> & {
     tags: ITagEntity[]
 }

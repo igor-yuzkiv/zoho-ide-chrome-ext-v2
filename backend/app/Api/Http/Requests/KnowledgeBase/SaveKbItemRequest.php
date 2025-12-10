@@ -6,16 +6,16 @@ use App\Application\KnowledgeBase\Commands\SaveKbItemCommand;
 use App\Domains\User\Entities\User;
 use Illuminate\Foundation\Http\FormRequest;
 
-class SaveKnowledgeBaseItemRequest extends FormRequest
+class SaveKbItemRequest extends FormRequest
 {
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',
-            'content' => 'nullable|string',
+            'title'     => 'required|string|max:255',
+            'content'   => 'nullable|string',
             'parent_id' => 'nullable|string|exists:knowledge_base_items,id',
 
-            'tags_ids' => 'nullable|array',
+            'tags_ids'   => 'nullable|array',
             'tags_ids.*' => 'string|exists:tags,id',
         ];
     }
