@@ -14,6 +14,7 @@ use App\Domains\KnowledgeBase\Repositories\KnowledgeBaseItemRepository;
 use App\Domains\KnowledgeBase\Repositories\KnowledgeBaseTemplateRepository;
 use App\Shared\Http\Controller;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class KnowledgeBaseController extends Controller
 {
@@ -23,7 +24,7 @@ class KnowledgeBaseController extends Controller
         protected KnowledgeBaseTemplateRepository $templateRepository
     ) {}
 
-    public function index()
+    public function index(): AnonymousResourceCollection|JsonResponse
     {
         $pageResult = $this->kbItemRepository->list(
             paginationParams: $this->getPaginationParams(),
@@ -55,7 +56,7 @@ class KnowledgeBaseController extends Controller
         return new KnowledgeBaseItemResource($item);
     }
 
-    public function createFromTemplate(string $templateId, CreateKbItemFromTemplateRequest $request, CreateKbItemFromTemplateHandler $handler)
+    public function createFromTemplate(string $templateId, CreateKbItemFromTemplateRequest $request, CreateKbItemFromTemplateHandler $handler): KnowledgeBaseItemResource|JsonResponse
     {
         $template = $this->templateRepository->find($templateId);
         if (!$template) {

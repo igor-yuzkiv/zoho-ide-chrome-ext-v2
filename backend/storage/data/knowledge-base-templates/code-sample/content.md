@@ -5,14 +5,14 @@ performs simple validation, and returns a structured response._
 ## Code Sample
 
 ```deluge
-// TODO: Type your code sample here.
+{{code}}
 ```
 
 
 ## Usage
 
 ```deluge
-{{code}}
+// TODO: Type your usage example here.
 ```
 
 ## Response

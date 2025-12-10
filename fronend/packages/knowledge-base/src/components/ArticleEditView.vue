@@ -7,6 +7,7 @@ import { SelectTagsDialog, TagsChipList } from '@zoho-ide/tags'
 import { ref } from 'vue'
 import { InputText } from 'primevue'
 
+defineProps<{ articleId: string }>()
 const formData = defineModel<KbItemFormData>({ default: defaultKbItemFormData })
 const tagsSelectDialog = ref(false)
 
@@ -49,7 +50,7 @@ function handleChangeField(field: keyof IKnowledgeBaseItem, value: unknown) {
             :model-value="formData.content"
             @update:model-value="handleChangeField('content', $event)"
             class="flex-grow overflow-auto border-none"
-            item-id="test"
+            :article-id="articleId"
         />
     </div>
 
