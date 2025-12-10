@@ -12,7 +12,7 @@ const { data: items } = useKbItemsListQuery()
             <ListItem
                 as="router-link"
                 active-class="app-list-item-active"
-                :to="{ name: AppRouteName.knowledgeBaseArticle, params: { itemId: item.id } }"
+                :to="{ name: AppRouteName.knowledgeBaseArticleDetails, params: { itemId: item.id } }"
                 icon="carbon:ibm-watson-knowledge-catalog"
                 :title="item.title"
             />

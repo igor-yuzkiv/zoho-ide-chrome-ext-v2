@@ -4,7 +4,7 @@ import { attachToEntityRequest } from '@zoho-ide/attachments'
 import { useAppThemeStore } from '@zoho-ide/shared'
 import { MdEditor } from 'md-editor-v3'
 
-const props = defineProps<{ itemId: string }>()
+const props = defineProps<{ articleId: string }>()
 const appTheme = useAppThemeStore()
 const modelValue = defineModel<string>({ default: '' })
 
@@ -19,7 +19,7 @@ async function handleUploadImages(files: File[], callback: (urls: string[]) => v
         files.map((file) => {
             return attachToEntityRequest(
                 KnowledgeBaseItemEntityType,
-                props.itemId,
+                props.articleId,
                 file,
                 'knowledge_base_article_content_image'
             )

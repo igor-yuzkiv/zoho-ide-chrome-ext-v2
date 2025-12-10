@@ -43,5 +43,6 @@ export function useCreateKbItemFromTemplate() {
         mutate,
         mutateAsync,
         isPending,
+        formErrors,
     }
 }

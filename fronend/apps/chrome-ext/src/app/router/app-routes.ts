@@ -13,7 +13,8 @@ export const AppRouteName = {
     workspaceModules: 'workspace.modules',
 
     knowledgeBaseIndex: 'knowledge-base.index',
-    knowledgeBaseArticle: 'knowledge-base.article',
+    knowledgeBaseArticleDetails: 'knowledge-base.article.details',
+    knowledgeBaseArticleEdit: 'knowledge-base.article.edit',
 } as const
 
 export const AppRoutes: RouteRecordRaw[] = [
@@ -82,11 +83,20 @@ export const AppRoutes: RouteRecordRaw[] = [
         },
     },
     {
-        name: AppRouteName.knowledgeBaseArticle,
-        path: '/knowledge-base/article/:itemId',
+        name: AppRouteName.knowledgeBaseArticleDetails,
+        path: '/knowledge-base/article/:itemId/view',
         meta: { hideSidebarMenu: false, layout: AppLayout.default },
         components: {
-            default: () => import('@/pages/knowledge-base/KbArticlePage.vue'),
+            default: () => import('@/pages/knowledge-base/ArticleDetailPage.vue'),
+            menu: () => import('@/pages/knowledge-base/KbSidebarMenu.vue'),
+        },
+    },
+    {
+        name: AppRouteName.knowledgeBaseArticleEdit,
+        path: '/knowledge-base/article/:itemId/edit',
+        meta: { hideSidebarMenu: false, layout: AppLayout.default },
+        components: {
+            default: () => import('@/pages/knowledge-base/EditArticlePage.vue'),
             menu: () => import('@/pages/knowledge-base/KbSidebarMenu.vue'),
         },
     },

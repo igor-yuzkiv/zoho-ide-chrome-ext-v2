@@ -27,7 +27,7 @@ async function handleCreateCodeSnippet() {
         message: `Are you sure you want to create a code snippet from function: ${data.value.displayName}?`,
         accept: () => {
             createCodeSnippet(`Code sample from function: ${data.value.displayName}`, script.value).then((response) => {
-                router.push({ name: AppRouteName.knowledgeBaseArticle, params: { itemId: response.id } })
+            router.push({ name: AppRouteName.knowledgeBaseArticleEdit, params: { itemId: response.id } })
             })
         },
     })
