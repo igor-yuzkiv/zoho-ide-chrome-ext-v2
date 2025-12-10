@@ -7,11 +7,11 @@ import { AppRouteName } from '@/app/router/app-routes.ts'
 
 const itemId = useRouteParams<string>('itemId')
 const { data } = useKbItemDetailsQuery(itemId)
-const { formData, submit, formErrors } = useUpdateKbItem(data)
+const { formData, submit } = useUpdateKbItem(data)
 </script>
 
 <template>
-    <ArticleEditView v-if="data" v-model="formData" :form-errors="formErrors">
+    <ArticleEditView v-if="data" v-model="formData" :article-id="data.id">
         <template #header-actions>
             <Button
                 size="small"

@@ -11,7 +11,7 @@ const { formData, submit } = useUpdateKbItem(data)
 </script>
 
 <template>
-    <ArticleEditView v-if="data" v-model="formData">
+    <ArticleEditView v-if="data" v-model="formData" :article-id="data.id">
         <template #header-actions>
             <Button
                 size="small"
