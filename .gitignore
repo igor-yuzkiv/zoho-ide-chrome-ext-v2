@@ -22,11 +22,11 @@ dist-ssr
 *.sln
 *.sw?
 /_tmp/
+/backups/
 .env
 .env.*
 /docker/docker/
 /chrome-extension/extension/manifest.json
-/docker/
 /fronend/.nx/workspace-data/
 /fronend/.nx/cache/
 /fronend/dist/
