@@ -19,7 +19,7 @@ export function useProviderRecordsFetcher() {
             return result
         }
 
-        result.push(...response.value)
+        result.push(...response.data)
 
         if (response.meta.hasMore) {
             return fetchAllCapabilityRecords(port, page + 1, perPage, result)

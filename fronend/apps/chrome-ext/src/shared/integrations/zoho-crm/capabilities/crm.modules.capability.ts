@@ -27,7 +27,7 @@ export function crmModulesCapabilityPortFactory(provider: ServiceProvider): Resu
 
                 return {
                     ok: true,
-                    value: mapManyCrmModulesToEntities(modulesResponse.value),
+                    data: mapManyCrmModulesToEntities(modulesResponse.value),
                     meta: {
                         count: modulesResponse.value.length,
                         page: 1,

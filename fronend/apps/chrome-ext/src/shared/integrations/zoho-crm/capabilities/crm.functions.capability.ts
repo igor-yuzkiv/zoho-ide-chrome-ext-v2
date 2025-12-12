@@ -41,11 +41,11 @@ export function crmFunctionsCapabilityPortFactory(provider: ServiceProvider): Re
                     return response
                 }
 
-                const details = await fetchFunctionsDetails(provider.tabId, metadata, response.value)
+                const details = await fetchFunctionsDetails(provider.tabId, metadata, response.data)
 
                 return {
                     ok: true,
-                    value: mapManyToFunctionEntity(details),
+                    data: mapManyToFunctionEntity(details),
                     meta: response.meta,
                 }
             },

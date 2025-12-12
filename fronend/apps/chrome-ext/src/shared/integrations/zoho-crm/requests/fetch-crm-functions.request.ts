@@ -33,7 +33,7 @@ async function regular(
 
     return {
         ok: true,
-        value: functions,
+        data: functions,
         meta: {
             count: functions.length,
             page: pagination.page,
@@ -53,7 +53,7 @@ async function mock(orgId: string): Promise<PaginatedResult<ZohoCrmFunction[]>> 
 
     return {
         ok: true,
-        value: data,
+        data: data,
         meta: {
             count: data.length,
             page: 1,

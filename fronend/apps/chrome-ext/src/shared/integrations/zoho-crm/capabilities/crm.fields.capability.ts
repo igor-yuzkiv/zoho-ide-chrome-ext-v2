@@ -65,7 +65,7 @@ export function crmFieldsCapabilityPortFactory(provider: ServiceProvider): Resul
 
                 return {
                     ok: true,
-                    value: fields,
+                    data: fields,
                     meta: {
                         count: fields.length,
                         page: 1,

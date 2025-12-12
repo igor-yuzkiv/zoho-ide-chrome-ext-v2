@@ -42,11 +42,11 @@ export function crmWorkflowCapabilityPortFactory(provider: ServiceProvider): Res
                     return response
                 }
 
-                const details = await fetchWorkflowsDetails(provider.tabId, metadata, response.value)
+                const details = await fetchWorkflowsDetails(provider.tabId, metadata, response.data)
 
                 return {
                     ok: true,
-                    value: mapManyToWorkflowEntity(details),
+                    data: mapManyToWorkflowEntity(details),
                     meta: response.meta,
                 }
             },

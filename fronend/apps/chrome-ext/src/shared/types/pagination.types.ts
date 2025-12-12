@@ -7,7 +7,7 @@ export type PaginationParams = {
 
 type SuccessPagingResult<T> = {
     ok: true
-    value: T
+    data: T
     meta: {
         count: number
         page: number

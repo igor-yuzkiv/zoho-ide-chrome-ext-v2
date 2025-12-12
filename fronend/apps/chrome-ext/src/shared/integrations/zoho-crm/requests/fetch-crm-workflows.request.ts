@@ -37,7 +37,7 @@ async function regular(
 
     return {
         ok: true,
-        value: workflow_rules,
+        data: workflow_rules,
         meta: {
             count: info.count,
             page: info.page,
@@ -57,7 +57,7 @@ async function mock(orgId: string): Promise<PaginatedResult<ZohoCrmWorkflow[]>> 
 
     return {
         ok: true,
-        value: data,
+        data: data,
         meta: {
             count: data.length,
             page: 1,
