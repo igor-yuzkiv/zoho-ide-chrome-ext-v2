@@ -3,7 +3,7 @@ import { WorkflowSchemaBuilderRegister } from '@/config/workflows.config.ts'
 import type { Edge, Node } from '@vue-flow/core'
 import { type Ref, ref } from 'vue'
 import { useLogger } from '@/shared/libs/logger/useLogger.ts'
-import type { Maybe } from '@/shared/types/result.types.ts'
+import type { Maybe } from '@zoho-ide/shared'
 import type { ProviderType } from '@/entities/provider/provider.types.ts'
 
 export function useWorkflowSchema(): {

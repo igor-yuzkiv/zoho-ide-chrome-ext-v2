@@ -1,5 +1,5 @@
-import type { PaginatedResult } from '@/shared/types/pagination.types.ts'
-import type { Result } from '@/shared/types/result.types.ts'
+import type { PaginatedResult } from '@zoho-ide/shared'
+import type { Result } from '@zoho-ide/shared'
 import { assertCrmMetadata } from '@/shared/integrations/zoho-crm/crm.utils.ts'
 import { mapManyCrmModulesToEntities } from '@/shared/integrations/zoho-crm/mappers/crm.metadata.mapper.ts'
 import fetchCrmModulesRequest from '@/shared/integrations/zoho-crm/requests/fetch.crm-modules.request.ts'
@@ -27,9 +27,9 @@ export function crmModulesCapabilityPortFactory(provider: ServiceProvider): Resu
 
                 return {
                     ok: true,
-                    value: mapManyCrmModulesToEntities(modulesResponse.value),
+                    data: mapManyCrmModulesToEntities(modulesResponse.value),
                     meta: {
-                        count: modulesResponse.value.length,
+                        total: modulesResponse.value.length,
                         page: 1,
                         perPage: modulesResponse.value.length,
                         hasMore: false,

@@ -1,6 +1,6 @@
 import type { IEntity } from '@zoho-ide/shared'
-import type { PaginatedResult, PaginationParams } from '@/shared/types/pagination.types.ts'
-import type { Result } from '@/shared/types/result.types.ts'
+import type { PaginatedResult, PaginationParams } from '@zoho-ide/shared'
+import type { Result } from '@zoho-ide/shared'
 import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
 
 export type ProviderCapability = {

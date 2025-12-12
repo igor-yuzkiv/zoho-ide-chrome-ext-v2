@@ -1,5 +1,5 @@
 import { zohoCrmRequest } from '@/shared/api/zoho/zoho.api.ts'
-import type { Result } from '@/shared/types/result.types.ts'
+import type { Result } from '@zoho-ide/shared'
 
 type UpdateFunctionPayload = {
     id: string

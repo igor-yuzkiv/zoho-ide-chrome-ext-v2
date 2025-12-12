@@ -1,6 +1,6 @@
 import { capitalize } from 'vue'
 import type { BrowserTab } from '@/shared/libs/browser/browser.types.ts'
-import type { Result } from '@/shared/types/result.types.ts'
+import type { Result } from '@zoho-ide/shared'
 import type { ZohoFinanceService } from '@/shared/integrations/zoho-finance/types/finance.provider.types.ts'
 import { resolveFinanceProviderMetadataFromUrl } from '@/shared/integrations/zoho-finance/zoho-finance.utils.ts'
 import type { ServiceProvider } from '@/entities/provider/provider.types.ts'

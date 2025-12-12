@@ -1,5 +1,5 @@
-import type { PaginatedResult, PaginationParams } from '@/shared/types/pagination.types.ts'
-import type { Result } from '@/shared/types/result.types.ts'
+import type { PaginatedResult, PaginationParams } from '@zoho-ide/shared'
+import type { Result } from '@zoho-ide/shared'
 import { assertCrmMetadata } from '@/shared/integrations/zoho-crm/crm.utils.ts'
 import { mapManyToWorkflowEntity } from '@/shared/integrations/zoho-crm/mappers/crm.workflows.mapper.ts'
 import fetchCrmWorkflowDetailsRequest from '@/shared/integrations/zoho-crm/requests/fetch-crm-workflow-details.request.ts'
@@ -42,11 +42,11 @@ export function crmWorkflowCapabilityPortFactory(provider: ServiceProvider): Res
                     return response
                 }
 
-                const details = await fetchWorkflowsDetails(provider.tabId, metadata, response.value)
+                const details = await fetchWorkflowsDetails(provider.tabId, metadata, response.data)
 
                 return {
                     ok: true,
-                    value: mapManyToWorkflowEntity(details),
+                    data: mapManyToWorkflowEntity(details),
                     meta: response.meta,
                 }
             },

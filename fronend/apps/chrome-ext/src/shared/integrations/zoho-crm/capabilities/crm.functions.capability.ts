@@ -1,5 +1,5 @@
-import type { PaginatedResult, PaginationParams } from '@/shared/types/pagination.types.ts'
-import type { Result } from '@/shared/types/result.types.ts'
+import type { PaginatedResult, PaginationParams } from '@zoho-ide/shared'
+import type { Result } from '@zoho-ide/shared'
 import { assertCrmMetadata } from '@/shared/integrations/zoho-crm/crm.utils.ts'
 import { mapManyToFunctionEntity } from '@/shared/integrations/zoho-crm/mappers/crm.functions.mapper.ts'
 import fetchCrmFunctionDetailsRequest from '@/shared/integrations/zoho-crm/requests/fetch-crm-function-details.request.ts'
@@ -41,11 +41,11 @@ export function crmFunctionsCapabilityPortFactory(provider: ServiceProvider): Re
                     return response
                 }
 
-                const details = await fetchFunctionsDetails(provider.tabId, metadata, response.value)
+                const details = await fetchFunctionsDetails(provider.tabId, metadata, response.data)
 
                 return {
                     ok: true,
-                    value: mapManyToFunctionEntity(details),
+                    data: mapManyToFunctionEntity(details),
                     meta: response.meta,
                 }
             },
