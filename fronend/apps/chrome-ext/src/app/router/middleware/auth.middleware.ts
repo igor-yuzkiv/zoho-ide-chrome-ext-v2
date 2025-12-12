@@ -7,7 +7,6 @@ export const authMiddleware: NavigationGuard = async (to, from, next) => {
         return next()
     }
 
-
     const authStore = useAuthStore()
     if (!authStore.token) {
         return next({ name: AppRouteName.login })

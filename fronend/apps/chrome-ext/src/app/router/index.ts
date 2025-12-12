@@ -1,6 +1,6 @@
 import { AppRoutes } from './app-routes.ts'
-import { createRouter, createWebHashHistory } from 'vue-router'
 import { authMiddleware } from './middleware/auth.middleware.ts'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 const router = createRouter({
     history: createWebHashHistory(),
