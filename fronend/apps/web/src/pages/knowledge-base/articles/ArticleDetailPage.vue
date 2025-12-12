@@ -19,7 +19,7 @@ function handleDelete() {
     removeWithConfirmation(data.value.id, data.value.title)
         .then((isRemoved) => {
             if (isRemoved) {
-                router.push({ name: AppRouteName.kbIndex }).catch(console.error)
+                router.push({ name: AppRouteName.knowledgeBaseIndex }).catch(console.error)
             }
         })
 }
@@ -37,7 +37,7 @@ function handleDelete() {
                 size="small"
                 text
                 as="router-link"
-                :to="{ name: AppRouteName.kbItemEdit, params: { itemId: data?.id } }"
+                :to="{ name: AppRouteName.knowledgeBaseArticleEdit, params: { itemId: data?.id } }"
             >
                 <Icon icon="mdi:pencil" />
                 <span>Edit</span>

@@ -12,13 +12,13 @@ const route = useRoute()
 
 function handleItemCreated(item: IKnowledgeBaseItem) {
     if (item && item.id) {
-        router.push({ name: AppRouteName.kbItemEdit, params: { itemId: item.id } })
+        router.push({ name: AppRouteName.knowledgeBaseArticleEdit, params: { itemId: item.id } })
     }
 }
 
 const isActiveListItem = (item: IKnowledgeBaseItem) => {
     return (
-        [AppRouteName.kbItemDetails, AppRouteName.kbItemEdit].includes(route.name as string) &&
+        [AppRouteName.knowledgeBaseArticleDetails, AppRouteName.knowledgeBaseArticleEdit].includes(route.name as string) &&
         route.params.itemId === item.id
     )
 }
@@ -34,7 +34,7 @@ const isActiveListItem = (item: IKnowledgeBaseItem) => {
             <ListItem
                 as="router-link"
                 :class="{ 'app-list-item-active': active }"
-                :to="{ name: AppRouteName.kbItemDetails, params: { itemId: item.id } }"
+                :to="{ name: AppRouteName.knowledgeBaseArticleDetails, params: { itemId: item.id } }"
                 icon="carbon:ibm-watson-knowledge-catalog"
                 :title="item.title"
             />
