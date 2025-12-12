@@ -13,7 +13,7 @@ abstract class Controller
     {
         return new PaginationParams(
             page: request()->input('page', 1),
-            perPage: request()->input('per_page', 10),
+            perPage: request()->input('perPage', 10),
         );
     }
 

@@ -1,14 +1,14 @@
-import type { PagingParams, PagingResponseMeta } from '../types'
+import type { PaginationParams, PagingResponseMeta } from '../types'
 import { computed, ref } from 'vue'
 
-export function usePagination(initialParams: PagingParams = { page: 1, per_page: 15 }) {
+export function usePagination(initialParams: PaginationParams = { page: 1, perPage: 15 }) {
     const currentPage = ref<number>(initialParams.page)
-    const perPage = ref<number>(initialParams.per_page)
+    const perPage = ref<number>(initialParams.perPage)
     const total = ref<number>(0)
     const hasMore = ref<boolean>(false)
-    const params = computed<PagingParams>(() => ({
+    const params = computed<PaginationParams>(() => ({
         page: currentPage.value,
-        per_page: perPage.value,
+        perPage: perPage.value,
     }))
 
     function setFromResponse(meta: PagingResponseMeta) {

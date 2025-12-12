@@ -1,7 +1,7 @@
 import { WfSchemaNodeType } from '@/config/workflows.config.ts'
 import type { Edge, Node } from '@vue-flow/core'
-import type { Result } from '@/shared/types/result.types.ts'
-import type { Maybe } from '@/shared/types/result.types.ts'
+import type { Result } from '@zoho-ide/shared'
+import type { Maybe } from '@zoho-ide/shared'
 import { assertCrmWorkflowFromEntity } from '@/shared/integrations/zoho-crm/mappers/crm.workflows.mapper.ts'
 import type {
     WfAction,

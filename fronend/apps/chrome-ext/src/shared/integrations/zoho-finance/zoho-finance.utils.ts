@@ -1,4 +1,4 @@
-import type { Maybe } from '@/shared/types/result.types.ts'
+import type { Maybe } from '@zoho-ide/shared'
 import type {
     FinanceServiceProviderMetadata,
     ZohoFinanceService,

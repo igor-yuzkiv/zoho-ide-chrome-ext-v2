@@ -1,14 +1,14 @@
 import type { IKnowledgeBaseItem } from '../types'
 import { apiClient } from '@zoho-ide/shared'
-import type { PagingParams, PagingResponse, SortParams } from '@zoho-ide/shared'
+import type { PaginationParams, PagingResponse, SortParams } from '@zoho-ide/shared'
 
 export async function fetchKbItemsRequest(
-    paging: PagingParams = { page: 1, per_page: 15 },
+    paging: PaginationParams = { page: 1, perPage: 15 },
     sort?: SortParams
-): Promise<PagingResponse<IKnowledgeBaseItem>> {
+): Promise<PagingResponse<IKnowledgeBaseItem[]>> {
     const params = {
         page: paging.page,
-        per_page: paging.per_page,
+        per_page: paging.perPage,
     } as Record<string, string | number>
 
     if (sort) {
@@ -17,6 +17,6 @@ export async function fetchKbItemsRequest(
     }
 
     return apiClient
-        .get<PagingResponse<IKnowledgeBaseItem>>(`/knowledge-base/items`, { params })
+        .get<PagingResponse<IKnowledgeBaseItem[]>>(`/knowledge-base/items`, { params })
         .then((response) => response.data)
 }

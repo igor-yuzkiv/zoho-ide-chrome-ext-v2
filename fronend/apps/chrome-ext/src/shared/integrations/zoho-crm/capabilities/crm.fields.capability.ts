@@ -4,8 +4,8 @@ import { assertCrmMetadata } from '@/shared/integrations/zoho-crm/crm.utils.ts'
 import { mapManyCrmFieldsToEntities } from '@/shared/integrations/zoho-crm/mappers/crm.metadata.mapper.ts'
 import fetchCrmModuleFieldsRequest from '@/shared/integrations/zoho-crm/requests/fetch.crm-module-fields.request.ts'
 import type { CrmModuleField, CrmModuleMetadata } from '@/shared/integrations/zoho-crm/types/crm.metadata.types.ts'
-import type { PaginatedResult } from '@/shared/types/pagination.types.ts'
-import type { Result } from '@/shared/types/result.types.ts'
+import type { PaginatedResult } from '@zoho-ide/shared'
+import type { Result } from '@zoho-ide/shared'
 import { selectProviderRecordsQuery } from '@/entities/capability/cache'
 import type { CapabilityPort } from '@/entities/capability/capability.types.ts'
 import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
@@ -67,7 +67,7 @@ export function crmFieldsCapabilityPortFactory(provider: ServiceProvider): Resul
                     ok: true,
                     data: fields,
                     meta: {
-                        count: fields.length,
+                        total: fields.length,
                         page: 1,
                         perPage: fields.length,
                         hasMore: false,
