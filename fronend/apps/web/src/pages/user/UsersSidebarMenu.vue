@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
-import { useAuthStore } from '@zoho-ide/shared'
+import { useAuthStore, useToast } from '@zoho-ide/shared'
 import { IconButton, ListBox, ListItem } from '@zoho-ide/shared'
 import { useRouter } from 'vue-router'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { useDeleteUser, useUsersList } from '@/features/user'
 
+const toast = useToast()
 const router = useRouter()
 const { data: users } = useUsersList()
-const { removeUserWithConfirmation } = useDeleteUser()
+const { removeUserWithConfirmation } = useDeleteUser({
+    onError: (displayMessage) => toast.error({ detail: displayMessage }),
+})
 const openUserId = useRouteParams('userId')
 const authStore = useAuthStore()
 

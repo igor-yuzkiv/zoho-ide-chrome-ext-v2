@@ -1,16 +1,20 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
-import { PageHeader } from '@zoho-ide/shared'
+import { PageHeader, useToast } from '@zoho-ide/shared'
 import { watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { Avatar, Button } from 'primevue'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { UpdateUserForm, useUpdateUser, useUserDetails } from '@/features/user'
 
+const toast = useToast()
 const router = useRouter()
 const userId = useRouteParams<string>('userId')
 const { data: user, isError } = useUserDetails(userId)
-const { submit, formData, formErrors } = useUpdateUser(user)
+const { submit, formData, formErrors } = useUpdateUser(user, {
+    onSuccess: ({ id }) => router.push({ name: AppRouteName.userDetails, params: { userId: id } }),
+    onError: (displayMessage) => toast.error({ detail: displayMessage }),
+})
 
 watch(isError, (newValue) => {
     if (newValue) {

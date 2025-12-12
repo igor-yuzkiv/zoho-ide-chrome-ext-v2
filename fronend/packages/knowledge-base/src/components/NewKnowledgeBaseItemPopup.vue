@@ -3,14 +3,18 @@ import { useCreateKbItem } from '../mutations'
 import { useKbTemplatesListQuery } from '../queries'
 import { type IKnowledgeBaseItem } from '../types'
 import { MarkdownPreview, useValidationErrors } from '@zoho-ide/shared'
-import { FieldContainer } from '@zoho-ide/shared'
+import { FieldContainer, useToast } from '@zoho-ide/shared'
 import { TagsMultiSelect } from '@zoho-ide/tags'
 import { computed, ref, watch } from 'vue'
 import { Button, Dialog, InputText, Select } from 'primevue'
 
+const toast = useToast()
+
 const emit = defineEmits<{ (event: 'created', item: IKnowledgeBaseItem): void }>()
 const visible = defineModel<boolean>('visible', { default: false })
-const { formData, submitFormData, formErrors, isPending, resetFormData } = useCreateKbItem()
+const { formData, submitFormData, formErrors, isPending, resetFormData } = useCreateKbItem({
+    onError: (displayMessage) => toast.error({ detail: displayMessage }),
+})
 const validationErrors = useValidationErrors(computed(() => formErrors.value || {}))
 const { data: templates, isFetching: isFetchingTemplates, findById: findTemplateById } = useKbTemplatesListQuery()
 const templateId = ref<string | undefined>()

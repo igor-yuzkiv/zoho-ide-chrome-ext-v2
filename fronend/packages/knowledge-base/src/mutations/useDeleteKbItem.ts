@@ -2,29 +2,33 @@ import { deleteKbItemRequest } from '../api'
 import { KnowledgeBaseQueryKeys } from '../knowledge-base.constants.ts'
 import type { DeleteKbItemByIdResponse } from '../types'
 import { useMutation, useQueryClient } from '@tanstack/vue-query'
-import { ApiError, useConfirm, useToast } from '@zoho-ide/shared'
+import { ApiError, type MutationOptions, useConfirm } from '@zoho-ide/shared'
 import { MaybeRefOrGetter, toValue } from 'vue'
 
-export function useDeleteKbItem() {
+export function useDeleteKbItem(options?: MutationOptions<DeleteKbItemByIdResponse>) {
     const queryClient = useQueryClient()
     const confirm = useConfirm()
-    const toast = useToast()
 
     const { mutateAsync, isPending } = useMutation<DeleteKbItemByIdResponse, ApiError | Error, string>({
         mutationFn: (itemId) => deleteKbItemRequest(itemId),
-        onSuccess: () => {
+        onSuccess: (response) => {
             queryClient.invalidateQueries({ queryKey: KnowledgeBaseQueryKeys.items() }).catch(console.error)
+
+            if (options?.onSuccess) {
+                options.onSuccess(response)
+            }
         },
         onError: (error) => {
-            // TODO: refactor: remove toast from mutations error handling,
-            //       add options- onError(error: Error, displayMessage: string)
-
             let errorMessage = 'Failed to delete the knowledge base item.'
             if (error instanceof ApiError) {
                 errorMessage = error.displayMessage
             }
 
-            toast.error({ detail: errorMessage })
+            if (options?.onError) {
+                options.onError(errorMessage, error)
+            } else {
+                console.warn('Unhandled mutation error:', errorMessage, error)
+            }
         },
     })
 

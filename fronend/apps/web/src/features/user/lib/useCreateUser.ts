@@ -1,7 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/vue-query'
-import { ApiError } from '@zoho-ide/shared'
-import { type IUser, UserQueryKeys, createUserRequest, type CreateUserRequestPayload } from '@zoho-ide/shared'
-import { useToast } from '@zoho-ide/shared'
+import { ApiError, type MutationOptions } from '@zoho-ide/shared'
+import { createUserRequest, type CreateUserRequestPayload, type IUser, UserQueryKeys } from '@zoho-ide/shared'
 import { ref } from 'vue'
 
 export const defaultCreateUserFormData = (): CreateUserRequestPayload => ({
@@ -11,21 +10,21 @@ export const defaultCreateUserFormData = (): CreateUserRequestPayload => ({
     password_confirmation: '',
 })
 
-export function useCreateUser() {
+export function useCreateUser(options?: MutationOptions<IUser>) {
     const formData = ref<CreateUserRequestPayload>(defaultCreateUserFormData())
     const queryClient = useQueryClient()
-    const toast = useToast()
     const formErrors = ref<Record<string, string[]>>({})
 
     const { data, isSuccess, mutate, isPending } = useMutation<IUser, ApiError | Error, CreateUserRequestPayload>({
         mutationFn: (data) => createUserRequest(data),
-        onSuccess: () => {
+        onSuccess: (response) => {
             queryClient.invalidateQueries({ queryKey: UserQueryKeys.lists() }).catch(console.error)
+
+            if (options?.onSuccess) {
+                options.onSuccess(response)
+            }
         },
         onError: (error) => {
-            // TODO: refactor: remove toast from mutations error handling,
-            //       add options- onError(error: Error, displayMessage: string)
-
             let errorMessage = 'An unexpected error occurred. Please try again.'
 
             if (error instanceof ApiError) {
@@ -36,7 +35,11 @@ export function useCreateUser() {
                 }
             }
 
-            toast.error({ detail: errorMessage })
+            if (options?.onError) {
+                options.onError(errorMessage, error)
+            } else {
+                console.warn('Unhandled mutation error:', errorMessage, error)
+            }
         },
     })
 
