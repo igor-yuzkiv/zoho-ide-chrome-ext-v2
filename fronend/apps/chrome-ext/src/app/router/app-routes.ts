@@ -78,17 +78,17 @@ export const AppRoutes: RouteRecordRaw[] = [
         path: '/knowledge-base',
         meta: { hideSidebarMenu: false, layout: AppLayout.default, authenticated: true },
         components: {
-            default: () => import('@/pages/knowledge-base/KbIndexPage.vue'),
-            menu: () => import('@/pages/knowledge-base/KbSidebarMenu.vue'),
+            default: () => import('@/pages/knowledge-base/KnowledgeBaseIndexPage.vue'),
+            menu: () => import('@/pages/knowledge-base/KnowledgeBaseSidebarMenu.vue'),
         },
     },
     {
         name: AppRouteName.knowledgeBaseArticleDetails,
-        path: '/knowledge-base/article/:itemId/view',
+        path: '/knowledge-base/article/:itemId/details',
         meta: { hideSidebarMenu: false, layout: AppLayout.default, authenticated: true },
         components: {
-            default: () => import('@/pages/knowledge-base/ArticleDetailPage.vue'),
-            menu: () => import('@/pages/knowledge-base/KbSidebarMenu.vue'),
+            default: () => import('@/pages/knowledge-base/article/ArticleDetailPage.vue'),
+            menu: () => import('@/pages/knowledge-base/KnowledgeBaseSidebarMenu.vue'),
         },
     },
     {
@@ -96,8 +96,8 @@ export const AppRoutes: RouteRecordRaw[] = [
         path: '/knowledge-base/article/:itemId/edit',
         meta: { hideSidebarMenu: false, layout: AppLayout.default, authenticated: true },
         components: {
-            default: () => import('@/pages/knowledge-base/EditArticlePage.vue'),
-            menu: () => import('@/pages/knowledge-base/KbSidebarMenu.vue'),
+            default: () => import('@/pages/knowledge-base/article/EditArticlePage.vue'),
+            menu: () => import('@/pages/knowledge-base/KnowledgeBaseSidebarMenu.vue'),
         },
     },
 
