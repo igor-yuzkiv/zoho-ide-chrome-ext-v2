@@ -2,12 +2,11 @@ import { createKbItemFromTemplateRequest } from '../api'
 import { KnowledgeBaseQueryKeys } from '../knowledge-base.constants.ts'
 import type { CreateKbItemFromTemplateRequestPayload, IKnowledgeBaseItem } from '../types'
 import { useMutation, useQueryClient } from '@tanstack/vue-query'
-import { ApiError, useToast } from '@zoho-ide/shared'
+import { ApiError, type MutationOptions } from '@zoho-ide/shared'
 import { ref } from 'vue'
 
-export function useCreateKbItemFromTemplate() {
+export function useCreateKbItemFromTemplate(options?: MutationOptions<IKnowledgeBaseItem>) {
     const queryClient = useQueryClient()
-    const toast = useToast()
     const formErrors = ref<Record<string, string[]>>({})
 
     const { data, isSuccess, mutate, mutateAsync, isPending } = useMutation<
@@ -16,13 +15,14 @@ export function useCreateKbItemFromTemplate() {
         { templateId: string; payload: CreateKbItemFromTemplateRequestPayload }
     >({
         mutationFn: (data) => createKbItemFromTemplateRequest(data.templateId, data.payload),
-        onSuccess: () => {
+        onSuccess: (response) => {
             queryClient.invalidateQueries({ queryKey: KnowledgeBaseQueryKeys.items() }).catch(console.error)
+
+            if (options?.onSuccess) {
+                options.onSuccess(response)
+            }
         },
         onError: (error) => {
-            // TODO: refactor: remove toast from mutations error handling,
-            //       add options- onError(error: Error, displayMessage: string)
-
             let errorMessage = 'An unexpected error occurred. Please try again.'
 
             if (error instanceof ApiError) {
@@ -33,7 +33,11 @@ export function useCreateKbItemFromTemplate() {
                 }
             }
 
-            toast.error({ detail: errorMessage })
+            if (options?.onError) {
+                options.onError(errorMessage, error)
+            } else {
+                console.warn('Unhandled mutation error:', errorMessage, error)
+            }
         },
     })
 

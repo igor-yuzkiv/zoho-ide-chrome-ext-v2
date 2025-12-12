@@ -69,7 +69,7 @@ export const AppRoutes: RouteRecordRaw[] = [
         meta: { authenticated: true },
         components: {
             default: () => import('@/pages/knowledge-base/KnowledgeBaseIndexPage.vue'),
-            menu: () => import('@/pages/knowledge-base/KnowledgeSidebarMenu.vue'),
+            menu: () => import('@/pages/knowledge-base/KnowledgeBaseSidebarMenu.vue'),
         },
     },
     {
@@ -78,7 +78,7 @@ export const AppRoutes: RouteRecordRaw[] = [
         meta: { authenticated: true },
         components: {
             default: () => import('@/pages/knowledge-base/articles/ArticleDetailPage.vue'),
-            menu: () => import('@/pages/knowledge-base/KnowledgeSidebarMenu.vue'),
+            menu: () => import('@/pages/knowledge-base/KnowledgeBaseSidebarMenu.vue'),
         },
     },
     {
@@ -87,7 +87,7 @@ export const AppRoutes: RouteRecordRaw[] = [
         meta: { authenticated: true },
         components: {
             default: () => import('@/pages/knowledge-base/articles/EditArticlePage.vue'),
-            menu: () => import('@/pages/knowledge-base/KnowledgeSidebarMenu.vue'),
+            menu: () => import('@/pages/knowledge-base/KnowledgeBaseSidebarMenu.vue'),
         },
     },
 

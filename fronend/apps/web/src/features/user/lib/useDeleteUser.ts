@@ -1,29 +1,33 @@
 import { useMutation, useQueryClient } from '@tanstack/vue-query'
-import { ApiError } from '@zoho-ide/shared'
-import { UserQueryKeys, deleteUserByIdRequest, type DeleteUserByIdResponse } from '@zoho-ide/shared'
-import { useConfirm, useToast } from '@zoho-ide/shared'
+import { ApiError, type MutationOptions } from '@zoho-ide/shared'
+import { deleteUserByIdRequest, type DeleteUserByIdResponse, UserQueryKeys } from '@zoho-ide/shared'
+import { useConfirm } from '@zoho-ide/shared'
 import { type MaybeRefOrGetter, toValue } from 'vue'
 
-export function useDeleteUser() {
+export function useDeleteUser(options?: MutationOptions<DeleteUserByIdResponse>) {
     const queryClient = useQueryClient()
     const confirm = useConfirm()
-    const toast = useToast()
 
     const { mutateAsync, isPending } = useMutation<DeleteUserByIdResponse, ApiError | Error, { userId: string }>({
         mutationFn: (payload) => deleteUserByIdRequest(payload.userId),
-        onSuccess: () => {
+        onSuccess: (response) => {
             queryClient.invalidateQueries({ queryKey: UserQueryKeys.lists() }).catch(console.error)
+
+            if (options?.onSuccess) {
+                options.onSuccess(response)
+            }
         },
         onError: (error) => {
-            // TODO: refactor: remove toast from mutations error handling,
-            //       add options- onError(error: Error, displayMessage: string)
-
             let errorMessage = 'Failed to delete user. Please try again later.'
             if (error instanceof ApiError) {
                 errorMessage = error.displayMessage
             }
 
-            toast.error({ detail: errorMessage })
+            if (options?.onError) {
+                options.onError(errorMessage, error)
+            } else {
+                console.warn('Unhandled mutation error:', errorMessage, error)
+            }
         },
     })
 

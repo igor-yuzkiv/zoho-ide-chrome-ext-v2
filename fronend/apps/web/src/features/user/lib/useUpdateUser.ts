@@ -1,15 +1,13 @@
 import { useMutation, useQueryClient } from '@tanstack/vue-query'
-import { ApiError } from '@zoho-ide/shared';
-import { type IUser, UserQueryKeys, updateUserRequest, type UpdateUserRequestPayload } from '@zoho-ide/shared'
-import { useToast } from '@zoho-ide/shared'
+import { ApiError, type MutationOptions } from '@zoho-ide/shared'
+import { type IUser, updateUserRequest, type UpdateUserRequestPayload, UserQueryKeys } from '@zoho-ide/shared'
 import { type MaybeRefOrGetter, ref, toValue, watch } from 'vue'
 
 export const defaultUpdateUserFormData = (): UpdateUserRequestPayload => ({ name: '', email: '' })
 
-export function useUpdateUser(user: MaybeRefOrGetter<IUser | undefined>) {
+export function useUpdateUser(user: MaybeRefOrGetter<IUser | undefined>, options?: MutationOptions<IUser>) {
     const formData = ref<UpdateUserRequestPayload>(defaultUpdateUserFormData())
     const queryClient = useQueryClient()
-    const toast = useToast()
     const formErrors = ref<Record<string, string[]>>({})
 
     const { data, isSuccess, mutate, isPending } = useMutation<
@@ -20,14 +18,15 @@ export function useUpdateUser(user: MaybeRefOrGetter<IUser | undefined>) {
         mutationFn: (payload) => {
             return updateUserRequest(payload.userId, payload.data)
         },
-        onSuccess: ({ id }) => {
+        onSuccess: (response) => {
             queryClient.invalidateQueries({ queryKey: UserQueryKeys.lists() }).catch(console.error)
-            queryClient.invalidateQueries({ queryKey: UserQueryKeys.details(id) }).catch(console.error)
+            queryClient.invalidateQueries({ queryKey: UserQueryKeys.details(response.id) }).catch(console.error)
+
+            if (options?.onSuccess) {
+                options.onSuccess(response)
+            }
         },
         onError: (error) => {
-            // TODO: refactor: remove toast from mutations error handling,
-            //       add options- onError(error: Error, displayMessage: string)
-
             let errorMessage = 'An unexpected error occurred. Please try again.'
 
             if (error instanceof ApiError) {
@@ -38,7 +37,11 @@ export function useUpdateUser(user: MaybeRefOrGetter<IUser | undefined>) {
                 }
             }
 
-            toast.error({ detail: errorMessage })
+            if (options?.onError) {
+                options.onError(errorMessage, error)
+            } else {
+                console.warn('Unhandled mutation error:', errorMessage, error)
+            }
         },
     })
 

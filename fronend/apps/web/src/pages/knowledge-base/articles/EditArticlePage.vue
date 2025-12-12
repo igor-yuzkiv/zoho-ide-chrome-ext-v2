@@ -1,13 +1,20 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
 import { ArticleEditView, useKbItemDetailsQuery, useUpdateKbItem } from '@zoho-ide/knowledge-base'
+import { useToast } from '@zoho-ide/shared'
+import { useRouter } from 'vue-router'
 import { Button } from 'primevue'
 import { Icon } from '@iconify/vue'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 
+const router = useRouter()
+const toast = useToast()
 const itemId = useRouteParams<string>('itemId')
 const { data } = useKbItemDetailsQuery(itemId)
-const { formData, submit } = useUpdateKbItem(data)
+const { formData, submit } = useUpdateKbItem(data, {
+    onError: (displayMessage) => toast.error({ detail: displayMessage }),
+    onSuccess: ({ id }) => router.push({ name: AppRouteName.knowledgeBaseArticleDetails, params: { itemId: id } }),
+})
 </script>
 
 <template>

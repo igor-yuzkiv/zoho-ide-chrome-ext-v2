@@ -18,8 +18,9 @@ function handleItemCreated(item: IKnowledgeBaseItem) {
 
 const isActiveListItem = (item: IKnowledgeBaseItem) => {
     return (
-        [AppRouteName.knowledgeBaseArticleDetails, AppRouteName.knowledgeBaseArticleEdit].includes(route.name as string) &&
-        route.params.itemId === item.id
+        [AppRouteName.knowledgeBaseArticleDetails, AppRouteName.knowledgeBaseArticleEdit].includes(
+            route.name as string
+        ) && route.params.itemId === item.id
     )
 }
 </script>
