@@ -18,7 +18,7 @@ const { formData, submit } = useUpdateKbItem(data)
                 text
                 severity="secondary"
                 as="router-link"
-                :to="{ name: AppRouteName.kbItemDetails, params: { itemId: data.id } }"
+                :to="{ name: AppRouteName.knowledgeBaseArticleDetails, params: { itemId: data.id } }"
             >
                 <Icon icon="material-symbols:close" />
                 <span>Cancel</span>

@@ -10,9 +10,9 @@ export const AppRouteName = {
     userDetails: 'users.details',
     userCreate: 'users.create',
 
-    kbIndex: 'kb.index',
-    kbItemDetails: 'kb.item.details',
-    kbItemEdit: 'kb.item.edit',
+    knowledgeBaseIndex: 'knowledge-base.index',
+    knowledgeBaseArticleDetails: 'knowledge-base.article.details',
+    knowledgeBaseArticleEdit: 'knowledge-base.article.edit',
 }
 
 export const AppRoutes: RouteRecordRaw[] = [
@@ -64,7 +64,7 @@ export const AppRoutes: RouteRecordRaw[] = [
      * Knowledge Base Routes
      */
     {
-        name: AppRouteName.kbIndex,
+        name: AppRouteName.knowledgeBaseIndex,
         path: '/knowledge-base',
         meta: { authenticated: true },
         components: {
@@ -73,7 +73,7 @@ export const AppRoutes: RouteRecordRaw[] = [
         },
     },
     {
-        name: AppRouteName.kbItemDetails,
+        name: AppRouteName.knowledgeBaseArticleDetails,
         path: '/knowledge-base/items/:itemId/details',
         meta: { authenticated: true },
         components: {
@@ -82,7 +82,7 @@ export const AppRoutes: RouteRecordRaw[] = [
         },
     },
     {
-        name: AppRouteName.kbItemEdit,
+        name: AppRouteName.knowledgeBaseArticleEdit,
         path: '/knowledge-base/items/:itemId/edit',
         meta: { authenticated: true },
         components: {

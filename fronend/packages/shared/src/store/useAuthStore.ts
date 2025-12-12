@@ -6,7 +6,7 @@ import { computed, ref } from 'vue'
 export const useAuthStore = defineStore('backend-api.auth', () => {
     const user = ref<IUser | null>(null)
     const token = useStorage<string | undefined>(TOKEN_LOCAL_STORAGE_KEY, undefined)
-    const isAuthenticated = computed(() => !!token.value)
+    const isAuthenticated = computed(() => !!user.value)
 
     async function login(email: string, password: string) {
         const response = await loginRequest(email, password)
@@ -46,5 +46,6 @@ export const useAuthStore = defineStore('backend-api.auth', () => {
         login,
         logout,
         ensureUser,
+        token,
     }
 })

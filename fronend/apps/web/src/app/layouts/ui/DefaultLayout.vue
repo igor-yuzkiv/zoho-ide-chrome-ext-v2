@@ -11,7 +11,7 @@ import { AppRouteName } from '@/app/router/app-routes.ts'
 const NAV_ITEMS: TopMenuItem[] = [
     { title: 'Home', route: { name: AppRouteName.home } },
     { title: 'Users', route: { name: AppRouteName.usersIndex } },
-    { title: 'Knowledge Base', route: { name: AppRouteName.kbIndex } },
+    { title: 'Knowledge Base', route: { name: AppRouteName.knowledgeBaseIndex } },
 ]
 
 const appTheme = useAppThemeStore()

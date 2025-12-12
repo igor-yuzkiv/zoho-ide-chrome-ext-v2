@@ -76,7 +76,7 @@ export const AppRoutes: RouteRecordRaw[] = [
     {
         name: AppRouteName.knowledgeBaseIndex,
         path: '/knowledge-base',
-        meta: { hideSidebarMenu: false, layout: AppLayout.default },
+        meta: { hideSidebarMenu: false, layout: AppLayout.default, authenticated: true },
         components: {
             default: () => import('@/pages/knowledge-base/KbIndexPage.vue'),
             menu: () => import('@/pages/knowledge-base/KbSidebarMenu.vue'),
@@ -85,7 +85,7 @@ export const AppRoutes: RouteRecordRaw[] = [
     {
         name: AppRouteName.knowledgeBaseArticleDetails,
         path: '/knowledge-base/article/:itemId/view',
-        meta: { hideSidebarMenu: false, layout: AppLayout.default },
+        meta: { hideSidebarMenu: false, layout: AppLayout.default, authenticated: true },
         components: {
             default: () => import('@/pages/knowledge-base/ArticleDetailPage.vue'),
             menu: () => import('@/pages/knowledge-base/KbSidebarMenu.vue'),
@@ -94,7 +94,7 @@ export const AppRoutes: RouteRecordRaw[] = [
     {
         name: AppRouteName.knowledgeBaseArticleEdit,
         path: '/knowledge-base/article/:itemId/edit',
-        meta: { hideSidebarMenu: false, layout: AppLayout.default },
+        meta: { hideSidebarMenu: false, layout: AppLayout.default, authenticated: true },
         components: {
             default: () => import('@/pages/knowledge-base/EditArticlePage.vue'),
             menu: () => import('@/pages/knowledge-base/KbSidebarMenu.vue'),
