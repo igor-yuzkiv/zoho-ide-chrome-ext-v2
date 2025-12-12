@@ -13,9 +13,10 @@ export type PagingResponseMeta = {
 }
 
 export type PagingResponse<T> = {
-    ok: true
     data: T
     meta: PagingResponseMeta
 }
 
-export type PaginatedResult<T, E = string> = PagingResponse<T> | Error<E>
+export type SuccessPaginatedResult<T> = PagingResponse<T> & { ok: true }
+
+export type PaginatedResult<T, E = string> = SuccessPaginatedResult<T> | Error<E>
