@@ -1,14 +1,15 @@
+import { CapabilityQueryKeys } from '@/config/capabilities.config.ts'
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
 import { type MaybeRef, toValue } from 'vue'
-import type { ICapabilityEntity } from '@/entities/capability/capability.types.ts'
 import { selectProviderRecordsQuery } from '@/entities/capability/cache'
+import type { ICapabilityEntity } from '@/entities/capability/capability.types.ts'
 
 export function useCapabilityRecordsList<T extends ICapabilityEntity>(
     capabilityType: MaybeRef<string>,
     providerId: MaybeRef<string>
 ) {
     const { isPending, data } = useQuery<T[]>({
-        queryKey: [capabilityType, providerId],
+        queryKey: CapabilityQueryKeys.forProviderAndType(providerId, capabilityType),
         placeholderData: keepPreviousData,
         queryFn: () => selectProviderRecordsQuery<T>(toValue(providerId), toValue(capabilityType)),
         initialData: [],

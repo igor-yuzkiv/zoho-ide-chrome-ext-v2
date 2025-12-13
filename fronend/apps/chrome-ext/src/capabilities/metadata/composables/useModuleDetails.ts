@@ -1,5 +1,5 @@
 import type { IModuleMetadataEntity } from '@/capabilities/metadata/metadata.types.ts'
-import { CapabilityType } from '@/config/capabilities.config.ts'
+import { CapabilityQueryKeys, CapabilityType } from '@/config/capabilities.config.ts'
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
 import type { IEntity } from '@zoho-ide/shared'
 import { type MaybeRef, toValue } from 'vue'
@@ -10,7 +10,7 @@ export function useModuleDetails<TOrigin extends IEntity = IEntity>(
     moduleId: MaybeRef<string>
 ) {
     const { isPending, data } = useQuery<IModuleMetadataEntity<TOrigin>>({
-        queryKey: ['module.details', providerId, moduleId],
+        queryKey: CapabilityQueryKeys.forCapabilityRecord(providerId, CapabilityType.MODULES, moduleId),
         placeholderData: keepPreviousData,
         queryFn: () => {
             return findCapabilityRecordQuery<IModuleMetadataEntity<TOrigin>>(

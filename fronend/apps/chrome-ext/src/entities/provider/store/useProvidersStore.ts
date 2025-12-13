@@ -1,4 +1,4 @@
-import { ProvidersRegister } from '@/config/providers.register.ts'
+import { ProvidersRegister } from '@/config/providers.config.ts'
 import { type Serializer, useStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
@@ -82,7 +82,6 @@ export const useProvidersStore = defineStore('providers', () => {
         cachedProviders.value = Array.from(normalized.values())
     }
 
-
     function findById(providerId: string): ServiceProvider | undefined {
         return providersMap.value.get(providerId)
     }
@@ -98,6 +97,11 @@ export const useProvidersStore = defineStore('providers', () => {
         cachedProviders.value = Array.from(providersMap.value.values())
     }
 
+    function isProviderOnline(providerId: string): boolean {
+        const provider = providersMap.value.get(providerId)
+        return Boolean(provider?.tabId)
+    }
+
     return {
         providersMap,
         providersList,
@@ -105,5 +109,6 @@ export const useProvidersStore = defineStore('providers', () => {
         findById,
         handleChangeBrowserTabs,
         updateProvider,
+        isProviderOnline,
     }
 })
