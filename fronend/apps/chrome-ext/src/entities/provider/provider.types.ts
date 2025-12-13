@@ -1,5 +1,5 @@
-import type { BrowserTab } from '@/shared/libs/browser/browser.types.ts'
 import type { Result } from '@zoho-ide/shared'
+import type { BrowserTab } from '@/shared/libs/browser/browser.types.ts'
 
 export type ProviderType = 'crm' | 'finance'
 
@@ -10,6 +10,8 @@ export type ServiceProvider = {
     metadata: Record<string, unknown>
     tabId?: number
     serviceIcon: string
+    lastSyncedAt?: number
+    cacheTtlMs?: number
 }
 
 export type ServiceProviderFactory = (tab: BrowserTab) => Result<ServiceProvider>

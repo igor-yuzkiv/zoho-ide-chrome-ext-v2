@@ -8,9 +8,10 @@ const appTheme = useAppThemeStore()
 <template>
     <footer class="flex w-full justify-between py-1 px-2">
         <div class="flex items-center gap-x-1">
-            <slot name="before"></slot>
+            <slot name="start"></slot>
         </div>
         <div class="flex items-center justify-end gap-x-2">
+            <slot name="end"></slot>
             <ToggleThemeButton :is-dark="appTheme.isDark" @click="appTheme.toggle" />
         </div>
     </footer>

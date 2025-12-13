@@ -11,9 +11,14 @@ export function useLogger(context = '') {
         console.error(`[ERROR] [${context}] ${message}`, ...optionalParams)
     }
 
+    function info(message: string, ...optionalParams: unknown[]) {
+        console.info(`[INFO] [${context}] ${message}`, ...optionalParams)
+    }
+
     return {
         log,
         warn,
         error,
+        info,
     }
 }
