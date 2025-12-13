@@ -1,4 +1,4 @@
-import type { KbItemFormData } from './types'
+import type { KbItemFormData, KnowledgeBaseCategoryMetadata } from './types'
 import type { MaybeRefOrGetter } from 'vue'
 
 export const KnowledgeBaseQueryKeys = {
@@ -13,5 +13,11 @@ export const KnowledgeBaseItemEntityType = 'knowledge_base_item'
 export const defaultKbItemFormData = (): KbItemFormData => ({
     title: '',
     content: '',
+    category: 'general',
     tags: [],
 })
+
+export const KnowledgeBaseCategoryOptions: KnowledgeBaseCategoryMetadata[] = [
+    { label: 'General', value: 'general' },
+    { label: 'Code Samples', value: 'code_samples' },
+]

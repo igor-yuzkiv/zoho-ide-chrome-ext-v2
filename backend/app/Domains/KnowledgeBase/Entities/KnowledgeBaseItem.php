@@ -2,6 +2,7 @@
 
 namespace App\Domains\KnowledgeBase\Entities;
 
+use App\Domains\KnowledgeBase\Enums\KnowledgeBaseCategory;
 use App\Shared\Contracts\EntityReferable;
 use App\Shared\ValueObjects\EntityRef;
 use Carbon\Carbon;
@@ -13,6 +14,7 @@ class KnowledgeBaseItem implements EntityReferable
         public string $title,
         public ?string $content,
         public ?string $parentId,
+        public ?KnowledgeBaseCategory $category = null,
         public ?string $createdBy = null,
         public ?string $updatedBy = null,
         public ?Carbon $createdAt = null,

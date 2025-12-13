@@ -79,6 +79,7 @@ class KnowledgeBaseController extends Controller
 
     public function deleteById(string $id): JsonResponse
     {
+        // TODO: remove attachments associated with the article
         $status = $this->kbItemRepository->deleteById($id);
 
         return response()->json([

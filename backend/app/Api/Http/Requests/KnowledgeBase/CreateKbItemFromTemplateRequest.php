@@ -5,6 +5,7 @@ namespace App\Api\Http\Requests\KnowledgeBase;
 use App\Application\KnowledgeBase\Commands\CreateKbItemFromTemplateCommand;
 use App\Application\KnowledgeBase\Commands\SaveKbItemCommand;
 use App\Domains\KnowledgeBase\Entities\KnowledgeBaseTemplate;
+use App\Domains\KnowledgeBase\Enums\KnowledgeBaseCategory;
 use App\Domains\User\Entities\User;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -36,6 +37,7 @@ class CreateKbItemFromTemplateRequest extends FormRequest
             title: $this->input('title'),
             content: $this->input('content'),
             parentId: $this->input('parent_id'),
+            category: $template->category ?? KnowledgeBaseCategory::General,
             user: $user,
             tagIds: $this->input('tags_ids', []),
         );

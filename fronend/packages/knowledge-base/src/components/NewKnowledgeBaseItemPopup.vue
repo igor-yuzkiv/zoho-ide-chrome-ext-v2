@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { KnowledgeBaseCategoryOptions } from '../knowledge-base.constants.ts'
 import { useCreateKbItem } from '../mutations'
 import { useKbTemplatesListQuery } from '../queries'
 import { type IKnowledgeBaseItem } from '../types'
@@ -88,6 +89,18 @@ watch(visible, (newVal) => {
                     :value="formData.title"
                     @update:model-value="handleChangeField('title', $event)"
                     :invalid="validationErrors.has('title')"
+                />
+            </FieldContainer>
+
+            <FieldContainer label="Category" input-id="category">
+                <Select
+                    fluid
+                    :options="KnowledgeBaseCategoryOptions"
+                    option-value="value"
+                    option-label="label"
+                    placeholder="Select category"
+                    :value="formData.category"
+                    @update:model-value="handleChangeField('category', $event)"
                 />
             </FieldContainer>
 

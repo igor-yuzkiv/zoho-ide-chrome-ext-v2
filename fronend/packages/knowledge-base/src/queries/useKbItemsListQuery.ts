@@ -7,7 +7,7 @@ export function useKbItemsListQuery() {
     const { isPending, isFetching, data } = useQuery<IKnowledgeBaseItem[]>({
         queryKey: KnowledgeBaseQueryKeys.items(),
         placeholderData: keepPreviousData,
-        queryFn: () => fetchKbItemsRequest().then((r) => r.data),
+        queryFn: () => fetchKbItemsRequest().then((r) => r.data || []),
         initialData: [],
     })
 
