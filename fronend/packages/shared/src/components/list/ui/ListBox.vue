@@ -1,10 +1,12 @@
 <script setup lang="ts" generic="T extends Record<string, unknown>">
+import { ListItemProps } from '../lib/list.props.ts'
 import ListItem from './ListItem.vue'
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import InputText from 'primevue/inputtext'
 
 defineEmits<{
     (e: 'itemClick', item: T): void
+    (e: 'loadMore'): void
 }>()
 const props = withDefaults(
     defineProps<{
@@ -12,26 +14,27 @@ const props = withDefaults(
         itemKey?: string
         itemTitle?: string
         itemIcon?: string
-        searchable?: boolean
+        searchStrategy?: 'internal' | 'external'
         searchFields?: string[]
         searchPlaceholder?: string
         tooltipField?: keyof T
-        itemAttributes?: Record<string, unknown>
+        listItemProps?: Partial<ListItemProps>
         isActiveItem?: (item: T) => boolean
+        hasMoreItems?: boolean
     }>(),
     {
         itemKey: 'id',
         itemTitle: 'title',
         itemIcon: 'icon-park-outline:dot',
-        searchable: false,
         searchPlaceholder: 'Start typing to search...',
         searchFields: () => ['title'],
+        hasMoreItems: false,
     }
 )
 
-const searchTerm = ref('')
+const searchTerm = defineModel<string>('search-term', { default: '' })
 
-const getItemSearchValue = (item: T): string => {
+const getItemFilterValue = (item: T): string => {
     if (!props.searchFields || props.searchFields.length === 0) {
         return ''
     }
@@ -44,38 +47,37 @@ const getItemSearchValue = (item: T): string => {
 }
 
 const mapItem = (item: T) => {
-    const title = item[props.itemTitle] as string
+    const title = String(item[props.itemTitle])
 
     const isActive = props.isActiveItem ? props.isActiveItem(item) : false
 
     return {
         original: item,
-        key: item[props.itemKey] as string,
+        key: String(item[props.itemKey]),
         title: title,
-        tooltip: props.tooltipField ? (item[props.tooltipField] as string) : title,
-        searchValue: getItemSearchValue(item),
+        tooltip: props.tooltipField ? String(item[props.tooltipField]) : title,
+        searchValue: getItemFilterValue(item),
         isActive,
     }
 }
 
-const itemsForDisplay = computed(() => {
-    const mappedItems = props.items.map((item) => mapItem(item))
-    if (props.searchable && searchTerm.value) {
-        return mappedItems.filter((item) => item.searchValue.includes(searchTerm.value.toLowerCase().trim()))
-    }
+const mappedItems = computed(() => props.items.map((item) => mapItem(item)))
 
-    return mappedItems
+const itemsForDisplay = computed(() => {
+    return props.searchStrategy === 'internal' && searchTerm.value
+        ? mappedItems.value.filter((item) => item.searchValue.includes(searchTerm.value.toLowerCase().trim()))
+        : mappedItems.value
 })
 </script>
 
 <template>
     <div class="flex h-full flex-col overflow-x-hidden overflow-y-auto">
-        <div v-if="searchable" class="flex items-center gap-x-2 border-b mb-2">
+        <div v-if="searchStrategy" class="flex items-center gap-x-2 border-b">
             <InputText
                 v-model.lazy="searchTerm"
                 size="small"
-                class="w-full bg-primary rounded-none border-none"
-                placeholder="Start typing to search workflows..."
+                class="w-full bg-primary rounded-none border-none shadow-none"
+                :placeholder="searchPlaceholder"
             />
 
             <slot name="search-extra" />
@@ -90,7 +92,7 @@ const itemsForDisplay = computed(() => {
                             :title="item.title"
                             :icon="itemIcon"
                             :tooltip="item.tooltip"
-                            v-bind="itemAttributes"
+                            v-bind="listItemProps"
                         />
                     </slot>
                 </li>
@@ -99,6 +101,14 @@ const itemsForDisplay = computed(() => {
             <slot v-else name="empty">
                 <div class="flex h-full w-full items-center justify-center p-4 app-secondary-text">No items found.</div>
             </slot>
+
+            <div
+                v-if="hasMoreItems"
+                @click="$emit('loadMore')"
+                class="flex items-center justify-center text-center w-full cursor-pointer hover:bg-selection rounded"
+            >
+                Load More
+            </div>
         </div>
     </div>
 </template>

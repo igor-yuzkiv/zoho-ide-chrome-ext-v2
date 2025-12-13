@@ -2,6 +2,7 @@
 
 namespace App\Infrastructure\Repositories;
 
+use App\Application\KnowledgeBase\Queries\SearchKnowledgeBaseItemsQuery;
 use App\Domains\KnowledgeBase\Entities\KnowledgeBaseItem;
 use App\Domains\KnowledgeBase\Entities\KnowledgeBaseItemWithRelations;
 use App\Domains\KnowledgeBase\Repositories\KnowledgeBaseItemRepository;
@@ -37,16 +38,18 @@ readonly class EloquentKnowledgeBaseItemRepository implements KnowledgeBaseItemR
                 page: $paginationParams->page,
             );
 
-        $data = $result->getCollection()->map(fn (KnowledgeBaseItemModel $model) => $this->mapper->makeFromModel($model));
+        return $this->mapper->mapPageResult($result);
+    }
 
-        return new PageResult(
-            data: $data,
-            page: $result->currentPage(),
-            perPage: $result->perPage(),
-            total: $result->total(),
-            lastPage: $result->lastPage(),
-            hasMore: $result->hasMorePages(),
-        );
+    public function search(SearchKnowledgeBaseItemsQuery $query): PageResult
+    {
+        $result = KnowledgeBaseItemModel::search($query->searchTerm ?? '')
+            ->paginate(
+                perPage: $query->paginationParams->perPage,
+                page: $query->paginationParams->page,
+            );
+
+        return $this->mapper->mapPageResult($result);
     }
 
     public function find(string $id): ?KnowledgeBaseItem

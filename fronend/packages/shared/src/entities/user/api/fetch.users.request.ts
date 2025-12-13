@@ -3,12 +3,12 @@ import type { PaginationParams, PagingResponse, SortParams } from '../../../type
 import type { IUser } from '../types/user.types.ts'
 
 export async function fetchUsersRequest(
-    paging: PaginationParams = { page: 1, perPage: 15 },
+    paging: PaginationParams = { page: 1, per_page: 15 },
     sort?: SortParams
 ): Promise<PagingResponse<IUser[]>> {
     const params = {
         page: paging.page,
-        per_page: paging.perPage,
+        per_page: paging.per_page,
     } as Record<string, string | number>
 
     if (sort) {

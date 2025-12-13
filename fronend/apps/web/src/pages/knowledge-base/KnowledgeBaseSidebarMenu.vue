@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { type IKnowledgeBaseItem, NewKnowledgeBaseItemPopup, useKbItemsListQuery } from '@zoho-ide/knowledge-base'
-import { IconButton, ListBox, ListItem } from '@zoho-ide/shared'
+import { IconButton, isRouteName, ListBox, ListItem } from '@zoho-ide/shared'
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 
-const { data: items } = useKbItemsListQuery()
+const { items, hasNextPage, loadMoreRecords, searchTerm } = useKbItemsListQuery()
 const newItemDialogVisible = ref(false)
 const router = useRouter()
 const route = useRoute()
@@ -18,15 +18,21 @@ function handleItemCreated(item: IKnowledgeBaseItem) {
 
 const isActiveListItem = (item: IKnowledgeBaseItem) => {
     return (
-        [AppRouteName.knowledgeBaseArticleDetails, AppRouteName.knowledgeBaseArticleEdit].includes(
-            route.name as string
-        ) && route.params.itemId === item.id
+        isRouteName(route.name, [AppRouteName.knowledgeBaseArticleDetails, AppRouteName.knowledgeBaseArticleEdit]) &&
+        route.params.itemId === item.id
     )
 }
 </script>
 
 <template>
-    <ListBox class="px-2" :items="items" searchable :search-fields="['title']" :is-active-item="isActiveListItem">
+    <ListBox
+        :items="items"
+        search-strategy="external"
+        :is-active-item="isActiveListItem"
+        :has-more-items="hasNextPage"
+        @load-more="loadMoreRecords"
+        v-model:search-term="searchTerm"
+    >
         <template #search-extra>
             <IconButton icon="ic:baseline-plus" text @click="newItemDialogVisible = true" />
         </template>

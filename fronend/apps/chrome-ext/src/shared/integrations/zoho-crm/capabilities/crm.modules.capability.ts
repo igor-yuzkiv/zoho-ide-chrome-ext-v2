@@ -31,8 +31,8 @@ export function crmModulesCapabilityPortFactory(provider: ServiceProvider): Resu
                     meta: {
                         total: modulesResponse.value.length,
                         page: 1,
-                        perPage: modulesResponse.value.length,
-                        hasMore: false,
+                        per_page: modulesResponse.value.length,
+                        has_more: false,
                     },
                 }
             },

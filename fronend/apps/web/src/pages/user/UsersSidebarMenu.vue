@@ -27,7 +27,12 @@ function handleDeleteUser(userId: string, userName: string) {
 </script>
 
 <template>
-    <ListBox class="min-w-lg shrink-0 px-2" :items="users" searchable :search-fields="['name', 'email']">
+    <ListBox
+        class="min-w-lg shrink-0 px-2"
+        :items="users"
+        search-strategy="internal"
+        :search-fields="['name', 'email']"
+    >
         <template #search-extra>
             <IconButton icon="ic:baseline-plus" text as="router-link" :to="{ name: AppRouteName.userCreate }" />
         </template>

@@ -25,7 +25,7 @@ const route = useRoute()
             >
                 <SplitterPanel
                     v-if="!route.meta?.hideSidebarMenu"
-                    class="flex h-full overflow-hidden"
+                    class="flex h-full overflow-hidden w-full"
                     :size="5"
                     style="min-width: 10rem; max-width: 50rem"
                 >
