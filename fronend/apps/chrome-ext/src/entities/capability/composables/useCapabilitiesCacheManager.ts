@@ -134,6 +134,11 @@ export function useCapabilitiesCacheManager() {
         }
 
         await providersCacheDb.records.where('providerId').equals(providerId).delete()
+
+        await queryClient
+            .invalidateQueries({ queryKey: CapabilityQueryKeys.forProvider(providerId) })
+            .catch(console.error)
+
         providersStore.updateProvider(providerId, { lastSyncedAt: undefined })
     }
 
