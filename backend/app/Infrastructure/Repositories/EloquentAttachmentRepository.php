@@ -52,6 +52,9 @@ class EloquentAttachmentRepository implements AttachmentRepository
         return $result;
     }
 
+    /**
+     * @return PageResult<Attachment>
+     */
     public function paginateEntityAttachments(GetEntityAttachmentsQuery $query): PageResult
     {
         $result = AttachmentModel::query()
@@ -76,6 +79,9 @@ class EloquentAttachmentRepository implements AttachmentRepository
         );
     }
 
+    /**
+     * @return Collection<int, Attachment>
+     */
     public function getEntityAttachments(EntityRef $entityRef): Collection
     {
         $models = AttachmentModel::query()

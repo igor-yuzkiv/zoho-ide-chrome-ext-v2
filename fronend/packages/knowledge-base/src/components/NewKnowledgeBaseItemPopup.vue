@@ -97,7 +97,7 @@ watch(visible, (newVal) => {
             <FieldContainer label="Category" input-id="category">
                 <Select
                     fluid
-                    :options="catergoryOptions"
+                    :options="categoryOptions"
                     option-value="value"
                     option-label="label"
                     placeholder="Select category"
