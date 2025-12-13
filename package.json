@@ -1,0 +1,17 @@
+{
+  "name": "chrome-deluge-extension",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git@my_github:igor-yuzkiv/zoho-ide-chrome-ext-v2.git"
+  },
+  "license": "MIT",
+  "author": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7"
+  }
+}
