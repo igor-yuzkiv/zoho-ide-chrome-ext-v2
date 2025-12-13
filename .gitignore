@@ -32,3 +32,4 @@ dist-ssr
 /fronend/dist/
 /fronend/apps/**/dist/
 *.tsbuildinfo
+/package-lock.json
