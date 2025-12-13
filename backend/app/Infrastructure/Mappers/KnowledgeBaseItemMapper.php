@@ -5,6 +5,8 @@ namespace App\Infrastructure\Mappers;
 use App\Domains\KnowledgeBase\Entities\KnowledgeBaseItem;
 use App\Domains\KnowledgeBase\Enums\KnowledgeBaseCategory;
 use App\Infrastructure\Models\KnowledgeBaseItemModel;
+use App\Shared\DTO\PageResult;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class KnowledgeBaseItemMapper
 {
@@ -34,5 +36,19 @@ class KnowledgeBaseItemMapper
             'created_by' => $item->createdBy,
             'updated_by' => $item->updatedBy,
         ];
+    }
+
+    public function mapPageResult(LengthAwarePaginator $pageResult): PageResult
+    {
+        $data = $pageResult->getCollection()->map(fn (KnowledgeBaseItemModel $model) => $this->makeFromModel($model));
+
+        return new PageResult(
+            data: $data,
+            page: $pageResult->currentPage(),
+            perPage: $pageResult->perPage(),
+            total: $pageResult->total(),
+            lastPage: $pageResult->lastPage(),
+            hasMore: $pageResult->hasMorePages(),
+        );
     }
 }

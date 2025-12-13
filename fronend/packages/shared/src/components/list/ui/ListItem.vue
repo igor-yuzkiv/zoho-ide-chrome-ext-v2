@@ -1,13 +1,8 @@
 <script setup lang="ts">
-import { type Component } from 'vue'
+import { ListItemProps } from '../lib/list.props.ts'
 import { Icon } from '@iconify/vue'
 
-defineProps<{
-    title?: string
-    icon?: string
-    tooltip?: string
-    as?: string | Component | undefined
-}>()
+defineProps<ListItemProps>()
 </script>
 
 <template>

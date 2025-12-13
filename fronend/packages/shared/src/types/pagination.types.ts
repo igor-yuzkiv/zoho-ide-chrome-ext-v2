@@ -2,14 +2,14 @@ import type { Error } from './result.types.ts'
 
 export type PaginationParams = {
     page: number
-    perPage: number
+    per_page: number
 }
 
 export type PagingResponseMeta = {
     page: number
-    perPage: number
+    per_page: number
     total: number
-    hasMore: boolean
+    has_more: boolean
 }
 
 export type PagingResponse<T> = {

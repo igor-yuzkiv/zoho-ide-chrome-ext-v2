@@ -72,6 +72,7 @@ Route::group(
     ],
     function () {
         Route::get('', 'index')->name('index');
+        Route::get('search', 'search')->name('search');
         Route::get('{itemId}', 'show')->name('show');
         Route::post('', 'create')->name('create');
         Route::post('templates/{templateId}', 'createFromTemplate')->name('create-from-template');

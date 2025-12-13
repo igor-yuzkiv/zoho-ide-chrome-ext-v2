@@ -10,10 +10,12 @@ use App\Application\Auth\Contracts\AuthGateway;
 use App\Application\KnowledgeBase\Handlers\CreateKbItemFromTemplateHandler;
 use App\Application\KnowledgeBase\Handlers\CreateKbItemHandler;
 use App\Application\KnowledgeBase\Handlers\UpdateKbItemHandler;
+use App\Application\KnowledgeBase\Queries\SearchKnowledgeBaseItemsQuery;
 use App\Domains\KnowledgeBase\Repositories\KnowledgeBaseItemRepository;
 use App\Domains\KnowledgeBase\Repositories\KnowledgeBaseTemplateRepository;
 use App\Shared\Http\Controller;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class KnowledgeBaseController extends Controller
@@ -36,6 +38,27 @@ class KnowledgeBaseController extends Controller
         }
 
         return KnowledgeBaseItemResource::collection($pageResult->data)->additional(['meta' => $pageResult->getMetadata()]);
+    }
+
+    public function search(Request $request): AnonymousResourceCollection|JsonResponse
+    {
+        $searchTerm = $request->input('search_term', '');
+
+        $pageResult = $this->kbItemRepository->search(
+            new SearchKnowledgeBaseItemsQuery(
+                searchTerm: $searchTerm,
+                paginationParams: $this->getPaginationParams(),
+            )
+        );
+
+        if ($pageResult->isEmpty()) {
+            return $this->noContentResponse();
+        }
+
+        return KnowledgeBaseItemResource::collection($pageResult->data)->additional([
+            'meta'        => $pageResult->getMetadata(),
+            'search_term' => $searchTerm,
+        ]);
     }
 
     public function show(string $itemId): KnowledgeBaseItemWithRelationsResource|JsonResponse

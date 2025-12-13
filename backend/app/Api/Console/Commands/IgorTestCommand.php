@@ -2,8 +2,9 @@
 
 namespace App\Api\Console\Commands;
 
+use App\Application\KnowledgeBase\Queries\SearchKnowledgeBaseItemsQuery;
+use App\Domains\KnowledgeBase\Repositories\KnowledgeBaseItemRepository;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Storage;
 
 class IgorTestCommand extends Command
 {
@@ -11,7 +12,11 @@ class IgorTestCommand extends Command
 
     protected $description = 'Command description';
 
-    public function handle(): void {
-        Storage::disk('data')->put('test.txt', 'test');
+    public function handle(): void
+    {
+        app(KnowledgeBaseItemRepository::class)
+            ->search(new SearchKnowledgeBaseItemsQuery(
+                searchTerm: 'ab'
+            ));
     }
 }

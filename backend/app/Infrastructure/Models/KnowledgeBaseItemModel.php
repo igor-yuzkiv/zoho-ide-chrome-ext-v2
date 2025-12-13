@@ -3,15 +3,18 @@
 namespace App\Infrastructure\Models;
 
 use App\Domains\KnowledgeBase\Enums\KnowledgeBaseCategory;
+use Database\Factories\KnowledgeBaseItemModelFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Laravel\Scout\Searchable;
 
 class KnowledgeBaseItemModel extends Model
 {
-    use HasUlids;
+    use HasFactory, HasUlids, Searchable;
 
     protected $table = 'knowledge_base_items';
 
@@ -34,6 +37,18 @@ class KnowledgeBaseItemModel extends Model
     protected $casts = [
         'category' => KnowledgeBaseCategory::class,
     ];
+
+    protected static function newFactory(): KnowledgeBaseItemModelFactory
+    {
+        return KnowledgeBaseItemModelFactory::new();
+    }
+
+    public function toSearchableArray(): array
+    {
+        return [
+            'title' => $this->title,
+        ];
+    }
 
     public function parent(): HasOne
     {

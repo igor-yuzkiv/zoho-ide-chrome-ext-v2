@@ -2,8 +2,9 @@
 
 namespace App\Domains\KnowledgeBase\Repositories;
 
-use App\Domains\KnowledgeBase\Entities\KnowledgeBaseItemWithRelations;
+use App\Application\KnowledgeBase\Queries\SearchKnowledgeBaseItemsQuery;
 use App\Domains\KnowledgeBase\Entities\KnowledgeBaseItem;
+use App\Domains\KnowledgeBase\Entities\KnowledgeBaseItemWithRelations;
 use App\Shared\DTO\PageResult;
 use App\Shared\DTO\PaginationParams;
 use App\Shared\DTO\SortParams;
@@ -13,6 +14,8 @@ interface KnowledgeBaseItemRepository
     public function nextIdentifier(): string;
 
     public function list(PaginationParams $paginationParams, SortParams $sortParams): PageResult;
+
+    public function search(SearchKnowledgeBaseItemsQuery $query): PageResult;
 
     public function find(string $id): ?KnowledgeBaseItem;
 
