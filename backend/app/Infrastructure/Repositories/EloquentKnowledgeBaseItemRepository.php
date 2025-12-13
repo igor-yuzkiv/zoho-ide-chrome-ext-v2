@@ -2,8 +2,9 @@
 
 namespace App\Infrastructure\Repositories;
 
-use App\Domains\KnowledgeBase\Entities\KnowledgeBaseItemWithRelations;
+use App\Application\KnowledgeBase\Queries\SearchKnowledgeBaseItemsQuery;
 use App\Domains\KnowledgeBase\Entities\KnowledgeBaseItem;
+use App\Domains\KnowledgeBase\Entities\KnowledgeBaseItemWithRelations;
 use App\Domains\KnowledgeBase\Repositories\KnowledgeBaseItemRepository;
 use App\Infrastructure\Mappers\KnowledgeBaseItemMapper;
 use App\Infrastructure\Mappers\TagMapper;
@@ -30,23 +31,25 @@ readonly class EloquentKnowledgeBaseItemRepository implements KnowledgeBaseItemR
     public function list(PaginationParams $paginationParams, SortParams $sortParams): PageResult
     {
         $result = KnowledgeBaseItemModel::query()
-            ->select(['id', 'title', 'parent_id', 'created_at', 'updated_at'])
+            ->select(['id', 'title', 'parent_id', 'category', 'created_at', 'updated_at'])
             ->orderBy($sortParams->field, $sortParams->direction)
             ->paginate(
                 perPage: $paginationParams->perPage,
                 page: $paginationParams->page,
             );
 
-        $data = $result->getCollection()->map(fn (KnowledgeBaseItemModel $model) => $this->mapper->makeFromModel($model));
+        return $this->mapper->mapPageResult($result);
+    }
 
-        return new PageResult(
-            data: $data,
-            page: $result->currentPage(),
-            perPage: $result->perPage(),
-            total: $result->total(),
-            lastPage: $result->lastPage(),
-            hasMore: $result->hasMorePages(),
-        );
+    public function search(SearchKnowledgeBaseItemsQuery $query): PageResult
+    {
+        $result = KnowledgeBaseItemModel::search($query->searchTerm ?? '')
+            ->paginate(
+                perPage: $query->paginationParams->perPage,
+                page: $query->paginationParams->page,
+            );
+
+        return $this->mapper->mapPageResult($result);
     }
 
     public function find(string $id): ?KnowledgeBaseItem

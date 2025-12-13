@@ -19,6 +19,7 @@ readonly class CreateKbItemHandler
             title: $command->title,
             content: $command->content,
             parentId: $command->parentId,
+            category: $command->category,
             createdBy: $command->user?->id,
         );
 

@@ -1,6 +1,6 @@
 import { useLogger } from '@/shared/libs/logger/useLogger.ts'
-import { useCapabilitiesConfig } from '@/entities/capability/composables/useCapabilitiesConfig.ts'
 import type { CapabilityPort, ICapabilityEntity } from '@/entities/capability/capability.types.ts'
+import { useCapabilitiesConfig } from '@/entities/capability/composables/useCapabilitiesConfig.ts'
 import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
 
 export function useProviderRecordsFetcher() {
@@ -10,10 +10,10 @@ export function useProviderRecordsFetcher() {
     async function fetchAllCapabilityRecords(
         port: CapabilityPort,
         page = 1,
-        perPage = 50,
+        per_page = 50,
         result: ICapabilityEntity[] = []
     ) {
-        const response = await port.list({ page, perPage })
+        const response = await port.list({ page, per_page })
         if (!response.ok) {
             logger.error(`Failed to fetch data from capability port`, response.error)
             return result
@@ -21,8 +21,8 @@ export function useProviderRecordsFetcher() {
 
         result.push(...response.data)
 
-        if (response.meta.hasMore) {
-            return fetchAllCapabilityRecords(port, page + 1, perPage, result)
+        if (response.meta.has_more) {
+            return fetchAllCapabilityRecords(port, page + 1, per_page, result)
         }
 
         return result

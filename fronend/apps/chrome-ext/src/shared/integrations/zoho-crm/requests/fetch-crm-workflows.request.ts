@@ -1,6 +1,6 @@
+import type { PaginatedResult, PaginationParams } from '@zoho-ide/shared'
 import { fetchMockData } from '@/shared/api/mock/mock.api.ts'
 import { zohoCrmRequest } from '@/shared/api/zoho/zoho.api.ts'
-import type { PaginatedResult, PaginationParams } from '@zoho-ide/shared'
 import { formatZohoCrmProviderId } from '@/shared/integrations/zoho-crm/crm.provider.ts'
 import type { ZohoCrmWorkflow } from '@/shared/integrations/zoho-crm/types/crm.workflow.types.ts'
 
@@ -20,7 +20,7 @@ async function regular(
     pagination: PaginationParams
 ): Promise<PaginatedResult<ZohoCrmWorkflow[]>> {
     const response = await zohoCrmRequest<Response>(tabId, {
-        url: `/crm/v8/settings/automation/workflow_rules?page=${pagination.page}&per_page=${pagination.perPage}`,
+        url: `/crm/v8/settings/automation/workflow_rules?page=${pagination.page}&per_page=${pagination.per_page}`,
         method: 'GET',
         headers: { 'x-crm-org': orgId },
     })
@@ -41,8 +41,8 @@ async function regular(
         meta: {
             total: info.count,
             page: info.page,
-            perPage: info.per_page,
-            hasMore: info.more_records,
+            per_page: info.per_page,
+            has_more: info.more_records,
         },
     }
 }
@@ -61,8 +61,8 @@ async function mock(orgId: string): Promise<PaginatedResult<ZohoCrmWorkflow[]>> 
         meta: {
             total: data.length,
             page: 1,
-            perPage: data.length,
-            hasMore: false,
+            per_page: data.length,
+            has_more: false,
         },
     }
 }

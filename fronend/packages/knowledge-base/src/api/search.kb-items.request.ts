@@ -1,0 +1,17 @@
+import type { IKnowledgeBaseItem } from '../types'
+import { apiClient, buildQueryParams } from '@zoho-ide/shared'
+import type { PaginationParams, PagingResponse } from '@zoho-ide/shared'
+
+export async function searchKbItemsRequest(
+    searchTerm = '',
+    paging: PaginationParams = { page: 1, per_page: 15 }
+): Promise<PagingResponse<IKnowledgeBaseItem[]>> {
+    return apiClient
+        .get<PagingResponse<IKnowledgeBaseItem[]>>(`/knowledge-base/items/search`, {
+            params: buildQueryParams({
+                ...paging,
+                search_term: searchTerm,
+            }),
+        })
+        .then((response) => response.data)
+}

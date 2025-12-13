@@ -1,6 +1,6 @@
+import type { PaginatedResult, PaginationParams } from '@zoho-ide/shared'
 import { fetchMockData } from '@/shared/api/mock/mock.api.ts'
 import { zohoCrmRequest } from '@/shared/api/zoho/zoho.api.ts'
-import type { PaginatedResult, PaginationParams } from '@zoho-ide/shared'
 import { formatZohoCrmProviderId } from '@/shared/integrations/zoho-crm/crm.provider.ts'
 import type { ZohoCrmFunction } from '@/shared/integrations/zoho-crm/types/crm.functions.types.ts'
 
@@ -9,8 +9,8 @@ async function regular(
     orgId: string,
     pagination: PaginationParams
 ): Promise<PaginatedResult<ZohoCrmFunction[]>> {
-    const start = pagination.page <= 1 ? 0 : (pagination.page - 1) * pagination.perPage
-    const limit = pagination.perPage
+    const start = pagination.page <= 1 ? 0 : (pagination.page - 1) * pagination.per_page
+    const limit = pagination.per_page
 
     const response = await zohoCrmRequest<{ functions: ZohoCrmFunction[] }>(tabId, {
         url: `/crm/v2/settings/functions?type=org&start=${start}&limit=${limit}`,
@@ -37,8 +37,8 @@ async function regular(
         meta: {
             total: functions.length,
             page: pagination.page,
-            perPage: pagination.perPage,
-            hasMore: functions.length >= pagination.perPage,
+            per_page: pagination.per_page,
+            has_more: functions.length >= pagination.per_page,
         },
     }
 }
@@ -57,8 +57,8 @@ async function mock(orgId: string): Promise<PaginatedResult<ZohoCrmFunction[]>> 
         meta: {
             total: data.length,
             page: 1,
-            perPage: data.length,
-            hasMore: false,
+            per_page: data.length,
+            has_more: false,
         },
     }
 }

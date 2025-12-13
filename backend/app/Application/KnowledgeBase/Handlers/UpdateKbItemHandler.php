@@ -23,6 +23,7 @@ readonly class UpdateKbItemHandler
         $item->content = $command->content;
         $item->parentId = $command->parentId;
         $item->updatedBy = $command->user?->id;
+        $item->category = $command->category;
 
         return $this->repository->saveWithTags($item, $command->tagIds);
     }
