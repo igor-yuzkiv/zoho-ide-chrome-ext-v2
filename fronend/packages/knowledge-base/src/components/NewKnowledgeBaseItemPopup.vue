@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { KnowledgeBaseCategoryOptions } from '../knowledge-base.constants.ts'
+import { KnowledgeBaseCategoryMetadata } from '../knowledge-base.constants.ts'
 import { useCreateKbItem } from '../mutations'
 import { useKbTemplatesListQuery } from '../queries'
 import { type IKnowledgeBaseItem } from '../types'
@@ -19,6 +19,8 @@ const { formData, submitFormData, formErrors, isPending, resetFormData } = useCr
 const validationErrors = useValidationErrors(computed(() => formErrors.value || {}))
 const { data: templates, isFetching: isFetchingTemplates, findById: findTemplateById } = useKbTemplatesListQuery()
 const templateId = ref<string | undefined>()
+
+const catergoryOptions = Object.values(KnowledgeBaseCategoryMetadata)
 
 function handleSelectTemplate(value?: string) {
     templateId.value = value
@@ -95,7 +97,7 @@ watch(visible, (newVal) => {
             <FieldContainer label="Category" input-id="category">
                 <Select
                     fluid
-                    :options="KnowledgeBaseCategoryOptions"
+                    :options="catergoryOptions"
                     option-value="value"
                     option-label="label"
                     placeholder="Select category"

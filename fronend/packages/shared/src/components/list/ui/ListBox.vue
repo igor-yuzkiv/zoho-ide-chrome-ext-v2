@@ -101,14 +101,14 @@ const itemsForDisplay = computed(() => {
             <slot v-else name="empty">
                 <div class="flex h-full w-full items-center justify-center p-4 app-secondary-text">No items found.</div>
             </slot>
+        </div>
 
-            <div
-                v-if="hasMoreItems"
-                @click="$emit('loadMore')"
-                class="flex items-center justify-center text-center w-full cursor-pointer hover:bg-selection rounded"
-            >
-                Load More
-            </div>
+        <div
+            v-if="hasMoreItems"
+            @click="$emit('loadMore')"
+            class="text-center w-full cursor-pointer rounded text-gray-400 hover:text-black dark:hover:text-white"
+        >
+            Load More
         </div>
     </div>
 </template>

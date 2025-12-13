@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { type IKnowledgeBaseItem, NewKnowledgeBaseItemPopup, useKbItemsListQuery } from '@zoho-ide/knowledge-base'
+import {
+    type IKnowledgeBaseItem,
+    KnowledgeBaseCategoryMetadata,
+    NewKnowledgeBaseItemPopup,
+    useKbItemsListQuery,
+} from '@zoho-ide/knowledge-base'
 import { IconButton, isRouteName, ListBox, ListItem } from '@zoho-ide/shared'
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
@@ -22,6 +27,12 @@ const isActiveListItem = (item: IKnowledgeBaseItem) => {
         route.params.itemId === item.id
     )
 }
+
+const getItemIcon = (item: IKnowledgeBaseItem) => {
+    return item.category
+        ? KnowledgeBaseCategoryMetadata[item.category].icon
+        : KnowledgeBaseCategoryMetadata.general.icon
+}
 </script>
 
 <template>
@@ -42,7 +53,7 @@ const isActiveListItem = (item: IKnowledgeBaseItem) => {
                 as="router-link"
                 :class="{ 'app-list-item-active': active }"
                 :to="{ name: AppRouteName.knowledgeBaseArticleDetails, params: { itemId: item.id } }"
-                icon="carbon:ibm-watson-knowledge-catalog"
+                :icon="getItemIcon(item)"
                 :title="item.title"
             />
         </template>

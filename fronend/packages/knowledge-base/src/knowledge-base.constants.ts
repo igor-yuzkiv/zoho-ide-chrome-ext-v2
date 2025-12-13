@@ -1,4 +1,4 @@
-import type { KbItemFormData, KnowledgeBaseCategoryMetadata } from './types'
+import type { KbItemFormData, TKnowledgeBaseCategory, TKnowledgeBaseCategoryMetadata } from './types'
 import type { MaybeRefOrGetter } from 'vue'
 
 export const KnowledgeBaseQueryKeys = {
@@ -17,7 +17,7 @@ export const defaultKbItemFormData = (): KbItemFormData => ({
     tags: [],
 })
 
-export const KnowledgeBaseCategoryOptions: KnowledgeBaseCategoryMetadata[] = [
-    { label: 'General', value: 'general' },
-    { label: 'Code Samples', value: 'code_samples' },
-]
+export const KnowledgeBaseCategoryMetadata: Record<TKnowledgeBaseCategory, TKnowledgeBaseCategoryMetadata> = {
+    general: { label: 'General', value: 'general', icon: 'carbon:ibm-watson-knowledge-catalog' },
+    code_samples: { label: 'Code Samples', value: 'code_samples', icon: 'mingcute:code-fill' },
+}

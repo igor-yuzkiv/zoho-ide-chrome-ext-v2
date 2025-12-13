@@ -1,11 +1,12 @@
 import type { IEntity, IUser } from '@zoho-ide/shared'
 import type { ITagEntity } from '@zoho-ide/tags'
 
-export type KnowledgeBaseCategory = 'general' | 'code_samples'
+export type TKnowledgeBaseCategory = 'general' | 'code_samples'
 
-export type KnowledgeBaseCategoryMetadata = {
+export type TKnowledgeBaseCategoryMetadata = {
     label: string
-    value: KnowledgeBaseCategory
+    value: TKnowledgeBaseCategory
+    icon: string
 }
 
 export interface IKnowledgeBaseItem extends IEntity {
@@ -13,7 +14,7 @@ export interface IKnowledgeBaseItem extends IEntity {
     title: string
     content?: string
     parent_id?: string
-    category?: KnowledgeBaseCategory
+    category?: TKnowledgeBaseCategory
     created_at?: string
     updated_at?: string
     created_by?: string
@@ -30,7 +31,7 @@ export interface SaveKbItemRequestPayload {
     title: string
     content?: string
     parentId?: string
-    category?: KnowledgeBaseCategory
+    category?: TKnowledgeBaseCategory
     tags_ids?: string[]
 }
 
@@ -49,5 +50,5 @@ export interface IKnowledgeBaseTemplate extends IEntity {
     key: string
     name: string
     content?: string
-    category?: KnowledgeBaseCategory
+    category?: TKnowledgeBaseCategory
 }
