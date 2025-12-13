@@ -52,7 +52,10 @@ class EloquentAttachmentRepository implements AttachmentRepository
         return $result;
     }
 
-    public function getEntityAttachments(GetEntityAttachmentsQuery $query): PageResult
+    /**
+     * @return PageResult<Attachment>
+     */
+    public function paginateEntityAttachments(GetEntityAttachmentsQuery $query): PageResult
     {
         $result = AttachmentModel::query()
             ->where('entity_id', $query->entityRef->id)
@@ -74,5 +77,26 @@ class EloquentAttachmentRepository implements AttachmentRepository
             lastPage: $result->lastPage(),
             hasMore: $result->hasMorePages(),
         );
+    }
+
+    /**
+     * @return Collection<int, Attachment>
+     */
+    public function getEntityAttachments(EntityRef $entityRef): Collection
+    {
+        $models = AttachmentModel::query()
+            ->where('entity_id', $entityRef->id)
+            ->where('entity_name', $entityRef->entityName)
+            ->get();
+
+        return $models->map(fn (AttachmentModel $model) => $this->mapper->toEntity($model));
+    }
+
+    public function deleteEntityAttachments(EntityRef $entityRef): void
+    {
+        AttachmentModel::query()
+            ->where('entity_id', $entityRef->id)
+            ->where('entity_name', $entityRef->entityName)
+            ->delete();
     }
 }

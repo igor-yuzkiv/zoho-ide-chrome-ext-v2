@@ -4,8 +4,8 @@ namespace App\Domains\Attachment\Repositories;
 
 use App\Application\Attachment\Queries\GetEntityAttachmentsQuery;
 use App\Domains\Attachment\Entities\Attachment;
-use App\Shared\ValueObjects\EntityRef;
 use App\Shared\DTO\PageResult;
+use App\Shared\ValueObjects\EntityRef;
 use Illuminate\Support\Collection;
 
 interface AttachmentRepository
@@ -22,5 +22,12 @@ interface AttachmentRepository
     /**
      * @return PageResult<Attachment>
      */
-    public function getEntityAttachments(GetEntityAttachmentsQuery $query): PageResult;
+    public function paginateEntityAttachments(GetEntityAttachmentsQuery $query): PageResult;
+
+    /**
+     * @return Collection<int, Attachment>
+     */
+    public function getEntityAttachments(EntityRef $entityRef): Collection;
+
+    public function deleteEntityAttachments(EntityRef $entityRef): void;
 }

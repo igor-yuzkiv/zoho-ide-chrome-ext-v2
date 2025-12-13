@@ -7,6 +7,7 @@ use App\Api\Http\Requests\KnowledgeBase\SaveKbItemRequest;
 use App\Api\Resources\KnowledgeBase\KnowledgeBaseItemResource;
 use App\Api\Resources\KnowledgeBase\KnowledgeBaseItemWithRelationsResource;
 use App\Application\Auth\Contracts\AuthGateway;
+use App\Application\KnowledgeBase\Commands\RemoveKbItemByIdHandler;
 use App\Application\KnowledgeBase\Handlers\CreateKbItemFromTemplateHandler;
 use App\Application\KnowledgeBase\Handlers\CreateKbItemHandler;
 use App\Application\KnowledgeBase\Handlers\UpdateKbItemHandler;
@@ -100,14 +101,18 @@ class KnowledgeBaseController extends Controller
         return new KnowledgeBaseItemResource($item);
     }
 
-    public function deleteById(string $id): JsonResponse
+    public function deleteById(string $id, RemoveKbItemByIdHandler $handler): JsonResponse
     {
-        // TODO: remove attachments associated with the article
-        $status = $this->kbItemRepository->deleteById($id);
+        $item = $this->kbItemRepository->find($id);
+        if (!$item) {
+            return $this->noContentResponse('Article not found');
+        }
+
+        $status = $handler($item);
 
         return response()->json([
             'status'  => $status,
-            'message' => $status ? 'Article deleted successfully' : 'Article not found',
+            'message' => $status ? 'Article deleted successfully' : 'Failed to delete article',
         ]);
     }
 }
