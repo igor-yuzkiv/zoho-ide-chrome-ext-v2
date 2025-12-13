@@ -27,7 +27,7 @@ class AttachmentsController extends Controller
             sortParams: $this->getSortParams(),
         );
 
-        $pageResult = $this->repository->getEntityAttachments($query);
+        $pageResult = $this->repository->paginateEntityAttachments($query);
 
         return AttachmentResource::collection($pageResult->data)->additional(['meta' => $pageResult->getMetadata()]);
     }
