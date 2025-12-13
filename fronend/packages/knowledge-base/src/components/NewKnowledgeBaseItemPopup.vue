@@ -20,7 +20,7 @@ const validationErrors = useValidationErrors(computed(() => formErrors.value || 
 const { data: templates, isFetching: isFetchingTemplates, findById: findTemplateById } = useKbTemplatesListQuery()
 const templateId = ref<string | undefined>()
 
-const catergoryOptions = Object.values(KnowledgeBaseCategoryMetadata)
+const categoryOptions = Object.values(KnowledgeBaseCategoryMetadata)
 
 function handleSelectTemplate(value?: string) {
     templateId.value = value
