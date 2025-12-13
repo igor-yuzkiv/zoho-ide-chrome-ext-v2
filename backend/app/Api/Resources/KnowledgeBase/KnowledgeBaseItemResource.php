@@ -15,6 +15,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
             'title'      => $this->title,
             'content'    => $this->content ?? '',
             'parent_id'  => $this->parentId,
+            'category'   => $this->category,
             'created_by' => $this->createdBy,
             'update_by'  => $this->updatedBy,
             'created_at' => $this->createdAt?->toIso8601String(),

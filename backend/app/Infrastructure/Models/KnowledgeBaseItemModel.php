@@ -2,6 +2,7 @@
 
 namespace App\Infrastructure\Models;
 
+use App\Domains\KnowledgeBase\Enums\KnowledgeBaseCategory;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -21,8 +22,17 @@ class KnowledgeBaseItemModel extends Model
         'title',
         'content',
         'parent_id',
+        'category',
         'created_by',
         'updated_by',
+    ];
+
+    protected $attributes = [
+        'category' => KnowledgeBaseCategory::General,
+    ];
+
+    protected $casts = [
+        'category' => KnowledgeBaseCategory::class,
     ];
 
     public function parent(): HasOne
