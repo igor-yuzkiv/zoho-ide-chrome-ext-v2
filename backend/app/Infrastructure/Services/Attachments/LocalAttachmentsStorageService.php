@@ -41,6 +41,7 @@ class LocalAttachmentsStorageService implements AttachmentsStorageService
         if ($this->isAttachmentFileExists($attachment)) {
             return Storage::disk('attachments')->delete($attachment->id.'.'.$attachment->extension);
         }
+        return false;
     }
 
     /**
