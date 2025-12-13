@@ -24,6 +24,9 @@ interface AttachmentRepository
      */
     public function paginateEntityAttachments(GetEntityAttachmentsQuery $query): PageResult;
 
+    /**
+     * @return Collection<int, Attachment>
+     */
     public function getEntityAttachments(EntityRef $entityRef): Collection;
 
     public function deleteEntityAttachments(EntityRef $entityRef): void;
