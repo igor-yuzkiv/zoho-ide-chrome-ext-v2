@@ -7,6 +7,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { Button, Splitter, SplitterPanel } from 'primevue'
 import { Icon } from '@iconify/vue'
 import { GlobalSearchDialog, useGlobalSearch } from '@/shared/libs/global-search'
+import { useLogger } from '@/shared/libs/logger/useLogger.ts'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { useCapabilitiesCacheManager } from '@/entities/capability/composables/useCapabilitiesCacheManager.ts'
 import { useCapabilitiesConfig } from '@/entities/capability/composables/useCapabilitiesConfig.ts'
@@ -21,6 +22,7 @@ const router = useRouter()
 const route = useRoute()
 const providers = useProvidersStore()
 const capabilities = useCapabilitiesConfig()
+const logger = useLogger('WorkspaceLayout')
 
 const providerId = useRouteParams<string>('providerId')
 const provider = computed(() => providers.findById(providerId.value))
@@ -54,7 +56,7 @@ function handleClickClearCache() {
                 await bootstrapProviderCache(provider.value)
                 await bootstrapGlobalSearch({ provider: provider.value })
             } catch (e) {
-                console.error(e)
+                logger.error('Failed to clear cache', e)
                 toast.add({ severity: 'error', summary: 'Error', detail: 'Failed to clear cache.' })
             }
         },
@@ -63,7 +65,7 @@ function handleClickClearCache() {
 
 onMounted(async () => {
     if (!provider.value) {
-        router.push({ name: AppRouteName.error }).catch(console.error)
+        router.push({ name: AppRouteName.error })
         return
     }
 
@@ -71,8 +73,8 @@ onMounted(async () => {
         await bootstrapProviderCache(provider.value)
         await bootstrapGlobalSearch({ provider: provider.value })
     } catch (e) {
-        console.error(e)
-        router.push({ name: AppRouteName.error }).catch(console.error)
+        logger.error('Failed to bootstrap caches', e)
+        router.push({ name: AppRouteName.error })
     }
 })
 </script>

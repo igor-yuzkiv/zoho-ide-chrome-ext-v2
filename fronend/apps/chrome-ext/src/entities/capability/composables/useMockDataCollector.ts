@@ -27,7 +27,7 @@ export function useMockDataCollector() {
         )
     }
 
-    async function saveCapabilityMockData(
+    function saveCapabilityMockData(
         provider: ServiceProvider,
         capabilityType: string,
         records: ICapabilityEntity[]

@@ -1,4 +1,4 @@
-import { MaybeRefOrGetter } from '@vueuse/core'
+import type { MaybeRefOrGetter } from '@vueuse/core'
 
 export const CapabilityType = {
     FUNCTIONS: 'functions',

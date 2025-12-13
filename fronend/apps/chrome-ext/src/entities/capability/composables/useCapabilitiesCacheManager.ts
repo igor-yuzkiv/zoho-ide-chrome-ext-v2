@@ -30,7 +30,7 @@ export function useCapabilitiesCacheManager() {
         return count > 0
     }
 
-    async function isProviderHasCache(provider: ServiceProvider): Promise<boolean> {
+    async function hasProviderCache(provider: ServiceProvider): Promise<boolean> {
         const count = await providersCacheDb.records.where('providerId').equals(provider.id).count()
 
         return count > 0
@@ -44,7 +44,7 @@ export function useCapabilitiesCacheManager() {
     }
 
     async function shouldSyncProvider(provider: ServiceProvider) {
-        const isHasCache = await isProviderHasCache(provider)
+        const isHasCache = await hasProviderCache(provider)
         const isCacheStale = isProviderCacheStale(provider)
 
         return !isHasCache || isCacheStale
@@ -76,7 +76,7 @@ export function useCapabilitiesCacheManager() {
             await upsertCapabilityRecordsInCache(provider, capabilityType, records)
 
             //TODO: remove mock data saving after testing
-            await mockDataCollector.saveCapabilityMockData(provider, capabilityType, records).catch(console.error)
+            mockDataCollector.saveCapabilityMockData(provider, capabilityType, records)
 
             return true
         } catch (error) {
@@ -87,6 +87,12 @@ export function useCapabilitiesCacheManager() {
 
             return false
         }
+    }
+
+    async function invalidateProviderQueries(providerId: string) {
+        await queryClient
+            .invalidateQueries({ queryKey: CapabilityQueryKeys.forProvider(providerId) })
+            .catch((e) => logger.error('Failed to invalidate capability queries for provider', providerId, e))
     }
 
     async function bootstrap(provider: ServiceProvider) {
@@ -113,31 +119,29 @@ export function useCapabilitiesCacheManager() {
             }
 
             if (!isSomeSynced) {
-                console.warn('No capability records were synced for provider', provider.id)
+                logger.warn('No capability records were synced for provider', provider.id)
                 return
             }
 
             providersStore.updateProvider(provider.id, { lastSyncedAt: Date.now() })
-
-            await queryClient
-                .invalidateQueries({ queryKey: CapabilityQueryKeys.forProvider(provider.id) })
-                .catch(console.error)
+            await invalidateProviderQueries(provider.id)
         } finally {
             isSynchronizing.value = false
         }
     }
 
     async function clearProviderCache(providerId: string) {
+        if (isSynchronizing.value) {
+            return
+        }
+
         if (!providersStore.isProviderOnline(providerId)) {
             logger.warn('Cannot clear cache for offline provider', providerId)
             return
         }
 
         await providersCacheDb.records.where('providerId').equals(providerId).delete()
-
-        await queryClient
-            .invalidateQueries({ queryKey: CapabilityQueryKeys.forProvider(providerId) })
-            .catch(console.error)
+        await invalidateProviderQueries(providerId)
 
         providersStore.updateProvider(providerId, { lastSyncedAt: undefined })
     }
@@ -146,7 +150,7 @@ export function useCapabilitiesCacheManager() {
         isSynchronizing,
         bootstrap,
         hasCapabilityRecordsInCache,
-        isProviderHasCache,
+        hasProviderCache,
         isProviderCacheStale,
         clearProviderCache,
     }
