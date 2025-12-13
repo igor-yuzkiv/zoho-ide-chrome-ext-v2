@@ -99,7 +99,6 @@ watch(visible, (newVal) => {
                     option-value="value"
                     option-label="label"
                     placeholder="Select category"
-                    :loading="isFetchingTemplates"
                     :value="formData.category"
                     @update:model-value="handleChangeField('category', $event)"
                 />
