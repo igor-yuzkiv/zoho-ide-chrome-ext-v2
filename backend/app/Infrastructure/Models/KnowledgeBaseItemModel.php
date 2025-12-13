@@ -28,7 +28,7 @@ class KnowledgeBaseItemModel extends Model
     ];
 
     protected $attributes = [
-        'category' => KnowledgeBaseCategory::General,
+        'category' => 'general',
     ];
 
     protected $casts = [
