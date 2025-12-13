@@ -17,7 +17,7 @@ interface AttachmentsStorageService
     public function delete(Attachment $attachment): bool;
 
     /**
-     * @param  Collection<int, Attachment>  $attachmentIds
+     * @param  Collection<int, Attachment>  $attachments
      */
     public function deleteMany(Collection $attachments): void;
 }
