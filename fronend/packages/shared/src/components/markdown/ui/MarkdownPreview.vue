@@ -20,7 +20,12 @@ const displayContent = computed(() => {
 </script>
 
 <template>
-    <MdPreview :modelValue="displayContent" :theme="appTheme.isDark ? 'dark' : 'light'" language="en-US" />
+    <MdPreview
+        :modelValue="displayContent"
+        :theme="appTheme.isDark ? 'dark' : 'light'"
+        language="en-US"
+        :codeFoldable="false"
+    />
 </template>
 
 <style scoped></style>
