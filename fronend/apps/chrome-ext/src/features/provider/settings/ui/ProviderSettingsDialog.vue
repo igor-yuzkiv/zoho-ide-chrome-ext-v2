@@ -26,7 +26,7 @@ function handleInputChange(field: keyof ProviderSettingForm, value: unknown) {
         modal
         :draggable="false"
         header="Provider Settings"
-        content-class="flex w-full h-full gap-z2 overflow-hidden"
+        content-class="flex w-full h-full gap-2 overflow-hidden"
         :closable="false"
         class="w-2/6"
     >
