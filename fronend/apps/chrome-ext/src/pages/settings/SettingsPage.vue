@@ -63,7 +63,7 @@ const itemsForDisplay = computed(() => {
                 <Column field="online" header="Online Status"></Column>
                 <Column field="lastSyncedAt" header="Last Synced At"></Column>
                 <Column field="cacheTtlMs" header="Cache TTL (ms)"></Column>
-                <Column>
+                <Column header="Actions">
                     <template #body="{ data }">
                         <Button
                             text
