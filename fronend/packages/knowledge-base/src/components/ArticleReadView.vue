@@ -33,7 +33,7 @@ const createdAt = computed(() => {
         </div>
 
         <div class="flex items-center justify-end bg-secondary/60 overflow-hidden">
-            <div class="flex items-center h-full text-gray-400 truncate shrink-0">
+            <div class="flex items-center h-full text-gray-600 dark:text-gray-300 truncate shrink-0">
                 <div
                     v-if="article.created_by_user"
                     class="flex items-center gap-x-2 hover:bg-black/50 dark:hover:bg-primary cursor-pointer px-2 h-full hover:text-white"
@@ -48,7 +48,7 @@ const createdAt = computed(() => {
                     <Icon icon="clarity:date-line" />
                     <span>{{ createdAt }}</span>
                 </div>
-                <div
+                <!--<div
                     class="flex items-center gap-x-2 hover:bg-black/50 dark:hover:bg-primary cursor-pointer px-2 h-full hover:text-white"
                 >
                     <Icon icon="tabler:eye" />
@@ -59,7 +59,7 @@ const createdAt = computed(() => {
                 >
                     <Icon icon="icon-park-solid:like" />
                     <span>32</span>
-                </div>
+                </div>-->
             </div>
         </div>
     </div>
