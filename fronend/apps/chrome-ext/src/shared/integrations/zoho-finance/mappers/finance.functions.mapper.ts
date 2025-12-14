@@ -1,5 +1,5 @@
 import type { IFunctionEntity } from '@/capabilities/function/function.types.ts'
-import {
+import type {
     ZohoFinanceFunction,
     ZohoFinanceFunctionDetailsResponse,
     ZohoFinanceFunctionResponse,
