@@ -29,7 +29,7 @@ async function regular(
         usestate: 'false',
     }).toString()
 
-    //Zoho Finance uses the same request structure as Zoho CRM, just different endpoint
+    // Zoho Finance uses the same request structure as Zoho CRM, just different endpoint
     const response = await zohoCrmRequest<ResponseType>(tabId, {
         method: 'GET',
         url: `/api/${apiVersion}/integrations/customfunctions?${queryString}`,
