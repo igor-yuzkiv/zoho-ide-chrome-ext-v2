@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import type { WfConditionNodeData } from '@/capabilities/workflow/workflow-schema.types.ts'
 import { Handle, Position } from '@vue-flow/core'
 import { Icon } from '@iconify/vue'
-import type { WfConditionNodeData } from '@/capabilities/workflow/workflow-schema.types.ts'
 
 defineProps<{
     id: string
