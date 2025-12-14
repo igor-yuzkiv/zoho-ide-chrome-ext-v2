@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import type { WfWhenStatementNodeData } from '@/capabilities/workflow/workflow-schema.types.ts'
 import { Handle, Position } from '@vue-flow/core'
 import { startCase } from 'lodash'
 import { Icon } from '@iconify/vue'
-import type { WfWhenStatementNodeData } from '@/capabilities/workflow/workflow-schema.types.ts'
 
 defineProps<{
     id: string
@@ -11,13 +11,16 @@ defineProps<{
 </script>
 
 <template>
-    <div class="flex flex-col text-black bg-gray-100 rounded-lg overflow-hidden break-all">
-        <div class="flex items-center w-full gap-x-2 text-lg font-bold p-2 bg-amber-400">
-            <Icon :icon="data.repeat ? 'material-symbols:repeat' : 'ph:repeat-once-fill'" class="w-6 h-6" />
-            <div>When {{ data.moduleName }} {{ startCase(data.trigger) }}</div>
+    <div class="flex flex-col overflow-hidden break-all bg-secondary rounded-lg border">
+        <div class="flex items-center border-b p-4 gap-4">
+            <Icon icon="grommet-icons:trigger" class="text-2xl text-amber-600" />
+            <div class="flex flex-col">
+                <div class="text-xl font-bold leading-5">{{ data.moduleName }}</div>
+                <div class="leading-5">{{ startCase(data.trigger) }}</div>
+            </div>
         </div>
 
-        <div class="flex flex-col p-2">
+        <div class="flex flex-col p-2 bg-primary">
             <ul class="ml-2 list-disc list-inside">
                 <li v-for="(item, index) in data.criteria" :key="index">{{ item }}</li>
             </ul>

@@ -27,7 +27,7 @@ watchEffect(() => {
 </script>
 
 <template>
-    <VueFlow :nodes="workflowSchema.nodes.value" :edges="workflowSchema.edges.value">
+    <VueFlow :nodes="workflowSchema.nodes.value" :edges="workflowSchema.edges.value" fit-view-on-init>
         <template #node-WfWhenNode="props">
             <WfWhenNode :id="props.id" :data="props.data" />
         </template>
