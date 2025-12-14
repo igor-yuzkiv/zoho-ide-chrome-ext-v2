@@ -1,8 +1,11 @@
-import { capitalize } from 'vue'
-import type { BrowserTab } from '@/shared/libs/browser/browser.types.ts'
 import type { Result } from '@zoho-ide/shared'
+import { capitalize } from 'vue'
 import type { ZohoFinanceService } from '@/shared/integrations/zoho-finance/types/finance.provider.types.ts'
-import { resolveFinanceProviderMetadataFromUrl } from '@/shared/integrations/zoho-finance/zoho-finance.utils.ts'
+import {
+    formatZohoFinanceProviderId,
+    resolveFinanceProviderMetadataFromUrl,
+} from '@/shared/integrations/zoho-finance/zoho-finance.utils.ts'
+import type { BrowserTab } from '@/shared/libs/browser/browser.types.ts'
 import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
 
 const SERVICE_ICONS: Record<ZohoFinanceService, string> = {
@@ -23,12 +26,13 @@ export function financeServiceProviderFactory(tab: BrowserTab): Result<ServicePr
     return {
         ok: true,
         value: {
-            id: `zoho-finance-${metadata.orgId}`,
+            id: formatZohoFinanceProviderId(metadata.orgId),
             type: 'finance',
             title: `Zoho ${capitalize(metadata.financeService)} (${metadata.orgId})`,
             metadata: metadata,
             tabId: tab.id,
             serviceIcon: SERVICE_ICONS[metadata.financeService],
+            cacheTtlMs: 4 * 60 * 60 * 1000, // 4 hours
         },
     }
 }
