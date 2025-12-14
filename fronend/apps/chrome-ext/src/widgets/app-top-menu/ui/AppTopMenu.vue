@@ -49,6 +49,7 @@ function handleSignOut() {
 <template>
     <TopMenu :items="navItems" class="relative">
         <div
+            v-if="currentProvider"
             @click="globalSearch.open()"
             class="fixed left-[45%] cursor-pointer flex items-center justify-center gap-x-2 bg-primary border rounded-lg w-64 hover:bg-gray-100 dark:hover:bg-black/60 text-sm dark:text-gray-300"
             v-tooltip.bottom="{ value: 'Search (Ctrl + K, ⌘ + K)' }"
@@ -58,7 +59,10 @@ function handleSignOut() {
         </div>
 
         <template #right-content>
-            <UserProfile :user="authStore.user" @sign-in="handleClickSignIn" @sign-out="handleSignOut" />
+            <div class="flex items-center gap-x-2">
+                <slot name="right-content" />
+                <UserProfile :user="authStore.user" @sign-in="handleClickSignIn" @sign-out="handleSignOut" />
+            </div>
         </template>
     </TopMenu>
 </template>

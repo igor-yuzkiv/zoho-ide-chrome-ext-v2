@@ -1,8 +1,12 @@
 <script setup lang="ts">
-import { ToggleThemeButton } from '@zoho-ide/shared'
+import { IconButton, ToggleThemeButton } from '@zoho-ide/shared'
 import { useAppThemeStore } from '@zoho-ide/shared'
 
 const appTheme = useAppThemeStore()
+
+function fullScreen() {
+    chrome.tabs.create({ url: chrome.runtime.getURL('dist/index.html') })
+}
 </script>
 
 <template>
@@ -12,6 +16,7 @@ const appTheme = useAppThemeStore()
         </div>
         <div class="flex items-center justify-end gap-x-2">
             <slot name="end"></slot>
+            <IconButton text size="small" @click="fullScreen" icon="mingcute:fullscreen-fill"></IconButton>
             <ToggleThemeButton :is-dark="appTheme.isDark" @click="appTheme.toggle" />
         </div>
     </footer>

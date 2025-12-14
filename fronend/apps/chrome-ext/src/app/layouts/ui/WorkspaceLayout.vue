@@ -81,7 +81,26 @@ onMounted(async () => {
 
 <template>
     <div class="relative bg-secondary flex h-screen w-full flex-col overflow-hidden">
-        <AppTopMenu />
+        <AppTopMenu>
+            <template #right-content>
+                <div v-if="isSynchronizing" class="flex items-center gap-x-1 text-gray-500 text-sm">
+                    <Icon icon="line-md:loading-loop" />
+                    <span>Synchronizing...</span>
+                </div>
+                <span v-else class="text-gray-500 text-sm">Last synced: {{ lastSynced }}</span>
+
+                <Button
+                    :disabled="isSynchronizing || !isProviderOnline"
+                    @click="handleClickClearCache"
+                    severity="secondary"
+                    text
+                    size="small"
+                    class="px-2 py-0"
+                >
+                    Reset Cache
+                </Button>
+            </template>
+        </AppTopMenu>
 
         <main v-if="provider" class="flex h-full w-full overflow-hidden px-2">
             <CapabilitiesMenu :providerId="providerId" :capabilities="providerCapabilities" />
@@ -107,28 +126,7 @@ onMounted(async () => {
             </Splitter>
         </main>
 
-        <AppFooter>
-            <template #start>
-                <Button
-                    :disabled="isSynchronizing || !isProviderOnline"
-                    @click="handleClickClearCache"
-                    severity="secondary"
-                    text
-                    size="small"
-                    class="px-2 py-0"
-                >
-                    Reset Cache
-                </Button>
-            </template>
-
-            <template #end>
-                <div v-if="isSynchronizing" class="flex items-center gap-x-1 text-gray-500 text-sm">
-                    <Icon icon="line-md:loading-loop" />
-                    <span>Synchronizing...</span>
-                </div>
-                <span v-else class="text-gray-500 text-sm">Last synced: {{ lastSynced }}</span>
-            </template>
-        </AppFooter>
+        <AppFooter />
     </div>
 
     <GlobalSearchDialog />
