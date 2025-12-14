@@ -1,7 +1,7 @@
 import type { PaginatedResult, PaginationParams } from '@zoho-ide/shared'
 import { fetchMockData } from '@/shared/api/mock/mock.api.ts'
 import { zohoCrmRequest } from '@/shared/api/zoho/zoho.api.ts'
-import { ZohoFinanceFunctionResponse } from '@/shared/integrations/zoho-finance/types/finance.functions.types.ts'
+import type { ZohoFinanceFunctionResponse } from '@/shared/integrations/zoho-finance/types/finance.functions.types.ts'
 import { formatZohoFinanceProviderId } from '@/shared/integrations/zoho-finance/zoho-finance.utils.ts'
 
 type ResponseType = {
