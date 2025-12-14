@@ -102,6 +102,10 @@ export const useProvidersStore = defineStore('providers', () => {
         return Boolean(provider?.tabId)
     }
 
+    function findProviderById(providerId: string): ServiceProvider | undefined {
+        return providersMap.value.get(providerId)
+    }
+
     return {
         providersMap,
         providersList,
@@ -110,5 +114,6 @@ export const useProvidersStore = defineStore('providers', () => {
         handleChangeBrowserTabs,
         updateProvider,
         isProviderOnline,
+        findProviderById,
     }
 })

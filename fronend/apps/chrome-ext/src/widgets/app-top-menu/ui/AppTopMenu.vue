@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useAuthStore } from '@zoho-ide/shared'
 import { TopMenu } from '@zoho-ide/shared'
-import { type  TopMenuItem, UserProfile } from '@zoho-ide/shared'
+import { type TopMenuItem, UserProfile } from '@zoho-ide/shared'
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { Icon } from '@iconify/vue'
@@ -14,9 +14,11 @@ const router = useRouter()
 const globalSearch = useGlobalSearch()
 const { data: currentProvider } = useCurrentProvider()
 
-
 const navItems = computed<TopMenuItem[]>(() => {
-    const result: TopMenuItem[] = [{ title: 'Home', route: { name: AppRouteName.home } }]
+    const result: TopMenuItem[] = [
+        { title: 'Home', route: { name: AppRouteName.home } },
+        { title: 'Settings', route: { name: AppRouteName.settingsIndex } },
+    ]
 
     if (authStore.isAuthenticated) {
         result.push({ title: 'Knowledge Base', route: { name: AppRouteName.knowledgeBaseIndex } })
@@ -30,13 +32,6 @@ const navItems = computed<TopMenuItem[]>(() => {
         {
             title: currentProvider.value.title,
             route: { name: AppRouteName.workspaceIndex, params: { providerId: currentProvider.value.id } },
-        },
-        {
-            title: 'Settings',
-            route: {
-                name: AppRouteName.workspaceSettings,
-                params: { providerId: currentProvider.value.id },
-            },
         },
     ])
 })

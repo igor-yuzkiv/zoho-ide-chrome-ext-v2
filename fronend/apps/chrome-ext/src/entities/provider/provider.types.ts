@@ -15,3 +15,8 @@ export type ServiceProvider = {
 }
 
 export type ServiceProviderFactory = (tab: BrowserTab) => Result<ServiceProvider>
+
+export type ProviderSettingForm = {
+    title: string
+    cacheTtlMs: number
+}
