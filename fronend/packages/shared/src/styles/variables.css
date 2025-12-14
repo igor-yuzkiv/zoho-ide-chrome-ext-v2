@@ -1,6 +1,6 @@
 :root {
     --app-color-primary: #fff;
-    --app-color-secondary: #EAEBF0;
+    --app-color-secondary: #eaebf0;
     --app-color-selection: #dfe1e5;
     --theme-border: #e1e1e1;
 
@@ -36,6 +36,16 @@
     --app-color-secondary: #3c3f41;
     --app-color-selection: #2d2d30;
     --theme-border: #515151;
+
+    /* PrimeVue tables */
+    --p-datatable-header-background: #212121;
+    --p-datatable-header-border-color: #515151;
+    --p-datatable-body-cell-border-color: #515151;
+    --p-datatable-header-cell-border-color: #515151;
+    --p-datatable-header-cell-background: #212121;
+    --p-datatable-row-background: #2d2d2d;
+    --p-datatable-row-striped-background: #212121;
+    --p-datatable-row-hover-background: #3c3f41;
 }
 
 @theme {

@@ -153,5 +153,6 @@ export function useCapabilitiesCacheManager() {
         hasProviderCache,
         isProviderCacheStale,
         clearProviderCache,
+        invalidateProviderQueries,
     }
 }

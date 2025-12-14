@@ -7,10 +7,11 @@ export const AppRouteName = {
     login: 'auth.login',
     workspace: 'workspace',
     workspaceIndex: 'workspace.index',
-    workspaceSettings: 'settings',
     workspaceFunctions: 'workspace.functions',
     workspaceWorkflows: 'workspace.workflows',
     workspaceModules: 'workspace.modules',
+
+    settingsIndex: 'settings.index',
 
     knowledgeBaseIndex: 'knowledge-base.index',
     knowledgeBaseArticleDetails: 'knowledge-base.article.details',
@@ -39,12 +40,6 @@ export const AppRoutes: RouteRecordRaw[] = [
         component: () => import('@/pages/workspace/WorkspaceIndexPage.vue'),
     },
     {
-        name: AppRouteName.workspaceSettings,
-        path: '/workspace/:providerId/settings',
-        meta: { hideSidebarMenu: true, layout: AppLayout.workspace },
-        component: () => import('@/pages/workspace/settings/WorkspaceSettingsPage.vue'),
-    },
-    {
         name: AppRouteName.workspaceFunctions,
         path: '/workspace/:providerId/capabilities/functions/:functionId?',
         meta: { hideSidebarMenu: false, layout: AppLayout.workspace },
@@ -70,6 +65,13 @@ export const AppRoutes: RouteRecordRaw[] = [
             default: () => import('@/pages/workspace/modules/ModulesDetailPage.vue'),
             menu: () => import('@/pages/workspace/modules/ModulesMenuPage.vue'),
         },
+    },
+
+    {
+        name: AppRouteName.settingsIndex,
+        path: '/settings',
+        meta: { hideSidebarMenu: true, layout: AppLayout.default },
+        component: () => import('@/pages/settings/SettingsPage.vue'),
     },
 
     /** * Knowledge Base Routes */

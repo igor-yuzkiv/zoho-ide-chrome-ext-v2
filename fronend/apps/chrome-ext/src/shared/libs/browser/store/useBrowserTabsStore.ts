@@ -20,6 +20,7 @@ export const useBrowserTabsStore = defineStore('browser.tabs', () => {
 
             return acc
         }, new Map())
+
     }
 
     function upsert(tab: BrowserTab) {
