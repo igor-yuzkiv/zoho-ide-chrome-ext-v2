@@ -21,7 +21,6 @@ export const useBrowserTabsStore = defineStore('browser.tabs', () => {
             return acc
         }, new Map())
 
-        console.log('TABS', Array.from(items.value.values()))
     }
 
     function upsert(tab: BrowserTab) {
