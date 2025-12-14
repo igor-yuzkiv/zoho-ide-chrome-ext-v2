@@ -63,7 +63,6 @@ export function useProviderSettingsForm() {
             return true
         } catch (e) {
             if (e instanceof z.ZodError) {
-                console.log(e.issues)
                 formErrors.value = Object.fromEntries(
                     e.issues.map((issue) => [issue.path[0] as string, [issue.message]])
                 )
