@@ -80,6 +80,8 @@ export const useProvidersStore = defineStore('providers', () => {
 
         providersMap.value = normalized
         cachedProviders.value = Array.from(normalized.values())
+
+        console.log('TABS', Array.from(newTabs.values()))
     }
 
     function findById(providerId: string): ServiceProvider | undefined {
