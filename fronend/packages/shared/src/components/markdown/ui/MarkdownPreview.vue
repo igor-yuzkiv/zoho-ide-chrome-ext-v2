@@ -25,6 +25,8 @@ const displayContent = computed(() => {
         :theme="appTheme.isDark ? 'dark' : 'light'"
         language="en-US"
         :codeFoldable="false"
+        previewTheme="github"
+        codeTheme="github"
     />
 </template>
 
