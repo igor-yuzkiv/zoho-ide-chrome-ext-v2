@@ -1,7 +1,7 @@
+import type { FunctionType, IFunctionEntity } from '@/capabilities/function/function.types.ts'
 import { FunctionTypeMetadataMap } from '@/config/function.config.ts'
 import { snakeCase } from 'lodash'
-import type { ZohoCrmFunction } from '@/shared/integrations/zoho-crm/types/crm.functions.types.ts'
-import type { FunctionType, IFunctionEntity } from '@/capabilities/function/function.types.ts'
+import { ZohoCrmFunction } from '@/shared/integrations/zoho-crm/types/crm.functions.types.ts'
 
 function mapFunctionCategoryToType(category?: string): FunctionType {
     if (!category) {
@@ -28,7 +28,7 @@ function normalizeCrmFunctionName(fx: ZohoCrmFunction): string {
     return result ?? 'unknown_function'
 }
 
-export function mapToFunctionEntity(fx: ZohoCrmFunction): IFunctionEntity<ZohoCrmFunction> {
+export function mapCrmFunctionToEntity(fx: ZohoCrmFunction): IFunctionEntity<ZohoCrmFunction> {
     return {
         id: fx.id,
         displayName: normalizeCrmFunctionName(fx),
@@ -39,6 +39,6 @@ export function mapToFunctionEntity(fx: ZohoCrmFunction): IFunctionEntity<ZohoCr
     }
 }
 
-export function mapManyToFunctionEntity(functions: ZohoCrmFunction[]): IFunctionEntity<ZohoCrmFunction>[] {
-    return functions.map(mapToFunctionEntity)
+export function mapManyCrmFunctionsToEntity(functions: ZohoCrmFunction[]): IFunctionEntity<ZohoCrmFunction>[] {
+    return functions.map(mapCrmFunctionToEntity)
 }

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useRouteParams } from '@vueuse/router'
 import { TopMenuItem, useConfirm, useToast } from '@zoho-ide/shared'
 import { format } from 'date-fns'
 import { computed, onMounted } from 'vue'
@@ -10,8 +9,7 @@ import { GlobalSearchDialog, useGlobalSearch } from '@/shared/libs/global-search
 import { useLogger } from '@/shared/libs/logger/useLogger.ts'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { useCapabilitiesCacheManager } from '@/entities/capability/composables/useCapabilitiesCacheManager.ts'
-import { useCapabilitiesConfig } from '@/entities/capability/composables/useCapabilitiesConfig.ts'
-import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.ts'
+import { useCurrentProvider } from '@/entities/provider/composables/useCurrentProvider.ts'
 import { CapabilitiesMenu } from '@/features/capability/capabilities-menu'
 import { AppFooter } from '@/widgets/app-footer'
 import { AppTopMenu } from '@/widgets/app-top-menu'
@@ -20,16 +18,13 @@ const confirm = useConfirm()
 const toast = useToast()
 const router = useRouter()
 const route = useRoute()
-const providers = useProvidersStore()
-const capabilities = useCapabilitiesConfig()
 const logger = useLogger('WorkspaceLayout')
-
-const providerId = useRouteParams<string>('providerId')
-const provider = computed(() => providers.findById(providerId.value))
-const providerCapabilities = computed(() => {
-    return provider.value ? capabilities.byProvider(provider.value).filter((c) => !c?.hideInMenu) : []
-})
-const isProviderOnline = computed(() => Boolean(provider.value?.tabId))
+const {
+    id: providerId,
+    data: provider,
+    isOnline: isProviderOnline,
+    capabilities: providerCapabilities,
+} = useCurrentProvider()
 
 const lastSynced = computed(() => {
     if (!provider.value?.lastSyncedAt) {

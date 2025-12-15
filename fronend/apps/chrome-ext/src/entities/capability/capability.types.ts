@@ -1,3 +1,4 @@
+import { IFunctionEntity } from '@/capabilities/function/function.types.ts'
 import type { IEntity } from '@zoho-ide/shared'
 import type { PaginatedResult, PaginationParams } from '@zoho-ide/shared'
 import type { Result } from '@zoho-ide/shared'
@@ -11,8 +12,9 @@ export type ProviderCapability = {
     hideInMenu?: boolean
 }
 
-export type CapabilityPort = {
+export interface CapabilityPort {
     list(pagination: PaginationParams): Promise<PaginatedResult<ICapabilityEntity[]>>
+    execute?(functionEntity: IFunctionEntity, inputData: Record<string, unknown>): Promise<Result<unknown>>
 }
 
 export type CapabilityPortFactory = (provider: ServiceProvider) => Result<CapabilityPort>
