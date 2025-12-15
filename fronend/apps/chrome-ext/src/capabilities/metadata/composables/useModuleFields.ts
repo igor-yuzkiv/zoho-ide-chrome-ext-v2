@@ -13,7 +13,7 @@ export function useModuleFields<TOrigin extends IEntity = IEntity>(
         queryKey: [
             ...CapabilityQueryKeys.forProviderAndType(providerId, CapabilityType.FIELDS),
             'module.fields',
-            toValue(moduleId),
+            moduleId,
         ],
         placeholderData: keepPreviousData,
         queryFn: () => {
