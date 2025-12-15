@@ -16,7 +16,7 @@ function fullScreen() {
         </div>
         <div class="flex items-center justify-end gap-x-2">
             <slot name="end"></slot>
-            <IconButton text size="small" @click="fullScreen" icon="mingcute:fullscreen-fill"></IconButton>
+            <IconButton class="p-0"  text size="small" @click="fullScreen" icon="mingcute:fullscreen-fill"></IconButton>
             <ToggleThemeButton :is-dark="appTheme.isDark" @click="appTheme.toggle" />
         </div>
     </footer>
