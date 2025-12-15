@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { useAppThemeStore } from '@zoho-ide/shared'
 import { useAuthStore } from '@zoho-ide/shared'
-import { type TopMenuItem, UserProfile } from '@zoho-ide/shared'
+import { type TopMenuItemProps, UserProfile } from '@zoho-ide/shared'
 import { ToggleThemeButton, TopMenu } from '@zoho-ide/shared'
 import { useRoute, useRouter } from 'vue-router'
 import Splitter from 'primevue/splitter'
 import SplitterPanel from 'primevue/splitterpanel'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 
-const NAV_ITEMS: TopMenuItem[] = [
+const NAV_ITEMS: TopMenuItemProps[] = [
     { title: 'Home', route: { name: AppRouteName.home } },
     { title: 'Users', route: { name: AppRouteName.usersIndex } },
     { title: 'Knowledge Base', route: { name: AppRouteName.knowledgeBaseIndex } },

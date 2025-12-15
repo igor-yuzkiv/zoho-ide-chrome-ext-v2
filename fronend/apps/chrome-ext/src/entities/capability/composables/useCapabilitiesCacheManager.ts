@@ -18,7 +18,7 @@ export function useCapabilitiesCacheManager() {
     const recordsFetcher = useProviderRecordsFetcher()
     const providersStore = useProvidersStore()
     const mockDataCollector = useMockDataCollector() // TODO: remove mock data saving after testing
-    const isSynchronizing = ref(false)
+    const isCachingInProgress = ref(false)
     const queryClient = useQueryClient()
 
     async function hasCapabilityRecordsInCache(providerId: string, capabilityType: string): Promise<boolean> {
@@ -108,7 +108,7 @@ export function useCapabilitiesCacheManager() {
                 return
             }
 
-            isSynchronizing.value = true
+            isCachingInProgress.value = true
 
             let isSomeSynced = false
             for (const cap of caps) {
@@ -126,12 +126,12 @@ export function useCapabilitiesCacheManager() {
             providersStore.updateProvider(provider.id, { lastSyncedAt: Date.now() })
             await invalidateProviderQueries(provider.id)
         } finally {
-            isSynchronizing.value = false
+            isCachingInProgress.value = false
         }
     }
 
     async function clearProviderCache(providerId: string) {
-        if (isSynchronizing.value) {
+        if (isCachingInProgress.value) {
             return
         }
 
@@ -147,7 +147,7 @@ export function useCapabilitiesCacheManager() {
     }
 
     return {
-        isSynchronizing,
+        isCachingInProgress,
         bootstrap,
         hasCapabilityRecordsInCache,
         hasProviderCache,

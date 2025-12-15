@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
-import { useConfirm, useToast } from '@zoho-ide/shared'
+import { TopMenuItem, useConfirm, useToast } from '@zoho-ide/shared'
 import { format } from 'date-fns'
 import { computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { Button, Splitter, SplitterPanel } from 'primevue'
+import { Splitter, SplitterPanel } from 'primevue'
 import { Icon } from '@iconify/vue'
 import { GlobalSearchDialog, useGlobalSearch } from '@/shared/libs/global-search'
 import { useLogger } from '@/shared/libs/logger/useLogger.ts'
@@ -39,10 +39,14 @@ const lastSynced = computed(() => {
     return format(new Date(provider.value.lastSyncedAt), 'yyyy-MM-dd HH:mm')
 })
 
-const { bootstrap: bootstrapProviderCache, clearProviderCache, isSynchronizing } = useCapabilitiesCacheManager()
+const { bootstrap: bootstrapProviderCache, clearProviderCache, isCachingInProgress } = useCapabilitiesCacheManager()
 const { bootstrap: bootstrapGlobalSearch } = useGlobalSearch()
 
 function handleClickClearCache() {
+    if (isCachingInProgress.value || !isProviderOnline.value) {
+        return
+    }
+
     confirm.require({
         header: 'Clear Cache',
         message: 'Are you sure you want to clear the cache for this provider?',
@@ -83,22 +87,12 @@ onMounted(async () => {
     <div class="relative bg-secondary flex h-screen w-full flex-col overflow-hidden">
         <AppTopMenu>
             <template #right-content>
-                <div v-if="isSynchronizing" class="flex items-center gap-x-1 text-gray-500 text-sm">
-                    <Icon icon="line-md:loading-loop" />
-                    <span>Synchronizing...</span>
-                </div>
-                <span v-else class="text-gray-500 text-sm">Last synced: {{ lastSynced }}</span>
-
-                <Button
-                    :disabled="isSynchronizing || !isProviderOnline"
+                <TopMenuItem
+                    v-if="isProviderOnline"
+                    title="Clear Cache"
                     @click="handleClickClearCache"
-                    severity="secondary"
-                    text
-                    size="small"
-                    class="px-2 py-0"
-                >
-                    Reset Cache
-                </Button>
+                    :disabled="isCachingInProgress || !isProviderOnline"
+                />
             </template>
         </AppTopMenu>
 
@@ -126,7 +120,14 @@ onMounted(async () => {
             </Splitter>
         </main>
 
-        <AppFooter />
+        <AppFooter>
+            <div v-if="isCachingInProgress" class="flex items-center gap-x-1 text-gray-500 text-sm">
+                <Icon icon="line-md:loading-loop" />
+                <span>Caching...</span>
+            </div>
+
+            <div v-else class="text-gray-500 text-sm">Last synced: {{ lastSynced }}</div>
+        </AppFooter>
     </div>
 
     <GlobalSearchDialog />

@@ -1,10 +1,10 @@
 import type { RouteLocationRaw } from 'vue-router'
 
-export type TopMenuItem = {
+export type TopMenuItemProps = {
     title: string
     route: RouteLocationRaw
 }
 
 export type TopMenuProps = {
-    items: TopMenuItem[]
+    items: TopMenuItemProps[]
 }
