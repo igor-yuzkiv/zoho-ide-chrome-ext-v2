@@ -6,10 +6,10 @@ import { ref } from 'vue'
 import { useLogger } from '@/shared/libs/logger/useLogger.ts'
 import { providersCacheDb } from '@/entities/capability/cache'
 import { generateCacheRecordId } from '@/entities/capability/cache/cache-record.service.ts'
-import type { ICapabilityEntity } from '@/entities/capability/capability.types.ts'
+import type { ICapabilityEntity } from '@zoho-ide/shared'
 import { useCapabilitiesConfig } from '@/entities/capability/composables/useCapabilitiesConfig.ts'
 import { useProviderRecordsFetcher } from '@/entities/provider/composables/useProviderRecordsFetcher.ts'
-import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
+import type { ServiceProvider } from '@zoho-ide/shared'
 import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.ts'
 
 export function useCapabilitiesCacheManager() {

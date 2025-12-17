@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import type {
-    IModuleFieldMetadataEntity,
-    IModuleMetadataEntity,
-} from '@/capabilities/metadata/metadata.types.ts'
+import type { IModuleFieldMetadataEntity, IModuleMetadataEntity } from '@zoho-ide/shared'
 import { useAppThemeStore } from '@zoho-ide/shared'
+import { computed } from 'vue'
 
 const appTheme = useAppThemeStore()
 
@@ -24,7 +21,7 @@ const jsonData = computed(() => {
 </script>
 
 <template>
-    <vue-monaco-editor  language="json" :value="jsonData" :theme="appTheme.isDark ? 'vs-dark' : 'vs'"/>
+    <vue-monaco-editor language="json" :value="jsonData" :theme="appTheme.isDark ? 'vs-dark' : 'vs'" />
 </template>
 
 <style scoped></style>

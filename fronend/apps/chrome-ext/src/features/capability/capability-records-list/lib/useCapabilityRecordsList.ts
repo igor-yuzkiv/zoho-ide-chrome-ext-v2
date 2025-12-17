@@ -2,7 +2,7 @@ import { CapabilityQueryKeys } from '@/config/capabilities.config.ts'
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
 import { type MaybeRef, toValue } from 'vue'
 import { selectProviderRecordsQuery } from '@/entities/capability/cache'
-import type { ICapabilityEntity } from '@/entities/capability/capability.types.ts'
+import type { ICapabilityEntity } from '@zoho-ide/shared'
 
 export function useCapabilityRecordsList<T extends ICapabilityEntity>(
     capabilityType: MaybeRef<string>,

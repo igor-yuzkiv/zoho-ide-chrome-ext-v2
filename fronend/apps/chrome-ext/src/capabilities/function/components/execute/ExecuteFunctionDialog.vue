@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { FunctionParams } from '@/capabilities/function/function.types.ts'
-import { FieldContainer } from '@zoho-ide/shared'
+import { type FunctionParams, FieldContainer } from '@zoho-ide/shared'
 // @ts-expect-error: no types
 import Prism from 'prismjs'
 import { onMounted, useTemplateRef } from 'vue'

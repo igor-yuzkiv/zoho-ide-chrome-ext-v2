@@ -1,10 +1,10 @@
 import { CapabilityType } from '@/config/capabilities.config.ts'
 import { selectProviderRecordsQuery } from '@/entities/capability/cache'
-import type { ICapabilityEntity } from '@/entities/capability/capability.types.ts'
-import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
+import type { ICapabilityEntity } from '@zoho-ide/shared'
+import type { ServiceProvider } from '@zoho-ide/shared'
 import type { GlobalSearchDocument, GlobalSearchModule } from '@/shared/libs/global-search/lib/global-search.types.ts'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import type { IModuleFieldMetadataEntity, IModuleMetadataEntity } from '@/capabilities/metadata/metadata.types.ts'
+import type { IModuleFieldMetadataEntity, IModuleMetadataEntity } from '@zoho-ide/shared'
 
 async function provideIndexDocuments<T extends ICapabilityEntity>(
     capabilityType: string,

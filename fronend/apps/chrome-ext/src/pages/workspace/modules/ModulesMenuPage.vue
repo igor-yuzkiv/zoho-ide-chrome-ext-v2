@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IModuleMetadataEntity } from '@/capabilities/metadata/metadata.types.ts'
+import type { IModuleMetadataEntity } from '@zoho-ide/shared'
 import { CapabilityType } from '@/config/capabilities.config.ts'
 import { useRouteParams } from '@vueuse/router'
 import { ListBox, ListItem } from '@zoho-ide/shared'

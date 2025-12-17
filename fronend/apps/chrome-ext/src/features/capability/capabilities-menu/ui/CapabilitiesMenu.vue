@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { Icon } from '@iconify/vue'
-import type { ProviderCapability } from '@/entities/capability/capability.types.ts'
+import type { ProviderCapability } from '@zoho-ide/shared'
 
 const props = defineProps<{
     providerId: string

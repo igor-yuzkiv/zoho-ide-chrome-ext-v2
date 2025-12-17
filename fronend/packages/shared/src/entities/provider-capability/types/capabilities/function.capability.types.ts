@@ -1,5 +1,5 @@
-import type { IEntity } from '@zoho-ide/shared'
-import type { ICapabilityEntity } from '@/entities/capability/capability.types.ts'
+import type { IEntity } from '../../../../types'
+import type { ICapabilityEntity } from '../base.capability.types.ts'
 
 export type FunctionType = 'button' | 'standalone' | 'dynamic' | 'automation' | 'scheduler' | 'unknown'
 

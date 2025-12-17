@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { WfActionNodeData } from '@/capabilities/workflow/workflow-schema.types.ts'
+import type { WfActionNodeData } from '@zoho-ide/shared'
 import { Handle, Position } from '@vue-flow/core'
 import { Icon } from '@iconify/vue'
 

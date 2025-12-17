@@ -1,6 +1,6 @@
 import { CapabilityType } from '@/config/capabilities.config.ts'
 import { financeFunctionsCapabilityPortFactory } from '@/shared/integrations/zoho-finance/capabilities/finance.functions.capability.ts'
-import type { ProviderCapability } from '@/entities/capability/capability.types.ts'
+import type { ProviderCapability } from '@zoho-ide/shared'
 
 export const ZohoFinanceCapabilities: ProviderCapability[] = [
     {

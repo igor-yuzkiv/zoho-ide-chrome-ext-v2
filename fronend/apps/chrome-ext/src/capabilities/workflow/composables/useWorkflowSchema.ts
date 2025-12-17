@@ -1,10 +1,10 @@
-import type { IWorkflowEntity, WorkflowSchemaBuilder } from '@/capabilities/workflow/workflow.types.ts'
+import type { IWorkflowEntity, WorkflowSchemaBuilder } from '@zoho-ide/shared'
 import { WorkflowSchemaBuilderRegister } from '@/config/workflows.config.ts'
 import type { Edge, Node } from '@vue-flow/core'
 import { type Ref, ref } from 'vue'
 import { useLogger } from '@/shared/libs/logger/useLogger.ts'
 import type { Maybe } from '@zoho-ide/shared'
-import type { ProviderType } from '@/entities/provider/provider.types.ts'
+import type { ProviderType } from '@zoho-ide/shared'
 
 export function useWorkflowSchema(): {
     render: (providerType: ProviderType, workflow: IWorkflowEntity) => void

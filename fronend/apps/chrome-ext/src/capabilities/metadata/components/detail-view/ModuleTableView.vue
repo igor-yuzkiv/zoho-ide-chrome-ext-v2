@@ -7,7 +7,7 @@ import { CopyText } from '@zoho-ide/shared'
 import type {
     IModuleFieldMetadataEntity,
     IModuleMetadataEntity,
-} from '@/capabilities/metadata/metadata.types.ts'
+} from '@zoho-ide/shared'
 
 const props = defineProps<{
     module?: IModuleMetadataEntity

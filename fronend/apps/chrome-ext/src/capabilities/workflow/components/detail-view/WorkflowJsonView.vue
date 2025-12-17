@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { IWorkflowEntity } from '@/capabilities/workflow/workflow.types.ts'
-import type { ProviderType } from '@/entities/provider/provider.types.ts'
+import type { IWorkflowEntity } from '@zoho-ide/shared'
+import type { ProviderType } from '@zoho-ide/shared'
 import { useAppThemeStore } from '@zoho-ide/shared'
 
 const appTheme = useAppThemeStore()

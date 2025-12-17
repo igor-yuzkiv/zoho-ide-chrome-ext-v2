@@ -1,10 +1,10 @@
-import { IFunctionEntity } from '@/capabilities/function/function.types.ts'
+import { IFunctionEntity } from '@zoho-ide/shared'
 import { CapabilityType } from '@/config/capabilities.config.ts'
 import { MaybeRefOrGetter } from '@vueuse/core'
 import { Maybe, Result } from '@zoho-ide/shared'
 import { computed, ref, toValue } from 'vue'
 import { useCapabilitiesConfig } from '@/entities/capability/composables/useCapabilitiesConfig.ts'
-import { ServiceProvider } from '@/entities/provider/provider.types.ts'
+import { ServiceProvider } from '@zoho-ide/shared'
 
 export function useFunctionExecute(
     provider: MaybeRefOrGetter<Maybe<ServiceProvider>>,

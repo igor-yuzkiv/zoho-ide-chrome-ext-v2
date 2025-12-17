@@ -1,8 +1,6 @@
-import type { IFunctionEntity } from '@/capabilities/function/function.types.ts'
-import type { IEntity } from '@zoho-ide/shared'
-import type { PaginatedResult, PaginationParams } from '@zoho-ide/shared'
-import type { Result } from '@zoho-ide/shared'
-import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
+import type { IEntity, PaginatedResult, PaginationParams, Result } from '../../../types'
+import type { ServiceProvider } from '../../provider'
+import type { IFunctionEntity } from './capabilities/function.capability.types.ts'
 
 export type ProviderCapability = {
     type: string

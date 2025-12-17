@@ -1,6 +1,3 @@
-import type { Result } from '@zoho-ide/shared'
-import type { BrowserTab } from '@/shared/libs/browser/browser.types.ts'
-
 export type ProviderType = 'crm' | 'finance'
 
 export type ServiceProvider = {
@@ -13,8 +10,6 @@ export type ServiceProvider = {
     lastSyncedAt?: number
     cacheTtlMs?: number
 }
-
-export type ServiceProviderFactory = (tab: BrowserTab) => Result<ServiceProvider>
 
 export type ProviderSettingForm = {
     title: string

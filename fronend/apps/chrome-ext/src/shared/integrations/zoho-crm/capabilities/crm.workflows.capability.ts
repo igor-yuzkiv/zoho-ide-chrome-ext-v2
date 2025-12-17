@@ -6,8 +6,8 @@ import fetchCrmWorkflowDetailsRequest from '@/shared/integrations/zoho-crm/reque
 import fetchCrmWorkflowsRequest from '@/shared/integrations/zoho-crm/requests/fetch-crm-workflows.request.ts'
 import type { CrmServiceProviderMetadata } from '@/shared/integrations/zoho-crm/types/crm.provider.types.ts'
 import type { ZohoCrmWorkflow } from '@/shared/integrations/zoho-crm/types/crm.workflow.types.ts'
-import type { CapabilityPort, ICapabilityEntity } from '@/entities/capability/capability.types.ts'
-import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
+import type { CapabilityPort, ICapabilityEntity } from '@zoho-ide/shared'
+import type { ServiceProvider } from '@zoho-ide/shared'
 
 async function fetchWorkflowsDetails(
     tabId: number,

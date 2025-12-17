@@ -1,4 +1,4 @@
-import { IFunctionEntity } from '@/capabilities/function/function.types.ts'
+import { IFunctionEntity } from '@zoho-ide/shared'
 import type { PaginatedResult, PaginationParams } from '@zoho-ide/shared'
 import type { Result } from '@zoho-ide/shared'
 import { assertCrmMetadata } from '@/shared/integrations/zoho-crm/crm.utils.ts'
@@ -8,8 +8,8 @@ import fetchCrmFunctionDetailsRequest from '@/shared/integrations/zoho-crm/reque
 import fetchCrmFunctionsRequest from '@/shared/integrations/zoho-crm/requests/fetch-crm-functions.request.ts'
 import type { ZohoCrmFunction } from '@/shared/integrations/zoho-crm/types/crm.functions.types.ts'
 import type { CrmServiceProviderMetadata } from '@/shared/integrations/zoho-crm/types/crm.provider.types.ts'
-import type { CapabilityPort, ICapabilityEntity } from '@/entities/capability/capability.types.ts'
-import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
+import type { CapabilityPort, ICapabilityEntity } from '@zoho-ide/shared'
+import type { ServiceProvider } from '@zoho-ide/shared'
 
 async function fetchFunctionsDetails(
     tabId: number,

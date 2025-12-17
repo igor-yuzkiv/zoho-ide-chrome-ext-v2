@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { IFunctionEntity } from '@/capabilities/function/function.types.ts'
+import { IFunctionEntity } from '@zoho-ide/shared'
 import { useAppThemeStore } from '@zoho-ide/shared'
 import { computed } from 'vue'
 

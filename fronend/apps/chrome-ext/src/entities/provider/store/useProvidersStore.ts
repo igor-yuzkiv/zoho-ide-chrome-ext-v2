@@ -4,7 +4,7 @@ import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import type { BrowserTab } from '@/shared/libs/browser/browser.types.ts'
 import { useBrowserTabsStore } from '@/shared/libs/browser/store/useBrowserTabsStore.ts'
-import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
+import type { ServiceProvider } from '@zoho-ide/shared'
 
 const LocalStorageSerializer: Serializer<ServiceProvider[]> = {
     read(raw) {

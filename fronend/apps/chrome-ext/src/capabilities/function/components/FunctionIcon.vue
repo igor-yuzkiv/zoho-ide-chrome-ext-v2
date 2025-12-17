@@ -2,7 +2,7 @@
 import { FunctionTypeMetadataMap } from '@/config/function.config.ts'
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
-import type { FunctionMetadata, FunctionType } from '@/capabilities/function/function.types.ts'
+import type { FunctionMetadata, FunctionType } from '@zoho-ide/shared'
 
 const props = defineProps<{ type?: FunctionType }>()
 

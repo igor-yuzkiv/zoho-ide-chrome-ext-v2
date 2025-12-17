@@ -1,4 +1,4 @@
-import type { IModuleFieldMetadataEntity, IModuleMetadataEntity } from '@/capabilities/metadata/metadata.types.ts'
+import type { IModuleFieldMetadataEntity, IModuleMetadataEntity } from '@zoho-ide/shared'
 import { CapabilityType } from '@/config/capabilities.config.ts'
 import type { PaginatedResult } from '@zoho-ide/shared'
 import type { Result } from '@zoho-ide/shared'
@@ -7,8 +7,8 @@ import { mapManyCrmFieldsToEntities } from '@/shared/integrations/zoho-crm/mappe
 import fetchCrmModuleFieldsRequest from '@/shared/integrations/zoho-crm/requests/fetch.crm-module-fields.request.ts'
 import type { CrmModuleField, CrmModuleMetadata } from '@/shared/integrations/zoho-crm/types/crm.metadata.types.ts'
 import { selectProviderRecordsQuery } from '@/entities/capability/cache'
-import type { CapabilityPort } from '@/entities/capability/capability.types.ts'
-import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
+import type { CapabilityPort } from '@zoho-ide/shared'
+import type { ServiceProvider } from '@zoho-ide/shared'
 
 async function fetchModuleFields(
     tabId: number,

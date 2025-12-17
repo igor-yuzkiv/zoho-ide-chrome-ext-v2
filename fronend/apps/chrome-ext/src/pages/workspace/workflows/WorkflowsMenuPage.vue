@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IWorkflowEntity } from '@/capabilities/workflow/workflow.types.ts'
+import type { IWorkflowEntity } from '@zoho-ide/shared'
 import { CapabilityType } from '@/config/capabilities.config.ts'
 import { useRouteParams } from '@vueuse/router'
 import { ListBox, ListItem } from '@zoho-ide/shared'

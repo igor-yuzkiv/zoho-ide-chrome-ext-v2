@@ -1,4 +1,4 @@
-import type { IModuleFieldMetadataEntity } from '@/capabilities/metadata/metadata.types.ts'
+import type { IModuleFieldMetadataEntity } from '@zoho-ide/shared'
 import { CapabilityQueryKeys, CapabilityType } from '@/config/capabilities.config.ts'
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
 import type { IEntity } from '@zoho-ide/shared'

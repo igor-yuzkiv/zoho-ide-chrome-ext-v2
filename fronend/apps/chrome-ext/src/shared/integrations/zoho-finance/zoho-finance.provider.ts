@@ -6,7 +6,7 @@ import {
     resolveFinanceProviderMetadataFromUrl,
 } from '@/shared/integrations/zoho-finance/zoho-finance.utils.ts'
 import type { BrowserTab } from '@/shared/libs/browser/browser.types.ts'
-import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
+import type { ServiceProvider } from '@zoho-ide/shared'
 
 const SERVICE_ICONS: Record<ZohoFinanceService, string> = {
     books: 'ph:books',

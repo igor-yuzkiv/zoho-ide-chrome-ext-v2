@@ -4,7 +4,7 @@ import * as z from 'zod'
 import { ref, watch } from 'vue'
 import { useLogger } from '@/shared/libs/logger/useLogger.ts'
 import { useCapabilitiesCacheManager } from '@/entities/capability/composables/useCapabilitiesCacheManager.ts'
-import { ProviderSettingForm } from '@/entities/provider/provider.types.ts'
+import { ProviderSettingForm } from './types.ts'
 import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.ts'
 
 const MIN_CACHE_TTL_MS = 60 * 1000 // 1 minute
