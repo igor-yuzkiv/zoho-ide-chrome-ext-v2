@@ -5,6 +5,7 @@ import type {
     ZohoFinanceFunctionDetailsResponse,
     ZohoFinanceFunctionResponse,
 } from '../types/finance.functions.types.ts'
+import type { IFunctionEntity } from '@/capabilities/function/function.types.ts'
 import type { PaginatedResult, PaginationParams, Result } from '@zoho-ide/shared'
 import { assertFinanceMetadata } from '@/shared/integrations/zoho-finance/zoho-finance.utils.ts'
 import type { CapabilityPort, ICapabilityEntity } from '@/entities/capability/capability.types.ts'
@@ -75,6 +76,21 @@ export function financeFunctionsCapabilityPortFactory(provider: ServiceProvider)
                     ok: true,
                     data: mapManyToFunctionEntity(details),
                     meta: response.meta,
+                }
+            },
+
+            async execute(
+                functionEntity: IFunctionEntity,
+                inputData: Record<string, unknown>
+            ): Promise<Result<unknown>> {
+                console.warn('Zoho Finance function execution not implemented yet', {
+                    functionEntity,
+                    inputData,
+                })
+
+                return {
+                    ok: false,
+                    error: 'Zoho Finance function execution not implemented yet',
                 }
             },
         },

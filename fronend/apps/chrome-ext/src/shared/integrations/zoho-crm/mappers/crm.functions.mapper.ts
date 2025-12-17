@@ -1,7 +1,7 @@
+import type { FunctionType, IFunctionEntity } from '@/capabilities/function/function.types.ts'
 import { FunctionTypeMetadataMap } from '@/config/function.config.ts'
 import { snakeCase } from 'lodash'
-import type { ZohoCrmFunction } from '@/shared/integrations/zoho-crm/types/crm.functions.types.ts'
-import type { FunctionType, IFunctionEntity } from '@/capabilities/function/function.types.ts'
+import { ZohoCrmFunction } from '@/shared/integrations/zoho-crm/types/crm.functions.types.ts'
 
 function mapFunctionCategoryToType(category?: string): FunctionType {
     if (!category) {
@@ -16,29 +16,29 @@ function mapFunctionCategoryToType(category?: string): FunctionType {
 }
 
 function normalizeCrmFunctionName(fx: ZohoCrmFunction): string {
-    const api_name = fx.api_name
-    const display_name = fx.display_name
+    const possibleFields = [fx.api_name, fx.name, fx.display_name]
 
-    let result = typeof api_name === 'string' && api_name !== 'null' ? api_name.trim() : null
-
-    if (!api_name && typeof display_name === 'string') {
-        result = snakeCase(display_name.trim())
+    for (const field of possibleFields) {
+        if (typeof field === 'string' && field.trim() !== '' && field.trim().toLowerCase() !== 'null') {
+            return snakeCase(field.trim())
+        }
     }
 
-    return result ?? 'unknown_function'
+    return 'unknown_function'
 }
 
-export function mapToFunctionEntity(fx: ZohoCrmFunction): IFunctionEntity<ZohoCrmFunction> {
+export function mapCrmFunctionToEntity(fx: ZohoCrmFunction): IFunctionEntity<ZohoCrmFunction> {
     return {
         id: fx.id,
         displayName: normalizeCrmFunctionName(fx),
-        apiName: fx.api_name,
+        apiName: fx?.api_name || fx?.name,
         type: mapFunctionCategoryToType(fx?.category),
         originEntity: fx,
         script: fx?.script,
+        params: fx?.params || null,
     }
 }
 
-export function mapManyToFunctionEntity(functions: ZohoCrmFunction[]): IFunctionEntity<ZohoCrmFunction>[] {
-    return functions.map(mapToFunctionEntity)
+export function mapManyCrmFunctionsToEntity(functions: ZohoCrmFunction[]): IFunctionEntity<ZohoCrmFunction>[] {
+    return functions.map(mapCrmFunctionToEntity)
 }

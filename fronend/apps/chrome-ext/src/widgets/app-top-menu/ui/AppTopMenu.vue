@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { useAuthStore } from '@zoho-ide/shared'
-import { TopMenu } from '@zoho-ide/shared'
-import { type TopMenuItem, UserProfile } from '@zoho-ide/shared'
+import { TopMenu, type TopMenuItemProps, useAuthStore, UserProfile } from '@zoho-ide/shared'
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { Icon } from '@iconify/vue'
@@ -14,8 +12,8 @@ const router = useRouter()
 const globalSearch = useGlobalSearch()
 const { data: currentProvider } = useCurrentProvider()
 
-const navItems = computed<TopMenuItem[]>(() => {
-    const result: TopMenuItem[] = [
+const navItems = computed<TopMenuItemProps[]>(() => {
+    const result: TopMenuItemProps[] = [
         { title: 'Home', route: { name: AppRouteName.home } },
         { title: 'Settings', route: { name: AppRouteName.settingsIndex } },
     ]

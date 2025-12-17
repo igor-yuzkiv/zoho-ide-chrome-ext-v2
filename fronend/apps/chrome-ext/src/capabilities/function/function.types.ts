@@ -3,6 +3,11 @@ import type { ICapabilityEntity } from '@/entities/capability/capability.types.t
 
 export type FunctionType = 'button' | 'standalone' | 'dynamic' | 'automation' | 'scheduler' | 'unknown'
 
+export type FunctionParams = {
+    name: string
+    type: string
+}
+
 export interface IFunctionEntity<TOrigin extends IEntity = IEntity> extends ICapabilityEntity {
     id: string
     type: FunctionType
@@ -10,6 +15,7 @@ export interface IFunctionEntity<TOrigin extends IEntity = IEntity> extends ICap
     apiName?: string | null
     originEntity: TOrigin
     script?: string | null
+    params?: FunctionParams[] | null
 }
 
 export type FunctionMetadata = {
