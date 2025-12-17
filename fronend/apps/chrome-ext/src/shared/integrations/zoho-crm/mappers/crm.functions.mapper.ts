@@ -16,26 +16,26 @@ function mapFunctionCategoryToType(category?: string): FunctionType {
 }
 
 function normalizeCrmFunctionName(fx: ZohoCrmFunction): string {
-    const api_name = fx.api_name
-    const display_name = fx.display_name
+    const possibleFields = [fx.api_name, fx.name, fx.display_name]
 
-    let result = typeof api_name === 'string' && api_name !== 'null' ? api_name.trim() : null
-
-    if (!api_name && typeof display_name === 'string') {
-        result = snakeCase(display_name.trim())
+    for (const field of possibleFields) {
+        if (typeof field === 'string' && field.trim() !== '' && field.trim().toLowerCase() !== 'null') {
+            return snakeCase(field.trim())
+        }
     }
 
-    return result ?? 'unknown_function'
+    return 'unknown_function'
 }
 
 export function mapCrmFunctionToEntity(fx: ZohoCrmFunction): IFunctionEntity<ZohoCrmFunction> {
     return {
         id: fx.id,
         displayName: normalizeCrmFunctionName(fx),
-        apiName: fx.api_name,
+        apiName: fx?.api_name || fx?.name,
         type: mapFunctionCategoryToType(fx?.category),
         originEntity: fx,
         script: fx?.script,
+        params: fx?.params || null,
     }
 }
 

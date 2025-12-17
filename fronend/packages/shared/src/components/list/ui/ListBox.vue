@@ -4,6 +4,8 @@ import ListItem from './ListItem.vue'
 import { computed } from 'vue'
 import InputText from 'primevue/inputtext'
 
+//TODO: handle arrow key navigation and selection
+
 defineEmits<{
     (e: 'itemClick', item: T): void
     (e: 'loadMore'): void
