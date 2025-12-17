@@ -86,7 +86,7 @@ onMounted(async () => {
                     v-if="isProviderOnline"
                     title="Clear Cache"
                     @click="handleClickClearCache"
-                    :disabled="isCachingInProgress || !isProviderOnline"
+                    :disabled="isCachingInProgress"
                 />
             </template>
         </AppTopMenu>
