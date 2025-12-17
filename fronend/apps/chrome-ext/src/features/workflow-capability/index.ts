@@ -4,4 +4,4 @@ export { default as WorkflowSchemaView } from './components/detail-view/Workflow
 export { useWorkflowDetails } from './composables/useWorkflowDetails.ts'
 export { useWorkflowSchema } from './composables/useWorkflowSchema.ts'
 
-export { WorkflowGlobalSearchModule } from '@/capabilities/workflow/libs/workflow.global-search.module.ts'
+export { WorkflowGlobalSearchModule } from '@/features/workflow-capability/libs/workflow.global-search.module.ts'

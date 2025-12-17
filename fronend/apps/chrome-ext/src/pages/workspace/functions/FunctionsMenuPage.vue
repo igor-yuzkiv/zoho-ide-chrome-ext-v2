@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FunctionIcon, useFunctionsList } from '@/capabilities/function'
+import { FunctionIcon, useFunctionsList } from '@/features/function-capability'
 import { useRouteParams } from '@vueuse/router'
 import { ListBox, ListItem } from '@zoho-ide/shared'
 import { AppRouteName } from '@/app/router/app-routes.ts'

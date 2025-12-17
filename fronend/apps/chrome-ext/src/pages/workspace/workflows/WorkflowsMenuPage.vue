@@ -4,7 +4,7 @@ import { useRouteParams } from '@vueuse/router'
 import type { IWorkflowEntity } from '@zoho-ide/shared'
 import { ListBox, ListItem } from '@zoho-ide/shared'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import { useCapabilityRecordsList } from '@/features/capability/capability-records-list'
+import { useCapabilityRecordsList } from '@/features/provider/capability-records-list'
 
 const providerId = useRouteParams<string>('providerId')
 const { data: workflows } = useCapabilityRecordsList<IWorkflowEntity>(CapabilityType.WORKFLOWS, providerId)

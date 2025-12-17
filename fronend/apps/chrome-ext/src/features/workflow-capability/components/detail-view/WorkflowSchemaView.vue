@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import WfActionNode from '@/capabilities/workflow/components/schema-nodes/WfActionNode.vue'
-import WfConditionNode from '@/capabilities/workflow/components/schema-nodes/WfConditionNode.vue'
-import WfWhenNode from '@/capabilities/workflow/components/schema-nodes/WfWhenNode.vue'
-import { useWorkflowSchema } from '@/capabilities/workflow/composables/useWorkflowSchema.ts'
+import WfActionNode from '@/features/workflow-capability/components/schema-nodes/WfActionNode.vue'
+import WfConditionNode from '@/features/workflow-capability/components/schema-nodes/WfConditionNode.vue'
+import WfWhenNode from '@/features/workflow-capability/components/schema-nodes/WfWhenNode.vue'
+import { useWorkflowSchema } from '@/features/workflow-capability/composables/useWorkflowSchema.ts'
 import { VueFlow } from '@vue-flow/core'
 import type { IWorkflowEntity } from '@zoho-ide/shared'
 import type { ProviderType } from '@zoho-ide/shared'
