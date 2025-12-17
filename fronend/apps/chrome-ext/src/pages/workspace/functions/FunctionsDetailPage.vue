@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ExecuteFunctionDialog, useFunctionDetails, useFunctionExecute } from '@/features/function-capability'
 import { useRouteParams } from '@vueuse/router'
 import { useCreateCodeSnippet } from '@zoho-ide/knowledge-base'
 import { NoDataMessage, PageHeader, useToast } from '@zoho-ide/shared'
@@ -10,6 +9,7 @@ import { Button } from 'primevue'
 import { Icon } from '@iconify/vue'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { useCurrentProvider } from '@/entities/provider/composables/useCurrentProvider.ts'
+import { ExecuteFunctionDialog, useFunctionDetails, useFunctionExecute } from '@/features/function-capability'
 import { useViewMode, ViewModeSelect } from '@/widgets/view-mode'
 
 const toast = useToast()
