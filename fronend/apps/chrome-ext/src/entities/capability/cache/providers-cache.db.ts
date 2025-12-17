@@ -1,5 +1,5 @@
-import Dexie, { type EntityTable } from 'dexie'
 import type { ICapabilityEntity } from '@zoho-ide/shared'
+import Dexie, { type EntityTable } from 'dexie'
 
 type DbRecord = {
     id: string

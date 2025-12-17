@@ -1,9 +1,9 @@
 import type { Maybe } from '@zoho-ide/shared'
+import type { ServiceProvider } from '@zoho-ide/shared'
 import type {
     FinanceServiceProviderMetadata,
     ZohoFinanceService,
 } from '@/shared/integrations/zoho-finance/types/finance.provider.types.ts'
-import type { ServiceProvider } from '@zoho-ide/shared'
 
 const FINANCE_SERVICE_URL_REGEX = /^(https:\/\/(books|inventory)\.zoho\.[a-z]{2,})\/app\/(\d+)/
 

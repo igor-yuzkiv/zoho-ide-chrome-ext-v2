@@ -7,9 +7,9 @@ import type {
 } from '../types/finance.functions.types.ts'
 import type { IFunctionEntity } from '@zoho-ide/shared'
 import type { PaginatedResult, PaginationParams, Result } from '@zoho-ide/shared'
-import { assertFinanceMetadata } from '@/shared/integrations/zoho-finance/zoho-finance.utils.ts'
 import type { CapabilityPort, ICapabilityEntity } from '@zoho-ide/shared'
 import type { ServiceProvider } from '@zoho-ide/shared'
+import { assertFinanceMetadata } from '@/shared/integrations/zoho-finance/zoho-finance.utils.ts'
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 

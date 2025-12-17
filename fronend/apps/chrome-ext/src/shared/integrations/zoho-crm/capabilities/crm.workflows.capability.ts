@@ -1,13 +1,13 @@
 import type { PaginatedResult, PaginationParams } from '@zoho-ide/shared'
 import type { Result } from '@zoho-ide/shared'
+import type { CapabilityPort, ICapabilityEntity } from '@zoho-ide/shared'
+import type { ServiceProvider } from '@zoho-ide/shared'
 import { assertCrmMetadata } from '@/shared/integrations/zoho-crm/crm.utils.ts'
 import { mapManyToWorkflowEntity } from '@/shared/integrations/zoho-crm/mappers/crm.workflows.mapper.ts'
 import fetchCrmWorkflowDetailsRequest from '@/shared/integrations/zoho-crm/requests/fetch-crm-workflow-details.request.ts'
 import fetchCrmWorkflowsRequest from '@/shared/integrations/zoho-crm/requests/fetch-crm-workflows.request.ts'
 import type { CrmServiceProviderMetadata } from '@/shared/integrations/zoho-crm/types/crm.provider.types.ts'
 import type { ZohoCrmWorkflow } from '@/shared/integrations/zoho-crm/types/crm.workflow.types.ts'
-import type { CapabilityPort, ICapabilityEntity } from '@zoho-ide/shared'
-import type { ServiceProvider } from '@zoho-ide/shared'
 
 async function fetchWorkflowsDetails(
     tabId: number,

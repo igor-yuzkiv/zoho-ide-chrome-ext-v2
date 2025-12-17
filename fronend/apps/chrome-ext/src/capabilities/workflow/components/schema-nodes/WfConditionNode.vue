@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { WfConditionNodeData } from '@zoho-ide/shared'
 import { Handle, Position } from '@vue-flow/core'
+import type { WfConditionNodeData } from '@zoho-ide/shared'
 import { Icon } from '@iconify/vue'
 
 defineProps<{

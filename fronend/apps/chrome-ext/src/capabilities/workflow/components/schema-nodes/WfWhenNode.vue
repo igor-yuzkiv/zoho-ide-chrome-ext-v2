@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { WfWhenStatementNodeData } from '@zoho-ide/shared'
 import { Handle, Position } from '@vue-flow/core'
+import type { WfWhenStatementNodeData } from '@zoho-ide/shared'
 import { startCase } from 'lodash'
 import { Icon } from '@iconify/vue'
 

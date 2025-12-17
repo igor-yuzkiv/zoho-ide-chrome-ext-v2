@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { WfActionNodeData } from '@zoho-ide/shared'
 import { Handle, Position } from '@vue-flow/core'
+import type { WfActionNodeData } from '@zoho-ide/shared'
 import { Icon } from '@iconify/vue'
 
 defineProps<{

@@ -1,7 +1,7 @@
 import type { IModuleFieldMetadataEntity } from '@zoho-ide/shared'
-import { saveMockData } from '@/shared/api/mock/mock.api.ts'
 import type { ICapabilityEntity } from '@zoho-ide/shared'
 import type { ServiceProvider } from '@zoho-ide/shared'
+import { saveMockData } from '@/shared/api/mock/mock.api.ts'
 
 // TODO: remove mock data saving after testing
 export function useMockDataCollector() {

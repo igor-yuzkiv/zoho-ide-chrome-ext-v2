@@ -1,5 +1,5 @@
-import type { ZohoCrmWorkflow } from '@/shared/integrations/zoho-crm/types/crm.workflow.types.ts'
 import type { IWorkflowEntity } from '@zoho-ide/shared'
+import type { ZohoCrmWorkflow } from '@/shared/integrations/zoho-crm/types/crm.workflow.types.ts'
 
 export function mapToWorkflowEntity(wf: ZohoCrmWorkflow): IWorkflowEntity<ZohoCrmWorkflow> {
     return {

@@ -1,10 +1,10 @@
-import { IFunctionEntity } from '@zoho-ide/shared'
 import { CapabilityType } from '@/config/capabilities.config.ts'
 import { MaybeRefOrGetter } from '@vueuse/core'
+import { IFunctionEntity } from '@zoho-ide/shared'
 import { Maybe, Result } from '@zoho-ide/shared'
+import { ServiceProvider } from '@zoho-ide/shared'
 import { computed, ref, toValue } from 'vue'
 import { useCapabilitiesConfig } from '@/entities/capability/composables/useCapabilitiesConfig.ts'
-import { ServiceProvider } from '@zoho-ide/shared'
 
 export function useFunctionExecute(
     provider: MaybeRefOrGetter<Maybe<ServiceProvider>>,
@@ -32,7 +32,10 @@ export function useFunctionExecute(
 
         const port = resolvePort(providerValue, CapabilityType.FUNCTIONS)
         if (!port || !port.execute) {
-            return { ok: false, error: 'Unable to execute function. Current provider does not support function execution.' }
+            return {
+                ok: false,
+                error: 'Unable to execute function. Current provider does not support function execution.',
+            }
         }
 
         isExecuting.value = true

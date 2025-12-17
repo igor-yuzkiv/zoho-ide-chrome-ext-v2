@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { IModuleMetadataEntity } from '@zoho-ide/shared'
 import { CapabilityType } from '@/config/capabilities.config.ts'
 import { useRouteParams } from '@vueuse/router'
+import type { IModuleMetadataEntity } from '@zoho-ide/shared'
 import { ListBox, ListItem } from '@zoho-ide/shared'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { useCapabilityRecordsList } from '@/features/capability/capability-records-list'
