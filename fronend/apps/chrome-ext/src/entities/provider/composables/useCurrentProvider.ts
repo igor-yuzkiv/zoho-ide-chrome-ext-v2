@@ -1,9 +1,9 @@
 import { useRouteParams } from '@vueuse/router'
 import type { Maybe } from '@zoho-ide/shared'
+import type { CapabilityPort } from '@zoho-ide/shared'
+import type { ServiceProvider } from '@zoho-ide/shared'
 import { computed } from 'vue'
-import type { CapabilityPort } from '@/entities/capability/capability.types.ts'
 import { useCapabilitiesConfig } from '@/entities/capability/composables/useCapabilitiesConfig.ts'
-import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
 import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.ts'
 
 export function useCurrentProvider() {

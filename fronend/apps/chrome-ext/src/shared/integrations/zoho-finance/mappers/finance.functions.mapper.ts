@@ -1,4 +1,4 @@
-import type { IFunctionEntity } from '@/capabilities/function/function.types.ts'
+import type { IFunctionEntity } from '@zoho-ide/shared'
 import type {
     ZohoFinanceFunction,
     ZohoFinanceFunctionDetailsResponse,

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useWorkflowDetails } from '@/capabilities/workflow/composables/useWorkflowDetails.ts'
 import { useRouteParams } from '@vueuse/router'
 import { NoDataMessage, PageHeader } from '@zoho-ide/shared'
 import { defineAsyncComponent } from 'vue'
 import { useCurrentProvider } from '@/entities/provider/composables/useCurrentProvider.ts'
+import { useWorkflowDetails } from '@/features/workflow-capability/composables/useWorkflowDetails.ts'
 import { useViewMode, ViewModeSelect } from '@/widgets/view-mode'
 
 const providerId = useRouteParams<string>('providerId')
@@ -17,14 +17,14 @@ const viewMode = useViewMode(
             value: 'json',
             icon: 'si:json-duotone',
             component: defineAsyncComponent(
-                () => import('../../../capabilities/workflow/components/detail-view/WorkflowJsonView.vue')
+                () => import('@/features/workflow-capability/components/detail-view/WorkflowJsonView.vue')
             ),
         },
         {
             value: 'schema',
             icon: 'material-symbols:schema',
             component: defineAsyncComponent(
-                () => import('../../../capabilities/workflow/components/detail-view/WorkflowSchemaView.vue')
+                () => import('@/features/workflow-capability/components/detail-view/WorkflowSchemaView.vue')
             ),
         },
     ],

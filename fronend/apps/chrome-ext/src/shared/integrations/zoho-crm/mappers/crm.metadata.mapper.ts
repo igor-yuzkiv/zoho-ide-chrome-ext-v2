@@ -1,8 +1,5 @@
+import type { IModuleFieldMetadataEntity, IModuleMetadataEntity } from '@zoho-ide/shared'
 import type { CrmModuleField, CrmModuleMetadata } from '@/shared/integrations/zoho-crm/types/crm.metadata.types.ts'
-import type {
-    IModuleFieldMetadataEntity,
-    IModuleMetadataEntity,
-} from '@/capabilities/metadata/metadata.types.ts'
 
 export function mapCrmModuleToEntity(module: CrmModuleMetadata): IModuleMetadataEntity<CrmModuleMetadata> {
     return {
