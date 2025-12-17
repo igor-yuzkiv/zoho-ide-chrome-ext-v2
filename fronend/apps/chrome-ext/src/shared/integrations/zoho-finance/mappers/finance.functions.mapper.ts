@@ -1,4 +1,4 @@
-import type { IFunctionEntity } from '@zoho-ide/shared'
+import type { IFunctionRecordEntity } from '@zoho-ide/shared'
 import type {
     ZohoFinanceFunction,
     ZohoFinanceFunctionDetailsResponse,
@@ -7,7 +7,7 @@ import type {
 
 export function mapToFunctionEntity(
     fx: ZohoFinanceFunctionResponse | ZohoFinanceFunctionDetailsResponse
-): IFunctionEntity<ZohoFinanceFunction> {
+): IFunctionRecordEntity<ZohoFinanceFunction> {
     return {
         id: fx.customfunction_id,
         displayName: fx?.placeholder || fx.function_name,
@@ -23,6 +23,6 @@ export function mapToFunctionEntity(
 
 export function mapManyToFunctionEntity(
     functions: ZohoFinanceFunctionDetailsResponse[] | ZohoFinanceFunctionResponse[]
-): IFunctionEntity<ZohoFinanceFunction>[] {
+): IFunctionRecordEntity<ZohoFinanceFunction>[] {
     return functions.map(mapToFunctionEntity)
 }

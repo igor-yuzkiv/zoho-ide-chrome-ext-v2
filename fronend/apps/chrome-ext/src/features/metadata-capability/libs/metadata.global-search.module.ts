@@ -1,12 +1,12 @@
 import { CapabilityType } from '@/config/capabilities.config.ts'
-import type { ICapabilityEntity } from '@zoho-ide/shared'
+import type { IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
 import type { ServiceProvider } from '@zoho-ide/shared'
-import type { IModuleFieldMetadataEntity, IModuleMetadataEntity } from '@zoho-ide/shared'
+import type { IModuleFieldMetadataRecordEntity, IModuleMetadataRecordEntity } from '@zoho-ide/shared'
 import type { GlobalSearchDocument, GlobalSearchModule } from '@/shared/libs/global-search/lib/global-search.types.ts'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { selectProviderRecordsQuery } from '@/entities/capability/cache'
 
-async function provideIndexDocuments<T extends ICapabilityEntity>(
+async function provideIndexDocuments<T extends IBaseCapabilityRecordEntity>(
     capabilityType: string,
     context?: Record<string, unknown>
 ): Promise<T[]> {
@@ -23,7 +23,7 @@ export const ModulesGlobalSearchModule: GlobalSearchModule = {
     name: CapabilityType.MODULES,
     icon: 'streamline-sharp:module',
     provideIndexDocuments: async (context) => {
-        const records = await provideIndexDocuments<IModuleMetadataEntity>(CapabilityType.MODULES, context)
+        const records = await provideIndexDocuments<IModuleMetadataRecordEntity>(CapabilityType.MODULES, context)
         return records.map((i) => ({
             id: i.id,
             module: CapabilityType.MODULES,
@@ -41,7 +41,7 @@ export const FieldsGlobalSearchModule: GlobalSearchModule = {
     name: CapabilityType.FIELDS,
     icon: 'hugeicons:list-setting',
     provideIndexDocuments: async (context) => {
-        const records = await provideIndexDocuments<IModuleFieldMetadataEntity>(CapabilityType.FIELDS, context)
+        const records = await provideIndexDocuments<IModuleFieldMetadataRecordEntity>(CapabilityType.FIELDS, context)
         return records.map((i) => ({
             id: i.id,
             module: CapabilityType.FIELDS,

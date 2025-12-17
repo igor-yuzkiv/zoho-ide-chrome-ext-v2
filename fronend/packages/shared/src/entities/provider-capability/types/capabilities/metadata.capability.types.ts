@@ -1,12 +1,12 @@
 import type { IEntity } from '../../../../types'
-import type { ICapabilityEntity } from '../base.capability.types.ts'
+import type { IBaseCapabilityRecordEntity } from '../base.capability.types.ts'
 
-export interface IModuleMetadataEntity<TOrigin extends IEntity = IEntity> extends ICapabilityEntity {
+export interface IModuleMetadataRecordEntity<TOrigin extends IEntity = IEntity> extends IBaseCapabilityRecordEntity {
     apiName: string
     originEntity: TOrigin
 }
 
-export interface IModuleFieldMetadataEntity<TOrigin extends IEntity = IEntity> extends ICapabilityEntity {
+export interface IModuleFieldMetadataRecordEntity<TOrigin extends IEntity = IEntity> extends IBaseCapabilityRecordEntity {
     apiName: string
     moduleApiName: string
     moduleId: string

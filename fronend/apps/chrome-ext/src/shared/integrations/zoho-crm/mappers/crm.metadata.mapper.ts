@@ -1,7 +1,7 @@
-import type { IModuleFieldMetadataEntity, IModuleMetadataEntity } from '@zoho-ide/shared'
+import type { IModuleFieldMetadataRecordEntity, IModuleMetadataRecordEntity } from '@zoho-ide/shared'
 import type { CrmModuleField, CrmModuleMetadata } from '@/shared/integrations/zoho-crm/types/crm.metadata.types.ts'
 
-export function mapCrmModuleToEntity(module: CrmModuleMetadata): IModuleMetadataEntity<CrmModuleMetadata> {
+export function mapCrmModuleToEntity(module: CrmModuleMetadata): IModuleMetadataRecordEntity<CrmModuleMetadata> {
     return {
         id: module.id,
         apiName: module.api_name,
@@ -10,7 +10,7 @@ export function mapCrmModuleToEntity(module: CrmModuleMetadata): IModuleMetadata
     }
 }
 
-export function mapManyCrmModulesToEntities(modules: CrmModuleMetadata[]): IModuleMetadataEntity<CrmModuleMetadata>[] {
+export function mapManyCrmModulesToEntities(modules: CrmModuleMetadata[]): IModuleMetadataRecordEntity<CrmModuleMetadata>[] {
     return modules.map(mapCrmModuleToEntity)
 }
 
@@ -36,7 +36,7 @@ function formatDisplayDataType(field: CrmModuleField): string {
 export function mapCrmFieldToEntity(
     field: CrmModuleField,
     crmModule: CrmModuleMetadata
-): IModuleFieldMetadataEntity<CrmModuleField> {
+): IModuleFieldMetadataRecordEntity<CrmModuleField> {
     return {
         id: `${crmModule.api_name}-${field.id}`,
         apiName: field.api_name,
@@ -52,6 +52,6 @@ export function mapCrmFieldToEntity(
 export function mapManyCrmFieldsToEntities(
     fields: CrmModuleField[],
     crmModule: CrmModuleMetadata
-): IModuleFieldMetadataEntity<CrmModuleField>[] {
+): IModuleFieldMetadataRecordEntity<CrmModuleField>[] {
     return fields.map((field) => mapCrmFieldToEntity(field, crmModule))
 }

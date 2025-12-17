@@ -1,8 +1,8 @@
-import type { ICapabilityEntity } from '@zoho-ide/shared'
+import type { IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
 import { providersCacheDb } from '@/entities/capability/cache'
 import { generateCacheRecordId } from '@/entities/capability/cache/cache-record.service.ts'
 
-export default async function <T extends ICapabilityEntity = ICapabilityEntity>(
+export default async function <T extends IBaseCapabilityRecordEntity = IBaseCapabilityRecordEntity>(
     providerId: string,
     capabilityType: string,
     id: string

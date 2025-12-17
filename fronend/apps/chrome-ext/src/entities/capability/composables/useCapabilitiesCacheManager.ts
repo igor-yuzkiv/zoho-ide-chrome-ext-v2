@@ -2,7 +2,7 @@ import { useMockDataCollector } from './useMockDataCollector.ts'
 import { CapabilityQueryKeys } from '@/config/capabilities.config.ts'
 import { PROVIDER_CACHE_TTL_MS } from '@/config/providers.config.ts'
 import { useQueryClient } from '@tanstack/vue-query'
-import type { ICapabilityEntity } from '@zoho-ide/shared'
+import type { IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
 import type { ServiceProvider } from '@zoho-ide/shared'
 import { ref } from 'vue'
 import { useLogger } from '@/shared/libs/logger/useLogger.ts'
@@ -53,7 +53,7 @@ export function useCapabilitiesCacheManager() {
     async function upsertCapabilityRecordsInCache(
         provider: ServiceProvider,
         capabilityType: string,
-        records: ICapabilityEntity[]
+        records: IBaseCapabilityRecordEntity[]
     ) {
         return providersCacheDb.records.bulkPut(
             records.map((record) => ({

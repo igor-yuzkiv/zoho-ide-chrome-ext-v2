@@ -1,5 +1,5 @@
 import { CapabilityType } from '@/config/capabilities.config.ts'
-import type { IModuleFieldMetadataEntity, IModuleMetadataEntity } from '@zoho-ide/shared'
+import type { IModuleFieldMetadataRecordEntity, IModuleMetadataRecordEntity } from '@zoho-ide/shared'
 import type { PaginatedResult } from '@zoho-ide/shared'
 import type { Result } from '@zoho-ide/shared'
 import type { CapabilityPort } from '@zoho-ide/shared'
@@ -14,7 +14,7 @@ async function fetchModuleFields(
     tabId: number,
     orgId: string,
     module: CrmModuleMetadata
-): Promise<IModuleFieldMetadataEntity<CrmModuleField>[]> {
+): Promise<IModuleFieldMetadataRecordEntity<CrmModuleField>[]> {
     return fetchCrmModuleFieldsRequest(tabId, orgId, module.api_name).then((result) => {
         if (!result.ok) {
             console.warn(`Failed to zoho crm fields from ${module.api_name}(orgId: ${orgId})`, {
@@ -39,12 +39,12 @@ export function crmFieldsCapabilityPortFactory(provider: ServiceProvider): Resul
     return {
         ok: true,
         value: {
-            async list(): Promise<PaginatedResult<IModuleMetadataEntity[]>> {
+            async list(): Promise<PaginatedResult<IModuleMetadataRecordEntity[]>> {
                 if (!provider.tabId) {
                     return { ok: false, error: 'Provider offline' }
                 }
 
-                const modules = await selectProviderRecordsQuery<IModuleMetadataEntity<CrmModuleMetadata>>(
+                const modules = await selectProviderRecordsQuery<IModuleMetadataRecordEntity<CrmModuleMetadata>>(
                     provider.id,
                     CapabilityType.MODULES
                 ).then((res) => res.filter((m) => m?.originEntity?.api_supported))
