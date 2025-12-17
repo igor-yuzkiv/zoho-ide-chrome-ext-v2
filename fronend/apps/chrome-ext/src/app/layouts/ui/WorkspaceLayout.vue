@@ -10,9 +10,9 @@ import { useLogger } from '@/shared/libs/logger/useLogger.ts'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { useCapabilitiesCacheManager } from '@/entities/capability/composables/useCapabilitiesCacheManager.ts'
 import { useCurrentProvider } from '@/entities/provider/composables/useCurrentProvider.ts'
-import { CapabilitiesMenu } from '@/widgets/capabilities-menu'
 import { AppFooter } from '@/widgets/app-footer'
 import { AppTopMenu } from '@/widgets/app-top-menu'
+import { CapabilitiesMenu } from '@/widgets/capabilities-menu'
 
 const confirm = useConfirm()
 const toast = useToast()
