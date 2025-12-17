@@ -23,6 +23,7 @@ const { data: currentProvider } = useCurrentProvider()
 
 const {
     isCanExecute,
+    isExecuting: isFunctionExecuting,
     executionResult,
     argsFormData,
     isVisible: isVisibleExecuteDialog,
@@ -50,7 +51,7 @@ const viewMode = useViewMode(
 )
 
 async function handleCreateCodeSnippet() {
-    if (!isCodeSnippetCanCreated.value || !data.value || !script.value) {
+    if (!isCodeSnippetCanCreated.value || !data.value || !script.value || isFunctionExecuting.value) {
         return
     }
 
@@ -147,6 +148,7 @@ async function handleExecuteFunction() {
         :function-name="data?.displayName"
         :result="executionResult"
         @execute="handleExecuteFunction"
+        :loading="isFunctionExecuting"
     />
 </template>
 

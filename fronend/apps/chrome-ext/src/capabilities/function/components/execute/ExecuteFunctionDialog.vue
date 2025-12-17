@@ -5,12 +5,14 @@ import { FieldContainer } from '@zoho-ide/shared'
 import Prism from 'prismjs'
 import { onMounted, useTemplateRef } from 'vue'
 import { Button, Dialog, InputText } from 'primevue'
+import { Skeleton } from 'primevue'
 
 withDefaults(
     defineProps<{
         functionName?: string
         params: FunctionParams[]
         result?: string
+        loading?: boolean
     }>(),
     {
         result: '',
@@ -63,7 +65,8 @@ onMounted(() => {
             </FieldContainer>
         </div>
 
-        <div class="flex flex-col w-full h-full overflow-auto app-card p-1">
+        <Skeleton v-if="loading" width="100%" height="100%" class="rounded-lg" />
+        <div v-else class="flex flex-col w-full h-full overflow-auto app-card p-1">
             <pre class="w-full"><code ref="code-element" class="language-json">{{ result }}</code></pre>
         </div>
 

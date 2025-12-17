@@ -35,7 +35,8 @@ export function useFunctionExecute(
             return { ok: false, error: 'UnableCurrent provider does not support function execution.' }
         }
 
-        const result = await port.execute(fxValue, argsFormData.value)
+        isExecuting.value = true
+        const result = await port.execute(fxValue, argsFormData.value).finally(() => (isExecuting.value = false))
         if (!result.ok) {
             return result
         }
