@@ -6,7 +6,8 @@ export interface IModuleMetadataRecordEntity<TOrigin extends IEntity = IEntity> 
     originEntity: TOrigin
 }
 
-export interface IModuleFieldMetadataRecordEntity<TOrigin extends IEntity = IEntity> extends IBaseCapabilityRecordEntity {
+export interface IModuleFieldMetadataRecordEntity<TOrigin extends IEntity = IEntity>
+    extends IBaseCapabilityRecordEntity {
     apiName: string
     moduleApiName: string
     moduleId: string

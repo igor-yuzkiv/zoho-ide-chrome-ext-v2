@@ -28,7 +28,10 @@ export function useProviderRecordsFetcher() {
         return result
     }
 
-    async function fetchCapabilityRecords(provider: ServiceProvider, capability: string): Promise<IBaseCapabilityRecordEntity[]> {
+    async function fetchCapabilityRecords(
+        provider: ServiceProvider,
+        capability: string
+    ): Promise<IBaseCapabilityRecordEntity[]> {
         const port = capabilities.resolvePort(provider, capability)
         if (!port) {
             logger.warn(`No port found for capability "${capability}" on provider "${provider.id}"`)

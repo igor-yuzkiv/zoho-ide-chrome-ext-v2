@@ -10,7 +10,9 @@ export function mapCrmModuleToEntity(module: CrmModuleMetadata): IModuleMetadata
     }
 }
 
-export function mapManyCrmModulesToEntities(modules: CrmModuleMetadata[]): IModuleMetadataRecordEntity<CrmModuleMetadata>[] {
+export function mapManyCrmModulesToEntities(
+    modules: CrmModuleMetadata[]
+): IModuleMetadataRecordEntity<CrmModuleMetadata>[] {
     return modules.map(mapCrmModuleToEntity)
 }
 

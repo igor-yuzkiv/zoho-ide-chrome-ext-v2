@@ -10,7 +10,10 @@ export function useFunctionsList<TOrigin extends IEntity = IEntity>(providerId: 
         queryKey: CapabilityQueryKeys.forProviderAndType(providerId, CapabilityType.FUNCTIONS),
         placeholderData: keepPreviousData,
         queryFn: () => {
-            return selectProviderRecordsQuery<IFunctionRecordEntity<TOrigin>>(toValue(providerId), CapabilityType.FUNCTIONS)
+            return selectProviderRecordsQuery<IFunctionRecordEntity<TOrigin>>(
+                toValue(providerId),
+                CapabilityType.FUNCTIONS
+            )
         },
         initialData: [],
     })

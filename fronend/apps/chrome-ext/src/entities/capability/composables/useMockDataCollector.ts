@@ -27,7 +27,11 @@ export function useMockDataCollector() {
         )
     }
 
-    function saveCapabilityMockData(provider: ServiceProvider, capabilityType: string, records: IBaseCapabilityRecordEntity[]) {
+    function saveCapabilityMockData(
+        provider: ServiceProvider,
+        capabilityType: string,
+        records: IBaseCapabilityRecordEntity[]
+    ) {
         if (import.meta.env.VITE_COLLECT_MOCK_DATA !== 'true') {
             return
         }
