@@ -12,7 +12,7 @@ defineProps<TopMenuProps>()
                 v-for="item in items"
                 :key="item.title"
                 :is="item.route ? 'router-link' : 'div'"
-                :to="item.route"
+                v-bind="item.route ? { to: item.route } : {}"
                 class="app-list-item-hover"
                 active-class="app-list-item-active"
                 :title="item.title"

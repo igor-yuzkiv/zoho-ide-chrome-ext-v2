@@ -1,4 +1,4 @@
-import { IFunctionEntity } from '@/capabilities/function/function.types.ts'
+import type { IFunctionEntity } from '@/capabilities/function/function.types.ts'
 import type { IEntity } from '@zoho-ide/shared'
 import type { PaginatedResult, PaginationParams } from '@zoho-ide/shared'
 import type { Result } from '@zoho-ide/shared'

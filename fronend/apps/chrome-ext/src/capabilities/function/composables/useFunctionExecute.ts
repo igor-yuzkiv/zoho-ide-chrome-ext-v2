@@ -32,7 +32,7 @@ export function useFunctionExecute(
 
         const port = resolvePort(providerValue, CapabilityType.FUNCTIONS)
         if (!port || !port.execute) {
-            return { ok: false, error: 'UnableCurrent provider does not support function execution.' }
+            return { ok: false, error: 'Unable to execute function. Current provider does not support function execution.' }
         }
 
         isExecuting.value = true
