@@ -1,1 +1,1 @@
-export * from './provider.types.ts';
+export * from './provider.types.ts'
