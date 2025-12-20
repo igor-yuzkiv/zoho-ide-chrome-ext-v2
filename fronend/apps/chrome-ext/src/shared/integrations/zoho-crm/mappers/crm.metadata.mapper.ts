@@ -4,6 +4,7 @@ import type { CrmModuleField, CrmModuleMetadata } from '@/shared/integrations/zo
 export function mapCrmModuleToEntity(module: CrmModuleMetadata): IModuleMetadataRecordEntity<CrmModuleMetadata> {
     return {
         id: module.id,
+        sourceId: module.id,
         apiName: module.api_name,
         displayName: module.singular_label,
         originEntity: module,
@@ -41,6 +42,7 @@ export function mapCrmFieldToEntity(
 ): IModuleFieldMetadataRecordEntity<CrmModuleField> {
     return {
         id: `${crmModule.api_name}-${field.id}`,
+        sourceId: field.id,
         apiName: field.api_name,
         moduleApiName: crmModule.api_name,
         moduleId: crmModule.id,

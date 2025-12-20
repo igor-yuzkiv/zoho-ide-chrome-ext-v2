@@ -19,5 +19,6 @@ export type CapabilityPortFactory = (provider: ServiceProvider) => Result<Capabi
 
 export interface IBaseCapabilityRecordEntity extends IEntity {
     id: string
+    sourceId: string
     displayName: string
 }

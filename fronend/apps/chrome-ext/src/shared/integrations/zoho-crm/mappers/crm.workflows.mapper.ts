@@ -4,6 +4,7 @@ import type { ZohoCrmWorkflow } from '@/shared/integrations/zoho-crm/types/crm.w
 export function mapToWorkflowEntity(wf: ZohoCrmWorkflow): IWorkflowRecordEntity<ZohoCrmWorkflow> {
     return {
         id: wf.id,
+        sourceId: wf.id,
         displayName: wf.name,
         description: wf.description || '',
         originEntity: wf,

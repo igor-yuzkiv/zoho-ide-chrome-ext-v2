@@ -30,6 +30,7 @@ function normalizeCrmFunctionName(fx: ZohoCrmFunction): string {
 export function mapCrmFunctionToEntity(fx: ZohoCrmFunction): IFunctionRecordEntity<ZohoCrmFunction> {
     return {
         id: fx.id,
+        sourceId: fx.id,
         displayName: normalizeCrmFunctionName(fx),
         apiName: fx?.api_name || fx?.name,
         type: mapFunctionCategoryToType(fx?.category),

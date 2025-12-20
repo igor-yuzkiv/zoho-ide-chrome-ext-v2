@@ -10,6 +10,7 @@ export function mapToFunctionEntity(
 ): IFunctionRecordEntity<ZohoFinanceFunction> {
     return {
         id: fx.customfunction_id,
+        sourceId: fx.customfunction_id,
         displayName: fx?.placeholder || fx.function_name,
         apiName: fx.function_name,
         type: 'automation',
