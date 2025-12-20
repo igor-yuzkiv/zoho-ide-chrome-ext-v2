@@ -65,7 +65,10 @@ export function useCapabilitiesCacheManager() {
         )
     }
 
-    async function syncProviderCapabilityRecords(provider: ZohoServiceProvider, capabilityType: string): Promise<boolean> {
+    async function syncProviderCapabilityRecords(
+        provider: ZohoServiceProvider,
+        capabilityType: string
+    ): Promise<boolean> {
         try {
             const records = await recordsFetcher.fetchCapabilityRecords(provider, capabilityType)
             if (!records.length) {
