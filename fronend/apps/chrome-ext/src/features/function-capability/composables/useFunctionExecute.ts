@@ -39,7 +39,9 @@ export function useFunctionExecute(
         }
 
         isExecuting.value = true
-        const result = await capabilityAdapter.execute(fxValue, argsFormData.value).finally(() => (isExecuting.value = false))
+        const result = await capabilityAdapter
+            .execute(fxValue, argsFormData.value)
+            .finally(() => (isExecuting.value = false))
         if (!result.ok) {
             return result
         }
