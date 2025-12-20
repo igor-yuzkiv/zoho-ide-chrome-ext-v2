@@ -1,4 +1,4 @@
-import { CapabilityType } from '@/config/capabilities.config.ts'
+import { CapabilityType } from '@zoho-ide/shared'
 import type { ProviderCapability } from '@zoho-ide/shared'
 import { financeFunctionsCapabilityPortFactory } from '@/shared/integrations/zoho-finance/capabilities/finance.functions.capability.ts'
 

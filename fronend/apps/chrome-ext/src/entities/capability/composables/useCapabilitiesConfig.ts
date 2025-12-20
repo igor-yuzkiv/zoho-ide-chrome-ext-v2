@@ -1,4 +1,4 @@
-import { CAPABILITY_DEFAULT_ICON } from '@/config/capabilities.config.ts'
+import { CAPABILITY_DEFAULT_ICON } from '@zoho-ide/shared'
 import { CapabilitiesRegister } from '@/config/capabilities.register.ts'
 import type { Maybe } from '@zoho-ide/shared'
 import type { CapabilityPort, ProviderCapability } from '@zoho-ide/shared'

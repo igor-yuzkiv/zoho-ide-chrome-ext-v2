@@ -1,4 +1,4 @@
-import { CapabilityType } from '@/config/capabilities.config.ts'
+import { CapabilityType } from '@zoho-ide/shared'
 import { MaybeRefOrGetter } from '@vueuse/core'
 import { IFunctionRecordEntity } from '@zoho-ide/shared'
 import { Maybe, Result } from '@zoho-ide/shared'

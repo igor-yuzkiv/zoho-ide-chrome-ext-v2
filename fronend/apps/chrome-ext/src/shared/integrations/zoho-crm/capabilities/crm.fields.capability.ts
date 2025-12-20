@@ -1,4 +1,4 @@
-import { CapabilityType } from '@/config/capabilities.config.ts'
+import { CapabilityType } from '@zoho-ide/shared'
 import type { IModuleFieldMetadataRecordEntity, IModuleMetadataRecordEntity } from '@zoho-ide/shared'
 import type { PaginatedResult } from '@zoho-ide/shared'
 import type { Result } from '@zoho-ide/shared'

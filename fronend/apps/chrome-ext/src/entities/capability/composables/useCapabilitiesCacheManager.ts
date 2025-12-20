@@ -1,5 +1,5 @@
 import { useMockDataCollector } from './useMockDataCollector.ts'
-import { CapabilityQueryKeys } from '@/config/capabilities.config.ts'
+import { CapabilityQueryKeys } from '@zoho-ide/shared'
 import { PROVIDER_CACHE_TTL_MS } from '@/config/providers.config.ts'
 import { useQueryClient } from '@tanstack/vue-query'
 import type { IBaseCapabilityRecordEntity } from '@zoho-ide/shared'

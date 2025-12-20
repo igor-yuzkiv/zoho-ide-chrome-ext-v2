@@ -1,4 +1,4 @@
-import { CapabilityType } from '@/config/capabilities.config.ts'
+import { CapabilityType } from '@zoho-ide/shared'
 import type { ServiceProvider } from '@zoho-ide/shared'
 import type { IFunctionRecordEntity } from '@zoho-ide/shared'
 import { defineAsyncComponent } from 'vue'

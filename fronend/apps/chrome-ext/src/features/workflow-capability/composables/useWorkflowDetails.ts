@@ -1,4 +1,4 @@
-import { CapabilityQueryKeys, CapabilityType } from '@/config/capabilities.config.ts'
+import { CapabilityQueryKeys, CapabilityType } from '@zoho-ide/shared'
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
 import type { IWorkflowRecordEntity } from '@zoho-ide/shared'
 import type { IEntity } from '@zoho-ide/shared'
