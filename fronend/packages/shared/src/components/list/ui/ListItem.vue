@@ -7,7 +7,7 @@ defineProps<ListItemProps>()
 
 <template>
     <component
-        class="flex items-center justify-between w-full cursor-pointer hover:bg-selection px-2 rounded"
+        class="flex items-center justify-between w-full cursor-pointer hover:bg-selection px-2"
         :is="as || 'div'"
         v-tooltip="{ value: tooltip || title }"
     >
