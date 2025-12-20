@@ -10,8 +10,3 @@ export type ServiceProvider = {
     lastSyncedAt?: number
     cacheTtlMs?: number
 }
-
-export type ProviderSettingForm = {
-    title: string
-    cacheTtlMs: number
-}

@@ -12,7 +12,10 @@ async function provideIndexDocuments(context?: Record<string, unknown>): Promise
 
     const provider = context.provider as ServiceProvider
 
-    const records = await selectProviderRecordsQuery<IWorkflowRecordEntity>(provider.id, ProviderCapabilityType.WORKFLOWS)
+    const records = await selectProviderRecordsQuery<IWorkflowRecordEntity>(
+        provider.id,
+        ProviderCapabilityType.WORKFLOWS
+    )
     if (!records.length) {
         return []
     }

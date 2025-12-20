@@ -9,7 +9,10 @@ import { useCapabilityRecordsList } from '@/entities/capability/composables/useC
 
 const providerId = useRouteParams<string>('providerId')
 const activeModuleId = useRouteParams<string>('moduleId')
-const { data: modules } = useCapabilityRecordsList<IModuleMetadataRecordEntity>(ProviderCapabilityType.MODULES, providerId)
+const { data: modules } = useCapabilityRecordsList<IModuleMetadataRecordEntity>(
+    ProviderCapabilityType.MODULES,
+    providerId
+)
 const router = useRouter()
 
 function handleSelectModule(value?: IModuleMetadataRecordEntity) {

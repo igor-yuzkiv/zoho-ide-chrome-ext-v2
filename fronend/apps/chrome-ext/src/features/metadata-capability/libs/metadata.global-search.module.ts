@@ -23,7 +23,10 @@ export const ModulesGlobalSearchModule: GlobalSearchModule = {
     name: ProviderCapabilityType.MODULES,
     icon: 'streamline-sharp:module',
     provideIndexDocuments: async (context) => {
-        const records = await provideIndexDocuments<IModuleMetadataRecordEntity>(ProviderCapabilityType.MODULES, context)
+        const records = await provideIndexDocuments<IModuleMetadataRecordEntity>(
+            ProviderCapabilityType.MODULES,
+            context
+        )
         return records.map((i) => ({
             id: i.id,
             module: ProviderCapabilityType.MODULES,
@@ -41,7 +44,10 @@ export const FieldsGlobalSearchModule: GlobalSearchModule = {
     name: ProviderCapabilityType.FIELDS,
     icon: 'hugeicons:list-setting',
     provideIndexDocuments: async (context) => {
-        const records = await provideIndexDocuments<IModuleFieldMetadataRecordEntity>(ProviderCapabilityType.FIELDS, context)
+        const records = await provideIndexDocuments<IModuleFieldMetadataRecordEntity>(
+            ProviderCapabilityType.FIELDS,
+            context
+        )
         return records.map((i) => ({
             id: i.id,
             module: ProviderCapabilityType.FIELDS,

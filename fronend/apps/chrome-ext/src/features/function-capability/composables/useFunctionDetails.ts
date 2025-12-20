@@ -12,7 +12,11 @@ export function useFunctionDetails<TOrigin extends IEntity = IEntity>(
     const script = ref<string>('')
 
     const { isPending, data } = useQuery<IFunctionRecordEntity<TOrigin>>({
-        queryKey: ProviderCapabilityQueryKeys.forCapabilityRecord(providerId, ProviderCapabilityType.FUNCTIONS, functionId),
+        queryKey: ProviderCapabilityQueryKeys.forCapabilityRecord(
+            providerId,
+            ProviderCapabilityType.FUNCTIONS,
+            functionId
+        ),
         placeholderData: keepPreviousData,
         queryFn: () => {
             return findCapabilityRecordQuery<IFunctionRecordEntity<TOrigin>>(

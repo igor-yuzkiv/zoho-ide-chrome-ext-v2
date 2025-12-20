@@ -10,7 +10,11 @@ export function useWorkflowDetails<TOrigin extends IEntity = IEntity>(
     workflowId: MaybeRef<string>
 ) {
     const { isPending, data } = useQuery<IWorkflowRecordEntity<TOrigin>>({
-        queryKey: ProviderCapabilityQueryKeys.forCapabilityRecord(providerId, ProviderCapabilityType.WORKFLOWS, workflowId),
+        queryKey: ProviderCapabilityQueryKeys.forCapabilityRecord(
+            providerId,
+            ProviderCapabilityType.WORKFLOWS,
+            workflowId
+        ),
         placeholderData: keepPreviousData,
         queryFn: () => {
             return findCapabilityRecordQuery<IWorkflowRecordEntity<TOrigin>>(

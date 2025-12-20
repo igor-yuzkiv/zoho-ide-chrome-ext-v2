@@ -9,7 +9,10 @@ import { useCapabilityRecordsList } from '@/entities/capability/composables/useC
 
 const providerId = useRouteParams<string>('providerId')
 const activeWorkflowId = useRouteParams<string>('workflowId')
-const { data: workflows } = useCapabilityRecordsList<IWorkflowRecordEntity>(ProviderCapabilityType.WORKFLOWS, providerId)
+const { data: workflows } = useCapabilityRecordsList<IWorkflowRecordEntity>(
+    ProviderCapabilityType.WORKFLOWS,
+    providerId
+)
 const router = useRouter()
 
 function handleSelectWorkflow(value?: IWorkflowRecordEntity) {
