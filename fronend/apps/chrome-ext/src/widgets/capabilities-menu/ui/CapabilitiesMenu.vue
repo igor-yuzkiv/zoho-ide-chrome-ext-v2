@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { ProviderCapability } from '@zoho-ide/shared'
+import type { ServiceProviderCapability } from '@zoho-ide/shared'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { Icon } from '@iconify/vue'
 
 const props = defineProps<{
     providerId: string
-    capabilities: ProviderCapability[]
+    capabilities: ServiceProviderCapability[]
 }>()
 
 const route = useRoute()

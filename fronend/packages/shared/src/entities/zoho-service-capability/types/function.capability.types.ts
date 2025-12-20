@@ -1,5 +1,5 @@
-import type { IEntity } from '../../../../types'
-import type { IBaseCapabilityRecordEntity } from '../base.capability.types.ts'
+import type { IEntity } from '../../../types'
+import type { IBaseCapabilityRecordEntity } from './base.capability.types.ts'
 
 export type FunctionType = 'button' | 'standalone' | 'dynamic' | 'automation' | 'scheduler' | 'unknown'
 

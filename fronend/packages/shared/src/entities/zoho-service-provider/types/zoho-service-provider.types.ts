@@ -1,8 +1,8 @@
-export type ProviderType = 'crm' | 'finance'
+export type ZohoServiceProviderType = 'crm' | 'finance'
 
 export type ZohoServiceProvider = {
     id: string
-    type: ProviderType
+    type: ZohoServiceProviderType
     title: string
     metadata: Record<string, unknown>
     tabId?: number

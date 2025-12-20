@@ -1,1 +1,1 @@
-export * from './provider.types.ts'
+export * from './zoho-service-provider.types.ts'

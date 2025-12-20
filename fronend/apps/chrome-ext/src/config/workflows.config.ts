@@ -1,4 +1,4 @@
-import type { ProviderType, WorkflowSchemaBuilder } from '@zoho-ide/shared'
+import type { ZohoServiceProviderType, WorkflowSchemaBuilder } from '@zoho-ide/shared'
 import { zohoCrmWorkflowSchemaBuilder } from '@/shared/integrations/zoho-crm/services/crm.workflow-schema.service.ts'
 
 export const WfSchemaNodeType = {
@@ -7,6 +7,6 @@ export const WfSchemaNodeType = {
     action: 'WfActionNode',
 } as const
 
-export const WorkflowSchemaBuilderRegister: Partial<Record<ProviderType, WorkflowSchemaBuilder>> = {
+export const WorkflowSchemaBuilderRegister: Partial<Record<ZohoServiceProviderType, WorkflowSchemaBuilder>> = {
     crm: zohoCrmWorkflowSchemaBuilder,
 }

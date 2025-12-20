@@ -1,19 +1,19 @@
 import { CapabilitiesRegister } from '@/config/capabilities.register.ts'
 import { CAPABILITY_DEFAULT_ICON } from '@zoho-ide/shared'
 import type { Maybe } from '@zoho-ide/shared'
-import type { CapabilityPort, ProviderCapability } from '@zoho-ide/shared'
-import type { ProviderType, ZohoServiceProvider } from '@zoho-ide/shared'
+import type { CapabilityPort, ServiceProviderCapability } from '@zoho-ide/shared'
+import type { ZohoServiceProviderType, ZohoServiceProvider } from '@zoho-ide/shared'
 
 export function useCapabilitiesConfig() {
-    function byProviderType(providerType: ProviderType): ProviderCapability[] {
+    function byProviderType(providerType: ZohoServiceProviderType): ServiceProviderCapability[] {
         return CapabilitiesRegister[providerType] || []
     }
 
-    function byProvider(provider: ZohoServiceProvider): ProviderCapability[] {
+    function byProvider(provider: ZohoServiceProvider): ServiceProviderCapability[] {
         return byProviderType(provider.type)
     }
 
-    function findCapabilityByType(provider: ZohoServiceProvider, capabilityType: string): Maybe<ProviderCapability> {
+    function findCapabilityByType(provider: ZohoServiceProvider, capabilityType: string): Maybe<ServiceProviderCapability> {
         const capabilities = byProvider(provider)
         return capabilities.find((cap) => cap.type === capabilityType)
     }
@@ -32,7 +32,7 @@ export function useCapabilitiesConfig() {
         return result.value
     }
 
-    function getCapabilityIcon(providerType: ProviderType, capabilityType: string): string {
+    function getCapabilityIcon(providerType: ZohoServiceProviderType, capabilityType: string): string {
         const caps = byProviderType(providerType)
         if (!caps.length) {
             return CAPABILITY_DEFAULT_ICON

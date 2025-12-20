@@ -1,4 +1,4 @@
 export * from './base.capability.types.ts'
-export * from './capabilities/function.capability.types.ts'
-export * from './capabilities/workflow.capability.types.ts'
-export * from './capabilities/metadata.capability.types.ts'
+export * from './function.capability.types.ts'
+export * from './workflow.capability.types.ts'
+export * from './metadata.capability.types.ts'
