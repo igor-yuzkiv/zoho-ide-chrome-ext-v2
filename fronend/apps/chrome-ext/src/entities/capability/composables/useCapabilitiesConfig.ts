@@ -1,24 +1,27 @@
 import { CapabilitiesRegister } from '@/config/capabilities.register.ts'
 import { CAPABILITY_DEFAULT_ICON } from '@zoho-ide/shared'
 import type { Maybe } from '@zoho-ide/shared'
-import type { CapabilityPort, ProviderCapability } from '@zoho-ide/shared'
-import type { ProviderType, ServiceProvider } from '@zoho-ide/shared'
+import type { CapabilityPort, ServiceProviderCapability } from '@zoho-ide/shared'
+import type { ZohoServiceProvider, ZohoServiceProviderType } from '@zoho-ide/shared'
 
 export function useCapabilitiesConfig() {
-    function byProviderType(providerType: ProviderType): ProviderCapability[] {
+    function byProviderType(providerType: ZohoServiceProviderType): ServiceProviderCapability[] {
         return CapabilitiesRegister[providerType] || []
     }
 
-    function byProvider(provider: ServiceProvider): ProviderCapability[] {
+    function byProvider(provider: ZohoServiceProvider): ServiceProviderCapability[] {
         return byProviderType(provider.type)
     }
 
-    function findCapabilityByType(provider: ServiceProvider, capabilityType: string): Maybe<ProviderCapability> {
+    function findCapabilityByType(
+        provider: ZohoServiceProvider,
+        capabilityType: string
+    ): Maybe<ServiceProviderCapability> {
         const capabilities = byProvider(provider)
         return capabilities.find((cap) => cap.type === capabilityType)
     }
 
-    function resolvePort(provider: ServiceProvider, capabilityType: string): Maybe<CapabilityPort> {
+    function resolvePort(provider: ZohoServiceProvider, capabilityType: string): Maybe<CapabilityPort> {
         const capability = findCapabilityByType(provider, capabilityType)
         if (!capability || !capability.portFactory) {
             return
@@ -32,7 +35,7 @@ export function useCapabilitiesConfig() {
         return result.value
     }
 
-    function getCapabilityIcon(providerType: ProviderType, capabilityType: string): string {
+    function getCapabilityIcon(providerType: ZohoServiceProviderType, capabilityType: string): string {
         const caps = byProviderType(providerType)
         if (!caps.length) {
             return CAPABILITY_DEFAULT_ICON

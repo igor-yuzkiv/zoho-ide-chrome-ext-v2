@@ -1,5 +1,5 @@
 import type { Maybe } from '@zoho-ide/shared'
-import type { ServiceProvider } from '@zoho-ide/shared'
+import type { ZohoServiceProvider } from '@zoho-ide/shared'
 import { ZOHO_CRM_REGULAR_URL_REGEX, ZOHO_CRM_SANDBOX_URL_REGEX } from '@/shared/integrations/zoho-crm/crm.config.ts'
 import type { CrmServiceProviderMetadata } from '@/shared/integrations/zoho-crm/types/crm.provider.types.ts'
 
@@ -24,7 +24,7 @@ export function resolveCrmServiceProviderMetadataFromUrl(url: string): Maybe<Crm
     return { host, orgId, isSandbox }
 }
 
-export function assertCrmMetadata(provider: ServiceProvider): CrmServiceProviderMetadata | undefined {
+export function assertCrmMetadata(provider: ZohoServiceProvider): CrmServiceProviderMetadata | undefined {
     return provider.metadata && provider?.metadata?.orgId
         ? (provider.metadata as CrmServiceProviderMetadata)
         : undefined

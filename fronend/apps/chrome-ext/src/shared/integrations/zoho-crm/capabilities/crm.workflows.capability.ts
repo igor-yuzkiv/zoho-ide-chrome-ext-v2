@@ -1,7 +1,7 @@
 import type { PaginatedResult, PaginationParams } from '@zoho-ide/shared'
 import type { Result } from '@zoho-ide/shared'
 import type { CapabilityPort, IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
-import type { ServiceProvider } from '@zoho-ide/shared'
+import type { ZohoServiceProvider } from '@zoho-ide/shared'
 import { assertCrmMetadata } from '@/shared/integrations/zoho-crm/crm.utils.ts'
 import { mapManyToWorkflowEntity } from '@/shared/integrations/zoho-crm/mappers/crm.workflows.mapper.ts'
 import fetchCrmWorkflowDetailsRequest from '@/shared/integrations/zoho-crm/requests/fetch-crm-workflow-details.request.ts'
@@ -22,7 +22,7 @@ async function fetchWorkflowsDetails(
     return result.length ? result : list
 }
 
-export function crmWorkflowCapabilityPortFactory(provider: ServiceProvider): Result<CapabilityPort> {
+export function crmWorkflowCapabilityPortFactory(provider: ZohoServiceProvider): Result<CapabilityPort> {
     const metadata = assertCrmMetadata(provider)
     if (!metadata) {
         return { ok: false, error: 'Invalid provider metadata' }

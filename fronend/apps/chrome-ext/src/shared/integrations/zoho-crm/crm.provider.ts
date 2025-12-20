@@ -1,5 +1,5 @@
 import type { Result } from '@zoho-ide/shared'
-import type { ServiceProvider } from '@zoho-ide/shared'
+import type { ZohoServiceProvider } from '@zoho-ide/shared'
 import { resolveCrmServiceProviderMetadataFromUrl } from '@/shared/integrations/zoho-crm/crm.utils.ts'
 import type { BrowserTab } from '@/shared/libs/browser/browser.types.ts'
 
@@ -7,7 +7,7 @@ export function formatZohoCrmProviderId(orgId: string): string {
     return `zoho-crm-${orgId}`
 }
 
-export function crmServiceProviderFactory(tab: BrowserTab): Result<ServiceProvider> {
+export function crmServiceProviderFactory(tab: BrowserTab): Result<ZohoServiceProvider> {
     if (!tab.url) {
         return { ok: false, error: 'Tab URL is undefined' }
     }

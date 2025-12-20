@@ -1,5 +1,5 @@
 import type { Result } from '@zoho-ide/shared'
-import type { ServiceProvider } from '@zoho-ide/shared'
+import type { ZohoServiceProvider } from '@zoho-ide/shared'
 import { capitalize } from 'vue'
 import type { ZohoFinanceService } from '@/shared/integrations/zoho-finance/types/finance.provider.types.ts'
 import {
@@ -13,7 +13,7 @@ const SERVICE_ICONS: Record<ZohoFinanceService, string> = {
     inventory: 'material-symbols:forklift',
 }
 
-export function financeServiceProviderFactory(tab: BrowserTab): Result<ServiceProvider> {
+export function financeServiceProviderFactory(tab: BrowserTab): Result<ZohoServiceProvider> {
     if (!tab.url) {
         return { ok: false, error: 'Tab URL is undefined' }
     }

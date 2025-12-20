@@ -1,5 +1,5 @@
 import type { Maybe } from '@zoho-ide/shared'
-import type { ServiceProvider } from '@zoho-ide/shared'
+import type { ZohoServiceProvider } from '@zoho-ide/shared'
 import type {
     FinanceServiceProviderMetadata,
     ZohoFinanceService,
@@ -29,7 +29,7 @@ export function resolveFinanceProviderMetadataFromUrl(url: string): Maybe<Financ
     }
 }
 
-export function assertFinanceMetadata(provider: ServiceProvider): FinanceServiceProviderMetadata | undefined {
+export function assertFinanceMetadata(provider: ZohoServiceProvider): FinanceServiceProviderMetadata | undefined {
     return provider.metadata && provider?.metadata?.orgId && provider.metadata?.financeService
         ? (provider.metadata as FinanceServiceProviderMetadata)
         : undefined

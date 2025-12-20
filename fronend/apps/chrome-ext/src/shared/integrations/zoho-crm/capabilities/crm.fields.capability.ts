@@ -3,7 +3,7 @@ import type { IModuleFieldMetadataRecordEntity, IModuleMetadataRecordEntity } fr
 import type { PaginatedResult } from '@zoho-ide/shared'
 import type { Result } from '@zoho-ide/shared'
 import type { CapabilityPort } from '@zoho-ide/shared'
-import type { ServiceProvider } from '@zoho-ide/shared'
+import type { ZohoServiceProvider } from '@zoho-ide/shared'
 import { assertCrmMetadata } from '@/shared/integrations/zoho-crm/crm.utils.ts'
 import { mapManyCrmFieldsToEntities } from '@/shared/integrations/zoho-crm/mappers/crm.metadata.mapper.ts'
 import fetchCrmModuleFieldsRequest from '@/shared/integrations/zoho-crm/requests/fetch.crm-module-fields.request.ts'
@@ -30,7 +30,7 @@ async function fetchModuleFields(
     })
 }
 
-export function crmFieldsCapabilityPortFactory(provider: ServiceProvider): Result<CapabilityPort> {
+export function crmFieldsCapabilityPortFactory(provider: ZohoServiceProvider): Result<CapabilityPort> {
     const metadata = assertCrmMetadata(provider)
     if (!metadata) {
         return { ok: false, error: 'Invalid provider metadata' }

@@ -1,7 +1,7 @@
 import { useRouteParams } from '@vueuse/router'
 import type { Maybe } from '@zoho-ide/shared'
 import type { CapabilityPort } from '@zoho-ide/shared'
-import type { ServiceProvider } from '@zoho-ide/shared'
+import type { ZohoServiceProvider } from '@zoho-ide/shared'
 import { computed } from 'vue'
 import { useCapabilitiesConfig } from '@/entities/capability/composables/useCapabilitiesConfig.ts'
 import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.ts'
@@ -18,7 +18,7 @@ export function useCurrentProvider() {
         return data.value ? capabilitiesConfig.byProvider(data.value).filter((c) => !c?.hideInMenu) : []
     })
 
-    function update(newData: Partial<ServiceProvider>) {
+    function update(newData: Partial<ZohoServiceProvider>) {
         if (!providerId.value) {
             return
         }

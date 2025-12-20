@@ -1,3 +1,3 @@
 export * from './user'
-export * from './provider'
-export * from './provider-capability'
+export * from './zoho-service-provider'
+export * from './zoho-service-capability'

@@ -1,5 +1,5 @@
 import { ProviderCapabilityType } from '@zoho-ide/shared'
-import type { ServiceProvider } from '@zoho-ide/shared'
+import type { ZohoServiceProvider } from '@zoho-ide/shared'
 import type { IFunctionRecordEntity } from '@zoho-ide/shared'
 import { defineAsyncComponent } from 'vue'
 import type { GlobalSearchDocument, GlobalSearchModule } from '@/shared/libs/global-search/lib/global-search.types.ts'
@@ -11,7 +11,7 @@ async function provideIndexDocuments(context?: Record<string, unknown>): Promise
         return []
     }
 
-    const provider = context.provider as ServiceProvider
+    const provider = context.provider as ZohoServiceProvider
 
     const records = await selectProviderRecordsQuery<IFunctionRecordEntity>(
         provider.id,

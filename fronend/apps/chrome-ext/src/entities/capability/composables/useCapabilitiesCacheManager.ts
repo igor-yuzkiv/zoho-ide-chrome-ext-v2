@@ -3,7 +3,7 @@ import { PROVIDER_CACHE_TTL_MS } from '@/config/providers.config.ts'
 import { useQueryClient } from '@tanstack/vue-query'
 import { ProviderCapabilityQueryKeys } from '@zoho-ide/shared'
 import type { IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
-import type { ServiceProvider } from '@zoho-ide/shared'
+import type { ZohoServiceProvider } from '@zoho-ide/shared'
 import { ref } from 'vue'
 import { useLogger } from '@/shared/libs/logger/useLogger.ts'
 import { providersCacheDb } from '@/entities/capability/cache'
@@ -30,20 +30,20 @@ export function useCapabilitiesCacheManager() {
         return count > 0
     }
 
-    async function hasProviderCache(provider: ServiceProvider): Promise<boolean> {
+    async function hasProviderCache(provider: ZohoServiceProvider): Promise<boolean> {
         const count = await providersCacheDb.records.where('providerId').equals(provider.id).count()
 
         return count > 0
     }
 
-    function isProviderCacheStale(provider: ServiceProvider) {
+    function isProviderCacheStale(provider: ZohoServiceProvider) {
         if (!provider.lastSyncedAt) return true
 
         const ttl = provider.cacheTtlMs ?? PROVIDER_CACHE_TTL_MS
         return Date.now() - provider.lastSyncedAt > ttl
     }
 
-    async function shouldSyncProvider(provider: ServiceProvider) {
+    async function shouldSyncProvider(provider: ZohoServiceProvider) {
         const isHasCache = await hasProviderCache(provider)
         const isCacheStale = isProviderCacheStale(provider)
 
@@ -51,7 +51,7 @@ export function useCapabilitiesCacheManager() {
     }
 
     async function upsertCapabilityRecordsInCache(
-        provider: ServiceProvider,
+        provider: ZohoServiceProvider,
         capabilityType: string,
         records: IBaseCapabilityRecordEntity[]
     ) {
@@ -65,7 +65,10 @@ export function useCapabilitiesCacheManager() {
         )
     }
 
-    async function syncProviderCapabilityRecords(provider: ServiceProvider, capabilityType: string): Promise<boolean> {
+    async function syncProviderCapabilityRecords(
+        provider: ZohoServiceProvider,
+        capabilityType: string
+    ): Promise<boolean> {
         try {
             const records = await recordsFetcher.fetchCapabilityRecords(provider, capabilityType)
             if (!records.length) {
@@ -95,7 +98,7 @@ export function useCapabilitiesCacheManager() {
             .catch((e) => logger.error('Failed to invalidate capability queries for provider', providerId, e))
     }
 
-    async function bootstrap(provider: ServiceProvider) {
+    async function bootstrap(provider: ZohoServiceProvider) {
         try {
             const shouldSync = await shouldSyncProvider(provider)
             if (!shouldSync) {

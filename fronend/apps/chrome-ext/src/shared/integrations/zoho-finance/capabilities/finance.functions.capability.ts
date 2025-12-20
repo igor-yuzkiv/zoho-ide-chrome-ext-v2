@@ -8,7 +8,7 @@ import type {
 import type { IFunctionRecordEntity } from '@zoho-ide/shared'
 import type { PaginatedResult, PaginationParams, Result } from '@zoho-ide/shared'
 import type { CapabilityPort, IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
-import type { ServiceProvider } from '@zoho-ide/shared'
+import type { ZohoServiceProvider } from '@zoho-ide/shared'
 import { assertFinanceMetadata } from '@/shared/integrations/zoho-finance/zoho-finance.utils.ts'
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
@@ -36,7 +36,7 @@ async function loadFunctionsDetails(
     return details
 }
 
-export function financeFunctionsCapabilityPortFactory(provider: ServiceProvider): Result<CapabilityPort> {
+export function financeFunctionsCapabilityPortFactory(provider: ZohoServiceProvider): Result<CapabilityPort> {
     const metadata = assertFinanceMetadata(provider)
     if (!metadata) {
         return { ok: false, error: 'Invalid provider metadata' }

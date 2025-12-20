@@ -2,12 +2,12 @@ import { MaybeRefOrGetter } from '@vueuse/core'
 import { ProviderCapabilityType } from '@zoho-ide/shared'
 import { IFunctionRecordEntity } from '@zoho-ide/shared'
 import { Maybe, Result } from '@zoho-ide/shared'
-import { ServiceProvider } from '@zoho-ide/shared'
+import { ZohoServiceProvider } from '@zoho-ide/shared'
 import { computed, ref, toValue } from 'vue'
 import { useCapabilitiesConfig } from '@/entities/capability/composables/useCapabilitiesConfig.ts'
 
 export function useFunctionExecute(
-    provider: MaybeRefOrGetter<Maybe<ServiceProvider>>,
+    provider: MaybeRefOrGetter<Maybe<ZohoServiceProvider>>,
     fx: MaybeRefOrGetter<Maybe<IFunctionRecordEntity>>
 ) {
     const isVisible = ref(false)
