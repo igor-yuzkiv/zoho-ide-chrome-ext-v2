@@ -33,6 +33,15 @@ const getItemIcon = (item: IKnowledgeBaseItem) => {
         ? KnowledgeBaseCategoryMetadata[item.category].icon
         : KnowledgeBaseCategoryMetadata.general.icon
 }
+
+function handleSelectItem(value?: IKnowledgeBaseItem) {
+    if (value?.id) {
+        router?.push({
+            name: AppRouteName.knowledgeBaseArticleDetails,
+            params: { itemId: value.id },
+        })
+    }
+}
 </script>
 
 <template>
@@ -43,6 +52,7 @@ const getItemIcon = (item: IKnowledgeBaseItem) => {
         :has-more-items="hasNextPage"
         @load-more="loadMoreRecords"
         v-model:search-term="searchTerm"
+        @select-item="handleSelectItem"
     >
         <template #search-extra>
             <IconButton icon="ic:baseline-plus" text @click="newItemDialogVisible = true" />

@@ -1,14 +1,14 @@
 <script setup lang="ts" generic="T extends Record<string, unknown>">
 import { ListItemProps } from '../lib/list.props.ts'
 import ListItem from './ListItem.vue'
-import { computed } from 'vue'
+import { onKeyStroke, useFocusWithin } from '@vueuse/core'
+import { computed, useTemplateRef } from 'vue'
 import InputText from 'primevue/inputtext'
 
-//TODO: handle arrow key navigation and selection
-
-defineEmits<{
+const emit = defineEmits<{
     (e: 'itemClick', item: T): void
     (e: 'loadMore'): void
+    (e: 'selectItem', item: T): void
 }>()
 const props = withDefaults(
     defineProps<{
@@ -23,6 +23,7 @@ const props = withDefaults(
         listItemProps?: Partial<ListItemProps>
         isActiveItem?: (item: T) => boolean
         hasMoreItems?: boolean
+        keyboardNavigationEnabled?: boolean
     }>(),
     {
         itemKey: 'id',
@@ -31,10 +32,15 @@ const props = withDefaults(
         searchPlaceholder: 'Start typing to search...',
         searchFields: () => ['title'],
         hasMoreItems: false,
+        keyboardNavigationEnabled: true,
     }
 )
 
+const listContainer = useTemplateRef('list-container')
 const searchTerm = defineModel<string>('search-term', { default: '' })
+const activeItemIndex = computed(() => itemsForDisplay.value.findIndex((item) => item.isActive))
+const { focused: isFocused } = useFocusWithin(listContainer)
+const isKeyboardNavigationAllowed = computed(() => props.keyboardNavigationEnabled && isFocused.value)
 
 const getItemFilterValue = (item: T): string => {
     if (!props.searchFields || props.searchFields.length === 0) {
@@ -70,10 +76,30 @@ const itemsForDisplay = computed(() => {
         ? mappedItems.value.filter((item) => item.searchValue.includes(searchTerm.value.toLowerCase().trim()))
         : mappedItems.value
 })
+
+onKeyStroke('ArrowUp', (e) => {
+    if (isKeyboardNavigationAllowed.value && activeItemIndex.value > 0) {
+        const previousItem = itemsForDisplay.value[activeItemIndex.value - 1]
+        if (previousItem) {
+            e.preventDefault()
+            emit('selectItem', previousItem.original)
+        }
+    }
+})
+
+onKeyStroke('ArrowDown', (e) => {
+    if (isKeyboardNavigationAllowed.value && activeItemIndex.value < itemsForDisplay.value.length - 1) {
+        const nextItem = itemsForDisplay.value[activeItemIndex.value + 1]
+        if (nextItem) {
+            e.preventDefault()
+            emit('selectItem', nextItem.original)
+        }
+    }
+})
 </script>
 
 <template>
-    <div class="flex h-full flex-col overflow-x-hidden overflow-y-auto">
+    <div class="flex h-full flex-col overflow-x-hidden overflow-y-auto" ref="list-container" tabindex="0">
         <div v-if="searchStrategy" class="flex items-center gap-x-2 border-b">
             <InputText
                 v-model.lazy="searchTerm"
