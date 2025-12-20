@@ -6,7 +6,7 @@ import { assertCrmMetadata } from '@/shared/integrations/zoho-crm/crm.utils.ts'
 import { mapManyCrmModulesToEntities } from '@/shared/integrations/zoho-crm/mappers/crm.metadata.mapper.ts'
 import fetchCrmModulesRequest from '@/shared/integrations/zoho-crm/requests/fetch.crm-modules.request.ts'
 
-export function crmModulesCapabilityPortFactory(provider: ZohoServiceProvider): Result<CapabilityAdapter> {
+export function crmModulesCapabilityAdapterFactory(provider: ZohoServiceProvider): Result<CapabilityAdapter> {
     const metadata = assertCrmMetadata(provider)
     if (!metadata) {
         return { ok: false, error: 'Invalid provider metadata' }

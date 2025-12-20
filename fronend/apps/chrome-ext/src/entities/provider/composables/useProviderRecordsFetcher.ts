@@ -34,7 +34,7 @@ export function useProviderRecordsFetcher() {
     ): Promise<IBaseCapabilityRecordEntity[]> {
         const capabilityAdapter = capabilities.resolveCapabilityAdapter(provider, capability)
         if (!capabilityAdapter) {
-            logger.warn(`No port found for capability "${capability}" on provider "${provider.id}"`)
+            logger.warn(`No adapter found for capability "${capability}" on provider "${provider.id}"`)
             return []
         }
 

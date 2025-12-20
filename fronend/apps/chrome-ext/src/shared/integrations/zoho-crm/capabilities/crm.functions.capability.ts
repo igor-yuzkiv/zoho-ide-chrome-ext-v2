@@ -24,7 +24,7 @@ async function fetchFunctionsDetails(
     return result.length ? result : list
 }
 
-export function crmFunctionsCapabilityPortFactory(provider: ZohoServiceProvider): Result<CapabilityAdapter> {
+export function crmFunctionsCapabilityAdapterFactory(provider: ZohoServiceProvider): Result<CapabilityAdapter> {
     const metadata = assertCrmMetadata(provider)
     if (!metadata) {
         return { ok: false, error: 'Invalid provider metadata' }

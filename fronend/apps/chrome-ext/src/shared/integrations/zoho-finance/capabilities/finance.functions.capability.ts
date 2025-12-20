@@ -36,7 +36,7 @@ async function loadFunctionsDetails(
     return details
 }
 
-export function financeFunctionsCapabilityPortFactory(provider: ZohoServiceProvider): Result<CapabilityAdapter> {
+export function financeFunctionsCapabilityAdapterFactory(provider: ZohoServiceProvider): Result<CapabilityAdapter> {
     const metadata = assertFinanceMetadata(provider)
     if (!metadata) {
         return { ok: false, error: 'Invalid provider metadata' }
