@@ -1,7 +1,7 @@
-import { crmFieldsCapabilityPortFactory } from './crm.fields.capability.ts'
-import { crmFunctionsCapabilityPortFactory } from './crm.functions.capability.ts'
-import { crmModulesCapabilityPortFactory } from './crm.modules.capability.ts'
-import { crmWorkflowCapabilityPortFactory } from './crm.workflows.capability.ts'
+import { crmFieldsCapabilityAdapterFactory } from './crm.fields.capability.ts'
+import { crmFunctionsCapabilityAdapterFactory } from './crm.functions.capability.ts'
+import { crmModulesCapabilityAdapterFactory } from './crm.modules.capability.ts'
+import { crmWorkflowCapabilityAdapterFactory } from './crm.workflows.capability.ts'
 import { ProviderCapabilityType } from '@zoho-ide/shared'
 import type { ServiceProviderCapability } from '@zoho-ide/shared'
 
@@ -10,25 +10,25 @@ export const ZohoCrmCapabilities: ServiceProviderCapability[] = [
         type: ProviderCapabilityType.FUNCTIONS,
         title: 'Zoho CRM Functions',
         icon: 'material-symbols:function',
-        portFactory: crmFunctionsCapabilityPortFactory,
+        adapterFactory: crmFunctionsCapabilityAdapterFactory,
     },
     {
         type: ProviderCapabilityType.WORKFLOWS,
         title: 'Zoho CRM Workflows',
         icon: 'mdi:workflow',
-        portFactory: crmWorkflowCapabilityPortFactory,
+        adapterFactory: crmWorkflowCapabilityAdapterFactory,
     },
     {
         type: ProviderCapabilityType.MODULES,
         title: 'Zoho CRM Modules Metadata',
         icon: 'streamline-sharp:module',
-        portFactory: crmModulesCapabilityPortFactory,
+        adapterFactory: crmModulesCapabilityAdapterFactory,
     },
     {
         type: ProviderCapabilityType.FIELDS,
         title: 'Zoho CRM Modules Fields Metadata',
         icon: 'hugeicons:list-setting',
-        portFactory: crmFieldsCapabilityPortFactory,
+        adapterFactory: crmFieldsCapabilityAdapterFactory,
         hideInMenu: true,
     },
 ]

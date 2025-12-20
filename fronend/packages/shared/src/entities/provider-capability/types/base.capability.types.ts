@@ -6,11 +6,11 @@ export type ServiceProviderCapability = {
     type: string
     title: string
     icon: string
-    portFactory: (provider: ZohoServiceProvider) => Result<CapabilityPort>
+    adapterFactory: (provider: ZohoServiceProvider) => Result<CapabilityAdapter>
     hideInMenu?: boolean
 }
 
-export interface CapabilityPort {
+export interface CapabilityAdapter {
     list(pagination: PaginationParams): Promise<PaginatedResult<IBaseCapabilityRecordEntity[]>>
     execute?(functionEntity: IFunctionRecordEntity, inputData: Record<string, unknown>): Promise<Result<unknown>>
 }

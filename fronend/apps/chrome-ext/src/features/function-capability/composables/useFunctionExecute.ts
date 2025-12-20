@@ -14,7 +14,7 @@ export function useFunctionExecute(
     const isExecuting = ref(false)
     const argsFormData = ref<Record<string, unknown>>({})
     const executionResult = ref<string>('')
-    const { resolvePort } = useCapabilitiesConfig()
+    const { resolveCapabilityAdapter } = useCapabilitiesConfig()
 
     const isCanExecute = computed(() => {
         const providerValue = toValue(provider)
@@ -30,8 +30,8 @@ export function useFunctionExecute(
             return { ok: false, error: 'Function or provider is not valid' }
         }
 
-        const port = resolvePort(providerValue, ProviderCapabilityType.FUNCTIONS)
-        if (!port || !port.execute) {
+        const capabilityAdapter = resolveCapabilityAdapter(providerValue, ProviderCapabilityType.FUNCTIONS)
+        if (!capabilityAdapter || !capabilityAdapter.execute) {
             return {
                 ok: false,
                 error: 'Unable to execute function. Current provider does not support function execution.',
@@ -39,7 +39,9 @@ export function useFunctionExecute(
         }
 
         isExecuting.value = true
-        const result = await port.execute(fxValue, argsFormData.value).finally(() => (isExecuting.value = false))
+        const result = await capabilityAdapter
+            .execute(fxValue, argsFormData.value)
+            .finally(() => (isExecuting.value = false))
         if (!result.ok) {
             return result
         }
