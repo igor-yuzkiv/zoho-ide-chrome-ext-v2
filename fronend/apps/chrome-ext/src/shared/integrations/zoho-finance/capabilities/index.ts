@@ -7,6 +7,6 @@ export const ZohoFinanceCapabilities: ServiceProviderCapability[] = [
         type: ProviderCapabilityType.FUNCTIONS,
         title: 'Zoho Finance Functions',
         icon: 'material-symbols:function',
-        portFactory: financeFunctionsCapabilityPortFactory,
+        adapterFactory: financeFunctionsCapabilityPortFactory,
     },
 ]

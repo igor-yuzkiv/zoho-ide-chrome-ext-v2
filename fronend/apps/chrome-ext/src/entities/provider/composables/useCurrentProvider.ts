@@ -1,6 +1,6 @@
 import { useRouteParams } from '@vueuse/router'
 import type { Maybe } from '@zoho-ide/shared'
-import type { CapabilityPort } from '@zoho-ide/shared'
+import type { CapabilityAdapter } from '@zoho-ide/shared'
 import type { ZohoServiceProvider } from '@zoho-ide/shared'
 import { computed } from 'vue'
 import { useCapabilitiesConfig } from '@/entities/capability/composables/useCapabilitiesConfig.ts'
@@ -26,12 +26,12 @@ export function useCurrentProvider() {
         providers.updateProvider(providerId.value, newData)
     }
 
-    function resolvePort(capabilityType: string): Maybe<CapabilityPort> {
+    function resolveCapabilityAdapter(capabilityType: string): Maybe<CapabilityAdapter> {
         if (!data.value) {
             return null
         }
 
-        return capabilitiesConfig.resolvePort(data.value, capabilityType)
+        return capabilitiesConfig.resolveCapabilityAdapter(data.value, capabilityType)
     }
 
     return {
@@ -40,6 +40,6 @@ export function useCurrentProvider() {
         data,
         update,
         capabilities,
-        resolvePort,
+        resolveCapabilityAdapter,
     }
 }

@@ -1,4 +1,4 @@
-import type { CapabilityPort, IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
+import type { CapabilityAdapter, IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
 import type { ZohoServiceProvider } from '@zoho-ide/shared'
 import { useLogger } from '@/shared/libs/logger/useLogger.ts'
 import { useCapabilitiesConfig } from '@/entities/capability/composables/useCapabilitiesConfig.ts'
@@ -8,12 +8,12 @@ export function useProviderRecordsFetcher() {
     const capabilities = useCapabilitiesConfig()
 
     async function fetchAllCapabilityRecords(
-        port: CapabilityPort,
+        capabilityAdapter: CapabilityAdapter,
         page = 1,
         per_page = 50,
         result: IBaseCapabilityRecordEntity[] = []
     ) {
-        const response = await port.list({ page, per_page })
+        const response = await capabilityAdapter.list({ page, per_page })
         if (!response.ok) {
             logger.error(`Failed to fetch data from capability port`, response.error)
             return result
@@ -22,7 +22,7 @@ export function useProviderRecordsFetcher() {
         result.push(...response.data)
 
         if (response.meta.has_more) {
-            return fetchAllCapabilityRecords(port, page + 1, per_page, result)
+            return fetchAllCapabilityRecords(capabilityAdapter, page + 1, per_page, result)
         }
 
         return result
@@ -32,20 +32,20 @@ export function useProviderRecordsFetcher() {
         provider: ZohoServiceProvider,
         capability: string
     ): Promise<IBaseCapabilityRecordEntity[]> {
-        const port = capabilities.resolvePort(provider, capability)
-        if (!port) {
+        const capabilityAdapter = capabilities.resolveCapabilityAdapter(provider, capability)
+        if (!capabilityAdapter) {
             logger.warn(`No port found for capability "${capability}" on provider "${provider.id}"`)
             return []
         }
 
-        if (typeof port.list !== 'function') {
+        if (typeof capabilityAdapter.list !== 'function') {
             logger.warn(
                 `Port for capability "${capability}" on provider "${provider.id}" does not implement a list method`
             )
             return []
         }
 
-        return await fetchAllCapabilityRecords(port)
+        return await fetchAllCapabilityRecords(capabilityAdapter)
     }
 
     async function fetchProviderRecords(provider: ZohoServiceProvider): Promise<IBaseCapabilityRecordEntity[]> {
