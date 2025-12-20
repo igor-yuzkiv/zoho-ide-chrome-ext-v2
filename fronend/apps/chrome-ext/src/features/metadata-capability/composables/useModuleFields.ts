@@ -1,5 +1,5 @@
-import { CapabilityQueryKeys, CapabilityType } from '@zoho-ide/shared'
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
+import { CapabilityQueryKeys, CapabilityType } from '@zoho-ide/shared'
 import type { IModuleFieldMetadataRecordEntity } from '@zoho-ide/shared'
 import type { IEntity } from '@zoho-ide/shared'
 import { computed, type MaybeRef, toValue } from 'vue'

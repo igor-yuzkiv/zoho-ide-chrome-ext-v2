@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { CapabilityType } from '@zoho-ide/shared'
 import { useRouteParams } from '@vueuse/router'
+import { CapabilityType } from '@zoho-ide/shared'
 import type { IWorkflowRecordEntity } from '@zoho-ide/shared'
 import { ListBox, ListItem } from '@zoho-ide/shared'
 import { useRouter } from 'vue-router'

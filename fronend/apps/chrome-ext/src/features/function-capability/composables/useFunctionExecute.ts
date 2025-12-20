@@ -1,5 +1,5 @@
-import { CapabilityType } from '@zoho-ide/shared'
 import { MaybeRefOrGetter } from '@vueuse/core'
+import { CapabilityType } from '@zoho-ide/shared'
 import { IFunctionRecordEntity } from '@zoho-ide/shared'
 import { Maybe, Result } from '@zoho-ide/shared'
 import { ServiceProvider } from '@zoho-ide/shared'

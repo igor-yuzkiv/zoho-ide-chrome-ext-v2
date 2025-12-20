@@ -1,5 +1,5 @@
-import { CapabilityQueryKeys } from '@zoho-ide/shared'
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
+import { CapabilityQueryKeys } from '@zoho-ide/shared'
 import type { IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
 import { type MaybeRef, toValue } from 'vue'
 import { selectProviderRecordsQuery } from '@/entities/capability/cache'
