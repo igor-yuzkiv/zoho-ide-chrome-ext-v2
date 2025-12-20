@@ -1,11 +1,11 @@
-import type { ICapabilityEntity } from '@zoho-ide/shared'
+import type { IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
 import Dexie, { type EntityTable } from 'dexie'
 
 type DbRecord = {
     id: string
     capability: string
     providerId: string
-    data: ICapabilityEntity
+    data: IBaseCapabilityRecordEntity
 }
 
 export class ProvidersCacheDatabase extends Dexie {

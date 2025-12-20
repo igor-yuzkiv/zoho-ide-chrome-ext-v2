@@ -1,7 +1,7 @@
-import { IFunctionEntity } from '@zoho-ide/shared'
+import { IFunctionRecordEntity } from '@zoho-ide/shared'
 import type { PaginatedResult, PaginationParams } from '@zoho-ide/shared'
 import type { Result } from '@zoho-ide/shared'
-import type { CapabilityPort, ICapabilityEntity } from '@zoho-ide/shared'
+import type { CapabilityPort, IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
 import type { ServiceProvider } from '@zoho-ide/shared'
 import { assertCrmMetadata } from '@/shared/integrations/zoho-crm/crm.utils.ts'
 import { mapManyCrmFunctionsToEntity } from '@/shared/integrations/zoho-crm/mappers/crm.functions.mapper.ts'
@@ -33,7 +33,7 @@ export function crmFunctionsCapabilityPortFactory(provider: ServiceProvider): Re
     return {
         ok: true,
         value: {
-            async list(pagination: PaginationParams): Promise<PaginatedResult<ICapabilityEntity[]>> {
+            async list(pagination: PaginationParams): Promise<PaginatedResult<IBaseCapabilityRecordEntity[]>> {
                 if (!provider.tabId) {
                     return { ok: false, error: 'Provider offline' }
                 }
@@ -53,7 +53,7 @@ export function crmFunctionsCapabilityPortFactory(provider: ServiceProvider): Re
             },
 
             async execute(
-                functionEntity: IFunctionEntity,
+                functionEntity: IFunctionRecordEntity,
                 inputData: Record<string, unknown>
             ): Promise<Result<unknown>> {
                 if (!provider.tabId) {

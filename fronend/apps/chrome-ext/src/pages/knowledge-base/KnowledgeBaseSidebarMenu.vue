@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { type IKnowledgeBaseItem, KnowledgeBaseCategoryMetadata, useKbItemsListQuery } from '@zoho-ide/knowledge-base'
 import { isRouteName, ListBox, ListItem } from '@zoho-ide/shared'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 
 const { items, hasNextPage, loadMoreRecords, searchTerm } = useKbItemsListQuery()
 const route = useRoute()
+const router = useRouter()
 
 const isActiveListItem = (item: IKnowledgeBaseItem) => {
     return (
@@ -19,6 +20,15 @@ const getItemIcon = (item: IKnowledgeBaseItem) => {
         ? KnowledgeBaseCategoryMetadata[item.category].icon
         : KnowledgeBaseCategoryMetadata.general.icon
 }
+
+function handleSelectItem(value?: IKnowledgeBaseItem) {
+    if (value?.id) {
+        router?.push({
+            name: AppRouteName.knowledgeBaseArticleDetails,
+            params: { itemId: value.id },
+        })
+    }
+}
 </script>
 
 <template>
@@ -29,6 +39,7 @@ const getItemIcon = (item: IKnowledgeBaseItem) => {
         :has-more-items="hasNextPage"
         @load-more="loadMoreRecords"
         v-model:search-term="searchTerm"
+        @select-item="handleSelectItem"
     >
         <template #item="{ item, active }">
             <ListItem

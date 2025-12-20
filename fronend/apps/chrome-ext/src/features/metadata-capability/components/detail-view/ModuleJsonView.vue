@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import type { IModuleFieldMetadataEntity, IModuleMetadataEntity } from '@zoho-ide/shared'
+import type { IModuleFieldMetadataRecordEntity, IModuleMetadataRecordEntity } from '@zoho-ide/shared'
 import { useAppThemeStore } from '@zoho-ide/shared'
 import { computed } from 'vue'
 
 const appTheme = useAppThemeStore()
 
 const props = defineProps<{
-    module?: IModuleMetadataEntity
-    fields?: IModuleFieldMetadataEntity[]
+    module?: IModuleMetadataRecordEntity
+    fields?: IModuleFieldMetadataRecordEntity[]
 }>()
 
 const jsonData = computed(() => {

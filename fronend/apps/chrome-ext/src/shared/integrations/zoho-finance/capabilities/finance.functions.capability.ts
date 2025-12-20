@@ -5,9 +5,9 @@ import type {
     ZohoFinanceFunctionDetailsResponse,
     ZohoFinanceFunctionResponse,
 } from '../types/finance.functions.types.ts'
-import type { IFunctionEntity } from '@zoho-ide/shared'
+import type { IFunctionRecordEntity } from '@zoho-ide/shared'
 import type { PaginatedResult, PaginationParams, Result } from '@zoho-ide/shared'
-import type { CapabilityPort, ICapabilityEntity } from '@zoho-ide/shared'
+import type { CapabilityPort, IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
 import type { ServiceProvider } from '@zoho-ide/shared'
 import { assertFinanceMetadata } from '@/shared/integrations/zoho-finance/zoho-finance.utils.ts'
 
@@ -45,7 +45,7 @@ export function financeFunctionsCapabilityPortFactory(provider: ServiceProvider)
     return {
         ok: true,
         value: {
-            async list(pagination: PaginationParams): Promise<PaginatedResult<ICapabilityEntity[]>> {
+            async list(pagination: PaginationParams): Promise<PaginatedResult<IBaseCapabilityRecordEntity[]>> {
                 if (!provider.tabId) {
                     return { ok: false, error: 'Provider offline' }
                 }
@@ -80,7 +80,7 @@ export function financeFunctionsCapabilityPortFactory(provider: ServiceProvider)
             },
 
             async execute(
-                functionEntity: IFunctionEntity,
+                functionEntity: IFunctionRecordEntity,
                 inputData: Record<string, unknown>
             ): Promise<Result<unknown>> {
                 console.warn('Zoho Finance function execution not implemented yet', {

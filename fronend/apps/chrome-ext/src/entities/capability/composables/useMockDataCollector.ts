@@ -1,12 +1,12 @@
-import type { IModuleFieldMetadataEntity } from '@zoho-ide/shared'
-import type { ICapabilityEntity } from '@zoho-ide/shared'
+import type { IModuleFieldMetadataRecordEntity } from '@zoho-ide/shared'
+import type { IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
 import type { ServiceProvider } from '@zoho-ide/shared'
 import { saveMockData } from '@/shared/api/mock/mock.api.ts'
 
 // TODO: remove mock data saving after testing
 export function useMockDataCollector() {
-    async function saveFieldsMockData(provider: ServiceProvider, records: IModuleFieldMetadataEntity[]) {
-        const perModule = records.reduce<Record<string, IModuleFieldMetadataEntity[]>>((acc, record) => {
+    async function saveFieldsMockData(provider: ServiceProvider, records: IModuleFieldMetadataRecordEntity[]) {
+        const perModule = records.reduce<Record<string, IModuleFieldMetadataRecordEntity[]>>((acc, record) => {
             if (!record.moduleApiName || !record.originEntity) {
                 return acc
             }
@@ -27,7 +27,11 @@ export function useMockDataCollector() {
         )
     }
 
-    function saveCapabilityMockData(provider: ServiceProvider, capabilityType: string, records: ICapabilityEntity[]) {
+    function saveCapabilityMockData(
+        provider: ServiceProvider,
+        capabilityType: string,
+        records: IBaseCapabilityRecordEntity[]
+    ) {
         if (import.meta.env.VITE_COLLECT_MOCK_DATA !== 'true') {
             return
         }
@@ -42,7 +46,7 @@ export function useMockDataCollector() {
             return saveMockData(`${provider.id}-${capabilityType}`, data).catch(console.error)
         }
 
-        return saveFieldsMockData(provider, records as IModuleFieldMetadataEntity[])
+        return saveFieldsMockData(provider, records as IModuleFieldMetadataRecordEntity[])
     }
 
     return {

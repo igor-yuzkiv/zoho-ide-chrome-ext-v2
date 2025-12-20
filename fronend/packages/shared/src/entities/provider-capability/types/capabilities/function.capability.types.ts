@@ -1,5 +1,5 @@
 import type { IEntity } from '../../../../types'
-import type { ICapabilityEntity } from '../base.capability.types.ts'
+import type { IBaseCapabilityRecordEntity } from '../base.capability.types.ts'
 
 export type FunctionType = 'button' | 'standalone' | 'dynamic' | 'automation' | 'scheduler' | 'unknown'
 
@@ -8,7 +8,7 @@ export type FunctionParams = {
     type: string
 }
 
-export interface IFunctionEntity<TOrigin extends IEntity = IEntity> extends ICapabilityEntity {
+export interface IFunctionRecordEntity<TOrigin extends IEntity = IEntity> extends IBaseCapabilityRecordEntity {
     id: string
     type: FunctionType
     displayName: string

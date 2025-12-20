@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
-import { useAuthStore, useToast } from '@zoho-ide/shared'
+import { type IUser, useAuthStore, useToast } from '@zoho-ide/shared'
 import { IconButton, ListBox, ListItem } from '@zoho-ide/shared'
 import { useRouter } from 'vue-router'
 import { AppRouteName } from '@/app/router/app-routes.ts'
@@ -24,6 +24,12 @@ function handleDeleteUser(userId: string, userName: string) {
         }
     })
 }
+
+function handleSelectUser(user?: IUser) {
+    if (user?.id) {
+        router.push({ name: AppRouteName.userDetails, params: { userId: user.id } })
+    }
+}
 </script>
 
 <template>
@@ -32,6 +38,8 @@ function handleDeleteUser(userId: string, userName: string) {
         :items="users"
         search-strategy="internal"
         :search-fields="['name', 'email']"
+        :is-active-item="(item) => item.id === openUserId"
+        @select-item="handleSelectUser"
     >
         <template #search-extra>
             <IconButton icon="ic:baseline-plus" text as="router-link" :to="{ name: AppRouteName.userCreate }" />
