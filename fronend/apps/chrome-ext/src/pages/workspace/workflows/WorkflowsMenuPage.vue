@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { IWorkflowEntity } from '@/capabilities/workflow/workflow.types.ts'
 import { CapabilityType } from '@/config/capabilities.config.ts'
 import { useRouteParams } from '@vueuse/router'
+import type { IWorkflowEntity } from '@zoho-ide/shared'
 import { ListBox, ListItem } from '@zoho-ide/shared'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import { useCapabilityRecordsList } from '@/features/capability/capability-records-list'
+import { useCapabilityRecordsList } from '@/entities/capability/composables/useCapabilityRecordsList.ts'
 
 const providerId = useRouteParams<string>('providerId')
 const { data: workflows } = useCapabilityRecordsList<IWorkflowEntity>(CapabilityType.WORKFLOWS, providerId)

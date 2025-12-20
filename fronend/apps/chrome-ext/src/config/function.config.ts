@@ -1,4 +1,4 @@
-import type { FunctionMetadata, FunctionType } from '@/capabilities/function/function.types.ts'
+import type { FunctionMetadata, FunctionType } from '@zoho-ide/shared'
 
 export const FunctionTypeMetadataMap: Record<FunctionType, FunctionMetadata> = {
     button: { type: 'button', icon: 'mdi:button-pointer' },

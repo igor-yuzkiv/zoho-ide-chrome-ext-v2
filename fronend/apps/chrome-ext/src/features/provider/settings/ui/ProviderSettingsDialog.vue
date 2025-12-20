@@ -3,7 +3,7 @@ import { getDefaultFormData } from '../lib/useProviderSettingsForm.ts'
 import { FieldContainer, useValidationErrors } from '@zoho-ide/shared'
 import { computed } from 'vue'
 import { Button, Dialog, InputText } from 'primevue'
-import { ProviderSettingForm } from '@/entities/provider/provider.types.ts'
+import { ProviderSettingForm } from '@/features/provider/settings'
 
 defineEmits<{ (e: 'submit'): void }>()
 const props = withDefaults(defineProps<{ formErrors?: Record<string, string[]> }>(), { formErrors: () => ({}) })

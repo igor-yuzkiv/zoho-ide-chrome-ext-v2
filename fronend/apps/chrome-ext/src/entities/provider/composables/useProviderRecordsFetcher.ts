@@ -1,7 +1,7 @@
+import type { CapabilityPort, ICapabilityEntity } from '@zoho-ide/shared'
+import type { ServiceProvider } from '@zoho-ide/shared'
 import { useLogger } from '@/shared/libs/logger/useLogger.ts'
-import type { CapabilityPort, ICapabilityEntity } from '@/entities/capability/capability.types.ts'
 import { useCapabilitiesConfig } from '@/entities/capability/composables/useCapabilitiesConfig.ts'
-import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
 
 export function useProviderRecordsFetcher() {
     const logger = useLogger('useProviderDataFetcher')

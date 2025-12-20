@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useModuleDetails } from '@/capabilities/metadata'
-import { useModuleFields } from '@/capabilities/metadata/composables/useModuleFields.ts'
 import { useRouteParams } from '@vueuse/router'
 import { NoDataMessage, PageHeader } from '@zoho-ide/shared'
 import { defineAsyncComponent } from 'vue'
+import { useModuleDetails } from '@/features/metadata-capability'
+import { useModuleFields } from '@/features/metadata-capability/composables/useModuleFields.ts'
 import { useViewMode, ViewModeSelect } from '@/widgets/view-mode'
 
 const providerId = useRouteParams<string>('providerId')
@@ -18,14 +18,14 @@ const viewMode = useViewMode(
             value: 'json',
             icon: 'si:json-duotone',
             component: defineAsyncComponent(
-                () => import('../../../capabilities/metadata/components/detail-view/ModuleJsonView.vue')
+                () => import('@/features/metadata-capability/components/detail-view/ModuleJsonView.vue')
             ),
         },
         {
             value: 'table',
             icon: 'material-symbols:table-sharp',
             component: defineAsyncComponent(
-                () => import('../../../capabilities/metadata/components/detail-view/ModuleTableView.vue')
+                () => import('@/features/metadata-capability/components/detail-view/ModuleTableView.vue')
             ),
         },
     ],

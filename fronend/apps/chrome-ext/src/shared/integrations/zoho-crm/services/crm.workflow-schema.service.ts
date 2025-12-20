@@ -1,11 +1,7 @@
-import type {
-    WfActionNodeData,
-    WfConditionNodeData,
-    WfWhenStatementNodeData,
-} from '@/capabilities/workflow/workflow-schema.types.ts'
-import type { IWorkflowEntity } from '@/capabilities/workflow/workflow.types.ts'
 import { WfSchemaNodeType } from '@/config/workflows.config.ts'
 import type { Edge, Node } from '@vue-flow/core'
+import type { WfActionNodeData, WfConditionNodeData, WfWhenStatementNodeData } from '@zoho-ide/shared'
+import type { IWorkflowEntity } from '@zoho-ide/shared'
 import type { Result } from '@zoho-ide/shared'
 import type { Maybe } from '@zoho-ide/shared'
 import { assertCrmWorkflowFromEntity } from '@/shared/integrations/zoho-crm/mappers/crm.workflows.mapper.ts'

@@ -5,11 +5,11 @@ import type {
     ZohoFinanceFunctionDetailsResponse,
     ZohoFinanceFunctionResponse,
 } from '../types/finance.functions.types.ts'
-import type { IFunctionEntity } from '@/capabilities/function/function.types.ts'
+import type { IFunctionEntity } from '@zoho-ide/shared'
 import type { PaginatedResult, PaginationParams, Result } from '@zoho-ide/shared'
+import type { CapabilityPort, ICapabilityEntity } from '@zoho-ide/shared'
+import type { ServiceProvider } from '@zoho-ide/shared'
 import { assertFinanceMetadata } from '@/shared/integrations/zoho-finance/zoho-finance.utils.ts'
-import type { CapabilityPort, ICapabilityEntity } from '@/entities/capability/capability.types.ts'
-import type { ServiceProvider } from '@/entities/provider/provider.types.ts'
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 

@@ -1,9 +1,9 @@
-import { CapabilityType } from '@/config/capabilities.config.ts'
 import { crmFieldsCapabilityPortFactory } from './crm.fields.capability.ts'
 import { crmFunctionsCapabilityPortFactory } from './crm.functions.capability.ts'
 import { crmModulesCapabilityPortFactory } from './crm.modules.capability.ts'
 import { crmWorkflowCapabilityPortFactory } from './crm.workflows.capability.ts'
-import type { ProviderCapability } from '@/entities/capability/capability.types.ts'
+import { CapabilityType } from '@/config/capabilities.config.ts'
+import type { ProviderCapability } from '@zoho-ide/shared'
 
 export const ZohoCrmCapabilities: ProviderCapability[] = [
     {

@@ -1,4 +1,4 @@
-import type { ICapabilityEntity } from '@/entities/capability/capability.types.ts'
+import type { ICapabilityEntity } from '@zoho-ide/shared'
 import { providersCacheDb } from '@/entities/capability/cache'
 
 export default async function <T extends ICapabilityEntity = ICapabilityEntity>(
