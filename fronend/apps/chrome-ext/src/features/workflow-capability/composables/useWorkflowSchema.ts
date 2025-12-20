@@ -1,13 +1,13 @@
 import { WorkflowSchemaBuilderRegister } from '@/config/workflows.config.ts'
 import type { Edge, Node } from '@vue-flow/core'
-import type { IWorkflowEntity, WorkflowSchemaBuilder } from '@zoho-ide/shared'
+import type { IWorkflowRecordEntity, WorkflowSchemaBuilder } from '@zoho-ide/shared'
 import type { Maybe } from '@zoho-ide/shared'
 import type { ProviderType } from '@zoho-ide/shared'
 import { type Ref, ref } from 'vue'
 import { useLogger } from '@/shared/libs/logger/useLogger.ts'
 
 export function useWorkflowSchema(): {
-    render: (providerType: ProviderType, workflow: IWorkflowEntity) => void
+    render: (providerType: ProviderType, workflow: IWorkflowRecordEntity) => void
     nodes: Ref<Node[]>
     edges: Ref<Edge[]>
 } {
@@ -19,7 +19,7 @@ export function useWorkflowSchema(): {
         return WorkflowSchemaBuilderRegister[providerType]
     }
 
-    function render(providerType: ProviderType, workflow: IWorkflowEntity) {
+    function render(providerType: ProviderType, workflow: IWorkflowRecordEntity) {
         const schemaBuilder = resolveSchemaBuilder(providerType)
         if (!schemaBuilder || typeof schemaBuilder !== 'function') {
             logger.warn(`No workflow schema builder found for provider type: ${providerType}`)

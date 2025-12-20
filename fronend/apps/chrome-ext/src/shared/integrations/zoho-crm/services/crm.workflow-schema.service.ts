@@ -1,7 +1,7 @@
 import { WfSchemaNodeType } from '@/config/workflows.config.ts'
 import type { Edge, Node } from '@vue-flow/core'
 import type { WfActionNodeData, WfConditionNodeData, WfWhenStatementNodeData } from '@zoho-ide/shared'
-import type { IWorkflowEntity } from '@zoho-ide/shared'
+import type { IWorkflowRecordEntity } from '@zoho-ide/shared'
 import type { Result } from '@zoho-ide/shared'
 import type { Maybe } from '@zoho-ide/shared'
 import { assertCrmWorkflowFromEntity } from '@/shared/integrations/zoho-crm/mappers/crm.workflows.mapper.ts'
@@ -133,7 +133,7 @@ function makeEdge(from: string, to: string, label?: string, animated = true): Ed
     }
 }
 
-export function zohoCrmWorkflowSchemaBuilder(workflow: IWorkflowEntity): Result<{ nodes: Node[]; edges: Edge[] }> {
+export function zohoCrmWorkflowSchemaBuilder(workflow: IWorkflowRecordEntity): Result<{ nodes: Node[]; edges: Edge[] }> {
     const crmWorkflow = assertCrmWorkflowFromEntity(workflow)
 
     if (!crmWorkflow || !crmWorkflow?.conditions?.length || !crmWorkflow?.execute_when) {

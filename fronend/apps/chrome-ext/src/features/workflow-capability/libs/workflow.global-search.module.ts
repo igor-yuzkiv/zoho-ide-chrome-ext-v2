@@ -1,6 +1,6 @@
 import { CapabilityType } from '@/config/capabilities.config.ts'
 import type { ServiceProvider } from '@zoho-ide/shared'
-import type { IWorkflowEntity } from '@zoho-ide/shared'
+import type { IWorkflowRecordEntity } from '@zoho-ide/shared'
 import type { GlobalSearchDocument, GlobalSearchModule } from '@/shared/libs/global-search/lib/global-search.types.ts'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { selectProviderRecordsQuery } from '@/entities/capability/cache'
@@ -12,7 +12,7 @@ async function provideIndexDocuments(context?: Record<string, unknown>): Promise
 
     const provider = context.provider as ServiceProvider
 
-    const records = await selectProviderRecordsQuery<IWorkflowEntity>(provider.id, CapabilityType.WORKFLOWS)
+    const records = await selectProviderRecordsQuery<IWorkflowRecordEntity>(provider.id, CapabilityType.WORKFLOWS)
     if (!records.length) {
         return []
     }

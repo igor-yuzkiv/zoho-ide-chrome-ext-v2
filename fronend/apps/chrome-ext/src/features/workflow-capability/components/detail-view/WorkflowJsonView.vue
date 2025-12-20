@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IWorkflowEntity } from '@zoho-ide/shared'
+import type { IWorkflowRecordEntity } from '@zoho-ide/shared'
 import type { ProviderType } from '@zoho-ide/shared'
 import { useAppThemeStore } from '@zoho-ide/shared'
 import { computed } from 'vue'
@@ -8,7 +8,7 @@ const appTheme = useAppThemeStore()
 
 const props = defineProps<{
     providerType: ProviderType
-    workflow: IWorkflowEntity
+    workflow: IWorkflowRecordEntity
 }>()
 
 const jsonData = computed(() => {
