@@ -1,6 +1,6 @@
 import { ProviderCapabilityType } from '@zoho-ide/shared'
 import type { IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
-import type { ServiceProvider } from '@zoho-ide/shared'
+import type { ZohoServiceProvider } from '@zoho-ide/shared'
 import type { IModuleFieldMetadataRecordEntity, IModuleMetadataRecordEntity } from '@zoho-ide/shared'
 import type { GlobalSearchDocument, GlobalSearchModule } from '@/shared/libs/global-search/lib/global-search.types.ts'
 import { AppRouteName } from '@/app/router/app-routes.ts'
@@ -14,7 +14,7 @@ async function provideIndexDocuments<T extends IBaseCapabilityRecordEntity>(
         return []
     }
 
-    const provider = context.provider as ServiceProvider
+    const provider = context.provider as ZohoServiceProvider
 
     return selectProviderRecordsQuery<T>(provider.id, capabilityType)
 }

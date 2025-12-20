@@ -1,12 +1,12 @@
 import { ProvidersRegister } from '@/config/providers.config.ts'
 import { type Serializer, useStorage } from '@vueuse/core'
-import type { ServiceProvider } from '@zoho-ide/shared'
+import type { ZohoServiceProvider } from '@zoho-ide/shared'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import type { BrowserTab } from '@/shared/libs/browser/browser.types.ts'
 import { useBrowserTabsStore } from '@/shared/libs/browser/store/useBrowserTabsStore.ts'
 
-const LocalStorageSerializer: Serializer<ServiceProvider[]> = {
+const LocalStorageSerializer: Serializer<ZohoServiceProvider[]> = {
     read(raw) {
         try {
             const parsed = JSON.parse(raw || '[]')
@@ -26,8 +26,8 @@ const LocalStorageSerializer: Serializer<ServiceProvider[]> = {
     },
 }
 
-function resolveProvidersFromChromeTabs(chromeTabs: BrowserTab[], prev = new Map()): Map<string, ServiceProvider> {
-    return Object.values(ProvidersRegister).reduce<Map<string, ServiceProvider>>((acc, factory) => {
+function resolveProvidersFromChromeTabs(chromeTabs: BrowserTab[], prev = new Map()): Map<string, ZohoServiceProvider> {
+    return Object.values(ProvidersRegister).reduce<Map<string, ZohoServiceProvider>>((acc, factory) => {
         for (const tab of chromeTabs) {
             const result = factory(tab)
             if (!result.ok) {
@@ -45,7 +45,7 @@ function resolveProvidersFromChromeTabs(chromeTabs: BrowserTab[], prev = new Map
 
 export const useProvidersStore = defineStore('providers', () => {
     const tabs = useBrowserTabsStore()
-    const providersMap = ref<Map<string, ServiceProvider>>(new Map())
+    const providersMap = ref<Map<string, ZohoServiceProvider>>(new Map())
     const providersList = computed(() => Array.from(providersMap.value.values()))
     const cachedProviders = useStorage('service-providers', [], undefined, {
         serializer: LocalStorageSerializer,
@@ -56,7 +56,7 @@ export const useProvidersStore = defineStore('providers', () => {
             return
         }
 
-        const normalized = new Map<string, ServiceProvider>()
+        const normalized = new Map<string, ZohoServiceProvider>()
         for (const sp of cachedProviders.value) {
             if (sp?.tabId || !sp.tabId || !tabs.items.has(sp.tabId)) {
                 sp.tabId = undefined
@@ -69,10 +69,10 @@ export const useProvidersStore = defineStore('providers', () => {
     }
 
     async function handleChangeBrowserTabs(newTabs: Map<number, BrowserTab>) {
-        const prev = new Map<string, ServiceProvider>(providersMap.value)
+        const prev = new Map<string, ZohoServiceProvider>(providersMap.value)
         const next = resolveProvidersFromChromeTabs(Array.from(newTabs.values()), prev)
 
-        const normalized = new Map<string, ServiceProvider>()
+        const normalized = new Map<string, ZohoServiceProvider>()
         for (const sp of next.values()) {
             const tabId = sp.tabId && newTabs.has(sp.tabId) ? sp.tabId : undefined
             normalized.set(sp.id, { ...sp, tabId })
@@ -84,11 +84,11 @@ export const useProvidersStore = defineStore('providers', () => {
         console.log('TABS', Array.from(newTabs.values()))
     }
 
-    function findById(providerId: string): ServiceProvider | undefined {
+    function findById(providerId: string): ZohoServiceProvider | undefined {
         return providersMap.value.get(providerId)
     }
 
-    function updateProvider(providerId: string, updates: Partial<ServiceProvider>) {
+    function updateProvider(providerId: string, updates: Partial<ZohoServiceProvider>) {
         const provider = providersMap.value.get(providerId)
         if (!provider) {
             return
@@ -104,7 +104,7 @@ export const useProvidersStore = defineStore('providers', () => {
         return Boolean(provider?.tabId)
     }
 
-    function findProviderById(providerId: string): ServiceProvider | undefined {
+    function findProviderById(providerId: string): ZohoServiceProvider | undefined {
         return providersMap.value.get(providerId)
     }
 

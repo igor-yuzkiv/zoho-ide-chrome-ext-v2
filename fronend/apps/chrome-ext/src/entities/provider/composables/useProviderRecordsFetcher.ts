@@ -1,5 +1,5 @@
 import type { CapabilityPort, IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
-import type { ServiceProvider } from '@zoho-ide/shared'
+import type { ZohoServiceProvider } from '@zoho-ide/shared'
 import { useLogger } from '@/shared/libs/logger/useLogger.ts'
 import { useCapabilitiesConfig } from '@/entities/capability/composables/useCapabilitiesConfig.ts'
 
@@ -29,7 +29,7 @@ export function useProviderRecordsFetcher() {
     }
 
     async function fetchCapabilityRecords(
-        provider: ServiceProvider,
+        provider: ZohoServiceProvider,
         capability: string
     ): Promise<IBaseCapabilityRecordEntity[]> {
         const port = capabilities.resolvePort(provider, capability)
@@ -48,7 +48,7 @@ export function useProviderRecordsFetcher() {
         return await fetchAllCapabilityRecords(port)
     }
 
-    async function fetchProviderRecords(provider: ServiceProvider): Promise<IBaseCapabilityRecordEntity[]> {
+    async function fetchProviderRecords(provider: ZohoServiceProvider): Promise<IBaseCapabilityRecordEntity[]> {
         const caps = capabilities.byProvider(provider)
         if (caps.length === 0) {
             logger.warn(`No capabilities found for provider "${provider.id}"`)

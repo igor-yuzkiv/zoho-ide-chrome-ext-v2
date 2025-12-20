@@ -2,7 +2,7 @@ import { IFunctionRecordEntity } from '@zoho-ide/shared'
 import type { PaginatedResult, PaginationParams } from '@zoho-ide/shared'
 import type { Result } from '@zoho-ide/shared'
 import type { CapabilityPort, IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
-import type { ServiceProvider } from '@zoho-ide/shared'
+import type { ZohoServiceProvider } from '@zoho-ide/shared'
 import { assertCrmMetadata } from '@/shared/integrations/zoho-crm/crm.utils.ts'
 import { mapManyCrmFunctionsToEntity } from '@/shared/integrations/zoho-crm/mappers/crm.functions.mapper.ts'
 import executeCrmFunctionsRequest from '@/shared/integrations/zoho-crm/requests/execute.crm-function.request.ts'
@@ -24,7 +24,7 @@ async function fetchFunctionsDetails(
     return result.length ? result : list
 }
 
-export function crmFunctionsCapabilityPortFactory(provider: ServiceProvider): Result<CapabilityPort> {
+export function crmFunctionsCapabilityPortFactory(provider: ZohoServiceProvider): Result<CapabilityPort> {
     const metadata = assertCrmMetadata(provider)
     if (!metadata) {
         return { ok: false, error: 'Invalid provider metadata' }
