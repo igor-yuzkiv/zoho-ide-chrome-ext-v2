@@ -8,7 +8,7 @@ import { defineConfig, loadEnv } from 'vite'
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '')
-    console.log('Vite mode:', {mode, api: env.VITE_API_BASE_URL})
+    console.log('Vite mode:', { mode, api: env.VITE_API_BASE_URL })
 
     return {
         root: __dirname,

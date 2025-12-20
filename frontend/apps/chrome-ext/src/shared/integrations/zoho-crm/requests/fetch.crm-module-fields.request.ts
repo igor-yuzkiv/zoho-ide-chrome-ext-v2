@@ -1,6 +1,6 @@
+import type { Result } from '@zoho-ide/shared'
 import { fetchMockData } from '@/shared/api/mock/mock.api.ts'
 import { zohoCrmRequest } from '@/shared/api/zoho/zoho.api.ts'
-import type { Result } from '@zoho-ide/shared'
 import { formatZohoCrmProviderId } from '@/shared/integrations/zoho-crm/crm.provider.ts'
 import type { CrmModuleField } from '@/shared/integrations/zoho-crm/types/crm.metadata.types.ts'
 

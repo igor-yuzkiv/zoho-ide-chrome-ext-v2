@@ -14,9 +14,7 @@ export function useGlobalSearchSettings() {
     const shortcutKeys = computed(() => settings?.shortcutKeys || GLOBAL_SEARCH_DEFAULT_OPTIONS.shortcutKeys)
 
     const modulesByNameMap = computed<Record<string, GlobalSearchModule>>(() => {
-        return Object.fromEntries(
-            modules.value.map((module) => [module.name, module])
-        );
+        return Object.fromEntries(modules.value.map((module) => [module.name, module]))
     })
 
     function findModuleByName(name: string): GlobalSearchModule | undefined {

@@ -1,12 +1,13 @@
 import './bootstrap.ts'
-import '@vue-flow/core/dist/style.css';
-import '@vue-flow/core/dist/theme-default.css';
+import '@vue-flow/core/dist/style.css'
+import '@vue-flow/core/dist/theme-default.css'
 import { registerUiKitPlugins } from '@zoho-ide/shared'
 import { createPinia } from 'pinia'
 import { createApp } from 'vue'
 import AppComponent from '@/app/App.vue'
 import { registerAppPlugins } from '@/app/plugins'
 import { router } from '@/app/router'
+
 const app = createApp(AppComponent)
 const pinia = createPinia()
 

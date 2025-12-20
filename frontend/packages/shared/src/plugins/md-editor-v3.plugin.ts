@@ -1,10 +1,9 @@
 import hljs from 'highlight.js'
-import mermaid from 'mermaid'
-import katex from 'katex'
-import { config as mdEditorConfig } from 'md-editor-v3'
-
 import 'highlight.js/styles/atom-one-dark.css'
+import katex from 'katex'
 import 'katex/dist/katex.min.css'
+import { config as mdEditorConfig } from 'md-editor-v3'
+import mermaid from 'mermaid'
 
 mdEditorConfig({
     editorExtensions: {

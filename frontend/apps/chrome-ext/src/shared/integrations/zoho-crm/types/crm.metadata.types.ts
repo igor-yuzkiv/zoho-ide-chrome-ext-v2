@@ -18,13 +18,13 @@ export type CrmModuleField = {
         display_name: string
         id: string
         module: ModuleRef
-    },
+    }
     multiselectlookup: {
         api_name: string
         connectedfield_apiname: string
         connectedlookup_apiname: string
         id: string
-        connected_module: ModuleRef,
+        connected_module: ModuleRef
         linking_module: ModuleRef
         lookup_apiname: string
     }

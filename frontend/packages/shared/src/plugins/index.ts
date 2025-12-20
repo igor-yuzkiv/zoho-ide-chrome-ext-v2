@@ -1,5 +1,5 @@
-import type { App } from 'vue'
 import primeVuePlugin from './prime-vue.plugin.ts'
+import type { App } from 'vue'
 
 export * from './prime-vue.plugin.ts'
 

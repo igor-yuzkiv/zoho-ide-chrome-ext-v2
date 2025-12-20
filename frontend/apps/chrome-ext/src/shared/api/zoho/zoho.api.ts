@@ -1,5 +1,5 @@
-import type { RequestOptions } from '@/shared/api/zoho/zoho.api.types.ts'
 import type { Result } from '@zoho-ide/shared'
+import type { RequestOptions } from '@/shared/api/zoho/zoho.api.types.ts'
 
 type RequestParams = {
     method: string

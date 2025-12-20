@@ -1,5 +1,5 @@
-import { ApiError } from './api.error.ts'
 import { TOKEN_LOCAL_STORAGE_KEY } from '../entities/user'
+import { ApiError } from './api.error.ts'
 import axios from 'axios'
 
 function getAuthToken(): string | null {
