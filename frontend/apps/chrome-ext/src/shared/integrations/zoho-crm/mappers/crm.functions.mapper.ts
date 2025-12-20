@@ -1,5 +1,6 @@
 import { FunctionTypeMetadataMap } from '@/config/function.config.ts'
 import type { FunctionType, IFunctionRecordEntity } from '@zoho-ide/shared'
+import { ProviderCapabilityType } from '@zoho-ide/shared'
 import { snakeCase } from 'lodash'
 import { ZohoCrmFunction } from '@/shared/integrations/zoho-crm/types/crm.functions.types.ts'
 
@@ -27,10 +28,12 @@ function normalizeCrmFunctionName(fx: ZohoCrmFunction): string {
     return 'unknown_function'
 }
 
-export function mapCrmFunctionToEntity(fx: ZohoCrmFunction): IFunctionRecordEntity<ZohoCrmFunction> {
+export function mapCrmFunctionToEntity(providerId: string, fx: ZohoCrmFunction): IFunctionRecordEntity<ZohoCrmFunction> {
     return {
         id: fx.id,
         sourceId: fx.id,
+        providerId,
+        capabilityType: ProviderCapabilityType.FUNCTIONS,
         displayName: normalizeCrmFunctionName(fx),
         apiName: fx?.api_name || fx?.name,
         type: mapFunctionCategoryToType(fx?.category),
@@ -40,6 +43,6 @@ export function mapCrmFunctionToEntity(fx: ZohoCrmFunction): IFunctionRecordEnti
     }
 }
 
-export function mapManyCrmFunctionsToEntity(functions: ZohoCrmFunction[]): IFunctionRecordEntity<ZohoCrmFunction>[] {
-    return functions.map(mapCrmFunctionToEntity)
+export function mapManyCrmFunctionsToEntity(providerId: string, functions: ZohoCrmFunction[]): IFunctionRecordEntity<ZohoCrmFunction>[] {
+    return functions.map(i => mapCrmFunctionToEntity(providerId, i))
 }

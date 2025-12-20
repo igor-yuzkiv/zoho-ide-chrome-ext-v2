@@ -27,7 +27,7 @@ export function crmModulesCapabilityAdapterFactory(provider: ZohoServiceProvider
 
                 return {
                     ok: true,
-                    data: mapManyCrmModulesToEntities(modulesResponse.value),
+                    data: mapManyCrmModulesToEntities(provider.id, modulesResponse.value),
                     meta: {
                         total: modulesResponse.value.length,
                         page: 1,

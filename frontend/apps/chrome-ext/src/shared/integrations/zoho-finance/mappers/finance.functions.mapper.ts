@@ -1,4 +1,5 @@
 import type { IFunctionRecordEntity } from '@zoho-ide/shared'
+import { ProviderCapabilityType } from '@zoho-ide/shared'
 import type {
     ZohoFinanceFunction,
     ZohoFinanceFunctionDetailsResponse,
@@ -6,11 +7,14 @@ import type {
 } from '@/shared/integrations/zoho-finance/types/finance.functions.types.ts'
 
 export function mapToFunctionEntity(
+    providerId: string,
     fx: ZohoFinanceFunctionResponse | ZohoFinanceFunctionDetailsResponse
 ): IFunctionRecordEntity<ZohoFinanceFunction> {
     return {
         id: fx.customfunction_id,
         sourceId: fx.customfunction_id,
+        providerId,
+        capabilityType: ProviderCapabilityType.FUNCTIONS,
         displayName: fx?.placeholder || fx.function_name,
         apiName: fx.function_name,
         type: 'automation',
@@ -23,7 +27,8 @@ export function mapToFunctionEntity(
 }
 
 export function mapManyToFunctionEntity(
+    providerId: string,
     functions: ZohoFinanceFunctionDetailsResponse[] | ZohoFinanceFunctionResponse[]
 ): IFunctionRecordEntity<ZohoFinanceFunction>[] {
-    return functions.map(mapToFunctionEntity)
+    return functions.map((i) => mapToFunctionEntity(providerId, i))
 }

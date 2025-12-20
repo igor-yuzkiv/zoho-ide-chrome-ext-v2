@@ -47,7 +47,7 @@ export function crmFunctionsCapabilityAdapterFactory(provider: ZohoServiceProvid
 
                 return {
                     ok: true,
-                    data: mapManyCrmFunctionsToEntity(details),
+                    data: mapManyCrmFunctionsToEntity(provider.id, details),
                     meta: response.meta,
                 }
             },

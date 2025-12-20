@@ -8,7 +8,10 @@ import { FunctionIcon } from '@/features/function-capability'
 
 const providerId = useRouteParams<string>('providerId')
 const activeFunctionId = useRouteParams<string>('functionId')
-const { data: functions } = useCapabilityRecordsList<IFunctionRecordEntity>(providerId, ProviderCapabilityType.FUNCTIONS)
+const { data: functions } = useCapabilityRecordsList<IFunctionRecordEntity>(
+    ProviderCapabilityType.FUNCTIONS,
+    providerId,
+)
 const router = useRouter()
 
 function handleSelectFunction(value?: IFunctionRecordEntity) {

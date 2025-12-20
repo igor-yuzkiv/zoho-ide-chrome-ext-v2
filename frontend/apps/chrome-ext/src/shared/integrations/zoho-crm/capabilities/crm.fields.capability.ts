@@ -11,6 +11,7 @@ import type { CrmModuleField, CrmModuleMetadata } from '@/shared/integrations/zo
 import { selectProviderRecordsQuery } from '@/entities/capability/cache'
 
 async function fetchModuleFields(
+    providerId: string,
     tabId: number,
     orgId: string,
     module: CrmModuleMetadata
@@ -26,7 +27,7 @@ async function fetchModuleFields(
             return []
         }
 
-        return mapManyCrmFieldsToEntities(result.value, module)
+        return mapManyCrmFieldsToEntities(providerId, result.value, module)
     })
 }
 
@@ -59,7 +60,7 @@ export function crmFieldsCapabilityAdapterFactory(provider: ZohoServiceProvider)
                             return Promise.resolve([])
                         }
 
-                        return fetchModuleFields(provider.tabId, metadata.orgId, module.originEntity)
+                        return fetchModuleFields(provider.id, provider.tabId, metadata.orgId, module.originEntity)
                     })
                 ).then((fieldsArrays) => fieldsArrays.flat())
 

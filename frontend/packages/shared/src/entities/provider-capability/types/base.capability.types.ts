@@ -18,5 +18,7 @@ export interface CapabilityAdapter {
 export interface IBaseCapabilityRecordEntity extends IEntity {
     id: string
     sourceId: string
+    providerId: string
+    capabilityType: string
     displayName: string
 }

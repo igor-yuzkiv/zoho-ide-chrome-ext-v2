@@ -74,7 +74,7 @@ export function financeFunctionsCapabilityAdapterFactory(provider: ZohoServicePr
 
                 return {
                     ok: true,
-                    data: mapManyToFunctionEntity(details),
+                    data: mapManyToFunctionEntity(provider.id, details),
                     meta: response.meta,
                 }
             },

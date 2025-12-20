@@ -46,7 +46,7 @@ export function crmWorkflowCapabilityAdapterFactory(provider: ZohoServiceProvide
 
                 return {
                     ok: true,
-                    data: mapManyToWorkflowEntity(details),
+                    data: mapManyToWorkflowEntity(provider.id, details),
                     meta: response.meta,
                 }
             },

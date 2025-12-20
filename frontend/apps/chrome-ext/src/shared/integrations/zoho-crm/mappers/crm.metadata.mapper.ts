@@ -1,10 +1,13 @@
 import type { IModuleFieldMetadataRecordEntity, IModuleMetadataRecordEntity } from '@zoho-ide/shared'
+import { ProviderCapabilityType } from '@zoho-ide/shared'
 import type { CrmModuleField, CrmModuleMetadata } from '@/shared/integrations/zoho-crm/types/crm.metadata.types.ts'
 
-export function mapCrmModuleToEntity(module: CrmModuleMetadata): IModuleMetadataRecordEntity<CrmModuleMetadata> {
+export function mapCrmModuleToEntity(providerId: string, module: CrmModuleMetadata): IModuleMetadataRecordEntity<CrmModuleMetadata> {
     return {
         id: module.id,
         sourceId: module.id,
+        providerId,
+        capabilityType: ProviderCapabilityType.MODULES,
         apiName: module.api_name,
         displayName: module.singular_label,
         originEntity: module,
@@ -12,9 +15,10 @@ export function mapCrmModuleToEntity(module: CrmModuleMetadata): IModuleMetadata
 }
 
 export function mapManyCrmModulesToEntities(
+    providerId: string,
     modules: CrmModuleMetadata[]
 ): IModuleMetadataRecordEntity<CrmModuleMetadata>[] {
-    return modules.map(mapCrmModuleToEntity)
+    return modules.map(i => mapCrmModuleToEntity(providerId, i))
 }
 
 function formatDisplayDataType(field: CrmModuleField): string {
@@ -37,12 +41,15 @@ function formatDisplayDataType(field: CrmModuleField): string {
 }
 
 export function mapCrmFieldToEntity(
+    providerId: string,
     field: CrmModuleField,
     crmModule: CrmModuleMetadata
 ): IModuleFieldMetadataRecordEntity<CrmModuleField> {
     return {
         id: `${crmModule.api_name}-${field.id}`,
         sourceId: field.id,
+        providerId,
+        capabilityType: ProviderCapabilityType.FIELDS,
         apiName: field.api_name,
         moduleApiName: crmModule.api_name,
         moduleId: crmModule.id,
@@ -54,8 +61,9 @@ export function mapCrmFieldToEntity(
 }
 
 export function mapManyCrmFieldsToEntities(
+    providerId: string,
     fields: CrmModuleField[],
     crmModule: CrmModuleMetadata
 ): IModuleFieldMetadataRecordEntity<CrmModuleField>[] {
-    return fields.map((field) => mapCrmFieldToEntity(field, crmModule))
+    return fields.map((field) => mapCrmFieldToEntity(providerId, field, crmModule))
 }
