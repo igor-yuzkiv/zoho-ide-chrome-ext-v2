@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
-import { CapabilityType } from '@zoho-ide/shared'
+import { ProviderCapabilityType } from '@zoho-ide/shared'
 import type { IWorkflowRecordEntity } from '@zoho-ide/shared'
 import { ListBox, ListItem } from '@zoho-ide/shared'
 import { useRouter } from 'vue-router'
@@ -9,7 +9,7 @@ import { useCapabilityRecordsList } from '@/entities/capability/composables/useC
 
 const providerId = useRouteParams<string>('providerId')
 const activeWorkflowId = useRouteParams<string>('workflowId')
-const { data: workflows } = useCapabilityRecordsList<IWorkflowRecordEntity>(CapabilityType.WORKFLOWS, providerId)
+const { data: workflows } = useCapabilityRecordsList<IWorkflowRecordEntity>(ProviderCapabilityType.WORKFLOWS, providerId)
 const router = useRouter()
 
 function handleSelectWorkflow(value?: IWorkflowRecordEntity) {

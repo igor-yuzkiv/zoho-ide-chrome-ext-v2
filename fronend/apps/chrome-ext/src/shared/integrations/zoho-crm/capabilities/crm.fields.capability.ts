@@ -1,4 +1,4 @@
-import { CapabilityType } from '@zoho-ide/shared'
+import { ProviderCapabilityType } from '@zoho-ide/shared'
 import type { IModuleFieldMetadataRecordEntity, IModuleMetadataRecordEntity } from '@zoho-ide/shared'
 import type { PaginatedResult } from '@zoho-ide/shared'
 import type { Result } from '@zoho-ide/shared'
@@ -46,7 +46,7 @@ export function crmFieldsCapabilityPortFactory(provider: ServiceProvider): Resul
 
                 const modules = await selectProviderRecordsQuery<IModuleMetadataRecordEntity<CrmModuleMetadata>>(
                     provider.id,
-                    CapabilityType.MODULES
+                    ProviderCapabilityType.MODULES
                 ).then((res) => res.filter((m) => m?.originEntity?.api_supported))
 
                 if (!modules.length) {

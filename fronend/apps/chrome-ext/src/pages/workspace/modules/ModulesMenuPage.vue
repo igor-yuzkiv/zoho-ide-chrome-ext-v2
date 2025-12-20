@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
-import { CapabilityType } from '@zoho-ide/shared'
+import { ProviderCapabilityType } from '@zoho-ide/shared'
 import type { IModuleMetadataRecordEntity } from '@zoho-ide/shared'
 import { ListBox, ListItem } from '@zoho-ide/shared'
 import { useRouter } from 'vue-router'
@@ -9,7 +9,7 @@ import { useCapabilityRecordsList } from '@/entities/capability/composables/useC
 
 const providerId = useRouteParams<string>('providerId')
 const activeModuleId = useRouteParams<string>('moduleId')
-const { data: modules } = useCapabilityRecordsList<IModuleMetadataRecordEntity>(CapabilityType.MODULES, providerId)
+const { data: modules } = useCapabilityRecordsList<IModuleMetadataRecordEntity>(ProviderCapabilityType.MODULES, providerId)
 const router = useRouter()
 
 function handleSelectModule(value?: IModuleMetadataRecordEntity) {

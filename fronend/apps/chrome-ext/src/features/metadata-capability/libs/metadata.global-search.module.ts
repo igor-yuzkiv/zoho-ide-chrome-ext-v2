@@ -1,4 +1,4 @@
-import { CapabilityType } from '@zoho-ide/shared'
+import { ProviderCapabilityType } from '@zoho-ide/shared'
 import type { IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
 import type { ServiceProvider } from '@zoho-ide/shared'
 import type { IModuleFieldMetadataRecordEntity, IModuleMetadataRecordEntity } from '@zoho-ide/shared'
@@ -20,13 +20,13 @@ async function provideIndexDocuments<T extends IBaseCapabilityRecordEntity>(
 }
 
 export const ModulesGlobalSearchModule: GlobalSearchModule = {
-    name: CapabilityType.MODULES,
+    name: ProviderCapabilityType.MODULES,
     icon: 'streamline-sharp:module',
     provideIndexDocuments: async (context) => {
-        const records = await provideIndexDocuments<IModuleMetadataRecordEntity>(CapabilityType.MODULES, context)
+        const records = await provideIndexDocuments<IModuleMetadataRecordEntity>(ProviderCapabilityType.MODULES, context)
         return records.map((i) => ({
             id: i.id,
-            module: CapabilityType.MODULES,
+            module: ProviderCapabilityType.MODULES,
             title: i.apiName,
             content: i.apiName,
         }))
@@ -38,13 +38,13 @@ export const ModulesGlobalSearchModule: GlobalSearchModule = {
 }
 
 export const FieldsGlobalSearchModule: GlobalSearchModule = {
-    name: CapabilityType.FIELDS,
+    name: ProviderCapabilityType.FIELDS,
     icon: 'hugeicons:list-setting',
     provideIndexDocuments: async (context) => {
-        const records = await provideIndexDocuments<IModuleFieldMetadataRecordEntity>(CapabilityType.FIELDS, context)
+        const records = await provideIndexDocuments<IModuleFieldMetadataRecordEntity>(ProviderCapabilityType.FIELDS, context)
         return records.map((i) => ({
             id: i.id,
-            module: CapabilityType.FIELDS,
+            module: ProviderCapabilityType.FIELDS,
             title: `${i.moduleApiName} › ${i.apiName}`,
             content: [i.moduleApiName, i.moduleId, i.apiName, i.displayName, i.dataType].join(','),
         }))

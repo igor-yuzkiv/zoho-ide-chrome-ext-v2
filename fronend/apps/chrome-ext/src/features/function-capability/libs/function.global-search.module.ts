@@ -1,4 +1,4 @@
-import { CapabilityType } from '@zoho-ide/shared'
+import { ProviderCapabilityType } from '@zoho-ide/shared'
 import type { ServiceProvider } from '@zoho-ide/shared'
 import type { IFunctionRecordEntity } from '@zoho-ide/shared'
 import { defineAsyncComponent } from 'vue'
@@ -13,21 +13,21 @@ async function provideIndexDocuments(context?: Record<string, unknown>): Promise
 
     const provider = context.provider as ServiceProvider
 
-    const records = await selectProviderRecordsQuery<IFunctionRecordEntity>(provider.id, CapabilityType.FUNCTIONS)
+    const records = await selectProviderRecordsQuery<IFunctionRecordEntity>(provider.id, ProviderCapabilityType.FUNCTIONS)
     if (!records.length) {
         return []
     }
 
     return records.map((i) => ({
         id: i.id,
-        module: CapabilityType.FUNCTIONS,
+        module: ProviderCapabilityType.FUNCTIONS,
         title: i.displayName,
         content: i.script || '',
     }))
 }
 
 export const FunctionGlobalSearchModule: GlobalSearchModule = {
-    name: CapabilityType.FUNCTIONS,
+    name: ProviderCapabilityType.FUNCTIONS,
     provideIndexDocuments,
     icon: 'material-symbols:function',
     getNavigationRoute: (document: GlobalSearchDocument) => ({

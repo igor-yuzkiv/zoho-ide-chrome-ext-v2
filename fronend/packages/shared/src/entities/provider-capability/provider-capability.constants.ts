@@ -1,6 +1,6 @@
 import type { MaybeRefOrGetter } from '@vueuse/core'
 
-export const CapabilityType = {
+export const ProviderCapabilityType = {
     FUNCTIONS: 'functions',
     WORKFLOWS: 'workflows',
     MODULES: 'modules',
@@ -9,12 +9,12 @@ export const CapabilityType = {
 
 export const CAPABILITY_DEFAULT_ICON = 'carbon:undefined'
 
-export const CapabilityQueryKeys = {
+export const ProviderCapabilityQueryKeys = {
     all: ['provider', 'capabilities'],
-    forProvider: (providerId: MaybeRefOrGetter<string>) => [...CapabilityQueryKeys.all, providerId],
-    forType: (capabilityType: MaybeRefOrGetter<string>) => [...CapabilityQueryKeys.all, capabilityType],
+    forProvider: (providerId: MaybeRefOrGetter<string>) => [...ProviderCapabilityQueryKeys.all, providerId],
+    forType: (capabilityType: MaybeRefOrGetter<string>) => [...ProviderCapabilityQueryKeys.all, capabilityType],
     forProviderAndType: (providerId: MaybeRefOrGetter<string>, capabilityType: MaybeRefOrGetter<string>) => [
-        ...CapabilityQueryKeys.all,
+        ...ProviderCapabilityQueryKeys.all,
         providerId,
         capabilityType,
     ],
@@ -22,5 +22,5 @@ export const CapabilityQueryKeys = {
         providerId: MaybeRefOrGetter<string>,
         capabilityType: MaybeRefOrGetter<string>,
         recordId: MaybeRefOrGetter<string>
-    ) => [...CapabilityQueryKeys.all, providerId, capabilityType, recordId],
+    ) => [...ProviderCapabilityQueryKeys.all, providerId, capabilityType, recordId],
 }

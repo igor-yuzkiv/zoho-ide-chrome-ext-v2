@@ -1,5 +1,5 @@
 import { MaybeRefOrGetter } from '@vueuse/core'
-import { CapabilityType } from '@zoho-ide/shared'
+import { ProviderCapabilityType } from '@zoho-ide/shared'
 import { IFunctionRecordEntity } from '@zoho-ide/shared'
 import { Maybe, Result } from '@zoho-ide/shared'
 import { ServiceProvider } from '@zoho-ide/shared'
@@ -30,7 +30,7 @@ export function useFunctionExecute(
             return { ok: false, error: 'Function or provider is not valid' }
         }
 
-        const port = resolvePort(providerValue, CapabilityType.FUNCTIONS)
+        const port = resolvePort(providerValue, ProviderCapabilityType.FUNCTIONS)
         if (!port || !port.execute) {
             return {
                 ok: false,

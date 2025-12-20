@@ -1,5 +1,5 @@
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
-import { CapabilityQueryKeys, CapabilityType } from '@zoho-ide/shared'
+import { ProviderCapabilityQueryKeys, ProviderCapabilityType } from '@zoho-ide/shared'
 import type { IModuleMetadataRecordEntity } from '@zoho-ide/shared'
 import type { IEntity } from '@zoho-ide/shared'
 import { type MaybeRef, toValue } from 'vue'
@@ -10,12 +10,12 @@ export function useModuleDetails<TOrigin extends IEntity = IEntity>(
     moduleId: MaybeRef<string>
 ) {
     const { isPending, data } = useQuery<IModuleMetadataRecordEntity<TOrigin>>({
-        queryKey: CapabilityQueryKeys.forCapabilityRecord(providerId, CapabilityType.MODULES, moduleId),
+        queryKey: ProviderCapabilityQueryKeys.forCapabilityRecord(providerId, ProviderCapabilityType.MODULES, moduleId),
         placeholderData: keepPreviousData,
         queryFn: () => {
             return findCapabilityRecordQuery<IModuleMetadataRecordEntity<TOrigin>>(
                 toValue(providerId),
-                CapabilityType.MODULES,
+                ProviderCapabilityType.MODULES,
                 toValue(moduleId)
             )
         },

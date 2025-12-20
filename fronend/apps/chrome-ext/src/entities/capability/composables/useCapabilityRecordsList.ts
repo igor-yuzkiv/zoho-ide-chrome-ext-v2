@@ -1,5 +1,5 @@
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
-import { CapabilityQueryKeys } from '@zoho-ide/shared'
+import { ProviderCapabilityQueryKeys } from '@zoho-ide/shared'
 import type { IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
 import { type MaybeRef, toValue } from 'vue'
 import { selectProviderRecordsQuery } from '@/entities/capability/cache'
@@ -9,7 +9,7 @@ export function useCapabilityRecordsList<T extends IBaseCapabilityRecordEntity>(
     providerId: MaybeRef<string>
 ) {
     const { isPending, data } = useQuery<T[]>({
-        queryKey: CapabilityQueryKeys.forProviderAndType(providerId, capabilityType),
+        queryKey: ProviderCapabilityQueryKeys.forProviderAndType(providerId, capabilityType),
         placeholderData: keepPreviousData,
         queryFn: () => selectProviderRecordsQuery<T>(toValue(providerId), toValue(capabilityType)),
         initialData: [],

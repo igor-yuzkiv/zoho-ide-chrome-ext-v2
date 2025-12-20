@@ -1,5 +1,5 @@
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
-import { CapabilityQueryKeys, CapabilityType } from '@zoho-ide/shared'
+import { ProviderCapabilityQueryKeys, ProviderCapabilityType } from '@zoho-ide/shared'
 import type { IWorkflowRecordEntity } from '@zoho-ide/shared'
 import type { IEntity } from '@zoho-ide/shared'
 import { type MaybeRef, toValue } from 'vue'
@@ -10,12 +10,12 @@ export function useWorkflowDetails<TOrigin extends IEntity = IEntity>(
     workflowId: MaybeRef<string>
 ) {
     const { isPending, data } = useQuery<IWorkflowRecordEntity<TOrigin>>({
-        queryKey: CapabilityQueryKeys.forCapabilityRecord(providerId, CapabilityType.WORKFLOWS, workflowId),
+        queryKey: ProviderCapabilityQueryKeys.forCapabilityRecord(providerId, ProviderCapabilityType.WORKFLOWS, workflowId),
         placeholderData: keepPreviousData,
         queryFn: () => {
             return findCapabilityRecordQuery<IWorkflowRecordEntity<TOrigin>>(
                 toValue(providerId),
-                CapabilityType.WORKFLOWS,
+                ProviderCapabilityType.WORKFLOWS,
                 toValue(workflowId)
             )
         },
