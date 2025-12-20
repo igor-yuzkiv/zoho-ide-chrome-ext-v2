@@ -28,7 +28,10 @@ function normalizeCrmFunctionName(fx: ZohoCrmFunction): string {
     return 'unknown_function'
 }
 
-export function mapCrmFunctionToEntity(providerId: string, fx: ZohoCrmFunction): IFunctionRecordEntity<ZohoCrmFunction> {
+export function mapCrmFunctionToEntity(
+    providerId: string,
+    fx: ZohoCrmFunction
+): IFunctionRecordEntity<ZohoCrmFunction> {
     return {
         id: fx.id,
         sourceId: fx.id,
@@ -43,6 +46,9 @@ export function mapCrmFunctionToEntity(providerId: string, fx: ZohoCrmFunction):
     }
 }
 
-export function mapManyCrmFunctionsToEntity(providerId: string, functions: ZohoCrmFunction[]): IFunctionRecordEntity<ZohoCrmFunction>[] {
-    return functions.map(i => mapCrmFunctionToEntity(providerId, i))
+export function mapManyCrmFunctionsToEntity(
+    providerId: string,
+    functions: ZohoCrmFunction[]
+): IFunctionRecordEntity<ZohoCrmFunction>[] {
+    return functions.map((i) => mapCrmFunctionToEntity(providerId, i))
 }

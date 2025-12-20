@@ -2,7 +2,10 @@ import type { IModuleFieldMetadataRecordEntity, IModuleMetadataRecordEntity } fr
 import { ProviderCapabilityType } from '@zoho-ide/shared'
 import type { CrmModuleField, CrmModuleMetadata } from '@/shared/integrations/zoho-crm/types/crm.metadata.types.ts'
 
-export function mapCrmModuleToEntity(providerId: string, module: CrmModuleMetadata): IModuleMetadataRecordEntity<CrmModuleMetadata> {
+export function mapCrmModuleToEntity(
+    providerId: string,
+    module: CrmModuleMetadata
+): IModuleMetadataRecordEntity<CrmModuleMetadata> {
     return {
         id: module.id,
         sourceId: module.id,
@@ -18,7 +21,7 @@ export function mapManyCrmModulesToEntities(
     providerId: string,
     modules: CrmModuleMetadata[]
 ): IModuleMetadataRecordEntity<CrmModuleMetadata>[] {
-    return modules.map(i => mapCrmModuleToEntity(providerId, i))
+    return modules.map((i) => mapCrmModuleToEntity(providerId, i))
 }
 
 function formatDisplayDataType(field: CrmModuleField): string {

@@ -10,7 +10,7 @@ const providerId = useRouteParams<string>('providerId')
 const activeFunctionId = useRouteParams<string>('functionId')
 const { data: functions } = useCapabilityRecordsList<IFunctionRecordEntity>(
     ProviderCapabilityType.FUNCTIONS,
-    providerId,
+    providerId
 )
 const router = useRouter()
 
