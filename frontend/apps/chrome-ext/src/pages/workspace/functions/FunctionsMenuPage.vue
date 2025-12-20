@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
-import { IFunctionRecordEntity, ListBox, ListItem } from '@zoho-ide/shared'
+import { IFunctionRecordEntity, ListBox, ListItem, ProviderCapabilityType } from '@zoho-ide/shared'
 import { useRouter } from 'vue-router'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import { FunctionIcon, useFunctionsList } from '@/features/function-capability'
+import { useCapabilityRecordsList } from '@/entities/capability/composables/useCapabilityRecordsList.ts'
+import { FunctionIcon } from '@/features/function-capability'
 
 const providerId = useRouteParams<string>('providerId')
 const activeFunctionId = useRouteParams<string>('functionId')
-const functions = useFunctionsList(providerId)
+const { data: functions } = useCapabilityRecordsList<IFunctionRecordEntity>(providerId, ProviderCapabilityType.FUNCTIONS)
 const router = useRouter()
 
 function handleSelectFunction(value?: IFunctionRecordEntity) {
@@ -22,7 +23,7 @@ function handleSelectFunction(value?: IFunctionRecordEntity) {
 
 <template>
     <ListBox
-        :items="functions.data.value"
+        :items="functions"
         search-strategy="internal"
         :search-fields="['displayName']"
         @select-item="handleSelectFunction"
