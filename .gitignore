@@ -27,9 +27,9 @@ dist-ssr
 .env.*
 /docker/docker/
 /chrome-extension/extension/manifest.json
-/fronend/.nx/workspace-data/
-/fronend/.nx/cache/
-/fronend/dist/
-/fronend/apps/**/dist/
+/frontend/.nx/workspace-data/
+/frontend/.nx/cache/
+/frontend/dist/
+/frontend/apps/**/dist/
 *.tsbuildinfo
 /package-lock.json

@@ -6,7 +6,7 @@ cd backend || exit 1
 vendor/bin/pint --dirty || exit 1
 cd - >/dev/null
 
-cd fronend || exit 1
+cd frontend || exit 1
 echo "🔎 Typecheck"
 npx nx affected -t typecheck || exit 1
 
