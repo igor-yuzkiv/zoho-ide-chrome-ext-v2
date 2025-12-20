@@ -2,7 +2,7 @@ import { CapabilitiesRegister } from '@/config/capabilities.register.ts'
 import { CAPABILITY_DEFAULT_ICON } from '@zoho-ide/shared'
 import type { Maybe } from '@zoho-ide/shared'
 import type { CapabilityPort, ServiceProviderCapability } from '@zoho-ide/shared'
-import type { ZohoServiceProviderType, ZohoServiceProvider } from '@zoho-ide/shared'
+import type { ZohoServiceProvider, ZohoServiceProviderType } from '@zoho-ide/shared'
 
 export function useCapabilitiesConfig() {
     function byProviderType(providerType: ZohoServiceProviderType): ServiceProviderCapability[] {
@@ -13,7 +13,10 @@ export function useCapabilitiesConfig() {
         return byProviderType(provider.type)
     }
 
-    function findCapabilityByType(provider: ZohoServiceProvider, capabilityType: string): Maybe<ServiceProviderCapability> {
+    function findCapabilityByType(
+        provider: ZohoServiceProvider,
+        capabilityType: string
+    ): Maybe<ServiceProviderCapability> {
         const capabilities = byProvider(provider)
         return capabilities.find((cap) => cap.type === capabilityType)
     }

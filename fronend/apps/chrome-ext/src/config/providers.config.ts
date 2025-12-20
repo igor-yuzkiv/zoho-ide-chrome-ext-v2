@@ -1,5 +1,5 @@
 import type { Result } from '@zoho-ide/shared'
-import type { ZohoServiceProviderType, ZohoServiceProvider } from '@zoho-ide/shared'
+import type { ZohoServiceProvider, ZohoServiceProviderType } from '@zoho-ide/shared'
 import { crmServiceProviderFactory } from '@/shared/integrations/zoho-crm/crm.provider.ts'
 import { financeServiceProviderFactory } from '@/shared/integrations/zoho-finance/zoho-finance.provider.ts'
 import { BrowserTab } from '@/shared/libs/browser/browser.types.ts'

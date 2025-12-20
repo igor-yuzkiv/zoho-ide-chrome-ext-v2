@@ -1,4 +1,4 @@
-import type { ZohoServiceProviderType, WorkflowSchemaBuilder } from '@zoho-ide/shared'
+import type { WorkflowSchemaBuilder, ZohoServiceProviderType } from '@zoho-ide/shared'
 import { zohoCrmWorkflowSchemaBuilder } from '@/shared/integrations/zoho-crm/services/crm.workflow-schema.service.ts'
 
 export const WfSchemaNodeType = {
