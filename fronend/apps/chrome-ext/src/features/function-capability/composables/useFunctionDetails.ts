@@ -1,6 +1,6 @@
 import { CapabilityQueryKeys, CapabilityType } from '@/config/capabilities.config.ts'
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
-import type { IFunctionEntity } from '@zoho-ide/shared'
+import type { IFunctionRecordEntity } from '@zoho-ide/shared'
 import type { IEntity } from '@zoho-ide/shared'
 import { type MaybeRef, ref, toValue, watch } from 'vue'
 import { findCapabilityRecordQuery } from '@/entities/capability/cache'
@@ -11,11 +11,11 @@ export function useFunctionDetails<TOrigin extends IEntity = IEntity>(
 ) {
     const script = ref<string>('')
 
-    const { isPending, data } = useQuery<IFunctionEntity<TOrigin>>({
+    const { isPending, data } = useQuery<IFunctionRecordEntity<TOrigin>>({
         queryKey: CapabilityQueryKeys.forCapabilityRecord(providerId, CapabilityType.FUNCTIONS, functionId),
         placeholderData: keepPreviousData,
         queryFn: () => {
-            return findCapabilityRecordQuery<IFunctionEntity<TOrigin>>(
+            return findCapabilityRecordQuery<IFunctionRecordEntity<TOrigin>>(
                 toValue(providerId),
                 CapabilityType.FUNCTIONS,
                 toValue(functionId)

@@ -1,6 +1,6 @@
 import { CapabilityType } from '@/config/capabilities.config.ts'
 import { MaybeRefOrGetter } from '@vueuse/core'
-import { IFunctionEntity } from '@zoho-ide/shared'
+import { IFunctionRecordEntity } from '@zoho-ide/shared'
 import { Maybe, Result } from '@zoho-ide/shared'
 import { ServiceProvider } from '@zoho-ide/shared'
 import { computed, ref, toValue } from 'vue'
@@ -8,7 +8,7 @@ import { useCapabilitiesConfig } from '@/entities/capability/composables/useCapa
 
 export function useFunctionExecute(
     provider: MaybeRefOrGetter<Maybe<ServiceProvider>>,
-    fx: MaybeRefOrGetter<Maybe<IFunctionEntity>>
+    fx: MaybeRefOrGetter<Maybe<IFunctionRecordEntity>>
 ) {
     const isVisible = ref(false)
     const isExecuting = ref(false)

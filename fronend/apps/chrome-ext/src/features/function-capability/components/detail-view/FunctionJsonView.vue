@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { IFunctionEntity } from '@zoho-ide/shared'
+import { IFunctionRecordEntity } from '@zoho-ide/shared'
 import { useAppThemeStore } from '@zoho-ide/shared'
 import { computed } from 'vue'
 
-const props = defineProps<{ fx: IFunctionEntity }>()
+const props = defineProps<{ fx: IFunctionRecordEntity }>()
 const appTheme = useAppThemeStore()
 const jsonData = computed(() => {
     return JSON.stringify(props.fx, null, 2)

@@ -1,8 +1,8 @@
 import type { IEntity, Result } from '../../../../types'
-import type { ICapabilityEntity } from '../base.capability.types.ts'
+import type { IBaseCapabilityRecordEntity } from '../base.capability.types.ts'
 import type { Edge, Node } from '@vue-flow/core'
 
-export interface IWorkflowEntity<TOrigin extends IEntity = IEntity> extends ICapabilityEntity {
+export interface IWorkflowEntity<TOrigin extends IEntity = IEntity> extends IBaseCapabilityRecordEntity {
     description: string
     originEntity: TOrigin
 }

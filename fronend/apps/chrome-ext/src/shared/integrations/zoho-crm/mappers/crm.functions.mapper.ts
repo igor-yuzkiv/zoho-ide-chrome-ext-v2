@@ -1,5 +1,5 @@
 import { FunctionTypeMetadataMap } from '@/config/function.config.ts'
-import type { FunctionType, IFunctionEntity } from '@zoho-ide/shared'
+import type { FunctionType, IFunctionRecordEntity } from '@zoho-ide/shared'
 import { snakeCase } from 'lodash'
 import { ZohoCrmFunction } from '@/shared/integrations/zoho-crm/types/crm.functions.types.ts'
 
@@ -27,7 +27,7 @@ function normalizeCrmFunctionName(fx: ZohoCrmFunction): string {
     return 'unknown_function'
 }
 
-export function mapCrmFunctionToEntity(fx: ZohoCrmFunction): IFunctionEntity<ZohoCrmFunction> {
+export function mapCrmFunctionToEntity(fx: ZohoCrmFunction): IFunctionRecordEntity<ZohoCrmFunction> {
     return {
         id: fx.id,
         displayName: normalizeCrmFunctionName(fx),
@@ -39,6 +39,6 @@ export function mapCrmFunctionToEntity(fx: ZohoCrmFunction): IFunctionEntity<Zoh
     }
 }
 
-export function mapManyCrmFunctionsToEntity(functions: ZohoCrmFunction[]): IFunctionEntity<ZohoCrmFunction>[] {
+export function mapManyCrmFunctionsToEntity(functions: ZohoCrmFunction[]): IFunctionRecordEntity<ZohoCrmFunction>[] {
     return functions.map(mapCrmFunctionToEntity)
 }

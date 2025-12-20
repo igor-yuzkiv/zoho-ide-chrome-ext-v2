@@ -1,6 +1,6 @@
 import type { PaginatedResult } from '@zoho-ide/shared'
 import type { Result } from '@zoho-ide/shared'
-import type { CapabilityPort, ICapabilityEntity } from '@zoho-ide/shared'
+import type { CapabilityPort, IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
 import type { ServiceProvider } from '@zoho-ide/shared'
 import { assertCrmMetadata } from '@/shared/integrations/zoho-crm/crm.utils.ts'
 import { mapManyCrmModulesToEntities } from '@/shared/integrations/zoho-crm/mappers/crm.metadata.mapper.ts'
@@ -15,7 +15,7 @@ export function crmModulesCapabilityPortFactory(provider: ServiceProvider): Resu
     return {
         ok: true,
         value: {
-            async list(): Promise<PaginatedResult<ICapabilityEntity[]>> {
+            async list(): Promise<PaginatedResult<IBaseCapabilityRecordEntity[]>> {
                 if (!provider.tabId) {
                     return { ok: false, error: 'Provider offline' }
                 }

@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { CapabilityType } from '@/config/capabilities.config.ts'
 import { useRouteParams } from '@vueuse/router'
-import type { IModuleMetadataEntity } from '@zoho-ide/shared'
+import type { IModuleMetadataRecordEntity } from '@zoho-ide/shared'
 import { ListBox, ListItem } from '@zoho-ide/shared'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { useCapabilityRecordsList } from '@/entities/capability/composables/useCapabilityRecordsList.ts'
 
 const providerId = useRouteParams<string>('providerId')
-const { data: modules } = useCapabilityRecordsList<IModuleMetadataEntity>(CapabilityType.MODULES, providerId)
+const { data: modules } = useCapabilityRecordsList<IModuleMetadataRecordEntity>(CapabilityType.MODULES, providerId)
 </script>
 
 <template>

@@ -1,7 +1,7 @@
-import type { ICapabilityEntity } from '@zoho-ide/shared'
+import type { IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
 import { providersCacheDb } from '@/entities/capability/cache'
 
-export default async function <T extends ICapabilityEntity = ICapabilityEntity>(
+export default async function <T extends IBaseCapabilityRecordEntity = IBaseCapabilityRecordEntity>(
     providerId: string,
     capabilityType?: string
 ): Promise<T[]> {
