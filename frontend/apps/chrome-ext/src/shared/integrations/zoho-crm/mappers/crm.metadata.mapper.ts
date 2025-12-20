@@ -8,12 +8,12 @@ export function mapCrmModuleToEntity(
 ): IModuleMetadataRecordEntity<CrmModuleMetadata> {
     return {
         id: module.id,
-        sourceId: module.id,
-        providerId,
-        capabilityType: ProviderCapabilityType.MODULES,
-        apiName: module.api_name,
-        displayName: module.singular_label,
-        originEntity: module,
+        source_id: module.id,
+        provider_id: providerId,
+        capability_type: ProviderCapabilityType.MODULES,
+        api_name: module.api_name,
+        display_name: module.singular_label,
+        origin_entity: module,
     }
 }
 
@@ -50,16 +50,16 @@ export function mapCrmFieldToEntity(
 ): IModuleFieldMetadataRecordEntity<CrmModuleField> {
     return {
         id: `${crmModule.api_name}-${field.id}`,
-        sourceId: field.id,
-        providerId,
-        capabilityType: ProviderCapabilityType.FIELDS,
-        apiName: field.api_name,
-        moduleApiName: crmModule.api_name,
-        moduleId: crmModule.id,
-        displayName: field.field_label,
-        dataType: field.data_type,
-        displayDataType: formatDisplayDataType(field),
-        originEntity: field,
+        source_id: field.id,
+        provider_id: providerId,
+        capability_type: ProviderCapabilityType.FIELDS,
+        api_name: field.api_name,
+        module_api_name: crmModule.api_name,
+        module_id: crmModule.id,
+        display_name: field.field_label,
+        data_type: field.data_type,
+        display_data_type: formatDisplayDataType(field),
+        origin_entity: field,
     }
 }
 

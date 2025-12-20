@@ -57,9 +57,9 @@ async function handleCreateCodeSnippet() {
 
     confirm.require({
         header: 'Create Knowledge Base Item',
-        message: `Are you sure you want to create a code snippet from function: ${data.value.displayName}?`,
+        message: `Are you sure you want to create a code snippet from function: ${data.value.display_name}?`,
         accept: () => {
-            createCodeSnippet(`Code sample from function: ${data.value.displayName}`, script.value).then((response) => {
+            createCodeSnippet(`Code sample from function: ${data.value.display_name}`, script.value).then((response) => {
                 router.push({ name: AppRouteName.knowledgeBaseArticleEdit, params: { itemId: response.id } })
             })
         },
@@ -73,7 +73,7 @@ async function handleExecuteFunction() {
 
     confirm.require({
         header: 'Execute Function',
-        message: `Are you sure you want to execute the function: ${data.value.displayName}?`,
+        message: `Are you sure you want to execute the function: ${data.value.display_name}?`,
         acceptLabel: 'Execute',
         accept: () => {
             executeFunction()
@@ -99,11 +99,11 @@ async function handleExecuteFunction() {
 
 <template>
     <div v-if="data" class="flex h-full w-full flex-col overflow-hidden gap-1">
-        <PageHeader :title="data.displayName">
+        <PageHeader :title="data.display_name">
             <template #description>
                 <div class="text-gray-500 text-xs">
                     <b class="capitalize">{{ data.type }}: </b>
-                    <span v-if="data?.apiName">{{ data.apiName }}</span>
+                    <span v-if="data?.api_name">{{ data.api_name }}</span>
                     <i v-else> No API Name </i>
                 </div>
             </template>
@@ -145,7 +145,7 @@ async function handleExecuteFunction() {
         v-model:visible="isVisibleExecuteDialog"
         v-model:args="argsFormData"
         :params="data?.params || []"
-        :function-name="data?.displayName"
+        :function-name="data?.display_name"
         :result="executionResult"
         @execute="handleExecuteFunction"
         :loading="isFunctionExecuting"

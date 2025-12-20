@@ -29,7 +29,7 @@ function handleSelectModule(value?: IModuleMetadataRecordEntity) {
     <ListBox
         :items="modules"
         search-strategy="internal"
-        :search-fields="['displayName']"
+        :search-fields="['display_name']"
         @select-item="handleSelectModule"
         :is-active-item="(item) => item.id === activeModuleId"
     >
@@ -39,7 +39,7 @@ function handleSelectModule(value?: IModuleMetadataRecordEntity) {
                 as="router-link"
                 active-class="app-list-item-active"
                 :to="{ name: AppRouteName.workspaceModules, params: { providerId, moduleId: item.id } }"
-                :title="item.displayName"
+                :title="item.display_name"
             />
         </template>
     </ListBox>

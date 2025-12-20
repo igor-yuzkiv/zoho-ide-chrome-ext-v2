@@ -29,7 +29,7 @@ function handleSelectWorkflow(value?: IWorkflowRecordEntity) {
     <ListBox
         :items="workflows"
         search-strategy="internal"
-        :search-fields="['displayName']"
+        :search-fields="['display_name']"
         @select-item="handleSelectWorkflow"
         :is-active-item="(item) => item.id === activeWorkflowId"
     >
@@ -39,7 +39,7 @@ function handleSelectWorkflow(value?: IWorkflowRecordEntity) {
                 as="router-link"
                 active-class="app-list-item-active"
                 :to="{ name: AppRouteName.workspaceWorkflows, params: { providerId, workflowId: item.id } }"
-                :title="item.displayName"
+                :title="item.display_name"
             />
         </template>
     </ListBox>

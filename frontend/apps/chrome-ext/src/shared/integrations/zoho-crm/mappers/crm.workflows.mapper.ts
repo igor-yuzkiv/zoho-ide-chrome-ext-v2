@@ -5,12 +5,12 @@ import type { ZohoCrmWorkflow } from '@/shared/integrations/zoho-crm/types/crm.w
 export function mapToWorkflowEntity(providerId: string, wf: ZohoCrmWorkflow): IWorkflowRecordEntity<ZohoCrmWorkflow> {
     return {
         id: wf.id,
-        sourceId: wf.id,
-        providerId,
-        capabilityType: ProviderCapabilityType.WORKFLOWS,
-        displayName: wf.name,
+        source_id: wf.id,
+        provider_id: providerId,
+        capability_type: ProviderCapabilityType.WORKFLOWS,
+        display_name: wf.name,
         description: wf.description || '',
-        originEntity: wf,
+        origin_entity: wf,
     }
 }
 
@@ -22,7 +22,7 @@ export function mapManyToWorkflowEntity(
 }
 
 export function assertCrmWorkflowFromEntity(workflow: IWorkflowRecordEntity): ZohoCrmWorkflow | undefined {
-    return workflow?.originEntity && (workflow.originEntity as ZohoCrmWorkflow).id
-        ? (workflow.originEntity as ZohoCrmWorkflow)
+    return workflow?.origin_entity && (workflow.origin_entity as ZohoCrmWorkflow).id
+        ? (workflow.origin_entity as ZohoCrmWorkflow)
         : undefined
 }

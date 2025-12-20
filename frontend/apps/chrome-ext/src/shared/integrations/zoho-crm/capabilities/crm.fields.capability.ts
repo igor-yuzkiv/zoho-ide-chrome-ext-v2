@@ -48,7 +48,7 @@ export function crmFieldsCapabilityAdapterFactory(provider: ZohoServiceProvider)
                 const modules = await selectProviderRecordsQuery<IModuleMetadataRecordEntity<CrmModuleMetadata>>(
                     provider.id,
                     ProviderCapabilityType.MODULES
-                ).then((res) => res.filter((m) => m?.originEntity?.api_supported))
+                ).then((res) => res.filter((m) => m?.origin_entity?.api_supported))
 
                 if (!modules.length) {
                     return { ok: false, error: 'No modules for fields fetching' }
@@ -60,7 +60,7 @@ export function crmFieldsCapabilityAdapterFactory(provider: ZohoServiceProvider)
                             return Promise.resolve([])
                         }
 
-                        return fetchModuleFields(provider.id, provider.tabId, metadata.orgId, module.originEntity)
+                        return fetchModuleFields(provider.id, provider.tabId, metadata.orgId, module.origin_entity)
                     })
                 ).then((fieldsArrays) => fieldsArrays.flat())
 

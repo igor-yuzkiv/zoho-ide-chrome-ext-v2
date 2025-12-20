@@ -28,7 +28,7 @@ function handleSelectFunction(value?: IFunctionRecordEntity) {
     <ListBox
         :items="functions"
         search-strategy="internal"
-        :search-fields="['displayName']"
+        :search-fields="['display_name']"
         @select-item="handleSelectFunction"
         :is-active-item="(item) => item.id === activeFunctionId"
     >
@@ -37,12 +37,12 @@ function handleSelectFunction(value?: IFunctionRecordEntity) {
                 as="router-link"
                 active-class="app-list-item-active"
                 :to="{ name: AppRouteName.workspaceFunctions, params: { providerId, functionId: item.id } }"
-                :tooltip="`${item.type}: ${item.displayName}`"
+                :tooltip="`${item.type}: ${item.display_name}`"
             >
                 <template #icon>
                     <FunctionIcon :type="item.type" class="shrink-0" />
                 </template>
-                <div class="truncate">{{ item.displayName }}</div>
+                <div class="truncate">{{ item.display_name }}</div>
             </ListItem>
         </template>
     </ListBox>

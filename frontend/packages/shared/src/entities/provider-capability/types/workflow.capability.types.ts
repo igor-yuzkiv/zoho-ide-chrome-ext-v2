@@ -4,7 +4,7 @@ import type { Edge, Node } from '@vue-flow/core'
 
 export interface IWorkflowRecordEntity<TOrigin extends IEntity = IEntity> extends IBaseCapabilityRecordEntity {
     description: string
-    originEntity: TOrigin
+    origin_entity: TOrigin
 }
 
 export type WorkflowSchemaBuilder = (workflow: IWorkflowRecordEntity) => Result<{ nodes: Node[]; edges: Edge[] }>

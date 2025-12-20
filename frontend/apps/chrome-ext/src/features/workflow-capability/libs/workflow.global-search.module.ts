@@ -23,7 +23,7 @@ async function provideIndexDocuments(context?: Record<string, unknown>): Promise
     return records.map((i) => ({
         id: i.id,
         module: ProviderCapabilityType.WORKFLOWS,
-        title: i.displayName,
+        title: i.display_name,
         content: i.description || '',
     }))
 }

@@ -24,7 +24,7 @@ async function provideIndexDocuments(context?: Record<string, unknown>): Promise
     return records.map((i) => ({
         id: i.id,
         module: ProviderCapabilityType.FUNCTIONS,
-        title: i.displayName,
+        title: i.display_name,
         content: i.script || '',
     }))
 }

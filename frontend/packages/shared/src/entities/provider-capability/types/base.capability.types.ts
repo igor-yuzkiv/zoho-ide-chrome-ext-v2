@@ -1,4 +1,4 @@
-import type { IEntity, PaginatedResult, PaginationParams, Result } from '../../../types'
+import type { IEntity, Maybe, PaginatedResult, PaginationParams, Result } from '../../../types'
 import type { ZohoServiceProvider } from '../../zoho-service-provider'
 import type { IFunctionRecordEntity } from './function.capability.types.ts'
 
@@ -17,8 +17,10 @@ export interface CapabilityAdapter {
 
 export interface IBaseCapabilityRecordEntity extends IEntity {
     id: string
-    sourceId: string
-    providerId: string
-    capabilityType: string
-    displayName: string
+    source_id: string
+    provider_id: string
+    capability_type: string
+    display_name: string
+    api_name?: Maybe<string>
+    origin_entity: IEntity
 }

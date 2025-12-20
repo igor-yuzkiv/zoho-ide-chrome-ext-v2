@@ -30,8 +30,8 @@ export const ModulesGlobalSearchModule: GlobalSearchModule = {
         return records.map((i) => ({
             id: i.id,
             module: ProviderCapabilityType.MODULES,
-            title: i.apiName,
-            content: i.apiName,
+            title: i.api_name,
+            content: i.api_name,
         }))
     },
     getNavigationRoute: (document: GlobalSearchDocument) => ({
@@ -51,8 +51,8 @@ export const FieldsGlobalSearchModule: GlobalSearchModule = {
         return records.map((i) => ({
             id: i.id,
             module: ProviderCapabilityType.FIELDS,
-            title: `${i.moduleApiName} › ${i.apiName}`,
-            content: [i.moduleApiName, i.moduleId, i.apiName, i.displayName, i.dataType].join(','),
+            title: `${i.module_api_name} › ${i.api_name}`,
+            content: [i.module_api_name, i.module_id, i.api_name, i.display_name, i.data_type].join(','),
         }))
     },
     getNavigationRoute(document: GlobalSearchDocument) {

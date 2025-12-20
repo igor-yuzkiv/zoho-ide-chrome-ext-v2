@@ -9,11 +9,8 @@ export type FunctionParams = {
 }
 
 export interface IFunctionRecordEntity<TOrigin extends IEntity = IEntity> extends IBaseCapabilityRecordEntity {
-    id: string
     type: FunctionType
-    displayName: string
-    apiName?: string | null
-    originEntity: TOrigin
+    origin_entity: TOrigin
     script?: string | null
     params?: FunctionParams[] | null
 }

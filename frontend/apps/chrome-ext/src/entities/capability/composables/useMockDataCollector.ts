@@ -7,14 +7,14 @@ import { saveMockData } from '@/shared/api/mock/mock.api.ts'
 export function useMockDataCollector() {
     async function saveFieldsMockData(provider: ZohoServiceProvider, records: IModuleFieldMetadataRecordEntity[]) {
         const perModule = records.reduce<Record<string, IModuleFieldMetadataRecordEntity[]>>((acc, record) => {
-            if (!record.moduleApiName || !record.originEntity) {
+            if (!record.module_api_name || !record.origin_entity) {
                 return acc
             }
 
-            if (record.moduleApiName in acc) {
-                acc[record.moduleApiName].push(record)
+            if (record.module_api_name in acc) {
+                acc[record.module_api_name].push(record)
             } else {
-                acc[record.moduleApiName] = [record]
+                acc[record.module_api_name] = [record]
             }
 
             return acc
@@ -22,7 +22,7 @@ export function useMockDataCollector() {
 
         return Promise.all(
             Object.entries(perModule).map(([moduleApiName, recs]) =>
-                saveMockData(`${provider.id}-fields-${moduleApiName}`, recs.map((r) => r.originEntity).filter(Boolean))
+                saveMockData(`${provider.id}-fields-${moduleApiName}`, recs.map((r) => r.origin_entity).filter(Boolean))
             )
         )
     }
@@ -42,7 +42,7 @@ export function useMockDataCollector() {
         })
 
         if (capabilityType !== 'fields') {
-            const data = records.map((r) => r?.originEntity).filter(Boolean)
+            const data = records.map((r) => r?.origin_entity).filter(Boolean)
             return saveMockData(`${provider.id}-${capabilityType}`, data).catch(console.error)
         }
 

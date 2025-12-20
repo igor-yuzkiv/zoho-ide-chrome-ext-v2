@@ -21,7 +21,7 @@ export function useModuleFields<TOrigin extends IEntity = IEntity>(
                 toValue(providerId),
                 ProviderCapabilityType.FIELDS
             ).then((records) => {
-                return records.filter((record) => record.moduleId === toValue(moduleId))
+                return records.filter((record) => record.module_id === toValue(moduleId))
             })
         },
         enabled: computed(() => !!toValue(providerId) && !!toValue(moduleId)),

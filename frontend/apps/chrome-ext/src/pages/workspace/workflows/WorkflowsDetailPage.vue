@@ -34,7 +34,7 @@ const viewMode = useViewMode(
 
 <template>
     <div v-if="currentProvider && workflow.data.value" class="flex h-full w-full flex-col overflow-hidden gap-1">
-        <PageHeader :title="workflow.data.value.displayName" :description="workflow.data.value.description">
+        <PageHeader :title="workflow.data.value.display_name" :description="workflow.data.value.description">
             <template #actions>
                 <ViewModeSelect :options="viewMode.options" v-model="viewMode.current.value" />
             </template>

@@ -12,13 +12,13 @@ export function mapToFunctionEntity(
 ): IFunctionRecordEntity<ZohoFinanceFunction> {
     return {
         id: fx.customfunction_id,
-        sourceId: fx.customfunction_id,
-        providerId,
-        capabilityType: ProviderCapabilityType.FUNCTIONS,
-        displayName: fx?.placeholder || fx.function_name,
-        apiName: fx.function_name,
+        source_id: fx.customfunction_id,
+        provider_id: providerId,
+        capability_type: ProviderCapabilityType.FUNCTIONS,
+        display_name: fx?.placeholder || fx.function_name,
+        api_name: fx.function_name,
         type: 'automation',
-        originEntity: {
+        origin_entity: {
             ...fx,
             id: fx.customfunction_id,
         },

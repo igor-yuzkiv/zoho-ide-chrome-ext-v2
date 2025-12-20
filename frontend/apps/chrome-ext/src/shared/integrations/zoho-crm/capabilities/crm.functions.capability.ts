@@ -60,14 +60,14 @@ export function crmFunctionsCapabilityAdapterFactory(provider: ZohoServiceProvid
                     return { ok: false, error: 'Provider offline' }
                 }
 
-                if (!functionEntity.apiName || !functionEntity.script) {
-                    return { ok: false, error: 'Invalid function entity. apiName or script missing.' }
+                if (!functionEntity.api_name || !functionEntity.script) {
+                    return { ok: false, error: 'Invalid function entity. api_name or script missing.' }
                 }
 
                 return executeCrmFunctionsRequest(
                     provider.tabId,
                     metadata.orgId,
-                    functionEntity.apiName,
+                    functionEntity.api_name,
                     functionEntity.script,
                     inputData
                 )

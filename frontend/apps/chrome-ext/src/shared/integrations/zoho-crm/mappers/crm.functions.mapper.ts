@@ -34,13 +34,13 @@ export function mapCrmFunctionToEntity(
 ): IFunctionRecordEntity<ZohoCrmFunction> {
     return {
         id: fx.id,
-        sourceId: fx.id,
-        providerId,
-        capabilityType: ProviderCapabilityType.FUNCTIONS,
-        displayName: normalizeCrmFunctionName(fx),
-        apiName: fx?.api_name || fx?.name,
+        source_id: fx.id,
+        provider_id: providerId,
+        capability_type: ProviderCapabilityType.FUNCTIONS,
+        display_name: normalizeCrmFunctionName(fx),
+        api_name: fx?.api_name || fx?.name,
         type: mapFunctionCategoryToType(fx?.category),
-        originEntity: fx,
+        origin_entity: fx,
         script: fx?.script,
         params: fx?.params || null,
     }

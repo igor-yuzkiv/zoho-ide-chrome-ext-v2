@@ -20,27 +20,27 @@ const itemsForDisplay = computed(() => {
 
     return props.fields.filter(
         (field) =>
-            field.displayName.toLowerCase().includes(searchTerm.value.toLowerCase()) ||
-            field.apiName.toLowerCase().includes(searchTerm.value.toLowerCase()) ||
-            field.displayDataType.toLowerCase().includes(searchTerm.value.toLowerCase())
+            field.display_name.toLowerCase().includes(searchTerm.value.toLowerCase()) ||
+            field.api_name.toLowerCase().includes(searchTerm.value.toLowerCase()) ||
+            field.display_data_type.toLowerCase().includes(searchTerm.value.toLowerCase())
     )
 })
 </script>
 
 <template>
     <DataTable :value="itemsForDisplay" striped-rows row-hover size="small" scrollable scroll-height="flex">
-        <template #empty> No fields available for module {{ module?.displayName || '' }} </template>
+        <template #empty> No fields available for module {{ module?.display_name || '' }}</template>
         <template #header>
             <div class="flex items-center justify-end">
                 <InputText v-model.lazy="searchTerm" placeholder="Search" size="small" />
             </div>
         </template>
 
-        <Column field="displayName" header="Display Name"></Column>
-        <Column field="displayDataType" header="Type"></Column>
-        <Column field="apiName" header="Api Name">
+        <Column field="display_name" header="Display Name"></Column>
+        <Column field="display_data_type" header="Type"></Column>
+        <Column field="api_name" header="Api Name">
             <template #body="slotProps">
-                <CopyText :value="slotProps.data.apiName" tag="span" />
+                <CopyText :value="slotProps.data.api_name" tag="span" />
             </template>
         </Column>
     </DataTable>

@@ -35,7 +35,7 @@ const viewMode = useViewMode(
 
 <template>
     <div v-if="module.data.value" class="flex h-full w-full flex-col overflow-hidden gap-1">
-        <PageHeader :title="module.data.value.apiName">
+        <PageHeader :title="module.data.value.api_name">
             <template #actions>
                 <ViewModeSelect :options="viewMode.options" v-model="viewMode.current.value" />
             </template>
