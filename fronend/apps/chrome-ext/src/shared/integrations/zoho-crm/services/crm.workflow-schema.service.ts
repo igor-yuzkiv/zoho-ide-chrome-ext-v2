@@ -133,7 +133,9 @@ function makeEdge(from: string, to: string, label?: string, animated = true): Ed
     }
 }
 
-export function zohoCrmWorkflowSchemaBuilder(workflow: IWorkflowRecordEntity): Result<{ nodes: Node[]; edges: Edge[] }> {
+export function zohoCrmWorkflowSchemaBuilder(
+    workflow: IWorkflowRecordEntity
+): Result<{ nodes: Node[]; edges: Edge[] }> {
     const crmWorkflow = assertCrmWorkflowFromEntity(workflow)
 
     if (!crmWorkflow || !crmWorkflow?.conditions?.length || !crmWorkflow?.execute_when) {
