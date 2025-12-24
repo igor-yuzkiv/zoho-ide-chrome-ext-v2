@@ -26,7 +26,8 @@
         "*://*.zoho.jp/*",
         "*://*.zoho.com.au/*",
         "*://*.zoho.com.cn/*",
-        "*://*.igor-work.site/*"
+        "*://*.igor-work.site/*",
+        "*://127.0.0.1/*"
     ],
     "web_accessible_resources": [
         {
