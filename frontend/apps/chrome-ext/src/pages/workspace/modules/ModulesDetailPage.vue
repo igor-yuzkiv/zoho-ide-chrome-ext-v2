@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
 import { defineAsyncComponent } from 'vue'
-import { NoDataMessage, PageHeader } from '@zoho-ide/ui-kit'
+import { NoDataMessage, PageHeader, useViewModeSelect, ViewModeSelect } from '@zoho-ide/ui-kit'
 import { useModuleDetails } from '@/features/metadata-capability'
 import { useModuleFields } from '@/features/metadata-capability/composables/useModuleFields.ts'
-import { useViewMode, ViewModeSelect } from '@/widgets/view-mode'
 
 const providerId = useRouteParams<string>('providerId')
 const moduleId = useRouteParams<string>('moduleId')
@@ -12,7 +11,7 @@ const moduleId = useRouteParams<string>('moduleId')
 const module = useModuleDetails(providerId, moduleId)
 const fields = useModuleFields(providerId, moduleId)
 
-const viewMode = useViewMode(
+const viewMode = useViewModeSelect(
     [
         {
             value: 'json',

@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
 import { defineAsyncComponent } from 'vue'
-import { NoDataMessage, PageHeader } from '@zoho-ide/ui-kit'
+import { NoDataMessage, PageHeader, useViewModeSelect, ViewModeSelect } from '@zoho-ide/ui-kit'
 import { useCurrentProvider } from '@/entities/provider/composables/useCurrentProvider.ts'
 import { useWorkflowDetails } from '@/features/workflow-capability/composables/useWorkflowDetails.ts'
-import { useViewMode, ViewModeSelect } from '@/widgets/view-mode'
 
 const providerId = useRouteParams<string>('providerId')
 const workflowId = useRouteParams<string>('workflowId')
 const { data: currentProvider } = useCurrentProvider()
 const workflow = useWorkflowDetails(providerId, workflowId)
 
-const viewMode = useViewMode(
+const viewMode = useViewModeSelect(
     [
         {
             value: 'json',

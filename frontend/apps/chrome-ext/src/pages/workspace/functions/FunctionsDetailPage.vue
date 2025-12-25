@@ -5,11 +5,10 @@ import { defineAsyncComponent } from 'vue'
 import { useRouter } from 'vue-router'
 import { Button } from 'primevue'
 import { Icon } from '@iconify/vue'
-import { NoDataMessage, PageHeader, useConfirm, useToast } from '@zoho-ide/ui-kit'
+import { NoDataMessage, PageHeader, useConfirm, useToast, useViewModeSelect, ViewModeSelect } from '@zoho-ide/ui-kit'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { useCurrentProvider } from '@/entities/provider/composables/useCurrentProvider.ts'
 import { ExecuteFunctionDialog, useFunctionDetails, useFunctionExecute } from '@/features/function-capability'
-import { useViewMode, ViewModeSelect } from '@/widgets/view-mode'
 
 const toast = useToast()
 const confirm = useConfirm()
@@ -29,7 +28,7 @@ const {
     executeFunction,
 } = useFunctionExecute(currentProvider, data)
 
-const viewMode = useViewMode(
+const viewMode = useViewModeSelect(
     [
         {
             value: 'code',

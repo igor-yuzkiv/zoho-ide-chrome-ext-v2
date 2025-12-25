@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import type { ViewModeOption } from '../type.ts'
 import { startCase } from 'lodash'
 import { computed } from 'vue'
 import Select from 'primevue/select'
 import { Icon } from '@iconify/vue'
-import type { ViewModeOption } from '@/widgets/view-mode/lib/view-mode.type.ts'
 
 const props = defineProps<{ options: ViewModeOption[] }>()
 const modelValue = defineModel<string>()
