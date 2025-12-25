@@ -5,9 +5,9 @@ import { ITagEntity } from '../../types'
 import TagChip from '../chip/TagChip.vue'
 import TagsChipList from '../chip/TagsChipList.vue'
 import { onClickOutside } from '@vueuse/core'
-import { HexColorPicker } from '@zoho-ide/shared'
 import { computed, ref, useId, useTemplateRef } from 'vue'
 import { Button, IftaLabel, InputText, Popover } from 'primevue'
+import { HexColorPicker } from '@zoho-ide/ui-kit'
 
 const modelValue = defineModel<ITagEntity[]>({ type: Array, default: () => [] })
 const selectedTagIds = computed(() => new Set(modelValue.value.map((tag) => tag.id)))

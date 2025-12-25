@@ -20,6 +20,9 @@
         },
         {
             "path": "./packages/tags"
+        },
+        {
+            "path": "./packages/ui-kit"
         }
     ]
 }

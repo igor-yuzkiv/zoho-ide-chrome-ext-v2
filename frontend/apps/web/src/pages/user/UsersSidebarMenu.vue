@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
-import { type IUser, useAuthStore, useToast } from '@zoho-ide/shared'
-import { IconButton, ListBox, ListItem } from '@zoho-ide/shared'
+import { type IUser, useAuthStore } from '@zoho-ide/shared'
 import { useRouter } from 'vue-router'
+import { IconButton, ListBox, ListItem, useToast } from '@zoho-ide/ui-kit'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { useDeleteUser, useUsersList } from '@/features/user'
 

@@ -2,8 +2,9 @@ import { deleteKbItemRequest } from '../api'
 import { KnowledgeBaseQueryKeys } from '../knowledge-base.constants.ts'
 import type { DeleteKbItemByIdResponse } from '../types'
 import { useMutation, useQueryClient } from '@tanstack/vue-query'
-import { ApiError, type MutationOptions, useConfirm } from '@zoho-ide/shared'
+import { ApiError, type MutationOptions } from '@zoho-ide/shared'
 import { MaybeRefOrGetter, toValue } from 'vue'
+import { useConfirm } from '@zoho-ide/ui-kit'
 
 export function useDeleteKbItem(options?: MutationOptions<DeleteKbItemByIdResponse>) {
     const queryClient = useQueryClient()

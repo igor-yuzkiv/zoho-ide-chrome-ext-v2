@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
-import { PageHeader, useToast } from '@zoho-ide/shared'
 import { watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { Avatar, Button } from 'primevue'
+import { PageHeader, useToast } from '@zoho-ide/ui-kit'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { UpdateUserForm, useUpdateUser, useUserDetails } from '@/features/user'
 

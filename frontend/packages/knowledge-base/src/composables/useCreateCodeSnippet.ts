@@ -1,8 +1,8 @@
 import { useCreateKbItemFromTemplate } from '../mutations'
 import { useKbTemplatesListQuery } from '../queries'
 import type { IKnowledgeBaseItem } from '../types'
-import { useToast } from '@zoho-ide/shared'
 import { computed } from 'vue'
+import { useToast } from '@zoho-ide/ui-kit'
 
 export function useCreateCodeSnippet() {
     const toast = useToast()

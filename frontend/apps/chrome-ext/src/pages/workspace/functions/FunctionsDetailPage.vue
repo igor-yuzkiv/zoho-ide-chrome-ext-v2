@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
 import { useCreateCodeSnippet } from '@zoho-ide/knowledge-base'
-import { NoDataMessage, PageHeader, useToast } from '@zoho-ide/shared'
-import { useConfirm } from '@zoho-ide/shared'
 import { defineAsyncComponent } from 'vue'
 import { useRouter } from 'vue-router'
 import { Button } from 'primevue'
 import { Icon } from '@iconify/vue'
+import { NoDataMessage, PageHeader, useConfirm, useToast } from '@zoho-ide/ui-kit'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { useCurrentProvider } from '@/entities/provider/composables/useCurrentProvider.ts'
 import { ExecuteFunctionDialog, useFunctionDetails, useFunctionExecute } from '@/features/function-capability'

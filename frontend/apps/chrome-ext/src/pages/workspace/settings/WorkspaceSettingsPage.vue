@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { PageHeader } from '@zoho-ide/shared'
-import { useToast } from '@zoho-ide/shared'
 import { ref, watch } from 'vue'
 import { InputText } from 'primevue'
 import { Button } from 'primevue'
 import { useConfirm } from 'primevue'
+import { PageHeader } from '@zoho-ide/ui-kit'
+import { useToast } from '@zoho-ide/ui-kit'
 import { useCurrentProvider } from '@/entities/provider/composables/useCurrentProvider.ts'
 
 //TODO: Move Settings to root level

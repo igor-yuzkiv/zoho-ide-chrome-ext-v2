@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { IconButton, ToggleThemeButton } from '@zoho-ide/shared'
-import { useAppThemeStore } from '@zoho-ide/shared'
+import { IconButton, ToggleThemeButton, useAppThemeStore } from '@zoho-ide/ui-kit'
 
 const appTheme = useAppThemeStore()
 

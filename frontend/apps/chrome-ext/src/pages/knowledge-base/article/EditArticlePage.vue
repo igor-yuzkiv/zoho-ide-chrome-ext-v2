@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
 import { ArticleEditView, useKbItemDetailsQuery, useUpdateKbItem } from '@zoho-ide/knowledge-base'
-import { useToast } from '@zoho-ide/shared'
 import { useRouter } from 'vue-router'
 import { Button } from 'primevue'
 import { Icon } from '@iconify/vue'
+import { useToast } from '@zoho-ide/ui-kit'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 
 const router = useRouter()

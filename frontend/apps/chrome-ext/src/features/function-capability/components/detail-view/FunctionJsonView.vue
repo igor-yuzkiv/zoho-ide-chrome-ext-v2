@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { IFunctionRecordEntity } from '@zoho-ide/shared'
-import { useAppThemeStore } from '@zoho-ide/shared'
 import { computed } from 'vue'
+import { useAppThemeStore } from '@zoho-ide/ui-kit'
 
 const props = defineProps<{ fx: IFunctionRecordEntity }>()
 const appTheme = useAppThemeStore()

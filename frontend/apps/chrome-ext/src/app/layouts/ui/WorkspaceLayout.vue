@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { TopMenuItem, useConfirm, useToast } from '@zoho-ide/shared'
 import { format } from 'date-fns'
 import { computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { Splitter, SplitterPanel } from 'primevue'
 import { Icon } from '@iconify/vue'
+import { TopMenuItem, useConfirm, useToast } from '@zoho-ide/ui-kit'
 import { GlobalSearchDialog, useGlobalSearch } from '@/shared/libs/global-search'
 import { useLogger } from '@/shared/libs/logger/useLogger.ts'
 import { AppRouteName } from '@/app/router/app-routes.ts'

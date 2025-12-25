@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAppThemeStore } from '@zoho-ide/shared'
+import { useAppThemeStore } from '@zoho-ide/ui-kit'
 
 const script = defineModel<string>('script', { default: '' })
 const appTheme = useAppThemeStore()

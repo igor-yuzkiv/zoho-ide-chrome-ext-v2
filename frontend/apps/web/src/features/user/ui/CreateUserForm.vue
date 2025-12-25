@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useValidationErrors } from '@zoho-ide/shared'
 import type { CreateUserRequestPayload } from '@zoho-ide/shared'
-import { FieldContainer } from '@zoho-ide/shared'
 import { computed } from 'vue'
 import { InputText, Password } from 'primevue'
+import { FieldContainer } from '@zoho-ide/ui-kit'
 
 const props = withDefaults(defineProps<{ formErrors?: Record<string, string[]> }>(), { formErrors: () => ({}) })
 const formData = defineModel<CreateUserRequestPayload>('form-data', { required: true })

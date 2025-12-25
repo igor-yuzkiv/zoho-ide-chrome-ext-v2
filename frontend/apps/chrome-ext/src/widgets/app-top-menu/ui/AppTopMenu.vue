@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { TopMenu, type TopMenuItemProps, useAuthStore, UserProfile } from '@zoho-ide/shared'
+import { useAuthStore } from '@zoho-ide/shared'
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { Icon } from '@iconify/vue'
+import { TopMenu, type TopMenuItemProps, UserProfile } from '@zoho-ide/ui-kit'
 import { useGlobalSearch } from '@/shared/libs/global-search'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { useCurrentProvider } from '@/entities/provider/composables/useCurrentProvider.ts'

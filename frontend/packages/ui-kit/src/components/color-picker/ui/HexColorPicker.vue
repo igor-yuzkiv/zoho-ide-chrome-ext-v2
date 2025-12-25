@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAppThemeStore } from '../../../store'
+import { useAppThemeStore } from '../../../useAppThemeStore.ts'
 import { ColorPicker } from 'vue3-colorpicker'
 import 'vue3-colorpicker/style.css'
 

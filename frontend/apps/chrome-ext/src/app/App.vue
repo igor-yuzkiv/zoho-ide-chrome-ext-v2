@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { useAuthStore } from '@zoho-ide/shared'
-import { LoadingOverlay } from '@zoho-ide/shared'
-import { useAppThemeStore } from '@zoho-ide/shared'
 import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import ConfirmDialog from 'primevue/confirmdialog'
 import Toast from 'primevue/toast'
+import { LoadingOverlay } from '@zoho-ide/ui-kit'
+import { useAppThemeStore } from '@zoho-ide/ui-kit'
 import { useBrowserTabsStore } from '@/shared/libs/browser/store/useBrowserTabsStore.ts'
 import { AppLayoutComponent } from '@/app/layouts/app-layouts.config.ts'
 import { AppRouteName } from '@/app/router/app-routes.ts'

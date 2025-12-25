@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { IKnowledgeBaseItemDetails } from '../types'
-import { MarkdownPreview } from '@zoho-ide/shared'
 import { TagsChipList } from '@zoho-ide/tags'
 import { format } from 'date-fns'
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
+import { MarkdownPreview } from '@zoho-ide/ui-kit'
 
 const props = defineProps<{ article: IKnowledgeBaseItemDetails }>()
 

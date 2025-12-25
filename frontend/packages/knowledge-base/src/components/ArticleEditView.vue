@@ -2,10 +2,10 @@
 import { defaultKbItemFormData } from '../knowledge-base.constants.ts'
 import type { IKnowledgeBaseItem, KbItemFormData } from '../types'
 import ArticleContentEditor from './ArticleContentEditor.vue'
-import { IconButton } from '@zoho-ide/shared'
 import { SelectTagsDialog, TagsChipList } from '@zoho-ide/tags'
 import { ref } from 'vue'
 import { InputText } from 'primevue'
+import { IconButton } from '@zoho-ide/ui-kit'
 
 defineProps<{ articleId: string }>()
 const formData = defineModel<KbItemFormData>({ default: defaultKbItemFormData })
