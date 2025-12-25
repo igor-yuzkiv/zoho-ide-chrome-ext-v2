@@ -1,5 +1,10 @@
 import { FunctionTypeMetadataMap } from '@/config/function.config.ts'
-import { type FunctionType, type IFunctionRecordEntity, ProviderCapabilityType, makeProviderCapabilityId } from '@zoho-ide/shared'
+import {
+    type FunctionType,
+    type IFunctionRecordEntity,
+    makeProviderCapabilityId,
+    ProviderCapabilityType,
+} from '@zoho-ide/shared'
 import { snakeCase } from 'lodash'
 import { ZohoCrmFunction } from '@/shared/integrations/zoho-crm/types/crm.functions.types.ts'
 

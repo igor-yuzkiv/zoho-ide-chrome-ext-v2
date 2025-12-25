@@ -1,9 +1,10 @@
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
-import { ProviderCapabilityQueryKeys, ProviderCapabilityType } from '@zoho-ide/shared'
+import { capabilityRecordsStorageFactory, ProviderCapabilityQueryKeys, ProviderCapabilityType } from '@zoho-ide/shared'
 import type { IWorkflowRecordEntity } from '@zoho-ide/shared'
 import type { IEntity } from '@zoho-ide/shared'
-import { type MaybeRef, toValue } from 'vue'
-import { findCapabilityRecordQuery } from '@/entities/capability/cache'
+import { computed, type MaybeRef, toValue } from 'vue'
+
+const localCapabilityStorage = capabilityRecordsStorageFactory('local')
 
 export function useWorkflowDetails<TOrigin extends IEntity = IEntity>(
     providerId: MaybeRef<string>,
@@ -17,12 +18,9 @@ export function useWorkflowDetails<TOrigin extends IEntity = IEntity>(
         ),
         placeholderData: keepPreviousData,
         queryFn: () => {
-            return findCapabilityRecordQuery<IWorkflowRecordEntity<TOrigin>>(
-                toValue(providerId),
-                ProviderCapabilityType.WORKFLOWS,
-                toValue(workflowId)
-            )
+            return localCapabilityStorage.findById<IWorkflowRecordEntity<TOrigin>>(toValue(workflowId))
         },
+        enabled: computed(() => !!toValue(providerId) && !!toValue(workflowId)),
     })
 
     return {

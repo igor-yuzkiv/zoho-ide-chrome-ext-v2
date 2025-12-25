@@ -1,8 +1,8 @@
 import {
     type IModuleFieldMetadataRecordEntity,
     type IModuleMetadataRecordEntity,
+    makeProviderCapabilityId,
     ProviderCapabilityType,
-    makeProviderCapabilityId
 } from '@zoho-ide/shared'
 import type { CrmModuleField, CrmModuleMetadata } from '@/shared/integrations/zoho-crm/types/crm.metadata.types.ts'
 

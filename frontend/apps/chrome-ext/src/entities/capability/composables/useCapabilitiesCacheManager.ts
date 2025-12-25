@@ -1,39 +1,32 @@
 import { useMockDataCollector } from './useMockDataCollector.ts'
 import { PROVIDER_CACHE_TTL_MS } from '@/config/providers.config.ts'
 import { useQueryClient } from '@tanstack/vue-query'
-import { ProviderCapabilityQueryKeys } from '@zoho-ide/shared'
-import type { IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
+import { capabilityRecordsStorageFactory, ProviderCapabilityQueryKeys } from '@zoho-ide/shared'
 import type { ZohoServiceProvider } from '@zoho-ide/shared'
 import { ref } from 'vue'
 import { useLogger } from '@/shared/libs/logger/useLogger.ts'
-import { providersCacheDb } from '@/entities/capability/cache'
-import { generateCacheRecordId } from '@/entities/capability/cache/cache-record.service.ts'
 import { useCapabilitiesConfig } from '@/entities/capability/composables/useCapabilitiesConfig.ts'
 import { useProviderRecordsFetcher } from '@/entities/provider/composables/useProviderRecordsFetcher.ts'
 import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.ts'
 
+const localCapabilityStorage = capabilityRecordsStorageFactory('local')
+
 export function useCapabilitiesCacheManager() {
+    const mockDataCollector = useMockDataCollector() // TODO: remove mock data saving after testing
+
     const capabilities = useCapabilitiesConfig()
     const logger = useLogger('useProviderCacheManager')
     const recordsFetcher = useProviderRecordsFetcher()
     const providersStore = useProvidersStore()
-    const mockDataCollector = useMockDataCollector() // TODO: remove mock data saving after testing
     const isCachingInProgress = ref(false)
     const queryClient = useQueryClient()
 
     async function hasCapabilityRecordsInCache(providerId: string, capabilityType: string): Promise<boolean> {
-        const count = await providersCacheDb.records
-            .where(['providerId', 'capability'])
-            .equals([providerId, capabilityType])
-            .count()
-
-        return count > 0
+        return localCapabilityStorage.countByProviderIdAndCapabilityType(providerId, capabilityType).then((c) => c > 0)
     }
 
     async function hasProviderCache(provider: ZohoServiceProvider): Promise<boolean> {
-        const count = await providersCacheDb.records.where('providerId').equals(provider.id).count()
-
-        return count > 0
+        return localCapabilityStorage.countByProviderId(provider.id).then((count) => count > 0)
     }
 
     function isProviderCacheStale(provider: ZohoServiceProvider) {
@@ -50,21 +43,6 @@ export function useCapabilitiesCacheManager() {
         return !isHasCache || isCacheStale
     }
 
-    async function upsertCapabilityRecordsInCache(
-        provider: ZohoServiceProvider,
-        capabilityType: string,
-        records: IBaseCapabilityRecordEntity[]
-    ) {
-        return providersCacheDb.records.bulkPut(
-            records.map((record) => ({
-                id: generateCacheRecordId(provider.id, capabilityType, record.id),
-                capability: capabilityType,
-                providerId: provider.id,
-                data: record,
-            }))
-        )
-    }
-
     async function syncProviderCapabilityRecords(
         provider: ZohoServiceProvider,
         capabilityType: string
@@ -76,7 +54,7 @@ export function useCapabilitiesCacheManager() {
                 return false
             }
 
-            await upsertCapabilityRecordsInCache(provider, capabilityType, records)
+            await localCapabilityStorage.bulkUpsert(records)
 
             //TODO: remove mock data saving after testing
             mockDataCollector.saveCapabilityMockData(provider, capabilityType, records)
@@ -143,7 +121,7 @@ export function useCapabilitiesCacheManager() {
             return
         }
 
-        await providersCacheDb.records.where('providerId').equals(providerId).delete()
+        await localCapabilityStorage.deleteByProviderId(providerId)
         await invalidateProviderQueries(providerId)
 
         providersStore.updateProvider(providerId, { lastSyncedAt: undefined })

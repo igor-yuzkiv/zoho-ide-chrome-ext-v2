@@ -1,10 +1,11 @@
-import { ProviderCapabilityType } from '@zoho-ide/shared'
+import { capabilityRecordsStorageFactory, ProviderCapabilityType } from '@zoho-ide/shared'
 import type { ZohoServiceProvider } from '@zoho-ide/shared'
 import type { IFunctionRecordEntity } from '@zoho-ide/shared'
 import { defineAsyncComponent } from 'vue'
 import type { GlobalSearchDocument, GlobalSearchModule } from '@/shared/libs/global-search/lib/global-search.types.ts'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import { selectProviderRecordsQuery } from '@/entities/capability/cache'
+
+const localCapabilityStorage = capabilityRecordsStorageFactory('local')
 
 async function provideIndexDocuments(context?: Record<string, unknown>): Promise<GlobalSearchDocument[]> {
     if (!context || !context?.provider) {
@@ -13,7 +14,7 @@ async function provideIndexDocuments(context?: Record<string, unknown>): Promise
 
     const provider = context.provider as ZohoServiceProvider
 
-    const records = await selectProviderRecordsQuery<IFunctionRecordEntity>(
+    const records = await localCapabilityStorage.findByProviderIdAndCapabilityType<IFunctionRecordEntity>(
         provider.id,
         ProviderCapabilityType.FUNCTIONS
     )

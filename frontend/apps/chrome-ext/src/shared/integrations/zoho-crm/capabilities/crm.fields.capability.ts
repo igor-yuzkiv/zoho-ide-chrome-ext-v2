@@ -1,4 +1,4 @@
-import { ProviderCapabilityType } from '@zoho-ide/shared'
+import { capabilityRecordsStorageFactory, ProviderCapabilityType } from '@zoho-ide/shared'
 import type { IModuleFieldMetadataRecordEntity, IModuleMetadataRecordEntity } from '@zoho-ide/shared'
 import type { PaginatedResult } from '@zoho-ide/shared'
 import type { Result } from '@zoho-ide/shared'
@@ -8,7 +8,8 @@ import { assertCrmMetadata } from '@/shared/integrations/zoho-crm/crm.utils.ts'
 import { mapManyCrmFieldsToEntities } from '@/shared/integrations/zoho-crm/mappers/crm.metadata.mapper.ts'
 import fetchCrmModuleFieldsRequest from '@/shared/integrations/zoho-crm/requests/fetch.crm-module-fields.request.ts'
 import type { CrmModuleField, CrmModuleMetadata } from '@/shared/integrations/zoho-crm/types/crm.metadata.types.ts'
-import { selectProviderRecordsQuery } from '@/entities/capability/cache'
+
+const localCapabilityStorage = capabilityRecordsStorageFactory('local')
 
 async function fetchModuleFields(
     providerId: string,
@@ -45,10 +46,11 @@ export function crmFieldsCapabilityAdapterFactory(provider: ZohoServiceProvider)
                     return { ok: false, error: 'Provider offline' }
                 }
 
-                const modules = await selectProviderRecordsQuery<IModuleMetadataRecordEntity<CrmModuleMetadata>>(
-                    provider.id,
-                    ProviderCapabilityType.MODULES
-                ).then((res) => res.filter((m) => m?.origin_entity?.api_supported))
+                const modules = await localCapabilityStorage
+                    .findByProviderIdAndCapabilityType<
+                        IModuleMetadataRecordEntity<CrmModuleMetadata>
+                    >(provider.id, ProviderCapabilityType.MODULES)
+                    .then((res) => res.filter((m) => m?.origin_entity?.api_supported))
 
                 if (!modules.length) {
                     return { ok: false, error: 'No modules for fields fetching' }
