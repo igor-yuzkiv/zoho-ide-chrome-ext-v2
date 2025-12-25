@@ -1,0 +1,53 @@
+import { BACKEND_AUTH_TOKEN_LOCAL_STORAGE_KEY } from '../../api/core'
+import { fetchCurrentUserRequest, loginRequest } from '../../api/user'
+import { type IUser } from '../../contracts/user'
+import { useStorage } from '@vueuse/core'
+import { defineStore } from 'pinia'
+import { computed, ref } from 'vue'
+
+export const useAuthStore = defineStore('backend-api.auth', () => {
+    const user = ref<IUser | null>(null)
+    const token = useStorage<string | undefined>(BACKEND_AUTH_TOKEN_LOCAL_STORAGE_KEY, undefined)
+    const isAuthenticated = computed(() => !!user.value)
+
+    async function login(email: string, password: string) {
+        const response = await loginRequest(email, password)
+        if (!response?.data || !response.token) {
+            throw new Error('Login failed')
+        }
+
+        token.value = response.token
+        user.value = response.data
+    }
+
+    function logout() {
+        user.value = null
+        token.value = undefined
+    }
+
+    async function ensureUser() {
+        if (user.value) {
+            return
+        }
+
+        if (!token.value) {
+            throw new Error('No token found')
+        }
+
+        const response = await fetchCurrentUserRequest().then((res) => res.data)
+        if (!response) {
+            throw new Error('Failed to fetch current user')
+        }
+
+        user.value = response
+    }
+
+    return {
+        user,
+        isAuthenticated,
+        login,
+        logout,
+        ensureUser,
+        token,
+    }
+})

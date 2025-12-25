@@ -1,5 +1,5 @@
 import type { CreateKbItemFromTemplateRequestPayload, IKnowledgeBaseItem } from '../types'
-import { apiClient } from '@zoho-ide/shared'
+import { apiClient } from '@zoho-ide/shared/api'
 
 export function createKbItemFromTemplateRequest(
     templateId: string,

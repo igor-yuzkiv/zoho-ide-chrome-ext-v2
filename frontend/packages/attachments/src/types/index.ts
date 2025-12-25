@@ -1,4 +1,4 @@
-import type { EntityRef, IEntity } from '@zoho-ide/shared'
+import type { EntityRef, IEntity } from '@zoho-ide/shared/contracts'
 
 export interface IAttachment extends IEntity {
     id: string

@@ -2,8 +2,8 @@ import { createTagRequest } from '../api'
 import { TagsQueryKeys } from '../tags.constants.ts'
 import type { ITagEntity, SaveTagRequestPayload } from '../types'
 import { useMutation, useQueryClient } from '@tanstack/vue-query'
-import { ApiError } from '@zoho-ide/shared'
 import { useToast } from '@zoho-ide/ui-kit'
+import { ApiError } from '@zoho-ide/shared/api'
 
 export function useCreateTagMutation() {
     const queryClient = useQueryClient()
