@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { KnowledgeBaseItemEntityType } from '../knowledge-base.constants.ts'
 import { attachToEntityRequest } from '@zoho-ide/attachments'
-import { useAppThemeStore } from '@zoho-ide/shared'
 import { MdEditor } from 'md-editor-v3'
+import { useAppThemeStore } from '@zoho-ide/ui-kit'
 
 const props = defineProps<{ articleId: string }>()
 const appTheme = useAppThemeStore()

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { IWorkflowRecordEntity } from '@zoho-ide/shared'
 import type { ZohoServiceProviderType } from '@zoho-ide/shared'
-import { useAppThemeStore } from '@zoho-ide/shared'
 import { computed } from 'vue'
+import { useAppThemeStore } from '@zoho-ide/ui-kit'
 
 const appTheme = useAppThemeStore()
 

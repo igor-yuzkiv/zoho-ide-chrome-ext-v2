@@ -1,6 +1,6 @@
-import { registerUiKitPlugins } from '@zoho-ide/shared'
 import { createPinia } from 'pinia'
 import { createApp } from 'vue'
+import { registerUiKitPlugins } from '@zoho-ide/ui-kit'
 import AppComponent from '@/app/App.vue'
 import { registerAppPlugins } from '@/app/plugins'
 import { router } from '@/app/router'

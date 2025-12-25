@@ -3,11 +3,11 @@ import { KnowledgeBaseCategoryMetadata } from '../knowledge-base.constants.ts'
 import { useCreateKbItem } from '../mutations'
 import { useKbTemplatesListQuery } from '../queries'
 import { type IKnowledgeBaseItem } from '../types'
-import { MarkdownPreview, useValidationErrors } from '@zoho-ide/shared'
-import { FieldContainer, useToast } from '@zoho-ide/shared'
+import { useValidationErrors } from '@zoho-ide/shared'
 import { TagsMultiSelect } from '@zoho-ide/tags'
 import { computed, ref, watch } from 'vue'
 import { Button, Dialog, InputText, Select } from 'primevue'
+import { FieldContainer, MarkdownPreview, useToast } from '@zoho-ide/ui-kit'
 
 const toast = useToast()
 

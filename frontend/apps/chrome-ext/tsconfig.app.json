@@ -11,6 +11,7 @@
         "paths": {
             "@/*": ["src/*"],
             "@zoho-ide/shared": ["../../packages/shared/src/index.ts"],
+            "@zoho-ide/ui-kit": ["../../packages/ui-kit/src/index.ts"],
             "@zoho-ide/knowledge-base": ["../../packages/knowledge-base/src/index.ts"]
         }
     },
@@ -29,6 +30,9 @@
     "references": [
         {
             "path": "../../packages/knowledge-base/tsconfig.lib.json"
+        },
+        {
+            "path": "../../packages/ui-kit/tsconfig.lib.json"
         },
         {
             "path": "../../packages/shared/tsconfig.lib.json"

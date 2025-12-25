@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { getDefaultFormData } from '../lib/useProviderSettingsForm.ts'
-import { FieldContainer, useValidationErrors } from '@zoho-ide/shared'
+import { useValidationErrors } from '@zoho-ide/shared'
 import { computed } from 'vue'
 import { Button, Dialog, InputText } from 'primevue'
+import { FieldContainer } from '@zoho-ide/ui-kit'
 import { ProviderSettingForm } from '@/features/provider/settings'
 
 defineEmits<{ (e: 'submit'): void }>()

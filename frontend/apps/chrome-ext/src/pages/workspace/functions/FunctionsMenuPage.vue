@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { useRouteParams } from '@vueuse/router'
-import { IFunctionRecordEntity, ListBox, ListItem, ProviderCapabilityType } from '@zoho-ide/shared'
+import { type IFunctionRecordEntity, ProviderCapabilityType } from '@zoho-ide/shared'
 import { useRouter } from 'vue-router'
+import { ListBox, ListItem } from '@zoho-ide/ui-kit'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { useCapabilityRecordsList } from '@/entities/capability/composables/useCapabilityRecordsList.ts'
 import { FunctionIcon } from '@/features/function-capability'

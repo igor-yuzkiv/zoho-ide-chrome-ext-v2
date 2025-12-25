@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { onClickOutside, onKeyStroke } from '@vueuse/core'
-import { IconButton } from '@zoho-ide/shared'
 import { type Component, computed, inject, ref } from 'vue'
 import { nextTick, useTemplateRef, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { InputText } from 'primevue'
 import Select from 'primevue/select'
+import { IconButton } from '@zoho-ide/ui-kit'
 import { useGlobalSearchEngine } from '@/shared/libs/global-search/lib/composables/useGlobalSearchEngine.ts'
 import { useGlobalSearchSettings } from '@/shared/libs/global-search/lib/composables/useGlobalSearchSettings.ts'
 import { GlobalSearchPluginSymbol } from '@/shared/libs/global-search/lib/global-search.constants.ts'

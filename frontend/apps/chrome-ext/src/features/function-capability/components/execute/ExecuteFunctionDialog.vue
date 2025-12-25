@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { FieldContainer, type FunctionParams } from '@zoho-ide/shared'
+import type { FunctionParams } from '@zoho-ide/shared'
 // @ts-expect-error: no types
 import Prism from 'prismjs'
 import { onMounted, useTemplateRef } from 'vue'
 import { Button, Dialog, InputText } from 'primevue'
 import { Skeleton } from 'primevue'
+import { FieldContainer } from '@zoho-ide/ui-kit'
 
 withDefaults(
     defineProps<{

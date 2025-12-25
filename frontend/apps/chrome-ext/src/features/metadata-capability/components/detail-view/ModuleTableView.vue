@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { CopyText } from '@zoho-ide/shared'
 import type { IModuleFieldMetadataRecordEntity, IModuleMetadataRecordEntity } from '@zoho-ide/shared'
 import { computed, ref } from 'vue'
 import Column from 'primevue/column'
 import DataTable from 'primevue/datatable'
 import InputText from 'primevue/inputtext'
+import { CopyText } from '@zoho-ide/ui-kit'
 
 const props = defineProps<{
     module?: IModuleMetadataRecordEntity
