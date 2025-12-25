@@ -1,12 +1,13 @@
-import { fetchCurrentUserRequest, loginRequest } from '../api/user'
-import { type IUser, TOKEN_LOCAL_STORAGE_KEY } from '../contracts/user'
+import { BACKEND_AUTH_TOKEN_LOCAL_STORAGE_KEY } from '../../api/core'
+import { fetchCurrentUserRequest, loginRequest } from '../../api/user'
+import { type IUser } from '../../contracts/user'
 import { useStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 
 export const useAuthStore = defineStore('backend-api.auth', () => {
     const user = ref<IUser | null>(null)
-    const token = useStorage<string | undefined>(TOKEN_LOCAL_STORAGE_KEY, undefined)
+    const token = useStorage<string | undefined>(BACKEND_AUTH_TOKEN_LOCAL_STORAGE_KEY, undefined)
     const isAuthenticated = computed(() => !!user.value)
 
     async function login(email: string, password: string) {

@@ -1,4 +1,4 @@
-import { IBaseCapabilityRecordEntity } from '../base.capability.types.ts'
+import { IBaseCapabilityRecordEntity } from './base.capability.types.ts'
 
 export type CapabilityRecordsStorageStrategyType = 'local' // remote in future
 

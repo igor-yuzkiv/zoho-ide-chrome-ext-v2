@@ -1,5 +1,4 @@
-import type { Maybe } from '../../../common'
-import type { IBaseCapabilityRecordEntity } from '../../base.capability.types.ts'
+import type { Maybe, IBaseCapabilityRecordEntity } from '../../../contracts'
 import Dexie, { type EntityTable } from 'dexie'
 
 export type CapabilityDexieDbDbRecord = {

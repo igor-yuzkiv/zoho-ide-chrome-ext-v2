@@ -1,4 +1,4 @@
-import type { CapabilityRecordsStorageStrategyType, ICapabilityRecordsStorage } from './capability-storage.types.ts'
+import type { CapabilityRecordsStorageStrategyType, ICapabilityRecordsStorage } from '../../contracts/capability'
 import { LocalCapabilityRecordsStorage } from './local'
 
 const STORAGE_STRATEGIES: Record<CapabilityRecordsStorageStrategyType, () => ICapabilityRecordsStorage> = {

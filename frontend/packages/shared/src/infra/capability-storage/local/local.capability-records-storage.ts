@@ -1,5 +1,4 @@
-import type { IBaseCapabilityRecordEntity } from '../../base.capability.types.ts'
-import type { ICapabilityRecordsStorage } from '../capability-storage.types.ts'
+import type { IBaseCapabilityRecordEntity, ICapabilityRecordsStorage } from '../../../contracts/capability'
 import { capabilityDexieDb } from './capability.dexie-db.ts'
 
 export class LocalCapabilityRecordsStorage implements ICapabilityRecordsStorage {

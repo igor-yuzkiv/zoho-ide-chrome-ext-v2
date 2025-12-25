@@ -1,13 +1,9 @@
-import { TOKEN_LOCAL_STORAGE_KEY } from '../../contracts/user'
+import { getApiBaseUrl, getAuthToken } from './api.config.ts'
 import { ApiError } from './api.error.ts'
 import axios from 'axios'
 
-function getAuthToken(): string | null {
-    return localStorage.getItem(TOKEN_LOCAL_STORAGE_KEY) || null
-}
-
 export const apiClient = axios.create({
-    baseURL: import.meta.env.VITE_API_BASE_URL,
+    baseURL: getApiBaseUrl(),
     withCredentials: true,
     withXSRFToken: true,
     headers: {
