@@ -1,5 +1,9 @@
-import type { IModuleFieldMetadataRecordEntity, IModuleMetadataRecordEntity } from '@zoho-ide/shared'
-import { ProviderCapabilityType } from '@zoho-ide/shared'
+import {
+    type IModuleFieldMetadataRecordEntity,
+    type IModuleMetadataRecordEntity,
+    ProviderCapabilityType,
+    makeProviderCapabilityId
+} from '@zoho-ide/shared'
 import type { CrmModuleField, CrmModuleMetadata } from '@/shared/integrations/zoho-crm/types/crm.metadata.types.ts'
 
 export function mapCrmModuleToEntity(
@@ -7,7 +11,7 @@ export function mapCrmModuleToEntity(
     module: CrmModuleMetadata
 ): IModuleMetadataRecordEntity<CrmModuleMetadata> {
     return {
-        id: module.id,
+        id: makeProviderCapabilityId(providerId, ProviderCapabilityType.MODULES, module.api_name),
         source_id: module.id,
         provider_id: providerId,
         capability_type: ProviderCapabilityType.MODULES,
@@ -49,7 +53,7 @@ export function mapCrmFieldToEntity(
     crmModule: CrmModuleMetadata
 ): IModuleFieldMetadataRecordEntity<CrmModuleField> {
     return {
-        id: `${crmModule.api_name}-${field.id}`,
+        id: makeProviderCapabilityId(providerId, ProviderCapabilityType.FIELDS, [crmModule.api_name, field.api_name]),
         source_id: field.id,
         provider_id: providerId,
         capability_type: ProviderCapabilityType.FIELDS,

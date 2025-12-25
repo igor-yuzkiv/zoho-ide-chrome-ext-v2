@@ -15,8 +15,10 @@ export interface CapabilityAdapter {
     execute?(functionEntity: IFunctionRecordEntity, inputData: Record<string, unknown>): Promise<Result<unknown>>
 }
 
+export type CapabilityId = string
+
 export interface IBaseCapabilityRecordEntity extends IEntity {
-    id: string
+    id: CapabilityId
     source_id: string
     provider_id: string
     capability_type: string
