@@ -1,8 +1,8 @@
-import { keepPreviousData, useQuery } from '@tanstack/vue-query';
+import { keepPreviousData, useQuery } from '@tanstack/vue-query'
 import { capabilityRecordsStorageFactory, ProviderCapabilityQueryKeys, ProviderCapabilityType } from '@zoho-ide/shared'
-import type { IModuleFieldMetadataRecordEntity } from '@zoho-ide/shared';
-import type { IEntity } from '@zoho-ide/shared';
-import { computed, type MaybeRef, toValue } from 'vue';
+import type { IModuleFieldMetadataRecordEntity } from '@zoho-ide/shared'
+import type { IEntity } from '@zoho-ide/shared'
+import { computed, type MaybeRef, toValue } from 'vue'
 
 const localCapabilityStorage = capabilityRecordsStorageFactory('local')
 
@@ -18,12 +18,13 @@ export function useModuleFields<TOrigin extends IEntity = IEntity>(
         ],
         placeholderData: keepPreviousData,
         queryFn: () => {
-            return localCapabilityStorage.findByProviderIdAndCapabilityType<IModuleFieldMetadataRecordEntity<TOrigin>>(
-                toValue(providerId),
-                ProviderCapabilityType.FIELDS
-            ).then((records) => {
-                return records.filter((record) => record.module_id === toValue(moduleId))
-            })
+            return localCapabilityStorage
+                .findByProviderIdAndCapabilityType<
+                    IModuleFieldMetadataRecordEntity<TOrigin>
+                >(toValue(providerId), ProviderCapabilityType.FIELDS)
+                .then((records) => {
+                    return records.filter((record) => record.module_id === toValue(moduleId))
+                })
         },
         enabled: computed(() => !!toValue(providerId) && !!toValue(moduleId)),
     })

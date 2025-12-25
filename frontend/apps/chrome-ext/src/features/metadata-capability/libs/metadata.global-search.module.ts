@@ -17,10 +17,7 @@ async function provideIndexDocuments<T extends IBaseCapabilityRecordEntity>(
 
     const provider = context.provider as ZohoServiceProvider
 
-    return localCapabilityStorage.findByProviderIdAndCapabilityType<T>(
-        provider.id,
-        capabilityType
-    )
+    return localCapabilityStorage.findByProviderIdAndCapabilityType<T>(provider.id, capabilityType)
 }
 
 export const ModulesGlobalSearchModule: GlobalSearchModule = {

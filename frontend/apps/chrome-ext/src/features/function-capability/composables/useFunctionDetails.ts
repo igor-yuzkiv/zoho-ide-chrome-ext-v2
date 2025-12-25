@@ -1,7 +1,7 @@
-import { keepPreviousData, useQuery } from '@tanstack/vue-query';
-import { capabilityRecordsStorageFactory, ProviderCapabilityQueryKeys, ProviderCapabilityType } from '@zoho-ide/shared';
-import type { IFunctionRecordEntity } from '@zoho-ide/shared';
-import type { IEntity } from '@zoho-ide/shared';
+import { keepPreviousData, useQuery } from '@tanstack/vue-query'
+import { capabilityRecordsStorageFactory, ProviderCapabilityQueryKeys, ProviderCapabilityType } from '@zoho-ide/shared'
+import type { IFunctionRecordEntity } from '@zoho-ide/shared'
+import type { IEntity } from '@zoho-ide/shared'
 import { computed, type MaybeRef, ref, toValue, watch } from 'vue'
 
 const localCapabilityStorage = capabilityRecordsStorageFactory('local')
