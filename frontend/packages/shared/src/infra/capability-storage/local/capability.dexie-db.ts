@@ -1,4 +1,4 @@
-import type { Maybe, IBaseCapabilityRecordEntity } from '../../../contracts'
+import type { IBaseCapabilityRecordEntity, Maybe } from '../../../contracts'
 import Dexie, { type EntityTable } from 'dexie'
 
 export type CapabilityDexieDbDbRecord = {
