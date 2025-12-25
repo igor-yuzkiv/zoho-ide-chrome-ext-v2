@@ -3,8 +3,8 @@ import { KnowledgeBaseQueryKeys } from '../knowledge-base.constants.ts'
 import type { IKnowledgeBaseItem } from '../types'
 import { useInfiniteQuery } from '@tanstack/vue-query'
 import { debouncedRef } from '@vueuse/core'
-import type { PagingResponse } from '@zoho-ide/shared'
 import { computed, ref } from 'vue'
+import type { PagingResponse } from '@zoho-ide/shared/contracts'
 
 const PER_PAGE = 50
 

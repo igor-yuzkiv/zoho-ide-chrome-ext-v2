@@ -2,8 +2,9 @@ import { createKbItemFromTemplateRequest } from '../api'
 import { KnowledgeBaseQueryKeys } from '../knowledge-base.constants.ts'
 import type { CreateKbItemFromTemplateRequestPayload, IKnowledgeBaseItem } from '../types'
 import { useMutation, useQueryClient } from '@tanstack/vue-query'
-import { ApiError, type MutationOptions } from '@zoho-ide/shared'
 import { ref } from 'vue'
+import { ApiError } from '@zoho-ide/shared/api'
+import type { MutationOptions } from '@zoho-ide/shared/contracts'
 
 export function useCreateKbItemFromTemplate(options?: MutationOptions<IKnowledgeBaseItem>) {
     const queryClient = useQueryClient()

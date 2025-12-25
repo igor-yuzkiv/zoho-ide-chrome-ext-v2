@@ -1,6 +1,6 @@
 import type { IKnowledgeBaseItem } from '../types'
-import { apiClient, buildQueryParams } from '@zoho-ide/shared'
-import type { PaginationParams, PagingResponse, SortParams } from '@zoho-ide/shared'
+import { apiClient, buildQueryParams } from '@zoho-ide/shared/api'
+import type { PaginationParams, PagingResponse, SortParams } from '@zoho-ide/shared/contracts'
 
 export async function fetchKbItemsRequest(
     paging: PaginationParams = { page: 1, per_page: 15 },

@@ -3,8 +3,9 @@ import { defaultKbItemFormData, KnowledgeBaseQueryKeys } from '../knowledge-base
 import { mapKbItemFormDataToRequestPayload } from '../knowledge-base.mappers.ts'
 import type { IKnowledgeBaseItem, KbItemFormData } from '../types'
 import { useMutation, useQueryClient } from '@tanstack/vue-query'
-import { ApiError, type MutationOptions } from '@zoho-ide/shared'
 import { type MaybeRefOrGetter, ref, toValue, watch } from 'vue'
+import { ApiError } from '@zoho-ide/shared/api'
+import type { MutationOptions } from '@zoho-ide/shared/contracts'
 
 export function useUpdateKbItem(
     kbItem: MaybeRefOrGetter<IKnowledgeBaseItem | undefined>,

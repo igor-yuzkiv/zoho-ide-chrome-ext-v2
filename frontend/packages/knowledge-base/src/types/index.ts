@@ -1,5 +1,5 @@
-import type { IEntity, IUser } from '@zoho-ide/shared'
 import type { ITagEntity } from '@zoho-ide/tags'
+import type { IEntity, IUser } from '@zoho-ide/shared/contracts'
 
 export type TKnowledgeBaseCategory = 'general' | 'code_samples'
 

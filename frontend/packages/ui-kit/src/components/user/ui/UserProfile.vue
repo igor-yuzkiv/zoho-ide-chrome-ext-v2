@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { IUser } from '@zoho-ide/shared'
 import { computed, useTemplateRef } from 'vue'
 import { Avatar, Button, Popover } from 'primevue'
 import { Icon } from '@iconify/vue'
+import type { IUser } from '@zoho-ide/shared/contracts'
 
 const emit = defineEmits<{
     (event: 'signOut'): void

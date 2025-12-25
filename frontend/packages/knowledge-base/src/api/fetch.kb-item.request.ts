@@ -1,5 +1,5 @@
 import type { IKnowledgeBaseItemDetails } from '../types'
-import { apiClient } from '@zoho-ide/shared'
+import { apiClient } from '@zoho-ide/shared/api'
 
 export async function fetchKbItemByIdRequest(itemId: string): Promise<{ data: IKnowledgeBaseItemDetails }> {
     return apiClient

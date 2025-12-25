@@ -1,4 +1,4 @@
-import type { IEntity } from '@zoho-ide/shared'
+import type { IEntity } from '@zoho-ide/shared/contracts'
 
 export interface ITagEntity extends IEntity {
     id: string

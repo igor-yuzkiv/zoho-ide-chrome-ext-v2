@@ -1,5 +1,5 @@
 import type { IKnowledgeBaseTemplate } from '../types'
-import { apiClient } from '@zoho-ide/shared'
+import { apiClient } from '@zoho-ide/shared/api'
 
 export async function fetchKbTemplatesRequest(): Promise<IKnowledgeBaseTemplate[]> {
     return apiClient
