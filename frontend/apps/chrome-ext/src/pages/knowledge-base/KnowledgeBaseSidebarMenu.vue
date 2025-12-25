@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { type IKnowledgeBaseItem, KnowledgeBaseCategoryMetadata, useKbItemsListQuery } from '@zoho-ide/knowledge-base'
-import { isRouteName } from '@zoho-ide/shared'
 import { useRoute, useRouter } from 'vue-router'
-import { ListBox, ListItem } from '@zoho-ide/ui-kit'
+import { isRouteName, ListBox, ListItem } from '@zoho-ide/ui-kit'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 
 const { items, hasNextPage, loadMoreRecords, searchTerm } = useKbItemsListQuery()

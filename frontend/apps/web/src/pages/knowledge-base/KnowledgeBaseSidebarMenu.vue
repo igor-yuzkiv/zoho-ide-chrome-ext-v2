@@ -5,10 +5,9 @@ import {
     NewKnowledgeBaseItemPopup,
     useKbItemsListQuery,
 } from '@zoho-ide/knowledge-base'
-import { isRouteName } from '@zoho-ide/shared'
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { IconButton, ListBox, ListItem } from '@zoho-ide/ui-kit'
+import { IconButton, isRouteName, ListBox, ListItem } from '@zoho-ide/ui-kit'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 
 const { items, hasNextPage, loadMoreRecords, searchTerm } = useKbItemsListQuery()
