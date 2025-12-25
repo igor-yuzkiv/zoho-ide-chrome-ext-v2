@@ -1,4 +1,4 @@
-import { TOKEN_LOCAL_STORAGE_KEY } from '../entities/user'
+import { TOKEN_LOCAL_STORAGE_KEY } from '../modules/user'
 import { ApiError } from './api.error.ts'
 import axios from 'axios'
 

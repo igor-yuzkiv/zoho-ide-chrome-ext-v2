@@ -1,5 +1,5 @@
 import type { IEntity, Maybe, PaginatedResult, PaginationParams, Result } from '../../../types'
-import type { ZohoServiceProvider } from '../../zoho-service-provider'
+import type { ZohoServiceProvider } from '../../service-provider'
 import type { IFunctionRecordEntity } from './function.capability.types.ts'
 
 export type ServiceProviderCapability = {

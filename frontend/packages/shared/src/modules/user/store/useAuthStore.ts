@@ -1,4 +1,4 @@
-import { fetchCurrentUserRequest, type IUser, loginRequest, TOKEN_LOCAL_STORAGE_KEY } from '../entities/user'
+import { fetchCurrentUserRequest, type IUser, loginRequest, TOKEN_LOCAL_STORAGE_KEY } from '../index.ts'
 import { useStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
