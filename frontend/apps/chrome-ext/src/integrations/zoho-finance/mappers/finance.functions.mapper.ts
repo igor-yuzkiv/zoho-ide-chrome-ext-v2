@@ -1,10 +1,10 @@
-import type { IFunctionRecordEntity } from '@zoho-ide/shared'
-import { ProviderCapabilityType } from '@zoho-ide/shared'
 import type {
     ZohoFinanceFunction,
     ZohoFinanceFunctionDetailsResponse,
     ZohoFinanceFunctionResponse,
 } from '@/integrations/zoho-finance/types/finance.functions.types.ts'
+import type { IFunctionRecordEntity } from '@zoho-ide/shared'
+import { ProviderCapabilityType } from '@zoho-ide/shared'
 
 export function mapToFunctionEntity(
     providerId: string,

@@ -1,11 +1,5 @@
 <script setup lang="ts">
-import { onClickOutside, onKeyStroke } from '@vueuse/core'
-import { type Component, computed, inject, ref } from 'vue'
-import { nextTick, useTemplateRef, watch } from 'vue'
-import { useRouter } from 'vue-router'
-import { InputText } from 'primevue'
-import Select from 'primevue/select'
-import { IconButton } from '@zoho-ide/ui-kit'
+import SearchResultsList from './SearchResultsList.vue'
 import { useGlobalSearchEngine } from '@/modules/global-search/composables/useGlobalSearchEngine.ts'
 import { useGlobalSearchSettings } from '@/modules/global-search/composables/useGlobalSearchSettings.ts'
 import { GlobalSearchPluginSymbol } from '@/modules/global-search/global-search.constants.ts'
@@ -14,7 +8,13 @@ import type {
     GlobalSearchOpenParams,
     IGlobalSearchService,
 } from '@/modules/global-search/global-search.types.ts'
-import SearchResultsList from './SearchResultsList.vue'
+import { onClickOutside, onKeyStroke } from '@vueuse/core'
+import { type Component, computed, inject, ref } from 'vue'
+import { nextTick, useTemplateRef, watch } from 'vue'
+import { useRouter } from 'vue-router'
+import { InputText } from 'primevue'
+import Select from 'primevue/select'
+import { IconButton } from '@zoho-ide/ui-kit'
 
 const router = useRouter()
 const pluginService = inject<IGlobalSearchService>(GlobalSearchPluginSymbol)

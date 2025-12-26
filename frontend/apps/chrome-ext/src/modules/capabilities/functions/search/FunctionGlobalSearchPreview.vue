@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import type { GlobalSearchDocument } from '@/modules/global-search/global-search.types.ts'
 // @ts-expect-error: no types
 import Prism from 'prismjs'
 import 'prismjs/themes/prism-okaidia.css'
 import { onMounted, useTemplateRef } from 'vue'
-import type { GlobalSearchDocument } from '@/modules/global-search/global-search.types.ts'
 
 defineProps<{
     document: GlobalSearchDocument

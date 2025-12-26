@@ -1,8 +1,8 @@
+import { globalSearchIndex } from '@/modules/global-search/global-search-index.ts'
+import type { GlobalSearchDocument, GlobalSearchFields } from '@/modules/global-search/global-search.types.ts'
 import { useQuery } from '@tanstack/vue-query'
 import { refDebounced } from '@vueuse/core'
 import { ref } from 'vue'
-import { globalSearchIndex } from '@/modules/global-search/global-search-index.ts'
-import type { GlobalSearchDocument, GlobalSearchFields } from '@/modules/global-search/global-search.types.ts'
 
 async function handleSearch(query: string, searchByField: GlobalSearchFields): Promise<GlobalSearchDocument[]> {
     const searchResult = await globalSearchIndex.searchAsync(query, {

@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { useGlobalSearchSettings } from '@/modules/global-search/composables/useGlobalSearchSettings.ts'
+import type { GlobalSearchDocument } from '@/modules/global-search/global-search.types.ts'
 import { computed } from 'vue'
 import { Button } from 'primevue'
 import { Icon } from '@iconify/vue'
-import { useGlobalSearchSettings } from '@/modules/global-search/composables/useGlobalSearchSettings.ts'
-import type { GlobalSearchDocument } from '@/modules/global-search/global-search.types.ts'
 
 const props = defineProps<{
     results: GlobalSearchDocument[]

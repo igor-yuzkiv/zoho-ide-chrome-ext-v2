@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { useModuleDetails } from '@/modules/capabilities/metadata'
+import { useModuleFields } from '@/modules/capabilities/metadata/composables/useModuleFields.ts'
 import { useRouteParams } from '@vueuse/router'
 import { defineAsyncComponent } from 'vue'
 import { NoDataMessage, PageHeader, useViewModeSelect, ViewModeSelect } from '@zoho-ide/ui-kit'
-import { useModuleDetails } from '@/modules/capabilities/metadata'
-import { useModuleFields } from '@/modules/capabilities/metadata/composables/useModuleFields.ts'
 
 const providerId = useRouteParams<string>('providerId')
 const moduleId = useRouteParams<string>('moduleId')

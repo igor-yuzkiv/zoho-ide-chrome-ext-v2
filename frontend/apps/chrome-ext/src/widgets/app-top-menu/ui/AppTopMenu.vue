@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import { useCurrentProvider } from '@/core/provider'
+import { useGlobalSearch } from '@/modules/global-search'
 import { useAuthStore } from '@zoho-ide/shared'
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { Icon } from '@iconify/vue'
 import { TopMenu, type TopMenuItemProps, UserProfile } from '@zoho-ide/ui-kit'
-import { useGlobalSearch } from '@/modules/global-search'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import { useCurrentProvider } from '@/core/provider'
 
 const authStore = useAuthStore()
 const router = useRouter()

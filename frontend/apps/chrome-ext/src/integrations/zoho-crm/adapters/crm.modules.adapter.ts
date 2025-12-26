@@ -1,10 +1,10 @@
+import { assertCrmMetadata } from '@/integrations/zoho-crm/crm.utils.ts'
+import { mapManyCrmModulesToEntities } from '@/integrations/zoho-crm/mappers/crm.metadata.mapper.ts'
+import fetchCrmModulesRequest from '@/integrations/zoho-crm/requests/fetch.crm-modules.request.ts'
 import type { PaginatedResult } from '@zoho-ide/shared'
 import type { Result } from '@zoho-ide/shared'
 import type { CapabilityAdapter, IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
 import type { ZohoServiceProvider } from '@zoho-ide/shared'
-import { assertCrmMetadata } from '@/integrations/zoho-crm/crm.utils.ts'
-import { mapManyCrmModulesToEntities } from '@/integrations/zoho-crm/mappers/crm.metadata.mapper.ts'
-import fetchCrmModulesRequest from '@/integrations/zoho-crm/requests/fetch.crm-modules.request.ts'
 
 export function crmModulesCapabilityAdapterFactory(provider: ZohoServiceProvider): Result<CapabilityAdapter> {
     const metadata = assertCrmMetadata(provider)

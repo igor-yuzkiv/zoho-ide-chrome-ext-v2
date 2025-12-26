@@ -1,8 +1,8 @@
-import type { PaginatedResult, PaginationParams } from '@zoho-ide/shared'
-import { fetchMockData } from '@/shared/mock-api/mock.api.ts'
 import { zohoCrmInjectionRequest } from '@/core/browser'
 import { formatZohoCrmProviderId } from '@/integrations/zoho-crm/crm.provider.ts'
 import type { ZohoCrmFunction } from '@/integrations/zoho-crm/types/crm.functions.types.ts'
+import type { PaginatedResult, PaginationParams } from '@zoho-ide/shared'
+import { fetchMockData } from '@/shared/mock-api/mock.api.ts'
 
 async function regular(
     tabId: number,

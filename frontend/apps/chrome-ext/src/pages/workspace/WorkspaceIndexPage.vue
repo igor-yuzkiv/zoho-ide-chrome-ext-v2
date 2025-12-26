@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
 import { useCurrentProvider } from '@/core/provider'
+import { Icon } from '@iconify/vue'
 
 const { data: provider } = useCurrentProvider()
 </script>

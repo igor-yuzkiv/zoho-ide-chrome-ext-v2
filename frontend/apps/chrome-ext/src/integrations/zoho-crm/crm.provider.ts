@@ -1,7 +1,7 @@
+import type { BrowserTab } from '@/core/browser'
+import { resolveCrmServiceProviderMetadataFromUrl } from '@/integrations/zoho-crm/crm.utils.ts'
 import type { Result } from '@zoho-ide/shared'
 import type { ZohoServiceProvider } from '@zoho-ide/shared'
-import { resolveCrmServiceProviderMetadataFromUrl } from '@/integrations/zoho-crm/crm.utils.ts'
-import type { BrowserTab } from '@/core/browser'
 
 export function formatZohoCrmProviderId(orgId: string): string {
     return `zoho-crm-${orgId}`

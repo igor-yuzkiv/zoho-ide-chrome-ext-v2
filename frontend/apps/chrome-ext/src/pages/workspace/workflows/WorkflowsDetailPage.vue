@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { useCurrentProvider } from '@/core/provider'
+import { useWorkflowDetails } from '@/modules/capabilities/workflows/composables/useWorkflowDetails.ts'
 import { useRouteParams } from '@vueuse/router'
 import { defineAsyncComponent } from 'vue'
 import { NoDataMessage, PageHeader, useViewModeSelect, ViewModeSelect } from '@zoho-ide/ui-kit'
-import { useCurrentProvider } from '@/core/provider'
-import { useWorkflowDetails } from '@/modules/capabilities/workflows/composables/useWorkflowDetails.ts'
 
 const providerId = useRouteParams<string>('providerId')
 const workflowId = useRouteParams<string>('workflowId')

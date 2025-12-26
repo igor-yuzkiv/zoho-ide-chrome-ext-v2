@@ -1,10 +1,10 @@
 import { ProviderSettingForm } from './types.ts'
 import { PROVIDER_CACHE_TTL_MS } from '@/config/providers.config.ts'
+import { useCapabilitiesCacheManager } from '@/core/capability'
+import { useProvidersStore } from '@/core/provider'
 import * as z from 'zod'
 import { ref, watch } from 'vue'
 import { useToast } from '@zoho-ide/ui-kit'
-import { useCapabilitiesCacheManager } from '@/core/capability'
-import { useProvidersStore } from '@/core/provider'
 
 const MIN_CACHE_TTL_MS = 60 * 1000 // 1 minute
 const MAX_CACHE_TTL_MS = 24 * 60 * 60 * 1000 // 24 hours

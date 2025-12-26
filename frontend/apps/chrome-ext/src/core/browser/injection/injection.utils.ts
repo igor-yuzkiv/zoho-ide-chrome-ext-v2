@@ -1,5 +1,5 @@
-import type { Result } from '@zoho-ide/shared'
 import type { InjectionResult } from '../browser.types.ts'
+import type { Result } from '@zoho-ide/shared'
 
 export function parseInjectionResult<T>(response: InjectionResult<T>): Result<T> {
     if (!response || !response?.length || !response[0]?.result) {

@@ -1,13 +1,13 @@
+import { assertCrmMetadata } from '@/integrations/zoho-crm/crm.utils.ts'
+import { mapManyCrmFieldsToEntities } from '@/integrations/zoho-crm/mappers/crm.metadata.mapper.ts'
+import fetchCrmModuleFieldsRequest from '@/integrations/zoho-crm/requests/fetch.crm-module-fields.request.ts'
+import type { CrmModuleField, CrmModuleMetadata } from '@/integrations/zoho-crm/types/crm.metadata.types.ts'
 import { capabilityRecordsStorageFactory, ProviderCapabilityType } from '@zoho-ide/shared'
 import type { IModuleFieldMetadataRecordEntity, IModuleMetadataRecordEntity } from '@zoho-ide/shared'
 import type { PaginatedResult } from '@zoho-ide/shared'
 import type { Result } from '@zoho-ide/shared'
 import type { CapabilityAdapter } from '@zoho-ide/shared'
 import type { ZohoServiceProvider } from '@zoho-ide/shared'
-import { assertCrmMetadata } from '@/integrations/zoho-crm/crm.utils.ts'
-import { mapManyCrmFieldsToEntities } from '@/integrations/zoho-crm/mappers/crm.metadata.mapper.ts'
-import fetchCrmModuleFieldsRequest from '@/integrations/zoho-crm/requests/fetch.crm-module-fields.request.ts'
-import type { CrmModuleField, CrmModuleMetadata } from '@/integrations/zoho-crm/types/crm.metadata.types.ts'
 
 const localCapabilityStorage = capabilityRecordsStorageFactory('local')
 

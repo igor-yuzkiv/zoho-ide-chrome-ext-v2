@@ -1,10 +1,10 @@
+import type { CrmModuleField, CrmModuleMetadata } from '@/integrations/zoho-crm/types/crm.metadata.types.ts'
 import {
     type IModuleFieldMetadataRecordEntity,
     type IModuleMetadataRecordEntity,
     makeProviderCapabilityId,
     ProviderCapabilityType,
 } from '@zoho-ide/shared'
-import type { CrmModuleField, CrmModuleMetadata } from '@/integrations/zoho-crm/types/crm.metadata.types.ts'
 
 export function mapCrmModuleToEntity(
     providerId: string,

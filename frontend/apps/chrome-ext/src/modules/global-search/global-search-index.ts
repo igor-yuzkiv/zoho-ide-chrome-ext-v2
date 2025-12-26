@@ -1,5 +1,5 @@
-import { Document } from 'flexsearch'
 import type { GlobalSearchDocument } from '@/modules/global-search/global-search.types.ts'
+import { Document } from 'flexsearch'
 
 export const globalSearchIndex = new Document<GlobalSearchDocument>({
     document: {

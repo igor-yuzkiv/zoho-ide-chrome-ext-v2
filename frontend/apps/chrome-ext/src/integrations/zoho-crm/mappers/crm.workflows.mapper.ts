@@ -1,5 +1,5 @@
-import { type IWorkflowRecordEntity, makeProviderCapabilityId, ProviderCapabilityType } from '@zoho-ide/shared'
 import type { ZohoCrmWorkflow } from '@/integrations/zoho-crm/types/crm.workflow.types.ts'
+import { type IWorkflowRecordEntity, makeProviderCapabilityId, ProviderCapabilityType } from '@zoho-ide/shared'
 
 export function mapToWorkflowEntity(providerId: string, wf: ZohoCrmWorkflow): IWorkflowRecordEntity<ZohoCrmWorkflow> {
     return {

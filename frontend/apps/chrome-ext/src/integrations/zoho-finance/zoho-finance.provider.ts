@@ -1,12 +1,12 @@
-import type { Result } from '@zoho-ide/shared'
-import type { ZohoServiceProvider } from '@zoho-ide/shared'
-import { capitalize } from 'vue'
+import type { BrowserTab } from '@/core/browser'
 import type { ZohoFinanceService } from '@/integrations/zoho-finance/types/finance.provider.types.ts'
 import {
     formatZohoFinanceProviderId,
     resolveFinanceProviderMetadataFromUrl,
 } from '@/integrations/zoho-finance/zoho-finance.utils.ts'
-import type { BrowserTab } from '@/core/browser'
+import type { Result } from '@zoho-ide/shared'
+import type { ZohoServiceProvider } from '@zoho-ide/shared'
+import { capitalize } from 'vue'
 
 const SERVICE_ICONS: Record<ZohoFinanceService, string> = {
     books: 'ph:books',

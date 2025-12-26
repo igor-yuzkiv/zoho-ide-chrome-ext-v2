@@ -1,3 +1,4 @@
+import { ZohoCrmFunction } from '@/integrations/zoho-crm/types/crm.functions.types.ts'
 import { FunctionTypeMetadataMap } from '@/modules/capabilities/functions/function.config.ts'
 import {
     type FunctionType,
@@ -6,7 +7,6 @@ import {
     ProviderCapabilityType,
 } from '@zoho-ide/shared'
 import { snakeCase } from 'lodash'
-import { ZohoCrmFunction } from '@/integrations/zoho-crm/types/crm.functions.types.ts'
 
 function mapFunctionCategoryToType(category?: string): FunctionType {
     if (!category) {

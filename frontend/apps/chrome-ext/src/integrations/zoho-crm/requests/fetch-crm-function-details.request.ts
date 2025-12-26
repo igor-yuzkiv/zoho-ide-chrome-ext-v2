@@ -1,6 +1,6 @@
-import type { Result } from '@zoho-ide/shared'
 import { zohoCrmInjectionRequest } from '@/core/browser'
 import type { ZohoCrmFunction } from '@/integrations/zoho-crm/types/crm.functions.types.ts'
+import type { Result } from '@zoho-ide/shared'
 
 function mock(): Promise<Result<ZohoCrmFunction>> {
     console.warn('fetch crm function details mock api not implemented')

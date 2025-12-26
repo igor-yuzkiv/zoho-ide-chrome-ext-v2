@@ -1,7 +1,7 @@
-import type { Maybe } from '@zoho-ide/shared'
-import type { ZohoServiceProvider } from '@zoho-ide/shared'
 import { ZOHO_CRM_REGULAR_URL_REGEX, ZOHO_CRM_SANDBOX_URL_REGEX } from '@/integrations/zoho-crm/crm.config.ts'
 import type { CrmServiceProviderMetadata } from '@/integrations/zoho-crm/types/crm.provider.types.ts'
+import type { Maybe } from '@zoho-ide/shared'
+import type { ZohoServiceProvider } from '@zoho-ide/shared'
 
 export function resolveCrmServiceProviderMetadataFromUrl(url: string): Maybe<CrmServiceProviderMetadata> {
     let isSandbox = false

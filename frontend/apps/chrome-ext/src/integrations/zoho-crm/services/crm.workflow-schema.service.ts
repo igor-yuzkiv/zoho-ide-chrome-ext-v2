@@ -1,9 +1,3 @@
-import { WfSchemaNodeType } from '@/modules/capabilities/workflows/workflows.config.ts'
-import type { Edge, Node } from '@vue-flow/core'
-import type { WfActionNodeData, WfConditionNodeData, WfWhenStatementNodeData } from '@zoho-ide/shared'
-import type { IWorkflowRecordEntity } from '@zoho-ide/shared'
-import type { Result } from '@zoho-ide/shared'
-import type { Maybe } from '@zoho-ide/shared'
 import { assertCrmWorkflowFromEntity } from '@/integrations/zoho-crm/mappers/crm.workflows.mapper.ts'
 import type {
     WfAction,
@@ -12,6 +6,12 @@ import type {
     WfCriteriaGroup,
     WfExecuteWhen,
 } from '@/integrations/zoho-crm/types/crm.workflow.types.ts'
+import { WfSchemaNodeType } from '@/modules/capabilities/workflows/workflows.config.ts'
+import type { Edge, Node } from '@vue-flow/core'
+import type { WfActionNodeData, WfConditionNodeData, WfWhenStatementNodeData } from '@zoho-ide/shared'
+import type { IWorkflowRecordEntity } from '@zoho-ide/shared'
+import type { Result } from '@zoho-ide/shared'
+import type { Maybe } from '@zoho-ide/shared'
 
 export function stringifyWfCriteria(criteria: WfCriteria): string {
     // TODO: handle - ${ANYVALUE}, ${EMPTY}, ${NOTEMPTY}

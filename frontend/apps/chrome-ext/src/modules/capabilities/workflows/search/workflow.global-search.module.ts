@@ -1,7 +1,7 @@
+import type { GlobalSearchDocument, GlobalSearchModule } from '@/modules/global-search/global-search.types.ts'
 import { capabilityRecordsStorageFactory, ProviderCapabilityType } from '@zoho-ide/shared'
 import type { ZohoServiceProvider } from '@zoho-ide/shared'
 import type { IWorkflowRecordEntity } from '@zoho-ide/shared'
-import type { GlobalSearchDocument, GlobalSearchModule } from '@/modules/global-search/global-search.types.ts'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 
 const localCapabilityStorage = capabilityRecordsStorageFactory('local')

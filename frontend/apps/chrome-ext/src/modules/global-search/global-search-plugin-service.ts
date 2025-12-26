@@ -1,5 +1,3 @@
-import mitt from 'mitt'
-import { type App } from 'vue'
 import {
     GLOBAL_SEARCH_DEFAULT_OPTIONS,
     GlobalSearchPluginSettingsSymbol,
@@ -12,6 +10,8 @@ import type {
     IGlobalSearchService,
     OpenGlobalSearchHandler,
 } from '@/modules/global-search/global-search.types.ts'
+import mitt from 'mitt'
+import { type App } from 'vue'
 
 const emitter = mitt<GlobalSearchEventTypes>()
 

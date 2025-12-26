@@ -1,8 +1,3 @@
-import { IFunctionRecordEntity } from '@zoho-ide/shared'
-import type { PaginatedResult, PaginationParams } from '@zoho-ide/shared'
-import type { Result } from '@zoho-ide/shared'
-import type { CapabilityAdapter, IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
-import type { ZohoServiceProvider } from '@zoho-ide/shared'
 import { assertCrmMetadata } from '@/integrations/zoho-crm/crm.utils.ts'
 import { mapManyCrmFunctionsToEntity } from '@/integrations/zoho-crm/mappers/crm.functions.mapper.ts'
 import executeCrmFunctionsRequest from '@/integrations/zoho-crm/requests/execute.crm-function.request.ts'
@@ -10,6 +5,11 @@ import fetchCrmFunctionDetailsRequest from '@/integrations/zoho-crm/requests/fet
 import fetchCrmFunctionsRequest from '@/integrations/zoho-crm/requests/fetch-crm-functions.request.ts'
 import type { ZohoCrmFunction } from '@/integrations/zoho-crm/types/crm.functions.types.ts'
 import type { CrmServiceProviderMetadata } from '@/integrations/zoho-crm/types/crm.provider.types.ts'
+import { IFunctionRecordEntity } from '@zoho-ide/shared'
+import type { PaginatedResult, PaginationParams } from '@zoho-ide/shared'
+import type { Result } from '@zoho-ide/shared'
+import type { CapabilityAdapter, IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
+import type { ZohoServiceProvider } from '@zoho-ide/shared'
 
 async function fetchFunctionsDetails(
     tabId: number,

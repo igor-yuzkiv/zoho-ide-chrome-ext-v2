@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { VueFlow } from '@vue-flow/core'
-import type { IWorkflowRecordEntity } from '@zoho-ide/shared'
-import type { ZohoServiceProviderType } from '@zoho-ide/shared'
-import { watchEffect } from 'vue'
 import WfActionNode from '@/modules/capabilities/workflows/components/schema-nodes/WfActionNode.vue'
 import WfConditionNode from '@/modules/capabilities/workflows/components/schema-nodes/WfConditionNode.vue'
 import WfWhenNode from '@/modules/capabilities/workflows/components/schema-nodes/WfWhenNode.vue'
 import { useWorkflowSchema } from '@/modules/capabilities/workflows/composables/useWorkflowSchema.ts'
+import { VueFlow } from '@vue-flow/core'
+import type { IWorkflowRecordEntity } from '@zoho-ide/shared'
+import type { ZohoServiceProviderType } from '@zoho-ide/shared'
+import { watchEffect } from 'vue'
 
 const props = defineProps<{
     providerType: ZohoServiceProviderType

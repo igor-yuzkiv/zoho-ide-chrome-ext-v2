@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import { useCapabilityRecordsList } from '@/core/capability'
 import { useRouteParams } from '@vueuse/router'
 import { ProviderCapabilityType } from '@zoho-ide/shared'
 import type { IModuleMetadataRecordEntity } from '@zoho-ide/shared'
 import { useRouter } from 'vue-router'
 import { ListBox, ListItem } from '@zoho-ide/ui-kit'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import { useCapabilityRecordsList } from '@/core/capability'
 
 const providerId = useRouteParams<string>('providerId')
 const activeModuleId = useRouteParams<string>('moduleId')

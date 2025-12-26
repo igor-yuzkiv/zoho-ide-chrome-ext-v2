@@ -1,9 +1,9 @@
-import type { Result } from '@zoho-ide/shared'
 import { zohoCrmInjectionRequest } from '@/core/browser'
 import {
     ZohoFinanceFunctionDetailsResponse,
     ZohoFinanceFunctionResponse,
 } from '@/integrations/zoho-finance/types/finance.functions.types.ts'
+import type { Result } from '@zoho-ide/shared'
 
 type ResponseType = {
     customfunction: ZohoFinanceFunctionDetailsResponse

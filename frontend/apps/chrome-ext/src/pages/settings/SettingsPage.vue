@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { PROVIDER_CACHE_TTL_MS } from '@/config/providers.config.ts'
+import { useProvidersStore } from '@/core/provider'
 import { format } from 'date-fns'
 import { startCase } from 'lodash'
 import { storeToRefs } from 'pinia'
@@ -9,7 +10,6 @@ import Column from 'primevue/column'
 import DataTable from 'primevue/datatable'
 import { PageHeader } from '@zoho-ide/ui-kit'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import { useProvidersStore } from '@/core/provider'
 import { ProviderSettingsDialog, useProviderSettingsForm } from '@/widgets/provider-settings'
 
 const providersStore = useProvidersStore()

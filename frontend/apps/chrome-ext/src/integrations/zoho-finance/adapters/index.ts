@@ -1,6 +1,6 @@
+import { financeFunctionsCapabilityAdapterFactory } from './finance.functions.adapter.ts'
 import { ProviderCapabilityType } from '@zoho-ide/shared'
 import type { ServiceProviderCapability } from '@zoho-ide/shared'
-import { financeFunctionsCapabilityAdapterFactory } from './finance.functions.adapter.ts'
 
 export const ZohoFinanceCapabilities: ServiceProviderCapability[] = [
     {

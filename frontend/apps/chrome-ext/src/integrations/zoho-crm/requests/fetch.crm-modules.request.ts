@@ -1,8 +1,8 @@
-import type { Result } from '@zoho-ide/shared'
-import { fetchMockData } from '@/shared/mock-api/mock.api.ts'
 import { zohoCrmInjectionRequest } from '@/core/browser'
 import { formatZohoCrmProviderId } from '@/integrations/zoho-crm/crm.provider.ts'
 import type { CrmModuleMetadata } from '@/integrations/zoho-crm/types/crm.metadata.types.ts'
+import type { Result } from '@zoho-ide/shared'
+import { fetchMockData } from '@/shared/mock-api/mock.api.ts'
 
 async function mock(orgId: string): Promise<Result<CrmModuleMetadata[]>> {
     const fileName = `${formatZohoCrmProviderId(orgId)}-modules.json`

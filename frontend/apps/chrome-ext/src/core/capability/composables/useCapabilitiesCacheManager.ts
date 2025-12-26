@@ -1,11 +1,11 @@
-import { useMockDataCollector } from '@/shared/mock-api/useMockDataCollector.ts'
 import { PROVIDER_CACHE_TTL_MS } from '@/config/providers.config.ts'
+import { useCapabilitiesConfig } from '@/core/capability'
+import { useProviderRecordsFetcher, useProvidersStore } from '@/core/provider'
 import { useQueryClient } from '@tanstack/vue-query'
 import { capabilityRecordsStorageFactory, ProviderCapabilityQueryKeys } from '@zoho-ide/shared'
 import type { ZohoServiceProvider } from '@zoho-ide/shared'
 import { ref } from 'vue'
-import { useCapabilitiesConfig } from '@/core/capability'
-import { useProvidersStore, useProviderRecordsFetcher } from '@/core/provider'
+import { useMockDataCollector } from '@/shared/mock-api/useMockDataCollector.ts'
 
 const localCapabilityStorage = capabilityRecordsStorageFactory('local')
 

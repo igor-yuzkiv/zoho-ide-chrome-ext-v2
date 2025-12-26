@@ -1,6 +1,6 @@
+import { useCapabilitiesConfig } from '@/core/capability'
 import type { CapabilityAdapter, IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
 import type { ZohoServiceProvider } from '@zoho-ide/shared'
-import { useCapabilitiesConfig } from '@/core/capability'
 
 export function useProviderRecordsFetcher() {
     const capabilities = useCapabilitiesConfig()

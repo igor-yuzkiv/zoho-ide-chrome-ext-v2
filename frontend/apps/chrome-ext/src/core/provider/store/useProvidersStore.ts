@@ -1,10 +1,10 @@
 import { ProvidersRegister } from '@/config/providers.config.ts'
+import type { BrowserTab } from '@/core/browser'
+import { useBrowserTabsStore } from '@/core/browser'
 import { type Serializer, useStorage } from '@vueuse/core'
 import type { ZohoServiceProvider } from '@zoho-ide/shared'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import type { BrowserTab } from '@/core/browser'
-import { useBrowserTabsStore } from '@/core/browser'
 
 const LocalStorageSerializer: Serializer<ZohoServiceProvider[]> = {
     read(raw) {

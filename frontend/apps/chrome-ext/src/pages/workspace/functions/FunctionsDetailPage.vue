@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useCurrentProvider } from '@/core/provider'
+import { ExecuteFunctionDialog, useFunctionDetails, useFunctionExecute } from '@/modules/capabilities/functions'
 import { useRouteParams } from '@vueuse/router'
 import { useCreateCodeSnippet } from '@zoho-ide/knowledge-base'
 import { defineAsyncComponent } from 'vue'
@@ -7,8 +9,6 @@ import { Button } from 'primevue'
 import { Icon } from '@iconify/vue'
 import { NoDataMessage, PageHeader, useConfirm, useToast, useViewModeSelect, ViewModeSelect } from '@zoho-ide/ui-kit'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import { useCurrentProvider } from '@/core/provider'
-import { ExecuteFunctionDialog, useFunctionDetails, useFunctionExecute } from '@/modules/capabilities/functions'
 
 const toast = useToast()
 const confirm = useConfirm()

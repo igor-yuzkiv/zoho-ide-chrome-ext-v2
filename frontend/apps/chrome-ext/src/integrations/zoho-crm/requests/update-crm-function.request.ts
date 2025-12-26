@@ -1,5 +1,5 @@
-import type { Result } from '@zoho-ide/shared'
 import { zohoCrmInjectionRequest } from '@/core/browser'
+import type { Result } from '@zoho-ide/shared'
 
 type UpdateFunctionPayload = {
     id: string

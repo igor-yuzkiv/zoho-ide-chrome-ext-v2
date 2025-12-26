@@ -1,6 +1,6 @@
-import type { Result } from '@zoho-ide/shared'
 import { zohoCrmInjectionRequest } from '@/core/browser'
 import type { ZohoCrmWorkflow } from '@/integrations/zoho-crm/types/crm.workflow.types.ts'
+import type { Result } from '@zoho-ide/shared'
 
 type Response = {
     workflow_rules: ZohoCrmWorkflow[]

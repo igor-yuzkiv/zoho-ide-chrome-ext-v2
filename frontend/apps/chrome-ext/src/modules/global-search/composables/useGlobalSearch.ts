@@ -1,11 +1,8 @@
-import { inject } from 'vue'
 import { useGlobalSearchSettings } from '@/modules/global-search/composables/useGlobalSearchSettings.ts'
 import { globalSearchIndex } from '@/modules/global-search/global-search-index.ts'
 import { GlobalSearchPluginSymbol } from '@/modules/global-search/global-search.constants.ts'
-import type {
-    GlobalSearchOpenParams,
-    IGlobalSearchService,
-} from '@/modules/global-search/global-search.types.ts'
+import type { GlobalSearchOpenParams, IGlobalSearchService } from '@/modules/global-search/global-search.types.ts'
+import { inject } from 'vue'
 
 export function useGlobalSearch() {
     const service = inject<IGlobalSearchService>(GlobalSearchPluginSymbol)

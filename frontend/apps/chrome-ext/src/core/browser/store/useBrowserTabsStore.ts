@@ -1,7 +1,7 @@
-import { fetchMockData, isMockApiEnabled } from '@/shared/mock-api/mock.api.ts'
 import type { BrowserTab } from '@/core/browser'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import { fetchMockData, isMockApiEnabled } from '@/shared/mock-api/mock.api.ts'
 
 async function fetchBrowserTabsRequest(): Promise<BrowserTab[]> {
     return isMockApiEnabled()
