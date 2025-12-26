@@ -5,7 +5,7 @@ import { Button } from 'primevue'
 import { useConfirm } from 'primevue'
 import { PageHeader } from '@zoho-ide/ui-kit'
 import { useToast } from '@zoho-ide/ui-kit'
-import { useCurrentProvider } from '@/entities/provider/composables/useCurrentProvider.ts'
+import { useCurrentProvider } from '@/core/provider'
 
 //TODO: Move Settings to root level
 

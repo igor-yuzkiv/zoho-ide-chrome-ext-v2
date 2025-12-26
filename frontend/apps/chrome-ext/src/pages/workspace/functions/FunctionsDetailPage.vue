@@ -7,8 +7,8 @@ import { Button } from 'primevue'
 import { Icon } from '@iconify/vue'
 import { NoDataMessage, PageHeader, useConfirm, useToast, useViewModeSelect, ViewModeSelect } from '@zoho-ide/ui-kit'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import { useCurrentProvider } from '@/entities/provider/composables/useCurrentProvider.ts'
-import { ExecuteFunctionDialog, useFunctionDetails, useFunctionExecute } from '@/features/function-capability'
+import { useCurrentProvider } from '@/core/provider'
+import { ExecuteFunctionDialog, useFunctionDetails, useFunctionExecute } from '@/modules/capabilities/functions'
 
 const toast = useToast()
 const confirm = useConfirm()
@@ -34,14 +34,14 @@ const viewMode = useViewModeSelect(
             value: 'code',
             icon: 'mdi:code',
             component: defineAsyncComponent(
-                () => import('@/features/function-capability/components/detail-view/FunctionCodeView.vue')
+                () => import('@/modules/capabilities/functions/components/detail-view/FunctionCodeView.vue')
             ),
         },
         {
             value: 'json',
             icon: 'si:json-duotone',
             component: defineAsyncComponent(
-                () => import('@/features/function-capability/components/detail-view/FunctionJsonView.vue')
+                () => import('@/modules/capabilities/functions/components/detail-view/FunctionJsonView.vue')
             ),
         },
     ],

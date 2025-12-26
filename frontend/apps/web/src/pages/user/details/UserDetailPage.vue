@@ -5,7 +5,7 @@ import { useRouter } from 'vue-router'
 import { Avatar, Button } from 'primevue'
 import { PageHeader, useToast } from '@zoho-ide/ui-kit'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import { UpdateUserForm, useUpdateUser, useUserDetails } from '@/features/user'
+import { UpdateUserForm, useUpdateUser, useUserDetails } from '@/modules/user'
 
 const toast = useToast()
 const router = useRouter()

@@ -5,11 +5,10 @@ import { useRoute, useRouter } from 'vue-router'
 import { Splitter, SplitterPanel } from 'primevue'
 import { Icon } from '@iconify/vue'
 import { TopMenuItem, useConfirm, useToast } from '@zoho-ide/ui-kit'
-import { GlobalSearchDialog, useGlobalSearch } from '@/shared/libs/global-search'
-import { useLogger } from '@/shared/libs/logger/useLogger.ts'
+import { GlobalSearchDialog, useGlobalSearch } from '@/modules/global-search'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import { useCapabilitiesCacheManager } from '@/entities/capability/composables/useCapabilitiesCacheManager.ts'
-import { useCurrentProvider } from '@/entities/provider/composables/useCurrentProvider.ts'
+import { useCapabilitiesCacheManager } from '@/core/capability'
+import { useCurrentProvider } from '@/core/provider'
 import { AppFooter } from '@/widgets/app-footer'
 import { AppTopMenu } from '@/widgets/app-top-menu'
 import { CapabilitiesMenu } from '@/widgets/capabilities-menu'
@@ -18,7 +17,6 @@ const confirm = useConfirm()
 const toast = useToast()
 const router = useRouter()
 const route = useRoute()
-const logger = useLogger('WorkspaceLayout')
 const {
     id: providerId,
     data: provider,
@@ -55,7 +53,7 @@ function handleClickClearCache() {
                 await bootstrapProviderCache(provider.value)
                 await bootstrapGlobalSearch({ provider: provider.value })
             } catch (e) {
-                logger.error('Failed to clear cache', e)
+                console.error('Failed to clear cache', e)
                 toast.add({ severity: 'error', summary: 'Error', detail: 'Failed to clear cache.' })
             }
         },
@@ -72,7 +70,7 @@ onMounted(async () => {
         await bootstrapProviderCache(provider.value)
         await bootstrapGlobalSearch({ provider: provider.value })
     } catch (e) {
-        logger.error('Failed to bootstrap caches', e)
+        console.error('Failed to bootstrap caches', e)
         router.push({ name: AppRouteName.error })
     }
 })

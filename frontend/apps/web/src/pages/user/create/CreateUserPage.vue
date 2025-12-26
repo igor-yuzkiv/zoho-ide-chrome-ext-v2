@@ -3,7 +3,7 @@ import { useRouter } from 'vue-router'
 import { Button } from 'primevue'
 import { PageHeader, useToast } from '@zoho-ide/ui-kit'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import { CreateUserForm, useCreateUser } from '@/features/user'
+import { CreateUserForm, useCreateUser } from '@/modules/user'
 
 const toast = useToast()
 const router = useRouter()

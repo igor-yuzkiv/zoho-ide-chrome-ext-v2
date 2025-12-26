@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.ts'
+import { useProvidersStore } from '@/core/provider'
 
 const providersStore = useProvidersStore()
 </script>

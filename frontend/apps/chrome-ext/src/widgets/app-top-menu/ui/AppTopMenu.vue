@@ -4,9 +4,9 @@ import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { Icon } from '@iconify/vue'
 import { TopMenu, type TopMenuItemProps, UserProfile } from '@zoho-ide/ui-kit'
-import { useGlobalSearch } from '@/shared/libs/global-search'
+import { useGlobalSearch } from '@/modules/global-search'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import { useCurrentProvider } from '@/entities/provider/composables/useCurrentProvider.ts'
+import { useCurrentProvider } from '@/core/provider'
 
 const authStore = useAuthStore()
 const router = useRouter()

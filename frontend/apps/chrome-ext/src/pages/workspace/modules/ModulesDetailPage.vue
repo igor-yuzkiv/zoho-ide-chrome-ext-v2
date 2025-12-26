@@ -2,8 +2,8 @@
 import { useRouteParams } from '@vueuse/router'
 import { defineAsyncComponent } from 'vue'
 import { NoDataMessage, PageHeader, useViewModeSelect, ViewModeSelect } from '@zoho-ide/ui-kit'
-import { useModuleDetails } from '@/features/metadata-capability'
-import { useModuleFields } from '@/features/metadata-capability/composables/useModuleFields.ts'
+import { useModuleDetails } from '@/modules/capabilities/metadata'
+import { useModuleFields } from '@/modules/capabilities/metadata/composables/useModuleFields.ts'
 
 const providerId = useRouteParams<string>('providerId')
 const moduleId = useRouteParams<string>('moduleId')
@@ -17,14 +17,14 @@ const viewMode = useViewModeSelect(
             value: 'json',
             icon: 'si:json-duotone',
             component: defineAsyncComponent(
-                () => import('@/features/metadata-capability/components/detail-view/ModuleJsonView.vue')
+                () => import('@/modules/capabilities/metadata/components/detail-view/ModuleJsonView.vue')
             ),
         },
         {
             value: 'table',
             icon: 'material-symbols:table-sharp',
             component: defineAsyncComponent(
-                () => import('@/features/metadata-capability/components/detail-view/ModuleTableView.vue')
+                () => import('@/modules/capabilities/metadata/components/detail-view/ModuleTableView.vue')
             ),
         },
     ],

@@ -1,0 +1,55 @@
+import type { IModuleFieldMetadataRecordEntity } from '@zoho-ide/shared'
+import type { IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
+import type { ZohoServiceProvider } from '@zoho-ide/shared'
+import { saveMockData } from '@/shared/mock-api/mock.api.ts'
+
+// TODO: remove mock data saving after testing
+export function useMockDataCollector() {
+    async function saveFieldsMockData(provider: ZohoServiceProvider, records: IModuleFieldMetadataRecordEntity[]) {
+        const perModule = records.reduce<Record<string, IModuleFieldMetadataRecordEntity[]>>((acc, record) => {
+            if (!record.module_api_name || !record.origin_entity) {
+                return acc
+            }
+
+            if (record.module_api_name in acc) {
+                acc[record.module_api_name].push(record)
+            } else {
+                acc[record.module_api_name] = [record]
+            }
+
+            return acc
+        }, {})
+
+        return Promise.all(
+            Object.entries(perModule).map(([moduleApiName, recs]) =>
+                saveMockData(`${provider.id}-fields-${moduleApiName}`, recs.map((r) => r.origin_entity).filter(Boolean))
+            )
+        )
+    }
+
+    function saveCapabilityMockData(
+        provider: ZohoServiceProvider,
+        capabilityType: string,
+        records: IBaseCapabilityRecordEntity[]
+    ) {
+        if (import.meta.env.VITE_COLLECT_MOCK_DATA !== 'true') {
+            return
+        }
+
+        console.warn('--- [useMockDataCollector] COLLECTING MOCK DATA FOR', {
+            provider: provider.id,
+            capability: capabilityType,
+        })
+
+        if (capabilityType !== 'fields') {
+            const data = records.map((r) => r?.origin_entity).filter(Boolean)
+            return saveMockData(`${provider.id}-${capabilityType}`, data).catch(console.error)
+        }
+
+        return saveFieldsMockData(provider, records as IModuleFieldMetadataRecordEntity[])
+    }
+
+    return {
+        saveCapabilityMockData,
+    }
+}

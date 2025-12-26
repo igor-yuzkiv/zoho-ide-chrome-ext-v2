@@ -6,14 +6,13 @@ import ConfirmDialog from 'primevue/confirmdialog'
 import Toast from 'primevue/toast'
 import { LoadingOverlay } from '@zoho-ide/ui-kit'
 import { useAppThemeStore } from '@zoho-ide/ui-kit'
-import { useBrowserTabsStore } from '@/shared/libs/browser/store/useBrowserTabsStore.ts'
+import { useBrowserTabsStore } from '@/core/browser'
 import { AppLayoutComponent } from '@/app/layouts/app-layouts.config.ts'
 import { AppRouteName } from '@/app/router/app-routes.ts'
 import { useAppStateStore } from '@/app/store/useAppStateStore.ts'
-import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.ts'
+import { useProvidersStore } from '@/core/provider'
 
 const authStore = useAuthStore()
-
 const appState = useAppStateStore()
 const tabs = useBrowserTabsStore()
 const providersStore = useProvidersStore()

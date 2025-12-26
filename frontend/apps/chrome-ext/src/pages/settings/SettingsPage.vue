@@ -9,8 +9,8 @@ import Column from 'primevue/column'
 import DataTable from 'primevue/datatable'
 import { PageHeader } from '@zoho-ide/ui-kit'
 import { AppRouteName } from '@/app/router/app-routes.ts'
-import { useProvidersStore } from '@/entities/provider/store/useProvidersStore.ts'
-import { ProviderSettingsDialog, useProviderSettingsForm } from '@/features/provider/settings'
+import { useProvidersStore } from '@/core/provider'
+import { ProviderSettingsDialog, useProviderSettingsForm } from '@/widgets/provider-settings'
 
 const providersStore = useProvidersStore()
 const { providersList } = storeToRefs(providersStore)
