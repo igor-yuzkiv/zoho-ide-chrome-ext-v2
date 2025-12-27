@@ -1,4 +1,4 @@
-import { useCapabilitiesConfig } from '@/core/capability'
+import { useCapabilitiesRegistry } from '@/core/capability'
 import { MaybeRefOrGetter } from '@vueuse/core'
 import { ProviderCapabilityType } from '@zoho-ide/shared'
 import { IFunctionRecordEntity } from '@zoho-ide/shared'
@@ -14,7 +14,7 @@ export function useFunctionExecute(
     const isExecuting = ref(false)
     const argsFormData = ref<Record<string, unknown>>({})
     const executionResult = ref<string>('')
-    const { resolveCapabilityAdapter } = useCapabilitiesConfig()
+    const { resolveCapabilityAdapter } = useCapabilitiesRegistry()
 
     const isCanExecute = computed(() => {
         const providerValue = toValue(provider)

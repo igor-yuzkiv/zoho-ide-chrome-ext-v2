@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCapabilityRecordsList } from '@/core/capability'
+import { useCapabilityRecordsQuery } from '@/core/capability'
 import { FunctionIcon } from '@/modules/capabilities/functions'
 import { useRouteParams } from '@vueuse/router'
 import { type IFunctionRecordEntity, ProviderCapabilityType } from '@zoho-ide/shared'
@@ -9,7 +9,7 @@ import { AppRouteName } from '@/app/router/app-routes.ts'
 
 const providerId = useRouteParams<string>('providerId')
 const activeFunctionId = useRouteParams<string>('functionId')
-const { data: functions } = useCapabilityRecordsList<IFunctionRecordEntity>(
+const { data: functions } = useCapabilityRecordsQuery<IFunctionRecordEntity>(
     ProviderCapabilityType.FUNCTIONS,
     providerId
 )

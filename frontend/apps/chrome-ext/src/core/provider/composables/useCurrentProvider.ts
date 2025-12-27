@@ -1,4 +1,4 @@
-import { useCapabilitiesConfig } from '@/core/capability'
+import { useCapabilitiesRegistry } from '@/core/capability'
 import { useProvidersStore } from '@/core/provider'
 import { useRouteParams } from '@vueuse/router'
 import type { Maybe } from '@zoho-ide/shared'
@@ -7,7 +7,7 @@ import type { ZohoServiceProvider } from '@zoho-ide/shared'
 import { computed } from 'vue'
 
 export function useCurrentProvider() {
-    const capabilitiesConfig = useCapabilitiesConfig()
+    const capabilitiesConfig = useCapabilitiesRegistry()
 
     const providers = useProvidersStore()
     const providerId = useRouteParams<string>('providerId')

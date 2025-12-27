@@ -5,7 +5,7 @@ import { computed, type MaybeRef, toValue } from 'vue'
 
 const localCapabilityStorage = capabilityRecordsStorageFactory('local')
 
-export function useCapabilityRecordsList<T extends IBaseCapabilityRecordEntity>(
+export function useCapabilityRecordsQuery<T extends IBaseCapabilityRecordEntity>(
     capabilityType: MaybeRef<string>,
     providerId: MaybeRef<string>
 ) {

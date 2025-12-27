@@ -1,9 +1,9 @@
-import { useCapabilitiesConfig } from '@/core/capability'
+import { useCapabilitiesRegistry } from '@/core/capability'
 import type { CapabilityAdapter, IBaseCapabilityRecordEntity } from '@zoho-ide/shared'
 import type { ZohoServiceProvider } from '@zoho-ide/shared'
 
 export function useProviderRecordsFetcher() {
-    const capabilities = useCapabilitiesConfig()
+    const capabilities = useCapabilitiesRegistry()
 
     async function fetchAllCapabilityRecords(
         capabilityAdapter: CapabilityAdapter,
