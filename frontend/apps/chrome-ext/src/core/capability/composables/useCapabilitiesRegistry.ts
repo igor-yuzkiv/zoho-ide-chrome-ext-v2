@@ -4,7 +4,7 @@ import type { Maybe } from '@zoho-ide/shared'
 import type { CapabilityAdapter, ServiceProviderCapability } from '@zoho-ide/shared'
 import type { ZohoServiceProvider, ZohoServiceProviderType } from '@zoho-ide/shared'
 
-export function useCapabilitiesConfig() {
+export function useCapabilitiesRegistry() {
     function byProviderType(providerType: ZohoServiceProviderType): ServiceProviderCapability[] {
         return CapabilitiesRegister[providerType] || []
     }

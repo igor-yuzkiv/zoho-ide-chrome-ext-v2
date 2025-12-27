@@ -1,5 +1,5 @@
 import { PROVIDER_CACHE_TTL_MS } from '@/config/providers.config.ts'
-import { useCapabilitiesConfig } from '@/core/capability'
+import { useCapabilitiesRegistry } from '@/core/capability'
 import { useProviderRecordsFetcher, useProvidersStore } from '@/core/provider'
 import { useQueryClient } from '@tanstack/vue-query'
 import { capabilityRecordsStorageFactory, ProviderCapabilityQueryKeys } from '@zoho-ide/shared'
@@ -11,7 +11,7 @@ const localCapabilityStorage = capabilityRecordsStorageFactory('local')
 
 export function useCapabilitiesCacheManager() {
     const mockDataCollector = useMockDataCollector() // TODO: remove mock data saving after testing
-    const capabilities = useCapabilitiesConfig()
+    const capabilities = useCapabilitiesRegistry()
     const recordsFetcher = useProviderRecordsFetcher()
     const providersStore = useProvidersStore()
     const isCachingInProgress = ref(false)

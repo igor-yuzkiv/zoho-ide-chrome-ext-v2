@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCapabilityRecordsList } from '@/core/capability'
+import { useCapabilityRecordsQuery } from '@/core/capability'
 import { useRouteParams } from '@vueuse/router'
 import { ProviderCapabilityType } from '@zoho-ide/shared'
 import type { IModuleMetadataRecordEntity } from '@zoho-ide/shared'
@@ -9,7 +9,7 @@ import { AppRouteName } from '@/app/router/app-routes.ts'
 
 const providerId = useRouteParams<string>('providerId')
 const activeModuleId = useRouteParams<string>('moduleId')
-const { data: modules } = useCapabilityRecordsList<IModuleMetadataRecordEntity>(
+const { data: modules } = useCapabilityRecordsQuery<IModuleMetadataRecordEntity>(
     ProviderCapabilityType.MODULES,
     providerId
 )
