@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCapabilityRecordsQuery } from '@/core/capability'
+import { useCapabilityRecordsQuery } from '@/core/cache'
 import { FunctionIcon } from '@/modules/capabilities/functions'
 import { useRouteParams } from '@vueuse/router'
 import { type IFunctionRecordEntity, ProviderCapabilityType } from '@zoho-ide/shared'

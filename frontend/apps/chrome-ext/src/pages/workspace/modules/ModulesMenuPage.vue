@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCapabilityRecordsQuery } from '@/core/capability'
+import { useCapabilityRecordsQuery } from '@/core/cache'
 import { useRouteParams } from '@vueuse/router'
 import { ProviderCapabilityType } from '@zoho-ide/shared'
 import type { IModuleMetadataRecordEntity } from '@zoho-ide/shared'

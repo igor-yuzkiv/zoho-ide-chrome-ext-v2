@@ -18,13 +18,7 @@ export function useModuleFields<TOrigin extends IEntity = IEntity>(
         ],
         placeholderData: keepPreviousData,
         queryFn: () => {
-            return localCapabilityStorage
-                .findByProviderIdAndCapabilityType<
-                    IModuleFieldMetadataRecordEntity<TOrigin>
-                >(toValue(providerId), ProviderCapabilityType.FIELDS)
-                .then((records) => {
-                    return records.filter((record) => record.module_id === toValue(moduleId))
-                })
+            return localCapabilityStorage.findByParentId<IModuleFieldMetadataRecordEntity<TOrigin>>(toValue(moduleId))
         },
         enabled: computed(() => !!toValue(providerId) && !!toValue(moduleId)),
     })

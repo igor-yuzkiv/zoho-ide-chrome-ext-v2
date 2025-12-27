@@ -1,6 +1,6 @@
 import { ProviderSettingForm } from './types.ts'
 import { PROVIDER_CACHE_TTL_MS } from '@/config/providers.config.ts'
-import { useCapabilitiesCacheManager } from '@/core/capability'
+import { useCapabilitiesCacheManager } from '@/core/cache'
 import { useProvidersStore } from '@/core/provider'
 import * as z from 'zod'
 import { ref, watch } from 'vue'

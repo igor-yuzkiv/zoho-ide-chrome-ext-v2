@@ -1,14 +1,20 @@
 <script setup lang="ts">
+import { useCapabilityRecordByIdQuery } from '@/core/cache'
 import { useCurrentProvider } from '@/core/provider'
-import { useWorkflowDetails } from '@/modules/capabilities/workflows/composables/useWorkflowDetails.ts'
 import { useRouteParams } from '@vueuse/router'
+import { IWorkflowRecordEntity, ProviderCapabilityType } from '@zoho-ide/shared'
 import { defineAsyncComponent } from 'vue'
 import { NoDataMessage, PageHeader, useViewModeSelect, ViewModeSelect } from '@zoho-ide/ui-kit'
 
 const providerId = useRouteParams<string>('providerId')
 const workflowId = useRouteParams<string>('workflowId')
 const { data: currentProvider } = useCurrentProvider()
-const workflow = useWorkflowDetails(providerId, workflowId)
+
+const { data: workflow } = useCapabilityRecordByIdQuery<IWorkflowRecordEntity>(
+    providerId,
+    ProviderCapabilityType.WORKFLOWS,
+    workflowId
+)
 
 const viewMode = useViewModeSelect(
     [
@@ -32,8 +38,8 @@ const viewMode = useViewModeSelect(
 </script>
 
 <template>
-    <div v-if="currentProvider && workflow.data.value" class="flex h-full w-full flex-col overflow-hidden gap-1">
-        <PageHeader :title="workflow.data.value.display_name" :description="workflow.data.value.description">
+    <div v-if="currentProvider && workflow" class="flex h-full w-full flex-col overflow-hidden gap-1">
+        <PageHeader :title="workflow.display_name" :description="workflow.description">
             <template #actions>
                 <ViewModeSelect :options="viewMode.options" v-model="viewMode.current.value" />
             </template>
@@ -42,7 +48,7 @@ const viewMode = useViewModeSelect(
         <div v-if="viewMode.currentComponent.value" class="flex h-full w-full flex-col overflow-auto app-card">
             <component
                 :is="viewMode.currentComponent.value"
-                :workflow="workflow.data.value"
+                :workflow="workflow"
                 :providerType="currentProvider.type"
             />
         </div>

@@ -10,6 +10,7 @@ export class LocalCapabilityRecordsStorage implements ICapabilityRecordsStorage 
         await capabilityDexieDb.records.bulkPut(
             records.map((i) => ({
                 id: i.id,
+                parent_id: i?.parent_id,
                 source_id: i.source_id,
                 provider_id: i.provider_id,
                 capability_type: i.capability_type,
@@ -38,7 +39,6 @@ export class LocalCapabilityRecordsStorage implements ICapabilityRecordsStorage 
     }
 
     async findById<T extends IBaseCapabilityRecordEntity = IBaseCapabilityRecordEntity>(id: string): Promise<T> {
-        console.log('LocalCapabilityRecordsStorage.findById', id)
         const dbRecord = await capabilityDexieDb.records.where('id').equals(id).first()
 
         if (!dbRecord || !dbRecord.data) {
@@ -46,6 +46,14 @@ export class LocalCapabilityRecordsStorage implements ICapabilityRecordsStorage 
         }
 
         return dbRecord.data as T
+    }
+
+    async findByParentId<T extends IBaseCapabilityRecordEntity = IBaseCapabilityRecordEntity>(
+        parentId: string
+    ): Promise<T[]> {
+        const dbRecords = await capabilityDexieDb.records.where('parent_id').equals(parentId).toArray()
+
+        return dbRecords.map((record) => record.data as T)
     }
 
     async findByProviderIdAndCapabilityType<T extends IBaseCapabilityRecordEntity = IBaseCapabilityRecordEntity>(

@@ -54,6 +54,7 @@ export function mapCrmFieldToEntity(
 ): IModuleFieldMetadataRecordEntity<CrmModuleField> {
     return {
         id: makeProviderCapabilityId(providerId, ProviderCapabilityType.FIELDS, [crmModule.api_name, field.api_name]),
+        parent_id: makeProviderCapabilityId(providerId, ProviderCapabilityType.MODULES, crmModule.api_name),
         source_id: field.id,
         provider_id: providerId,
         capability_type: ProviderCapabilityType.FIELDS,

@@ -1,14 +1,20 @@
 <script setup lang="ts">
-import { useModuleDetails } from '@/modules/capabilities/metadata'
 import { useModuleFields } from '@/modules/capabilities/metadata/composables/useModuleFields.ts'
 import { useRouteParams } from '@vueuse/router'
 import { defineAsyncComponent } from 'vue'
 import { NoDataMessage, PageHeader, useViewModeSelect, ViewModeSelect } from '@zoho-ide/ui-kit'
+import { useCapabilityRecordByIdQuery } from '@/core/cache'
+import { IModuleMetadataRecordEntity, ProviderCapabilityType } from '@zoho-ide/shared'
 
 const providerId = useRouteParams<string>('providerId')
 const moduleId = useRouteParams<string>('moduleId')
 
-const module = useModuleDetails(providerId, moduleId)
+const {data: module} = useCapabilityRecordByIdQuery<IModuleMetadataRecordEntity>(
+    providerId,
+    ProviderCapabilityType.MODULES,
+    moduleId
+)
+
 const fields = useModuleFields(providerId, moduleId)
 
 const viewMode = useViewModeSelect(
@@ -33,15 +39,15 @@ const viewMode = useViewModeSelect(
 </script>
 
 <template>
-    <div v-if="module.data.value" class="flex h-full w-full flex-col overflow-hidden gap-1">
-        <PageHeader :title="module.data.value.api_name">
+    <div v-if="module" class="flex h-full w-full flex-col overflow-hidden gap-1">
+        <PageHeader :title="module.api_name">
             <template #actions>
                 <ViewModeSelect :options="viewMode.options" v-model="viewMode.current.value" />
             </template>
         </PageHeader>
 
         <div v-if="viewMode.currentComponent.value" class="flex h-full w-full flex-col overflow-auto app-card">
-            <component :is="viewMode.currentComponent.value" :module="module.data.value" :fields="fields.data.value" />
+            <component :is="viewMode.currentComponent.value" :module="module" :fields="fields.data.value" />
         </div>
     </div>
     <NoDataMessage

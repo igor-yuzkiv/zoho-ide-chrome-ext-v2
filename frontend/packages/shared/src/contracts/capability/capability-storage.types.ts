@@ -13,6 +13,8 @@ export interface ICapabilityRecordsStorage {
 
     findById<T extends IBaseCapabilityRecordEntity = IBaseCapabilityRecordEntity>(id: string): Promise<T>
 
+    findByParentId<T extends IBaseCapabilityRecordEntity = IBaseCapabilityRecordEntity>(parentId: string): Promise<T[]>
+
     findByProviderIdAndCapabilityType<T extends IBaseCapabilityRecordEntity = IBaseCapabilityRecordEntity>(
         providerId: string,
         capabilityType: string

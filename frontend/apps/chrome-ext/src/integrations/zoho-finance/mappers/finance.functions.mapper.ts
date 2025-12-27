@@ -3,7 +3,7 @@ import type {
     ZohoFinanceFunctionDetailsResponse,
     ZohoFinanceFunctionResponse,
 } from '@/integrations/zoho-finance/types/finance.functions.types.ts'
-import type { IFunctionRecordEntity } from '@zoho-ide/shared'
+import  { IFunctionRecordEntity, makeProviderCapabilityId } from '@zoho-ide/shared'
 import { ProviderCapabilityType } from '@zoho-ide/shared'
 
 export function mapToFunctionEntity(
@@ -11,7 +11,7 @@ export function mapToFunctionEntity(
     fx: ZohoFinanceFunctionResponse | ZohoFinanceFunctionDetailsResponse
 ): IFunctionRecordEntity<ZohoFinanceFunction> {
     return {
-        id: fx.customfunction_id,
+        id: makeProviderCapabilityId(providerId, ProviderCapabilityType.FUNCTIONS, fx.customfunction_id),
         source_id: fx.customfunction_id,
         provider_id: providerId,
         capability_type: ProviderCapabilityType.FUNCTIONS,

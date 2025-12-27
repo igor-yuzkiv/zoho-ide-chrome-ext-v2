@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCapabilitiesCacheManager } from '@/core/capability'
+import { useCapabilitiesCacheManager } from '@/core/cache'
 import { useCurrentProvider } from '@/core/provider'
 import { format } from 'date-fns'
 import { computed, onMounted } from 'vue'
