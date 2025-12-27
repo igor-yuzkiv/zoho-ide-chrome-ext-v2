@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { useCapabilityRecordByIdQuery } from '@/core/cache'
 import { useCurrentProvider } from '@/core/provider'
-import { ExecuteFunctionDialog, useFunctionDetails, useFunctionExecute } from '@/modules/capabilities/functions'
+import { ExecuteFunctionDialog, useFunctionExecute } from '@/modules/capabilities/functions'
 import { useRouteParams } from '@vueuse/router'
 import { useCreateCodeSnippet } from '@zoho-ide/knowledge-base'
-import { defineAsyncComponent } from 'vue'
+import { type IFunctionRecordEntity, ProviderCapabilityType } from '@zoho-ide/shared'
+import { defineAsyncComponent, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { Button } from 'primevue'
 import { Icon } from '@iconify/vue'
@@ -15,9 +17,15 @@ const confirm = useConfirm()
 const router = useRouter()
 const providerId = useRouteParams<string>('providerId')
 const functionId = useRouteParams<string>('functionId')
-const { script, data } = useFunctionDetails(providerId, functionId)
 const { create: createCodeSnippet, isCanCreate: isCodeSnippetCanCreated } = useCreateCodeSnippet()
 const { data: currentProvider } = useCurrentProvider()
+
+const { data } = useCapabilityRecordByIdQuery<IFunctionRecordEntity>(
+    providerId,
+    ProviderCapabilityType.FUNCTIONS,
+    functionId
+)
+const script = ref<string>('')
 
 const {
     isCanExecute,
@@ -95,6 +103,12 @@ async function handleExecuteFunction() {
         },
     })
 }
+
+watch(
+    data,
+    (newValue) => (script.value = newValue?.script || ''),
+    { immediate: true }
+)
 </script>
 
 <template>

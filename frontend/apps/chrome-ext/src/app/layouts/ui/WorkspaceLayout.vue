@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCapabilitiesCacheManager } from '@/core/capability'
+import { useCapabilitiesCacheManager } from '@/core/cache'
 import { useCurrentProvider } from '@/core/provider'
 import { GlobalSearchDialog, useGlobalSearch } from '@/modules/global-search'
 import { format } from 'date-fns'

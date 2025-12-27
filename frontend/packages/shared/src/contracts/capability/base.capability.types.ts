@@ -19,6 +19,7 @@ export type CapabilityId = string
 
 export interface IBaseCapabilityRecordEntity extends IEntity {
     id: CapabilityId
+    parent_id?: CapabilityId
     source_id: string
     provider_id: string
     capability_type: string
