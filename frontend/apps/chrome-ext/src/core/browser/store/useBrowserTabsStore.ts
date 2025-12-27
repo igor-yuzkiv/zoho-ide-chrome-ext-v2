@@ -5,8 +5,8 @@ import { fetchMockData, isMockApiEnabled } from '@/shared/mock-api/mock.api.ts'
 
 async function fetchBrowserTabsRequest(): Promise<BrowserTab[]> {
     return isMockApiEnabled()
-        ? chrome.tabs.query({})
-        : fetchMockData('chrome-tabs.json').then((data) => (Array.isArray(data) ? data : []))
+        ? fetchMockData('chrome-tabs.json').then((data) => (Array.isArray(data) ? data : []))
+        : chrome.tabs.query({})
 }
 
 export const useBrowserTabsStore = defineStore('browser.tabs', () => {
