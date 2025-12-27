@@ -104,11 +104,7 @@ async function handleExecuteFunction() {
     })
 }
 
-watch(
-    data,
-    (newValue) => (script.value = newValue?.script || ''),
-    { immediate: true }
-)
+watch(data, (newValue) => (script.value = newValue?.script || ''), { immediate: true })
 </script>
 
 <template>

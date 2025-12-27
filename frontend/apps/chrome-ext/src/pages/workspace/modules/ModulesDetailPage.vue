@@ -1,15 +1,15 @@
 <script setup lang="ts">
+import { useCapabilityRecordByIdQuery } from '@/core/cache'
 import { useModuleFields } from '@/modules/capabilities/metadata/composables/useModuleFields.ts'
 import { useRouteParams } from '@vueuse/router'
+import { IModuleMetadataRecordEntity, ProviderCapabilityType } from '@zoho-ide/shared'
 import { defineAsyncComponent } from 'vue'
 import { NoDataMessage, PageHeader, useViewModeSelect, ViewModeSelect } from '@zoho-ide/ui-kit'
-import { useCapabilityRecordByIdQuery } from '@/core/cache'
-import { IModuleMetadataRecordEntity, ProviderCapabilityType } from '@zoho-ide/shared'
 
 const providerId = useRouteParams<string>('providerId')
 const moduleId = useRouteParams<string>('moduleId')
 
-const {data: module} = useCapabilityRecordByIdQuery<IModuleMetadataRecordEntity>(
+const { data: module } = useCapabilityRecordByIdQuery<IModuleMetadataRecordEntity>(
     providerId,
     ProviderCapabilityType.MODULES,
     moduleId

@@ -19,7 +19,8 @@ export class CapabilityDexieDb extends Dexie {
         super('capabilities-records-storage')
 
         this.version(1).stores({
-            records: '&id, parent_id, capability_type, provider_id, display_name, api_name, [provider_id+capability_type]',
+            records:
+                '&id, parent_id, capability_type, provider_id, display_name, api_name, [provider_id+capability_type]',
         })
     }
 }
