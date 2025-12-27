@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useCapabilitiesCacheManager } from '@/core/capability'
 import { useCurrentProvider } from '@/core/provider'
-import { GlobalSearchDialog, useGlobalSearch } from '@/modules/global-search'
 import { format } from 'date-fns'
 import { computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
@@ -33,7 +32,6 @@ const lastSynced = computed(() => {
 })
 
 const { bootstrap: bootstrapProviderCache, clearProviderCache, isCachingInProgress } = useCapabilitiesCacheManager()
-const { bootstrap: bootstrapGlobalSearch } = useGlobalSearch()
 
 function handleClickClearCache() {
     if (isCachingInProgress.value || !isProviderOnline.value) {
@@ -51,7 +49,6 @@ function handleClickClearCache() {
             try {
                 await clearProviderCache(provider.value.id)
                 await bootstrapProviderCache(provider.value)
-                await bootstrapGlobalSearch({ provider: provider.value })
             } catch (e) {
                 console.error('Failed to clear cache', e)
                 toast.add({ severity: 'error', summary: 'Error', detail: 'Failed to clear cache.' })
@@ -68,7 +65,6 @@ onMounted(async () => {
 
     try {
         await bootstrapProviderCache(provider.value)
-        await bootstrapGlobalSearch({ provider: provider.value })
     } catch (e) {
         console.error('Failed to bootstrap caches', e)
         router.push({ name: AppRouteName.error })
@@ -122,8 +118,6 @@ onMounted(async () => {
             <div v-else class="text-gray-500 text-sm">Last synced: {{ lastSynced }}</div>
         </AppFooter>
     </div>
-
-    <GlobalSearchDialog />
 </template>
 
 <style scoped></style>

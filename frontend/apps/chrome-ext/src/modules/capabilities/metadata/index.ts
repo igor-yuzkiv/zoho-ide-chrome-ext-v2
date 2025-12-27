@@ -3,8 +3,3 @@ export { default as ModuleJsonView } from './components/detail-view/ModuleJsonVi
 
 export { useModuleDetails } from './composables/useModuleDetails.ts'
 export { useModuleFields } from './composables/useModuleFields.ts'
-
-export {
-    ModulesGlobalSearchModule,
-    FieldsGlobalSearchModule,
-} from '@/modules/capabilities/metadata/search/metadata.global-search.module.ts'
